@@ -1,0 +1,8 @@
+.replit
+config.js
+.env
+.cache/*
+replit.nix
+node_modules/*
+AnimeBot/
+Corebot/
