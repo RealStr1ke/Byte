@@ -1,0 +1,3 @@
+[submodule "discord-akairo"]
+	path = discord-akairo
+	url = https://github.com/discord-akairo/discord-akairo
