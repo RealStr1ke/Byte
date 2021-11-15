@@ -1,3 +1,6 @@
 [submodule "discord-akairo"]
 	path = discord-akairo
 	url = https://github.com/discord-akairo/discord-akairo
+[submodule "guidebot"]
+	path = guidebot
+	url = https://github.com/AnIdiotsGuide/guidebot
