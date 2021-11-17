@@ -1,6 +1,6 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('./discord-akairo/src/index');
 const { Intents } = require('discord.js');
-const config = require('./config');
+const config = require('./src/config');
 
 require('dotenv').config();
 
