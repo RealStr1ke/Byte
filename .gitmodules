@@ -4,3 +4,6 @@
 [submodule "guidebot"]
 	path = guidebot
 	url = https://github.com/AnIdiotsGuide/guidebot
+[submodule "FAUHS-Discord-Bot"]
+	path = FAUHS-Discord-Bot
+	url = https://github.com/RealStr1ke/FAUHS-Discord-Bot
