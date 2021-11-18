@@ -1,4 +1,4 @@
-const { Command } = require('../../discord-akairo/src/index');
+const { Command } = require('../../../discord-akairo/src/index');
 const config = require('../../config')
 
 class QuoteCommand extends Command {

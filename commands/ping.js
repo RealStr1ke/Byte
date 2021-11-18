@@ -1,4 +1,4 @@
-const { Command } = require('../../../discord-akairo/src/index');
+const { Command } = require('../discord-akairo/src/index.js');
 
 class PingCommand extends Command {
     constructor() {
@@ -6,7 +6,7 @@ class PingCommand extends Command {
            aliases: ['ping'] 
         });
     }
-    
+
     exec(message) {
         return message.reply('Pong!');
     }

@@ -1,4 +1,4 @@
-const { Command } = require('../../discord-akairo/src/index');
+const { Command } = require('../../../discord-akairo/src/index');
 
 class InfoCommand extends Command {
     constructor() {
