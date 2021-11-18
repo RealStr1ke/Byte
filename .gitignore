@@ -4,5 +4,4 @@ config.js
 .cache/*
 replit.nix
 node_modules/*
-AnimeBot/
 Corebot/
