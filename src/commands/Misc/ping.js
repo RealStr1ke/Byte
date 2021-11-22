@@ -17,31 +17,19 @@ class PingCommand extends Command {
         const sent = await message.util.send('Pinging...');
         const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
     	const embed = this.client.util.embed()
-        .setThumbnail(this.client.avatar)
-    		.setTitle(`${this.client.user.username} ping`)
-	    	.setDescription([
+            .setThumbnail(this.client.avatar)
+    	    .setTitle(`${this.client.user.username} Ping`)
+	        .setDescription([
 	            `🔂 **RTT**: ${timeDiff} ms`,
 	            `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`
 	        ].join('\n'))
-	    	.setColor(this.client.color)
-	    	.setFooter(`Requested by ${message.author.username}`)
-	    	.setTimestamp();
-    	message.util.send('', embed);
+	        .setColor(this.client.color)
+	        .setFooter(`Requested by ${message.author.username}`)
+	        .setTimestamp();
+    	message.reply({
+            embeds: [embed]
+        });
     }
 }
 
 module.exports = PingCommand;
-
-// class PingCommand extends Command {
-//     constructor() {
-//         super('ping', {
-//            aliases: ['ping'] 
-//         });
-//     }
-    
-//     exec(message) {
-//         return message.reply('Pong!');
-//     }
-// }
-
-// module.exports = PingCommand;

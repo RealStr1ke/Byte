@@ -6,7 +6,7 @@ const WebSocket = require('ws');
 
 // Config and Classes
 const config = require('./src/config');
-// const logger = require("./lib/classes/Logger.js");
+const Cli = require('./lib/classes/Cli');
 const Logger = require('./lib/log');
 require('dotenv').config();
 
@@ -17,7 +17,7 @@ class ByteClient extends AkairoClient {
         }, 
         {
             disableMentions: 'everyone',
-            fetchAllMembers: true,
+            fetchAllMembers: false,
             allowedMentions: {
                 repliedUser: true
             },
@@ -50,22 +50,29 @@ class ByteClient extends AkairoClient {
         this.listenerHandler.loadAll();
         this.commandHandler.loadAll();
         this.log = new Logger;
+        this.Cli = new Cli(this);
 
-        // async search(query, results) {
-        //     return await google({ 'query': query, 'no-display': true, 'limit': results });
-        // }
-        // toggleCase(str) {
-        //     if (str.length !== 1) return str;
-        //     if (str.match(/^[A-z]$/)) {
-        //         if (str.toUpperCase() === str) {
-        //             return str.toLowerCase();
-        //         } else {
-        //             return str.toUpperCase();
-        //         }
-        //     }
-        //     return str;
-        // }
+        
     }
+    async login(token) {
+        await super.login(token);
+        // client.Cli.start()
+    }
+    async search(query, results) {
+            return await google({ 'query': query, 'no-display': true, 'limit': results });
+    }
+    toggleCase(str) {
+        if (str.length !== 1) return str;
+        if (str.match(/^[A-z]$/)) {
+            if (str.toUpperCase() === str) {
+                 return str.toLowerCase();
+            } else {
+                    return str.toUpperCase();
+            }
+        }
+        return str;
+    }
+    
 }
 
 const client = new ByteClient();

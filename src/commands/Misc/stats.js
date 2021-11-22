@@ -1,4 +1,5 @@
 const { Command } = require('../../../discord-akairo/src/index');
+const { MessageEmbed} = require('discord.js');
 const os = require('os');
 
 class StatsCommand extends Command {
@@ -30,7 +31,7 @@ class StatsCommand extends Command {
                 .addField('Memory', `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2) > 1024 ? `${(process.memoryUsage().heapUsed / 1024 / 1024 / 1024).toFixed(2)} GB` : `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`} / ${(os.totalmem() / 1024 / 1024).toFixed(2) > 1024 ? `${(os.totalmem() / 1024 / 1024 / 1024).toFixed(2)} GB` : `${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`}`, true)
                 .addField('CPU', `${os.loadavg()[0].toFixed(1)}%`, true)
                 .addField('Bot stats', `Users: ${(total).toLocaleString()} total, ${(cached).toLocaleString()} cached (**${percent}**)\nGuilds: ${(this.client.guilds.cache.size).toLocaleString()}`)
-      return message.util.send(embed);
+      return message.reply({embeds: [embed]});
     }
 }
 

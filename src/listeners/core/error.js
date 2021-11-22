@@ -10,6 +10,7 @@ class ErrorListener extends Listener {
 
     async exec(error, message) {
         console.log(error)
+        this.client.log.fail(error.message)
         let embed = this.client.util.embed()
             .setColor(this.client.color)
             .setTitle('Error')

@@ -60,7 +60,7 @@ class ServerInfoCommand extends Command {
       if (message.guild.description !== null) {
           embed.setDescription(message.guild.description)
       }
-      return message.util.send(embed);
+      return message.reply({ embeds: [embed] });
     }
 }
 

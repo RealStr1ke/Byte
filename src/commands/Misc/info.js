@@ -1,4 +1,5 @@
 const { Command } = require('../../../discord-akairo/src/index');
+const { MessageActionRow, MessageButton } = require('discord.js');
 
 class InfoCommand extends Command {
     constructor() {
@@ -32,8 +33,17 @@ class InfoCommand extends Command {
 		text: 'Imagine reading the footer text',
 		icon_url: 'https://cdn.discordapp.com/avatars/896040118446616636/995c948376a9a5ccd3d7d9f6fcd24ff3.png?size=1024',
 	}
-};
-        return message.reply(infoEmbed);
+}
+        const row = new MessageActionRow()
+            .addComponents(
+                new MessageButton()
+                .setLabel('GitHub')
+                .setStyle('LINK')
+                .setURL('https://github.com/RealStr1ke/Byte'))
+        return message.reply({
+            embeds: [infoEmbed],
+            components: [row]
+        });
     }
 }
 

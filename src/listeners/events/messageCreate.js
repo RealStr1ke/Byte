@@ -4,7 +4,7 @@ const config = require('../../config')
 const { readdirSync } = require('fs');
 
 class MessageCreateListener extends Listener {
-    constructor() {
+    constructor() {7
         super('messageCreate', {
             emitter: 'client',
             event: 'messageCreate'
@@ -12,7 +12,7 @@ class MessageCreateListener extends Listener {
     }
 
     exec(message) {
-        this.client.log.success(`${message.author.tag} sent a message.`);
+        this.client.log.log(`${message.author.tag} sent a message.`);
     }
 }
 

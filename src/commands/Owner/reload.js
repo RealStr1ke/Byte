@@ -19,10 +19,10 @@ class ReloadCommand extends Command {
     exec(message, args) {
         if (args.commandID === 'all') {
             this.handler.reloadAll(); 
-            return message.responder.success('**Successfully reloaded all commands**')
+            return message.reply('**Successfully reloaded all commands**')
         }
         this.handler.reload(args.commandID);
-        return message.responder.success(`**Successfully reloaded command** \`${args.commandID}\``);
+        return message.reply(`**Successfully reloaded command** \`${args.commandID}\``);
     }
 }
 
