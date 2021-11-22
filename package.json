@@ -1,6 +1,6 @@
 {
   "name": "byte",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a multipurpose Discord bot that @RealStr1ke is currently working on.",
   "main": "byte.js",
   "scripts": {
@@ -31,5 +31,9 @@
     "inquirer": "^8.2.0",
     "npm": "^8.1.4",
     "os": "^0.1.2"
-  }
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {}
 }
