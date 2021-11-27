@@ -76,4 +76,4 @@ class ByteClient extends AkairoClient {
 }
 
 const client = new ByteClient();
-client.login(config.token);
+client.login(process.env.TOKEN);

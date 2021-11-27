@@ -23,7 +23,7 @@ class ReadyListener extends Listener {
             }
         });
         this.client.log.success(`Connected to the Discord API`);
-        this.client.log.success(`Logged into as ${this.client.user.tag}`);
+        this.client.log.success(`Logged into as ${this.client.user.tag} on ${this.client.guilds.cache.size} servers`);
         // this.client.Cli.start();
     }
 }

@@ -4,3 +4,6 @@
 [submodule "BetterDiscordPanel"]
 	path = BetterDiscordPanel
 	url = https://github.com/SanjaySunil/BetterDiscordPanel
+[submodule "lib/panel"]
+	path = lib/panel
+	url = https://github.com/SanjaySunil/BetterDiscordPanel

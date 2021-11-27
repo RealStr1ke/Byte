@@ -28,10 +28,10 @@ module.exports = class PurgeCommand extends Command {
 
     async exec(message, { amount, botFlag }) {
         if (!amount) {
-            return message.responder.error('**Please input a valid amount that is less than 100**');
+            return message.reply('**Please input a valid amount that is less than 100**');
         }
         if (amount > 99) {
-            return message.responder.error('**Please input a valid amount that is less than 100**');
+            return message.reply('**Please input a valid amount that is less than 100**');
         }
         await this.bulkDeleteHandler(message, parseInt(amount.toString().replace(/-/g, '')), botFlag);
     }
