@@ -13,7 +13,8 @@ class MessageCreateListener extends Listener {
 
     exec(message) {
         if(message.author.bot) return;
-        this.client.log.log(`${message.author.tag} sent a message.`);
+        if(message.content.startsWith('?')) return this.client.log.log(`${message.author.tag} ran the command ${message.content}`);
+        return this.client.log.log(`${message.author.tag} sent a message.`);
     }
 }
 

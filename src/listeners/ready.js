@@ -1,6 +1,5 @@
 const { Listener } = require('../../discord-akairo/src/index');
 const config = require('../config')
-const logger = require("../../lib/classes/Logger.js");
 const { readdirSync } = require('fs');
 
 class ReadyListener extends Listener {
@@ -12,6 +11,7 @@ class ReadyListener extends Listener {
     }
 
     exec() {
+        console.log(`debug`);
         let slashCommands = this.client.slashHandler.getCommands('./src/slash/');
         this.client.log.success(`Loaded ${this.client.listenerHandler.modules.size} listeners`);
         this.client.log.success(`Loaded ${this.client.inhibitorHandler.modules.size} inhibitors`);
