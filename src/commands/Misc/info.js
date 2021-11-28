@@ -4,7 +4,13 @@ const { MessageActionRow, MessageButton } = require('discord.js');
 class InfoCommand extends Command {
     constructor() {
         super('info', {
-           aliases: ['info', 'inf'] 
+           aliases: ['info', 'inf'],
+            category: 'Miscellaneous',
+            description: {
+                content: 'Show you bot info.',
+                extended: 'Responds with the information of the bot and a link to the repository.',
+                permissions: ['EMBED_LINKS']
+            }, 
         });
     }
     
@@ -18,7 +24,7 @@ class InfoCommand extends Command {
 		icon_url: 'https://cdn.discordapp.com/avatars/411641088944766982/5489f885a60acfa2c50cca1fddd458d5.png?size=1024',
 		url: 'https://github.com/RealStr1ke',
 	},
-	description: `This bot was made with the puspose to cure Str1ke's boredom and help students.`,
+	description: `This bot was made with the puspose to cure Str1ke's boredom.`,
 	thumbnail: {
 		url: 'https://cdn.discordapp.com/avatars/896040118446616636/995c948376a9a5ccd3d7d9f6fcd24ff3.png?size=1024',
 	},

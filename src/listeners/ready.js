@@ -12,13 +12,15 @@ class ReadyListener extends Listener {
     }
 
     exec() {
+        let slashCommands = this.client.slashHandler.getCommands('./src/slash/');
         this.client.log.success(`Loaded ${this.client.listenerHandler.modules.size} listeners`);
         this.client.log.success(`Loaded ${this.client.inhibitorHandler.modules.size} inhibitors`);
         this.client.log.success(`Loaded ${this.client.commandHandler.modules.size} commands`);
+        this.client.log.success(`Loaded ${slashCommands.length} slash commands`);
         this.client.presence.set({
             status: 'online',
             activity: {
-                name: `Byte | ${this.client.guilds.cache.size} servers`,
+                name: `${this.client.prefix}help | ${this.client.guilds.cache.size} servers`,
                 type: 'WATCHING'
             }
         });

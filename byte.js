@@ -1,13 +1,18 @@
 // Modules
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('./discord-akairo/src/index');
-const { Intents } = require('discord.js');
+const { Intents, Collection } = require('discord.js');
 const google = require('google-it');
 const WebSocket = require('ws');
+const beautify = require('js-beautify').js;
+const Flipnote = require('alexflipnote.js');
+const chalk = require('chalk');
 
 // Config and Classes
 const config = require('./src/config');
 const Cli = require('./lib/classes/Cli');
 const Logger = require('./lib/log');
+const Util = require('./lib/structures/Util');
+const SlashHandler = require('./src/handlers/SlashHandler');
 require('dotenv').config();
 
 class ByteClient extends AkairoClient {
@@ -24,14 +29,18 @@ class ByteClient extends AkairoClient {
             intents: config.intents,
             partials: config.partials
         });
+        this.slashCommands = new Collection();
         this.commandHandler = new CommandHandler(this, {
             directory: './src/commands/',
-            prefix: '?',
+            prefix: config.prefix,
             ignoreCooldown: [],
             blockBots: true,
             allowMention: true,
             handleEdits: true,
             commandUtil: true
+        });
+        this.slashHandler = new SlashHandler(this, {
+            directory: './src/slash/'
         });
         this.inhibitorHandler = new InhibitorHandler(this, {
           directory: './src/inhibitors/'
@@ -49,8 +58,16 @@ class ByteClient extends AkairoClient {
         this.inhibitorHandler.loadAll();
         this.listenerHandler.loadAll();
         this.commandHandler.loadAll();
+        this.classLoader = [];
+        this.clientLoader = [];
+        this.prefix = config.prefix;
+        this.Util = Util;
         this.log = new Logger;
         this.Cli = new Cli(this);
+        this.beautify = beautify
+        this.chalk = chalk;
+        this.flipnote = new Flipnote(process.env.FLIPNOTE);
+        
 
         
     }

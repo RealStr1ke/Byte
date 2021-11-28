@@ -4,7 +4,12 @@ const { quotes } = require('../../config')
 class QuoteCommand extends Command {
     constructor() {
         super('quote', {
-           aliases: ['quote', 'q'] 
+           aliases: ['quote', 'q'],
+            category: 'Fun',
+            description: {
+                content: 'Responds with a quote.',
+                extended: 'Responds with one of the quotes set in the configuration.'
+            }, 
         });
     }
     

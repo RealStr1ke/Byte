@@ -5,3 +5,4 @@ config.js
 replit.nix
 node_modules/*
 Corebot/
+*.disabled
