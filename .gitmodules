@@ -1,9 +1,0 @@
-[submodule "discord-akairo"]
-	path = discord-akairo
-	url = https://github.com/discord-akairo/discord-akairo
-[submodule "BetterDiscordPanel"]
-	path = BetterDiscordPanel
-	url = https://github.com/SanjaySunil/BetterDiscordPanel
-[submodule "lib/panel"]
-	path = lib/panel
-	url = https://github.com/SanjaySunil/BetterDiscordPanel
