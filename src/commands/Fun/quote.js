@@ -1,5 +1,6 @@
 const { Command } = require('../../../discord-akairo/src/index');
 const { quotes } = require('../../config')
+const { people } = ["Kyle", "Dylan", "Steve", "Chris", "Walton", "Robert"];
 
 class QuoteCommand extends Command {
     constructor() {
@@ -16,7 +17,9 @@ class QuoteCommand extends Command {
     exec(message) {
         const quotes = quotes; 
         const quote = quotes[Math.floor(Math.random() * quotes.length)];
-        return message.reply(`**"${quote}"** ***- Kyle***`);
+        const people = people;
+        const person = people[Math.floor(Math.random() * people.length)];
+        return message.reply(`**"${quote}"** *** - ${person}***`);
     }
 }
 
