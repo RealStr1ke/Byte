@@ -1,33 +1,59 @@
 const { Intents } = require("discord.js");
+module.exports = {
+		/* The token of the Discord Bot */
+		token: 'XXXXXXXXXXXXXXXXX',
+		
+		/* The prefix(s) of the Discord Bot */
+		prefix: 'b!',
+		
+		embed: {
+			color: "#0091fc", // The default color for embeds
+			footer: "Byte | Open Source" // The default footer text for embeds
+		},
+		
+		/* The information of the bot's owner */
+		owner: {
+			discord: {
+				id: '',
+				name: ''
+			},
+			github: {
+				name: '',
+				profile: ''
+			}
+		},
+		
+		apiKeys: { // The API keys that are used 
+			// AlexFlipnote's API
+			flipnoteAPI: ''
+			// Hypixel API
+			hypixelAPI: ''
+		},
+		status: {
+			name: `with Str1ke's mind`, // The status text of the bot
+			type: 'PLAYING' // The status type of the bot
+		},
 
-const config = {
-  // Debug Mode
-  debug: false,
-  
-  // Bot Prefix
-  prefix: '?', // [],
-
-  // Bot Owners
-  "owners": [''],
-  // Bot Admins
-  "admins": [],
-  // Bot Support
-  "support": [],
-
-  // Bot Intents
-  intents: [
-                Intents.FLAGS.GUILDS,
-                Intents.FLAGS.GUILD_MESSAGES,
-                Intents.FLAGS.GUILD_MEMBERS,
-                Intents.FLAGS.GUILD_BANS,
-                Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-                Intents.FLAGS.GUILD_VOICE_STATES,
-                Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS
-            ], // or 32767 for All Intents
-  // Bot Partials
-  partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
-
-  quotes: [""]
+		fun: {
+			quotes: [""]
+		},
+		
+		// Developer Zone
+		/* The debug status of the bot */
+		debug: false,
+		  
+		/* The Discord intents for the bot*/
+		intents: [
+		              Intents.FLAGS.GUILDS,
+		              Intents.FLAGS.GUILD_MESSAGES,
+		              Intents.FLAGS.GUILD_MEMBERS,
+		              Intents.FLAGS.GUILD_BANS,
+		              Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+		              Intents.FLAGS.GUILD_VOICE_STATES,
+		              Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS
+		          ], // or 32767 for All Intents
+		
+		/* The Discord partials for the bot*/
+		partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
+		
 };
-
-module.exports = config;

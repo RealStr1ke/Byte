@@ -18,7 +18,7 @@ require('dotenv').config();
 class ByteClient extends AkairoClient {
     constructor() {
         super({
-            ownerID: config.owners
+            ownerID: config.owner.discord.id
         }, 
         {
             disableMentions: 'everyone',
@@ -54,29 +54,39 @@ class ByteClient extends AkairoClient {
             listenerHandler: this.listenerHandler
         });
 
-        this.classLoader = [];
-        this.clientLoader = [];
-        this.prefix = config.prefix;
+        // this.classLoader = [];
+        // this.clientLoader = [];
+		
+        this.config = config;
         this.Util = Util;
         this.log = new Logger;
         this.Cli = new Cli(this);
         this.beautify = beautify
         this.chalk = chalk;
-        this.flipnote = new Flipnote(process.env.FLIPNOTE);
+        this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI);
 
         this.commandHandler.useListenerHandler(this.listenerHandler);
         this.commandHandler.useInhibitorHandler(this.inhibitorHandler);
         this.inhibitorHandler.loadAll();
         this.listenerHandler.loadAll();
         this.commandHandler.loadAll();
-        
-
-        
     }
     async login(token) {
         await super.login(token);
         // client.Cli.start()
     }
+	async startCLI() {
+		client.log.log('Client starting in 5 seconds..')
+		sleep(2000)
+		client.log.log('3 seconds..')
+		sleep(1000)
+		client.log.log('2 seconds..')
+		sleep(1000)
+		client.log.log('1 seconds..')
+		sleep(1000)
+		client.log.log('Client starting..')
+		client.Cli.start();
+	}
     async search(query, results) {
             return await google({ 'query': query, 'no-display': true, 'limit': results });
     }
@@ -135,9 +145,7 @@ class ByteClient extends AkairoClient {
         let formatted = dayOfMonth.substring(2).length > 0 ? formats.date[dayOfMonth.substring(2)] : formats.date[dayOfMonth];
         return `${dayOfWeek} ${dayOfMonth}${formatted} ${month} | ${date.toLocaleTimeString()}`;
     }
-
-    
 }
 
 const client = new ByteClient();
-client.login(process.env.TOKEN);
+client.login(client.config.token);

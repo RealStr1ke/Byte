@@ -11,7 +11,6 @@ class ReadyListener extends Listener {
     }
 
     exec() {
-        console.log(`debug`);
         let slashCommands = this.client.slashHandler.getCommands('./src/slash/');
         this.client.log.success(`Loaded ${this.client.listenerHandler.modules.size} listeners`);
         this.client.log.success(`Loaded ${this.client.inhibitorHandler.modules.size} inhibitors`);
@@ -25,8 +24,13 @@ class ReadyListener extends Listener {
             }
         });
         this.client.log.success(`Connected to the Discord API`);
-        this.client.log.success(`Logged into as ${this.client.user.tag} on ${this.client.guilds.cache.size} servers`);
-        // this.client.Cli.start();
+        this.client.log.success(`Presence Set`);
+        this.client.log.success(`Logged into as ${this.client.user.tag}`);
+		this.client.log.success(`Ready to serve ${this.client.users.cache.size} users in ${this.client.guilds.cache.size} servers`);
+        if (this.client.config.debug) {
+			this.client.startCLI();
+		}
+		
     }
 }
 

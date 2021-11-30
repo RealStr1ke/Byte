@@ -4,7 +4,7 @@ const config = require('../../config')
 const { readdirSync } = require('fs');
 
 class MessageCreateListener extends Listener {
-    constructor() {7
+    constructor() {
         super('messageCreate', {
             emitter: 'client',
             event: 'messageCreate'
@@ -13,7 +13,7 @@ class MessageCreateListener extends Listener {
 
     exec(message) {
         if(message.author.bot) return;
-        if(message.content.startsWith('?')) return this.client.log.log(`${message.author.tag} ran the command ${message.content}`);
+        if(message.content.startsWith(this.client.prefix)) return this.client.log.log(`${message.author.tag} ran the command ${message.content}`);
         return this.client.log.log(`${message.author.tag} sent a message.`);
     }
 }

@@ -15,6 +15,7 @@ class ShutdownCommand extends Command {
     
     async exec(message) {
         message.reply(`**Shutting down.**`);
+		await this.client.sleep(1000);
         await this.client.destroy();
         
     }
