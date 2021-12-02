@@ -8,6 +8,7 @@ class KickCommand extends Command {
         category: 'Moderation',
         description: {
             content: 'Kick a user from the server with an optional reason.',
+			extended: 'Kicks a member from the server with a reason',
             permissions: ['KICK_MEMBERS']
         },
         args: [{

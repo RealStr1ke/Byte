@@ -9,6 +9,7 @@ class StatsCommand extends Command {
             category: 'Miscellaneous',
             description: {
                 content: 'Statistics of the bot.',
+          		extended: 'Responds with the statistics of the bots.',
                 permissions: ['EMBED_LINKS']
             },
             clientPermissions: ['EMBED_LINKS']

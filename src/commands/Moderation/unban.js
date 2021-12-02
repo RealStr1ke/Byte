@@ -7,6 +7,7 @@ module.exports = class UnbanCommand extends Command {
         category: 'Moderation',
         description: {
             content: 'Unban a user from the server.',
+			extended: 'Unbans a member from the server',
             permissions: ['BAN_MEMBERS']
         },
         args: [{

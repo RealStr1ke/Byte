@@ -6,8 +6,9 @@ class ServerInfoCommand extends Command {
         aliases: ['serverinfo', 'si'],
         category: 'Miscellaneous',
         description: {
-          content: 'Get information about the server',
-          permissions: ['EMBED_LINKS']
+	        content: 'Get information about the server',
+    		extended: 'Responds with the information of a server.',
+	        permissions: ['EMBED_LINKS']
         },
         clientPermissions: ['EMBED_LINKS']
       });

@@ -15,11 +15,11 @@ class QuoteCommand extends Command {
     
     exec(message) {
 		const config = this.client.config
-        const quotes = this.config.fun.quotes; 
+        const quotes = this.client.config.fun.quotes; 
         const quote = quotes[Math.floor(Math.random() * quotes.length)];
-        const people = people;
-        const person = people[Math.floor(Math.random() * people.length)];
-        return message.reply(`**"${quote}"** *** - ${person}***`);
+        // const people = people;
+        // const person = people[Math.floor(Math.random() * people.length)];
+        return message.reply(`**"${quote}"** *** - Kyle***`);
     }
 }
 

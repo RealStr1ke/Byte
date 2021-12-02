@@ -7,6 +7,7 @@ module.exports = class BanListCommand extends Command {
             category: 'Moderation',
             description: {
                 content: 'Displays the banned members of the server.',
+				extended: 'Responds with the list of the banned members of the server',
                 permissions: ['VIEW_AUDIT_LOG', 'EMBED_LINKS']
             },
             userPermissions: ['VIEW_AUDIT_LOG'],

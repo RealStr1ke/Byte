@@ -55,9 +55,13 @@ class HelpCommand extends Command {
                     .setColor(this.client.color)
                     .setFooter(`Requested by ${message.author.username}`)
                     .setTimestamp();
-                return message.util.send(categoryEmbed)
+                return message.util.send({
+		            embeds: [categoryEmbed]
+		        })
             }
-            return message.paginate(this.generateHelp(message));
+            return message.util.send({
+		        embeds: [this.generateHelp(message)]
+		    });
         }
     }
 

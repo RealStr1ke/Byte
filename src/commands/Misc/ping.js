@@ -7,6 +7,7 @@ class PingCommand extends Command {
             category: 'Miscellaneous',
             description: {
                 content: 'The bots connection to discord.',
+        		extended: 'Responds with the bot\'s connection status to the Discord API.',
                 permissions: ['EMBED_LINKS']
             },
             clientPermissions: ['EMBED_LINKS']

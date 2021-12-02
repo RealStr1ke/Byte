@@ -13,8 +13,8 @@ class MessageCreateListener extends Listener {
 
     exec(message) {
         if(message.author.bot) return;
-        if(message.content.startsWith(this.client.prefix)) return this.client.log.log(`${message.author.tag} ran the command ${message.content}`);
-        return this.client.log.log(`${message.author.tag} sent a message.`);
+        // if(message.content.startsWith(this.client.prefix)) return this.client.log.log(`${message.author.tag} ran the command ${message.content}`);
+        return this.client.log.log(`${message.guild.name} | #${message.channel.name} | ${message.author.tag}: ${message.content}`);
     }
 }
 

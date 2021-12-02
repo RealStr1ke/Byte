@@ -8,6 +8,7 @@ class BanCommand extends Command {
         category: 'Moderation',
         description: {
             content: 'Ban a user from the server with an optional reason.',
+			extended: 'Bans a user with an optional reason',
             permissions: ['BAN_MEMBERS']
         },
         args: [{
@@ -28,16 +29,16 @@ class BanCommand extends Command {
 
     async exec(message, args) {
         if (!args.member) {
-            return message.responder.error('**Please provide a valid user to ban**');
+            return message.reply('**Please provide a valid user to ban**');
         }
         
         if (!args.member.bannable) {
-            return message.responder.error(`**I am unable to ban ${args.member.user.tag}**`);
+            return message.reply(`**I am unable to ban ${args.member.user.tag}**`);
         }
         if (message.member.roles.highest.comparePositionTo(args.member.roles.highest) <= 0) {
-            return message.responder.error(`**You are unable to ban ${args.member.user.tag}**: \`Higher role\``);
+            return message.reply(`**You are unable to ban ${args.member.user.tag}**: \`Higher role\``);
         }
-        let m = message.responder.info(`\`[⏱️20s]\` **Are you sure you want to ban \`${args.member.user.tag} [${args.member.id}]\`** (y/n)`);
+        let m = message.reply.info(`\`[⏱️20s]\` **Are you sure you want to ban \`${args.member.user.tag} [${args.member.id}]\`** (y/n)`);
         
         const collector = new MessageCollector(message.channel, m => m.author.id === message.author.id, {
             time: 20000
@@ -52,7 +53,7 @@ class BanCommand extends Command {
                             return message.responder.success(`**Banned \`${args.member.user.tag} (${args.member.id})\`**`)
                         }).catch(err => {
                             collector.stop('success');
-                            if (err) return message.responder.error(`**Encountered an error:** \`${err}\``)
+                            if (err) return message.reply(`**Encountered an error:** \`${err}\``)
                         });
                         /**
                         if (logs) {

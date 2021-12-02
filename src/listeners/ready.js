@@ -12,10 +12,10 @@ class ReadyListener extends Listener {
 
     exec() {
         let slashCommands = this.client.slashHandler.getCommands('./src/slash/');
-        this.client.log.success(`Loaded ${this.client.listenerHandler.modules.size} listeners`);
-        this.client.log.success(`Loaded ${this.client.inhibitorHandler.modules.size} inhibitors`);
-        this.client.log.success(`Loaded ${this.client.commandHandler.modules.size} commands`);
-        this.client.log.success(`Loaded ${slashCommands.length} slash commands`);
+        this.client.log.log(`Loaded ${this.client.listenerHandler.modules.size} listeners`);
+        this.client.log.log(`Loaded ${this.client.inhibitorHandler.modules.size} inhibitors`);
+        this.client.log.log(`Loaded ${this.client.commandHandler.modules.size} commands`);
+        this.client.log.log(`Loaded ${slashCommands.length} slash commands`);
         this.client.presence.set({
             status: 'online',
             activity: {
@@ -27,6 +27,7 @@ class ReadyListener extends Listener {
         this.client.log.success(`Presence Set`);
         this.client.log.success(`Logged into as ${this.client.user.tag}`);
 		this.client.log.success(`Ready to serve ${this.client.users.cache.size} users in ${this.client.guilds.cache.size} servers`);
+		this.client.log.log(`You can use this link to invite this bot to your server ${this.client.generateInvite()}`)
         if (this.client.config.debug) {
 			this.client.startCLI();
 		}

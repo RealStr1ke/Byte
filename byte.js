@@ -1,11 +1,13 @@
 // Modules
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('./discord-akairo/src/index');
 const { Intents, Collection } = require('discord.js');
+const { Client } = require("blague.xyz");
 const google = require('google-it');
 const WebSocket = require('ws');
 const beautify = require('js-beautify').js;
 const Flipnote = require('alexflipnote.js');
 const chalk = require('chalk');
+
 
 // Config and Classes
 const config = require('./src/config');
@@ -63,6 +65,9 @@ class ByteClient extends AkairoClient {
         this.Cli = new Cli(this);
         this.beautify = beautify
         this.chalk = chalk;
+		this.joker = new Client("Token", {
+		    defaultLang: "en"
+		});
         this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI);
 
         this.commandHandler.useListenerHandler(this.listenerHandler);
@@ -90,6 +95,15 @@ class ByteClient extends AkairoClient {
     async search(query, results) {
             return await google({ 'query': query, 'no-display': true, 'limit': results });
     }
+	generateInvite() {
+		return super.generateInvite({
+			permisions: client.config.permissions,
+			scopes: client.config.scopes
+		});
+	}
+	sleep (time) {
+		return new Promise((resolve) => setTimeout(resolve, time));
+	}
     toggleCase(str) {
         if (str.length !== 1) return str;
         if (str.match(/^[A-z]$/)) {
