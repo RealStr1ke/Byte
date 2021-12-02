@@ -1,20 +1,21 @@
 // Modules
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('./discord-akairo/src/index');
 const { Intents, Collection } = require('discord.js');
+const Flipnote = require('alexflipnote.js');
+const beautify = require('js-beautify').js;
 const { Client } = require("blague.xyz");
 const google = require('google-it');
+const ball = require("8ball.js");
 const WebSocket = require('ws');
-const beautify = require('js-beautify').js;
-const Flipnote = require('alexflipnote.js');
 const chalk = require('chalk');
 
 
 // Config and Classes
-const config = require('./src/config');
-const Cli = require('./lib/classes/Cli');
-const Logger = require('./lib/log');
-const Util = require('./lib/structures/Util');
 const SlashHandler = require('./src/handlers/SlashHandler');
+const Util = require('./lib/structures/Util');
+const Cli = require('./lib/classes/Cli');
+const config = require('./src/config');
+const Logger = require('./lib/log');
 require('dotenv').config();
 
 class ByteClient extends AkairoClient {
@@ -65,6 +66,7 @@ class ByteClient extends AkairoClient {
         this.Cli = new Cli(this);
         this.beautify = beautify
         this.chalk = chalk;
+        this.ball = ball;
 		this.joker = new Client("Token", {
 		    defaultLang: "en"
 		});
