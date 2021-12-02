@@ -1,5 +1,5 @@
-[submodule "discord-akairo"]
-	path = discord-akairo
+[submodule "byte-kakairodiscord-akairo"]
+	path = byte-akairo/discord-akairo
 	url = https://github.com/discord-akairo/discord-akairo
 [submodule "lib/panel"]
 	path = lib/panel
