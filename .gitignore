@@ -4,6 +4,7 @@ config.js
 .cache/*
 replit.nix
 node_modules/*
+*/node_modules/*
 Corebot/
 *.disabled
 *.old
