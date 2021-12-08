@@ -10,5 +10,6 @@ This bot was made from the inspiration and was based off of some of these GitHub
 ![BetterDiscordPanel (SanjaySunil/BetterDiscordPanel)](https://github.com/SanjaySunil/BetterDiscordPanel)
 ![GuideBot (AnIdiotsGuide/guidebot)](https://github.com/AnIdiotsGuide/guidebot)
 ![AtlantaBot (Androz2091/AtlantaBot)](https://github.com/Androz2091/AtlantaBot)
-![Rada (br4dw/Rada)](https://github.com/br4dw/Rada)
+![Luna (Asgarrrr/Luna)](https://github.com/Asgarrrr/Luna)
 ![Rada (RadaBot/Rada)](https://github.com/RadaBot/Rada)
+![Rada (br4dw/Rada)](https://github.com/br4dw/Rada)

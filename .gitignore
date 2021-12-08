@@ -5,6 +5,6 @@ config.js
 replit.nix
 node_modules/*
 */node_modules/*
-Corebot/
+Corebot/*
 *.disabled
 *.old

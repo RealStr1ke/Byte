@@ -5,7 +5,7 @@
   "main": "byte.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node byte.js"
+    "start": "node Byte.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "colorette": "^2.0.16",
     "colors": "^1.4.0",
     "discord-api-types": "^0.25.2",
+    "discord-console-logger": "^1.1.0",
     "discord-giveaways": "^5.0.1",
     "discord-player": "^5.2.0",
     "discord.js": "^13.3.1",
@@ -40,7 +41,7 @@
     "hypixel-api-reborn": "^9.0.3",
     "inquirer": "^8.2.0",
     "js-beautify": "^1.14.0",
-    "node-fetch": "^3.1.0",
+    "node-fetch": "^2.6.6",
     "npm": "^8.1.4",
     "os": "^0.1.2",
     "path": "^0.12.7",
