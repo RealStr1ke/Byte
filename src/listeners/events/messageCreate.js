@@ -25,11 +25,6 @@ class messageCreate extends Event {
 
         if (!command) return;
 
-		if ( command.cmdCooldown.has(`${ message.guild ? message.guild.id : "mp" }-${ message.author.id }` ) )
-            return message.delete({ timeout: 10000 })
-                && message.reply( langue.cooldown( command, message ) )
-                   .then( ( msg ) => msg.delete({ timeout: 10000 }) );
-
         if ( command.nsfw && !message.channel.nsfw ) return message.reply( '**You must run this command in an NSFW channel.**' );
 		// if ( message.guild && message.guild.disabledCommands.includes( cmd ) ) return message.reply('**This command is disabled in this guild.');
 		// if ( !command.allowDMs && !message.guild ) return message.reply( '**This command cannot be used in DMs.**' );
