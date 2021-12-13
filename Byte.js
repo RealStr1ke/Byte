@@ -1,9 +1,9 @@
-const Byte = require('./lib/structs/Byte')
-const client = new Byte();
+const ByteClient = require('./lib/structs/Byte')
+const Byte = new ByteClient();
 
-client.start();
+Byte.start();
 
-client.logger.log('Client started!');
+Byte.logger.log('Client started!');
 
 process.on("rejectionHandled", (err) => console.error(err));
 process.on("unhandledRejection", (err) => console.error(err));

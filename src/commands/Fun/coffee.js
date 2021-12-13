@@ -1,0 +1,29 @@
+const Command = require( "../../../lib/structs/Command" );
+const { MessageEmbed } = require('discord.js');
+
+class CoffeeCommand extends Command {
+
+    constructor(client) {
+        super(client, {
+            name        : "coffee",
+            description : "Responds with a random coffee picture.",
+            usage       : "coffee",
+            args        : false,
+            category    : "Fun",
+            aliases     : ["espresso"],
+            userPerms   : "SEND_MESSAGES",
+            ownerOnly   : true,
+        });
+    }
+
+    async run(message) {
+		let link = await (this.client.flipnote).image.coffee();
+		const coffee = new MessageEmbed()
+			.setTitle('**Here is your coffee picture:**')
+			.setImage(link.file)
+			.setFooter(`Requested by ${message.author.tag}`)
+        return message.channel.send({embeds: [ coffee ]});
+    }
+}
+
+module.exports = CoffeeCommand;

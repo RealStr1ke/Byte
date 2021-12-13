@@ -9,11 +9,10 @@ class PingCommand extends Command {
             usage       : "ping",
             args        : false,
             category    : "General",
-            cooldown    : 5000,
             aliases     : ["ping"],
             permLevel   : 0,
             userPerms   : "SEND_MESSAGES",
-            allowDMs    : true,
+            guildOnly   : true
         });
     }
 
