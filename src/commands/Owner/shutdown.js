@@ -1,26 +1,26 @@
-const Command = require( "../../../lib/structs/Command" );
-const { MessageEmbed } = require('discord.js');
+const { Command } = require('../../../discord-akairo/src/index');
 
 class ShutdownCommand extends Command {
-
-    constructor(client) {
-        super(client, {
-            name        : "shutdown",
-            description : "Shows the bot's connection status to the Discord API.",
-            usage       : "shutdown",
-            args        : false,
-            category    : "Owner",
-            aliases     : ["stop", "quit"],
-            userPerms   : "SEND_MESSAGES",
-            ownerOnly   : true,
+    constructor() {
+        super('shutdown', {
+           aliases: ['shutdown', 'stop', 'quit'],
+            category: 'Owner',
+            ownerOnly: true,
+            description: {
+                content: 'Shuts down the bot.',
+                extended: 'Logs out of the bot and shuts down the process.',
+            }, 
         });
     }
-
-    async run(message) {
-		message.reply(`**Shutting down.**`);
+    
+    async exec(message) {
+        message.reply(`**Shutting down.**`);
 		await this.client.sleep(1000);
         await this.client.destroy();
+        
     }
 }
 
 module.exports = ShutdownCommand;
+
+

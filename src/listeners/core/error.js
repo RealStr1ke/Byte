@@ -1,21 +1,24 @@
-const Event = require('../../../lib/structs/Event');
-const { MessageEmbed } = require('discord.js');
+const { Listener } = require('../../../discord-akairo/src/index');
 
-class error extends Event {
-	constructor( client ) {
-        super( client );
+class ErrorListener extends Listener {
+    constructor() {
+        super('error', {
+            emitter: 'commandHandler',
+            event: 'error'
+        });
     }
 
-	async run(message) {
-		this.client.log.fail(error.message);
-		let embed = new MessageEmbed()
+    async exec(error, message) {
+        console.log(error)
+        this.client.log.fail(error.message)
+        let embed = this.client.util.embed()
             .setColor(this.client.color)
             .setTitle('Error')
             .setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)
             .setTimestamp()
 
-			// return message.reply({embeds: embed});
-			return message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
-	}
-}
-module.exports = error;
+        return message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
+    }
+};
+
+module.exports = ErrorListener;

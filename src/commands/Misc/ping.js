@@ -1,25 +1,23 @@
-const Command = require( "../../../lib/structs/Command" );
-const { MessageEmbed } = require('discord.js');
-class PingCommand extends Command {
+const { Command } = require('../../../discord-akairo/src/index');
 
-    constructor(client) {
-        super(client, {
-            name        : "ping",
-            description : "Shows the bot's connection status to the Discord API.",
-            usage       : "ping",
-            args        : false,
-            category    : "General",
-            aliases     : ["ping"],
-            permLevel   : 0,
-            userPerms   : "SEND_MESSAGES",
-            guildOnly   : true
+class PingCommand extends Command {
+    constructor() {
+        super('ping', {
+            aliases: ['ping'],
+            category: 'Miscellaneous',
+            description: {
+                content: 'The bots connection to discord.',
+        		extended: 'Responds with the bot\'s connection status to the Discord API.',
+                permissions: ['EMBED_LINKS']
+            },
+            clientPermissions: ['EMBED_LINKS']
         });
     }
 
-    async run(message) {
-		const sent = await message.reply('Pinging...');
-		const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
-		const embed = new MessageEmbed()
+    async exec(message) {
+        const sent = await message.util.send('Pinging...');
+        const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
+    	const embed = this.client.util.embed()
             .setThumbnail(this.client.avatar)
     	    .setTitle(`${this.client.user.username} Ping`)
 	        .setDescription([
@@ -29,11 +27,9 @@ class PingCommand extends Command {
 	        .setColor(this.client.color)
 	        .setFooter(`Requested by ${message.author.username}`)
 	        .setTimestamp();
-		
-		sent.edit('**Pinged!**')
-		sent.edit({
-			embeds: [embed]
-		});
+    	message.reply({
+            embeds: [embed]
+        });
     }
 }
 

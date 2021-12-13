@@ -1,23 +1,20 @@
-const Command = require( "../../../lib/structs/Command" );
+const { Command } = require('../../../discord-akairo/src/index');
 const { MessageEmbed } = require('discord.js');
 
-class CatsCommand extends Command {
-
-    constructor(client) {
-        super(client, {
-            name        : "cats",
-            description : "Responds with a random cat picture.",
-            usage       : "cats",
-            args        : false,
-            category    : "Fun",
-            aliases     : ["cat"],
-            userPerms   : "SEND_MESSAGES",
-            ownerOnly   : true,
+class CatCommand extends Command {
+    constructor() {
+        super('cats', {
+           aliases: ['cats', 'cat'],
+            category: 'Fun',
+            description: {
+                content: 'Responds with a cat picture.',
+                extended: 'Responds with a random picture of a cat.'
+            },
         });
     }
-
-    async run(message) {
-		let link = await (this.client.flipnote).image.cats();
+    
+    async exec(message) {
+        let link = await (this.client.flipnote).image.cats();
 		const cat = new MessageEmbed()
 			.setTitle('**Here is your cat picture:**')
 			.setImage(link.file)
@@ -26,4 +23,4 @@ class CatsCommand extends Command {
     }
 }
 
-module.exports = CatsCommand;
+module.exports = CatCommand;
