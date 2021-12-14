@@ -10,21 +10,18 @@ class ready extends Event {
     }
 
 	async run() {
+		this.client.logger.success(`Loaded ${this.client.commands.size} commands`)
+		this.client.logger.success(`Loaded ${this.client.events.size} events`);
         this.client.logger.success(`Connected to the Discord API`);
-        this.client.logger.success(`Logged into as ${this.client.user.tag}`);
-        this.client.logger.success(`🟢 The bot is online.`);
+        this.client.logger.success(`Logged into as ${this.client.user.tag} on ${this.client.guilds.cache.size} servers`);
 		this.client.user.setPresence({
 			activities: [{ 
-				// name: `${this.client.prefix}help | ${this.client.guilds.cache.size} servers`,
-				name: `${this.client.prefix}help`,
-                type: 'WATCHING'
+				name: this.client.config.status.name,
+				type: this.client.config.status.type
 			}], 
 			status: 'idle' 
 		});
-		
-        this.client.logger.success(`Presence Set`);
-		this.client.logger.success(`Ready to serve ${this.client.guilds.cache.size} servers`);
-		this.client.logger.log(`You can use this link to invite this bot to your server ${this.client.generateInvite()}`)
+		// this.client.logger.log(`You can use this link to invite this bot to your server ${this.client.generateInvite()}`)
         if (this.client.config.debug) {
 			this.client.startCLI();
 		}
