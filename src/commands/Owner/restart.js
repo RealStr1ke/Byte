@@ -46,7 +46,7 @@ class RestartCommand extends Command {
 					this.client.destroy();
 				})
 				.then(async () => {
-					this.client.login(process.env.TOKEN);
+					this.client.start();
 					status.edit("**Restart complete!**");
 					restarting = false;
 				});

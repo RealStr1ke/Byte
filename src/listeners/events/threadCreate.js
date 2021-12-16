@@ -1,8 +1,8 @@
 const Event = require('../../../lib/structs/Event');
 
 class threadCreate extends Event {
-	constructor( client ) {
-        super( client );
+	constructor(client) {
+        super(client);
     }
 
 	async run(message, thread) {

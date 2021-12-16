@@ -2,8 +2,8 @@ const Event = require('../../../lib/structs/Event');
 const { MessageEmbed } = require('discord.js');
 
 class error extends Event {
-	constructor( client ) {
-        super( client );
+	constructor(client){
+        super(client);
     }
 
 	async run(message) {
