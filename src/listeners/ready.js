@@ -25,6 +25,9 @@ class ready extends Event {
         if (this.client.config.debug) {
 			this.client.startCLI();
 		}
+
+		// SQLite Point System
+		// const table
 	}
 }
 module.exports = ready;

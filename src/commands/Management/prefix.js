@@ -11,17 +11,23 @@ class PrefixCommand extends Command {
             category    : "Management",
             permLevel   : 0,
             userPerms   : "SEND_MESSAGES",
-            guildOnly   : true
+            guildOnly   : true,
+			requireData : true
         });
     }
 
-    async run(message, args) {
+    async run(message, args, data) {
 		if (args.length) {
-			await this.client.prefixes.set(message.guild.id, args[0]);
-			this.client.logger.success(`${message.author.tag} set the prefix of ${message.guild.name} to ${args[0]}`)
-			return message.channel.send(`Successfully set prefix to \`${args[0]}\``);
+			const prefix = args[0];
+			if(prefix.length > 5){
+				return message.reply(`The prefix ${prefix} is too long. Prefixes must be 5 characters or under.`);
+			}
+			data.guild.prefix = prefix;
+			data.guild.save();
+			this.client.logger.success(`${message.author.tag} set the prefix of ${message.guild.name} to ${prefix}`)
+			return message.channel.send(`Successfully set prefix to \`${data.guild.prefix}\``);
 		}
-		return message.channel.send(`Prefix is \`${await this.client.prefixes.get(message.guild.id) || globalPrefix}\``);
+		return message.channel.send(`Prefix is \`${data.guild.prefix}\``);
     }
 }
 

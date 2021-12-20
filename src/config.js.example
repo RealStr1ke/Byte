@@ -10,6 +10,8 @@ module.exports = {
 			color: "#0091fc", // The default color for embeds
 			footer: "Byte | Open Source" // The default footer text for embeds
 		},
+
+		mongodb: "",
 		
 		/* The information of the bot's owner */
 		owner: {
