@@ -7,10 +7,10 @@ class guildMemberAdd extends Event {
         super(client);
     }
 
-	async run(guild, member) {
-		let memberData = await this.client.findOrCreateMember(member.id, guild.id);
+	async run(member) {
+		let memberData = await this.client.findOrCreateMember(member.id, member.guild.id);
 		let userData = await this.client.findOrCreateUser(member.id);
-		let guildData = await this.client.findOrCreateGuild(guild.id);
+		let guildData = await this.client.findOrCreateGuild(member.guild.id);
 	}
 }
 module.exports = guildMemberAdd;
