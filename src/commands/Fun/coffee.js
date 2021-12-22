@@ -1,5 +1,6 @@
 const Command = require( "../../../lib/structs/Command" );
 const { MessageEmbed } = require('discord.js');
+const path = require("path");
 
 class CoffeeCommand extends Command {
 
@@ -9,10 +10,10 @@ class CoffeeCommand extends Command {
             description : "Responds with a random coffee picture.",
             usage       : "coffee",
             args        : false,
-            category    : "Fun",
+			directory   : __dirname,
             aliases     : ["espresso"],
             userPerms   : "SEND_MESSAGES",
-            ownerOnly   : true,
+            ownerOnly   : false,
         });
     }
 

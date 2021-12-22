@@ -1,5 +1,6 @@
 const Command = require( "../../../lib/structs/Command" );
 const { MessageEmbed } = require('discord.js');
+const path = require("path");
 let restarting = false;
 
 class RestartCommand extends Command {
@@ -10,7 +11,7 @@ class RestartCommand extends Command {
             description : "Restarts the bot process.",
             usage       : "restart",
             args        : false,
-            category    : "Owner",
+			directory   : __dirname,
             aliases     : ["reboot"],
             userPerms   : "SEND_MESSAGES",
             ownerOnly   : true,

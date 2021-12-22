@@ -1,6 +1,7 @@
 const Command = require( "../../../lib/structs/Command" );
 const { MessageEmbed } = require('discord.js');
-const axios = require("axios");
+const axios = require("axios"),
+	path = require('path');
 
 class AdviceCommand extends Command {
 
@@ -10,8 +11,7 @@ class AdviceCommand extends Command {
             description : "Responds with a random piece of advice.",
             usage       : "advice",
             args        : false,
-            category    : "Fun",
-            aliases     : ["adv"],
+			directory   : __dirname,
             userPerms   : "SEND_MESSAGES",
             ownerOnly   : false,
         });

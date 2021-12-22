@@ -2,16 +2,16 @@ const Command = require( "../../../lib/structs/Command" );
 const { MessageEmbed } = require('discord.js');
 const path = require("path");
 
-class CatsCommand extends Command {
+class BalanceCommand extends Command {
 
     constructor(client) {
         super(client, {
-            name        : "cats",
-            description : "Responds with a random cat picture.",
-            usage       : "cats",
+            name        : "balance",
+            description : "Responds with the user's balance.",
+            usage       : "balance <user>",
             args        : false,
 			directory   : __dirname,
-            aliases     : ["cat"],
+            aliases     : ["bal"],
             userPerms   : "SEND_MESSAGES",
             ownerOnly   : false,
         });
@@ -24,7 +24,8 @@ class CatsCommand extends Command {
 			.setImage(link.file)
 			.setFooter(`Requested by ${message.author.tag}`)
         return message.channel.send({embeds: [ cat ]});
+		// message.channel.send(`Your wallet bal is ${profileData.coins}, you banks bal is ${profileData.bank}`);
     }
 }
 
-module.exports = CatsCommand;
+module.exports = BalanceCommand;

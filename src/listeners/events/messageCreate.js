@@ -38,7 +38,8 @@ class messageCreate extends Event {
 
         if (!command) return;
 
-		this.client.logger.log(`${message.author.tag} ran the command ${message.content}`);
+		this.client.logger.command(message.author.tag, message.content, message.guild.name)
+		// this.client.logger.log(`${message.author.tag} ran the command ${message.content}`);
 		
         if (command.nsfw && !message.channel.nsfw) return message.reply( '**You must run this command in an NSFW channel.**' );
 		if ( !command.guildOnly && !message.guild ) return message.reply( '**This command cannot be used in DMs.**' );

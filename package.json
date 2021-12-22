@@ -2,7 +2,7 @@
   "name": "byte",
   "version": "1.0.0",
   "description": "A multi-purpose Discord bot",
-  "main": "byte.js",
+  "main": "Byte.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node Byte.js"
@@ -33,6 +33,7 @@
     "colorette": "^2.0.16",
     "colors": "^1.4.0",
     "discord-api-types": "^0.25.2",
+    "discord-buttons": "^4.0.0",
     "discord-console-logger": "^1.1.0",
     "discord-giveaways": "^5.0.1",
     "discord-player": "^5.2.0",
@@ -48,9 +49,11 @@
     "node-fetch": "^2.6.6",
     "npm": "^8.1.4",
     "os": "^0.1.2",
+    "os-utils": "^0.0.14",
     "path": "^0.12.7",
     "sequelize": "^6.12.0-beta.3",
     "sqlite3": "^5.0.2",
+    "statman-stopwatch": "^2.13.0",
     "ws": "^8.3.0"
   }
 }

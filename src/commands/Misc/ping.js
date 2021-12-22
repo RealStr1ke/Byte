@@ -1,5 +1,7 @@
 const Command = require( "../../../lib/structs/Command" );
 const { MessageEmbed } = require('discord.js');
+const path = require("path");
+
 class PingCommand extends Command {
 
     constructor(client) {
@@ -8,9 +10,8 @@ class PingCommand extends Command {
             description : "Shows the bot's connection status to the Discord API.",
             usage       : "ping",
             args        : false,
-            category    : "General",
             aliases     : ["ping"],
-            permLevel   : 0,
+			directory   : __dirname,
             userPerms   : "SEND_MESSAGES",
             guildOnly   : true
         });

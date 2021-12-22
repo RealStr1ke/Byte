@@ -1,5 +1,6 @@
 const Command = require( "../../../lib/structs/Command" );
 const Discord = require('discord.js');
+const path = require("path");
 
 class ExecCommand extends Command {
 
@@ -9,7 +10,7 @@ class ExecCommand extends Command {
             description : "Executes a terminal command.",
             usage       : "exec",
             args        : true,
-            category    : "Owner",
+			directory   : __dirname,
             aliases     : ["bash", "cmd"],
             userPerms   : "SEND_MESSAGES",
             ownerOnly   : true,
