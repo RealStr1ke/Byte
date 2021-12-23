@@ -51,10 +51,11 @@ class BotStatsCommand extends Command {
 				}
 			])
 			.setTimestamp()
-			.setAuthor(
-				name: this.client.user.tag,
-				iconURL: this.client.user.avatar
-			)
+			// .setAuthor(
+			// 	this.client.user.tag, // Author Name
+			// 	this.client.user.avatar, // Author Avatar
+			// 	this.client.user.avatar // Author Avatar
+			// )
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);
 
