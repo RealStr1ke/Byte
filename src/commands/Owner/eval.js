@@ -27,21 +27,23 @@ class EvalCommand extends Command {
 		    if (String(ff).length > 2000) ff = "Output is too long";
 		    // message.reply({ content:`\`\`\`js\n${ff}\`\`\``, allowedMentions: { repliedUser: false } })
 			const result = new Discord.MessageEmbed()
-		        .setColor(this.client.config.embed.color)
 		        .setTitle('Output')
 		        .setDescription(`\`\`\`js\n${ff}\`\`\``)
 		        .setTimestamp()
+		        .setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer);
 		    message.channel.send({
 		        embeds: [result]
 		    });
-		} catch (error) {
-		    let errorEmbed = new Discord.MessageEmbed()
+		} catch (err) {
+		    let error = new Discord.MessageEmbed()
 			    .setTitle('Evaluation Error!')
-			    .setColor("RANDOM")
-			    .addField("❌╎ Error",`${error}`)
+			    .addField("❌| Error",`${err}`)
+		        .setTimestamp()
+		        .setColor(this.client.config.embed.color)
+				.setFooter(this.client.config.embed.footer);
 		    message.channel.send({
-				embeds: [errorEmbed]
+				embeds: [error]
 			});
 		}
     }

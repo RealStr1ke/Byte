@@ -10,7 +10,7 @@ class ready extends Event {
     }
 
 	async run() {
-		const time = (await this.client.startup.stop()) / 100;
+		const time = (await this.client.sw.stop()) / 100;
 		this.client.logger.startup(`Loaded ${this.client.commands.size} commands`)
 		this.client.logger.startup(`Loaded ${this.client.events.size} events`);
         this.client.logger.startup(`Connected to the Discord API`);

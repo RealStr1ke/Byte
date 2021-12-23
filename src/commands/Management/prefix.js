@@ -26,7 +26,7 @@ class PrefixCommand extends Command {
 				return message.reply(`The prefix has been reset to \`${this.client.config.prefix}\``);
 			}
 			if(prefix.length > 5){
-				return message.reply(`The prefix ${prefix} is too long. Prefixes must be 5 characters or under.`);
+				return message.reply(`The prefix \`${prefix}\` is too long. Prefixes must be 5 characters or less.`);
 			}
 			data.guild.prefix = prefix;
 			data.guild.save();

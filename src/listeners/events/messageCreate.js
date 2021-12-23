@@ -12,7 +12,11 @@ class messageCreate extends Event {
 		const client = this.client;
 		if (message.author.bot) return;
 
-		const data = {member: await this.client.findOrCreateMember( message.author.id, message.guild.id), user: await this.client.findOrCreateUser( message.author.id), guild: await this.client.findOrCreateGuild(message.guild.id)};
+		const data = {
+			member: await this.client.findOrCreateMember(message.author.id, message.guild.id), 
+			user: await this.client.findOrCreateUser(message.author.id), 
+			guild: await this.client.findOrCreateGuild(message.guild.id)
+		};
 		
 		let prefix;
 
@@ -37,14 +41,27 @@ class messageCreate extends Event {
         const command = client.commands.get( cmd.toLowerCase() ) || client.commands.get( client.commands.aliases.get( cmd.toLowerCase() ) );
 
         if (!command) return;
+		
+        if (command.nsfw && !message.channel.nsfw) return message.reply( '**You must run this command in an NSFW channel.**' );
+		if ( !command.guildOnly && !message.guild ) return message.reply( '**This command can only be used in guilds.**' );
+		if (command.ownerOnly && this.client.config.owner.discord.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
+		if ( command.args && !args.length ) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 
 		this.client.logger.command(message.author.tag, message.content, message.guild.name)
 		// this.client.logger.log(`${message.author.tag} ran the command ${message.content}`);
-		
-        if (command.nsfw && !message.channel.nsfw) return message.reply( '**You must run this command in an NSFW channel.**' );
-		if ( !command.guildOnly && !message.guild ) return message.reply( '**This command cannot be used in DMs.**' );
-		if (command.ownerOnly && this.client.config.owner.discord.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
-		if ( command.args && !args.length ) return message.reply(`You must use the command correctly: ${command.usage}`);
+		const log = new this.client.logs({
+			commandName: command.name,
+			author: { 
+				username: message.author.username, 
+				discriminator: message.author.discriminator, 
+				id: message.author.id
+			},
+			guild: { 
+				name: message.guild ? message.guild.name : "dm", 
+				id: message.guild ? message.guild.id : "dm" 
+			}
+		});
+		log.save();
 		
 		command.setMessage(message);
 		if (command.requireData) {

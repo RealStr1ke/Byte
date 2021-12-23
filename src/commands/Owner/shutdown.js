@@ -18,7 +18,6 @@ class ShutdownCommand extends Command {
     }
 
     async run(message) {
-		this.client.logger.shutdown('Bot is now shutting down.');
 		message.reply(`**Bot is now shutting down.**`);
 		await this.client.sleep(1000);
         await this.client.destroy();
