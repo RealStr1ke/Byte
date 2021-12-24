@@ -10,3 +10,4 @@ Corebot/*
 *.old
 ignore/*
 lang/*
+.gitpod.yml
