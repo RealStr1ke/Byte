@@ -1,6 +1,6 @@
 const glob = require("glob"),
 	path = require("path"),
-	Event = require('../../lib/structs/Event');
+	Event = require('../structs/Event');
 
 class ready extends Event {
 	constructor(client) {

@@ -1,10 +1,13 @@
-module.exports = class {
+const Event = require('../../structs/Event');
+class messageUpdate extends Event {
 	constructor (client) {
-		this.client = client;
+		super(client);
 	}
 
 	async run (oldMessage, newMessage) {
 		if(!newMessage.editedAt) return;
 		this.client.emit("messageCreate", newMessage);
 	}
-};
+}
+
+module.exports = messageUpdate;

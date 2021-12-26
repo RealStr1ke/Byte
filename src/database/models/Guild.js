@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../../src/config');
+const config = require('../../config');
 
 const guildSchema = new mongoose.Schema({
 	guildID: { type: String, require: true },
@@ -27,9 +27,6 @@ const guildSchema = new mongoose.Schema({
 		automod: {
 			enabled: false, 
 			ignored: [] 
-		},
-		education: {
-			enabled: false
 		},
 		suggestions: {
 			enabled: false,

@@ -1,4 +1,4 @@
-const Command = require( "../../../lib/structs/Command" );
+const Command = require("../../structs/Command");
 const { MessageEmbed } = require('discord.js');
 const path = require("path");
 

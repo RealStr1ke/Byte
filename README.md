@@ -13,3 +13,4 @@ This bot was made from the inspiration and was based off of some of these GitHub
 ![Luna (Asgarrrr/Luna)](https://github.com/Asgarrrr/Luna)
 ![Rada (RadaBot/Rada)](https://github.com/RadaBot/Rada)
 ![Rada (br4dw/Rada)](https://github.com/br4dw/Rada)
+![SparkV (br4dw/Rada)](https://github.com/Ch1ll-Studio/SparkV)

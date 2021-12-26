@@ -1,6 +1,4 @@
-const Event = require('../../../lib/structs/Event');
-const Member = require('../../../lib/models/Member');
-const User = require('../../../lib/models/User');
+const Event = require('../../structs/Event');
 
 class guildMemberAdd extends Event {
 	constructor(client) {
@@ -14,3 +12,5 @@ class guildMemberAdd extends Event {
 	}
 }
 module.exports = guildMemberAdd;
+
+

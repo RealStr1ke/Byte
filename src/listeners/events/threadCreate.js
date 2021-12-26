@@ -1,4 +1,4 @@
-const Event = require('../../../lib/structs/Event');
+const Event = require('../../structs/Event');
 
 class threadCreate extends Event {
 	constructor(client) {

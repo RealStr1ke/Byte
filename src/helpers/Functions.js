@@ -1,63 +1,68 @@
-class Util {
-    constructor() {
-        throw new Error('This class may not be initiated with new');
+const Discord = require('discord.js');
+
+class Functions {
+    constructor(client) {
+        if (!client) {
+			throw new TypeError("Discord client must be valid.");
+		}
+        this.client = client;
     }
 
-    static codeBlock = (language, text) => {
+    codeBlock(language, text) {
         return `\`\`\`${language}\n${text || String.fromCharCode(8203)}\`\`\``;
     }
-    static inlineCode = (text) => {
+    inlineCode(text) {
         return `\`${text}\``;
     }
-    static quote = (text) => {
+    quote(text) {
         return `> ${text}`;
     }
-    static clean = (text, token) => {
+    clean (text, token) {
         return text.replace(token, '███████████████████████');
     }
-    static toTitleCase = (str) => {
+    toTitleCase(str) {
         return str.replace(/[A-Za-zÀ-ÖØ-öø-ÿ]\S*/g, (txt) => Util.titleCaseVariants[txt] || txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
     }
-    static toSnakeCase = (str) => {
+    toSnakeCase(str) {
         return str.split(/\s/g).join('_');
     }
-    static trimString = (str, max = 30) => {
+    trimString(str, max = 30) {
         if (str.length > max) return `${str.substr(0, max)}...`;
         return str;
     }
-    static random = (n1, n2) => {
+    random(n1, n2) {
         return Math.floor(Math.random() * (n2 - n1)) + n1;
     }
-    static randomArray = (array) => {
+    randomArray(array) {
         return array[this.random(0, array.length)];
     }
-    static isUnicodeEmoji = (str) => {
+    isUnicodeEmoji(str) {
         return /^(\u00a9|\u00ae|[\u2000-\u3300]|\ud83c([\ud000-\udfff]){1,2}|\ud83d[\ud000-\udfff]|\ud83e[\ud000-\udfff])$/.test(str);
     }
-    static isFunction = (input) => {
+    isFunction(input) {
         return typeof input === 'function';
     }
-    static isObject = (input) => {
+    isObject(input) {
         return input && input.constructor === Object;
     }
-    static isArray = (input) => {
+    isArray(input) {
         return typeof input === 'object';
     }
-    static isThenable = (input) => {
+    isThenable(input) {
         if (!input) return false;
         return (input instanceof Promise) || (input !== Promise.prototype && Util.isFunction(input.then) && Util.isFunction(input.catch));
     }
-    static generateID = () => {
+    generateID () {
         return Date.now().toString(35).toUpperCase();
     }
-    static shuffleArray(arr) {
+    shuffleArray(arr) {
         return arr.reduce((newArr, _, i) => {
             let rand = i + (Math.floor(Math.random() * (newArr.length - i)));
             [newArr[rand], newArr[i]] = [newArr[i], newArr[rand]]
             return newArr
         }, [...arr])
     }
-	static base32 = (int) => {
+	base32(int) {
 		if (int === 0) {
 			return alphabet[0];
 		}
@@ -69,15 +74,15 @@ class Util {
 		}
 		return res;
 	}
-	static objectIsEmpty = (obj) => {
+	objectIsEmpty = (obj) => {
 		return Object.entries(obj).length === 0;
 	}
-	static sleep(ms) {
+	sleep(ms) {
 		return new Promise((resolve) => {
 		    setTimeout(resolve, ms);
 		});
 	}
-	static toggleCase(str) {
+	toggleCase(str) {
         if (str.length !== 1) return str;
         if (str.match(/^[A-z]$/)) {
             if (str.toUpperCase() === str) {
@@ -89,7 +94,7 @@ class Util {
         return str;
     };
 	
-    static formatDate(date) {
+    formatDate(date) {
 		let formats = {
             days: {
                 0: 'Sunday',
@@ -135,11 +140,11 @@ class Util {
             };
 	}
 
-Util.titleCaseVariants = {
+Functions.titleCaseVariants = {
     textchannel: 'TextChannel',
     voicechannel: 'VoiceChannel',
     categorychannel: 'CategoryChannel',
     guildmember: 'GuildMember'
 };
 
-module.exports = Util;
+module.exports = Functions;

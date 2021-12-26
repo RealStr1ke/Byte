@@ -1,4 +1,4 @@
-const Command = require( "../../../lib/structs/Command" );
+const Command = require("../../structs/Command");
 const Discord = require('discord.js');
 const path = require("path");
 
@@ -14,10 +14,11 @@ class ExecCommand extends Command {
             aliases     : ["bash", "cmd"],
             userPerms   : "SEND_MESSAGES",
             ownerOnly   : true,
+            requireData : true
         });
     }
 
-    async run(message, args) {
+    async run(message, args, data) {
         const { exec } = require("child_process")
         let lola = args.join(" ")
         if (!lola) return message.channel.send("Please provide what to execute in the terminal!")
@@ -26,21 +27,24 @@ class ExecCommand extends Command {
             let response = (error || stdout)
             if (error) {
                 const err = new Discord.MessageEmbed()
-                    .setColor('RANDOM')
                     .setTitle('Terminal')
-                    .setDescription(`\`\`\`kt
-${error.message}\`\`\``)
-                    .setTimestamp();
+                    .addField(`Input`, `\`\`\`
+                    ${lola}\`\`\``)
+                    .addField(`Error`,`\`\`\`kt\n${error.message}\`\`\``)
+                    .setTimestamp()
+                    .setColor(this.client.config.embed.color)
+					.setFooter(this.client.config.embed.footer);
                 message.channel.send({
                     embeds: [err]
                 })
+                this.client.logger.error(error.message);
             } else {
                 const result = new Discord.MessageEmbed()
-                    .setColor(this.client.config.embed.color)
                     .setTitle('Terminal')
-                    .setDescription(`\`\`\`kt
-${response}\`\`\``)
+                    .addField(`Input`, `\`\`\`${lola}\`\`\``)
+                    .addField(`Output`, `\`\`\`kt\n${response}\`\`\``)
                     .setTimestamp()
+                    .setColor(this.client.config.embed.color)
 					.setFooter(this.client.config.embed.footer);
                 message.channel.send({
                     embeds: [result]

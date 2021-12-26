@@ -1,7 +1,7 @@
-const Event = require('../../../lib/structs/Event');
-const Member = require('../../../lib/models/Member');
-const User = require('../../../lib/models/User');
-const Guild = require('../../../lib/models/Guild');
+const Event = require('../../structs/Event');
+const Member = require('../../database/models/Member');
+const User = require('../../database/models/User');
+const Guild = require('../../database/models/Guild');
 
 class messageCreate extends Event {
 	constructor(client) {

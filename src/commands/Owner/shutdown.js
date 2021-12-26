@@ -1,4 +1,4 @@
-const Command = require( "../../../lib/structs/Command" );
+const Command = require("../../structs/Command");
 const { MessageEmbed } = require('discord.js');
 const path = require("path");
 
@@ -18,8 +18,8 @@ class ShutdownCommand extends Command {
     }
 
     async run(message) {
-		message.reply(`**Bot is now shutting down.**`);
-		await this.client.sleep(1000);
+		message.reply(`**Bot is now shutting down.**`); 
+		await this.client.sleep(1000); 
         await this.client.destroy();
 		await process.exit();
     }

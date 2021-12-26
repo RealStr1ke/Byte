@@ -18,7 +18,7 @@ class Cli {
             `${colors.brightRed('──────────────────CLI Commands───────────────────')}`,
             colors.brightGreen('help') + '    : This message (can also type \'?\')',
             colors.brightGreen('ping') + '    : Response time to Discord',
-            colors.brightGreen('stats') + '   : Statistics of Rada',
+            colors.brightGreen('stats') + '   : Statistics of Byte',
             colors.brightGreen('invite') + '  : Generate an invite to a guild',
             colors.brightGreen('stop') + '    : Stop the client process',
             `${colors.brightRed('─────────────────────────────────────────────────')}`

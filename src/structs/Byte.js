@@ -4,33 +4,26 @@ const Stopwatch = require('statman-stopwatch');
 const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
 const beautify = require('js-beautify').js;
-const Sequelize = require('sequelize');
 const mongoose = require('mongoose');
 const WebSocket = require('ws');
 const path = require('path');
 const glob = require('glob');
-const Keyv = require('keyv');
 
-const util = require("util"),
-	fs = require("fs"),
-	readdir = util.promisify(fs.readdir);
+const util = require("util");
+const fs = require("fs");
+const readdir = util.promisify(fs.readdir);
 const { readdirSync } = require('fs');
 
-// Classes and Structures
-const Logger = require('../classes/Logger');
-const Cli = require('../classes/Cli');
-const Command = require("./Command.js"),
-	Event = require("./Event.js");
-const CustomUtil = require('../classes/Util');
+// Helpers
+const Logger = require('../helpers/Logger');
+const Cli = require('../helpers/Cli');
+const Functions = require('../helpers/Functions');
 
-const config = require('../../src/config');
-const SQLite = require("better-sqlite3");
+// Structures
+const Command = require("./Command.js");
+const Event = require("./Event.js");
 
-const Guild = require("../../lib/models/Guild"), 
-	User = require("../../lib/models/User"), 
-	Member = require("../../lib/models/Member"), 
-	Student = require("../../lib/models/Student"), 
-	Log = require("../../lib/models/Log");
+const config = require('../config');
 
 class Byte extends Client {
 	constructor() {
@@ -51,24 +44,24 @@ class Byte extends Client {
 
 		this.wait = util.promisify(setTimeout);
 		this.logger = new Logger;
-		this.Util = CustomUtil;
+		this.Functions = new Functions(this);
 		
 		this.Stopwatch = Stopwatch;
 		this.sw = new Stopwatch();
 
-		this.logs = require("../../lib/models/Log");
-		this.guildsData = require("../../lib/models/Guild"); 
-		this.membersData = require("../../lib/models/Member"); 
-		this.usersData = require("../../lib/models/User"); 
-		this.studentsData = require("../../lib/models/Student"); 
+		this.logs = require("../database/models/Log");
+		this.guildsData = require("../database/models/Guild"); 
+		this.membersData = require("../database/models/Member"); 
+		this.usersData = require("../database/models/User"); 
+		this.studentsData = require("../database/models/Student"); 
 
-		// this.databaseCache = {};
-		// this.databaseCache.users = new Collection();
-		// this.databaseCache.guilds = new Collection();
-		// this.databaseCache.members = new Collection();
+		this.databaseCache = {};
+		this.databaseCache.users = new Collection();
+		this.databaseCache.guilds = new Collection();
+		this.databaseCache.members = new Collection();
 
-		// this.databaseCache.usersReminds = new Collection(); // members with active reminds
-		// this.databaseCache.mutedUsers = new Collection(); // members who are currently muted
+		this.databaseCache.usersReminds = new Collection(); // members with active reminds
+		this.databaseCache.mutedUsers = new Collection(); // members who are currently muted
 		
 		if (this.config.debug) this.logger.log(`Current Directory: ${this.directory}`);
 
@@ -105,7 +98,7 @@ class Byte extends Client {
 	};
 	
     async search(query, results) {
-            return await google({ 'query': query, 'no-display': true, 'limit': results });
+        return await google({ 'query': query, 'no-display': true, 'limit': results });
     };
 	
 	generateInvite() {
@@ -113,10 +106,10 @@ class Byte extends Client {
 			permisions: this.config.permissions,
 			scopes: this.config.scopes
 		});
-	};
+	}; 
 	
-	sleep (time) {
-		return new Promise((resolve) => setTimeout(resolve, time));
+	sleep(secs) {
+		return new Promise((resolve) => setTimeout(resolve, secs * 1000));
 	};
 	
 	get directory() {
@@ -135,9 +128,12 @@ class Byte extends Client {
 			const name = ((file.split(".")[0]).split('/'))[(((file.split(".")[0]).split('/'))).length-1];
 			if (this.config.debug) this.logger.log(`Loading Event: ${name}`);
 			const event = new (require(file))(this);
-			if (event.ignoreFile) return;
 			this.events.set(event.name, event)
-			this.on(name, (...args) => event.run(...args));
+			if (event.once) {
+				this.once(name, (...args) => event.run(...args));
+			} else {
+				this.on(name, (...args) => event.run(...args));
+			}
 			delete require.cache[require.resolve(`${file}`)];
 		});
 	};
@@ -158,7 +154,6 @@ class Byte extends Client {
 				console.log(commandPath);
 				console.log(path.parse(commandPath));
 			}
-			// const file = new (require(path.resolve(commandPath)))(this);
 			const file = new (require(path.resolve(commandPath)))(this);
 			if (this.config.debug) this.logger.log(`Loading Command: ${file.name}`);
 	        this.commands.set(file.name, file);
@@ -168,7 +163,7 @@ class Byte extends Client {
 			return true;
 		} catch (error) {
 			this.logger.fail(`Command ${commandPath} failed to load`);
-			console.log(error);
+			this.logger.fail(error.message);
 			return false;
 		}
 	}
@@ -195,97 +190,14 @@ class Byte extends Client {
 			useUnifiedTopology: true,
 			// useFindAndModify: false
 		}).then(() => {
-			this.logger.startup('Connected to mongoDB database!');
+			mongoose.connection.on("error", console.error.bind(console, "Database connection error!"));
+			mongoose.connection.on("open", () => this.logger.startup("Connected to mongoDB database!"));	
 			return true;
 		}).catch((err) => {
 			this.logger.fail('An error occured while connecting to the database.');
 			console.log(err);
 			return false;
 		});
-	}
-
-	// Finds or creates a new user in the database
-	async findOrCreateUser(userID) {
-		let user;
-		try {
-			user = await User.findOne({
-				userID: userID
-			});
-			if (!user) {
-				let user = await User.create({ 
-					userID: userID
-				});
-				user.save();
-				return user;
-			}
-			return user;
-		} catch (err) {
-			console.log(err);
-		}
-	}
-
-	// Finds or creates a new member in the database
-	async findOrCreateMember(userID, guildID) {
-		let member;
-		try {
-			member = await Member.findOne({
-				userID: userID,
-				guildID: guildID
-			});
-			if (!member) {
-				let member = await Member.create({
-					userID: userID,
-					guildID: guildID
-				});
-				member.save();
-				return member;
-			}
-			return member;
-		} catch (err) {
-			console.log(err);
-		}
-	}
-
-	// Finds or creates a new student in the database
-	async findOrCreateStudent(userID, guildID) {
-		let student;
-		try {
-			student = await Student.findOne({
-				userID: userID,
-				guildID: guildID
-			});
-			if (!student) {
-				let student = await Student.create({
-					userID: userID,
-					guildID: guildID
-				});
-				student.save();
-				return student;
-			}
-			return student;
-		} catch (err) {
-			console.log(err);
-		}
-	}
-
-	// Finds or creates a new guild in the database
-	async findOrCreateGuild(guildID) {
-		let guild;
-		try {
-			guild = await Guild.findOne({
-				guildID: guildID,
-			});
-			if (!guild) {
-				let guild = await Guild.create({
-					guildID: guildID,
-				});
-				guild.save();
-				return guild;
-			}
-			return guild;
-		} catch (err) {
-			console.log(err);
-		}
 	}
 	
 	async login() {
@@ -302,11 +214,10 @@ class Byte extends Client {
 	}
 	async start() {
 		this.sw.start();
-		this.loadDatabase().then(() => {
-			this.loadCommands();
-			this.loadEvents();
-			this.login();
-		});
+		this.loadDatabase();
+		this.loadCommands();
+		this.loadEvents();
+		this.login();
 	};
 }
 module.exports = Byte;

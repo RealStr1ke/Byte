@@ -1,6 +1,4 @@
-const Event = require('../../../lib/structs/Event');
-const Member = require('../../../lib/models/Member');
-const User = require('../../../lib/models/User');
+const Event = require('../../structs/Event');
 
 class guildCreate extends Event {
 	constructor(client) {

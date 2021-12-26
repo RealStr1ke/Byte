@@ -1,4 +1,4 @@
-const Command = require( "../../../lib/structs/Command" );
+const Command = require("../../structs/Command");
 const Discord = require('discord.js');
 const { inspect } = require('util');
 const path = require("path");
@@ -25,11 +25,11 @@ class EvalCommand extends Command {
 		    const evaled = eval(txt);
 			let ff = inspect(evaled, { depth: 0});
 		    if (String(ff).length > 2000) ff = "Output is too long";
-		    // message.reply({ content:`\`\`\`js\n${ff}\`\`\``, allowedMentions: { repliedUser: false } })
 			const result = new Discord.MessageEmbed()
-		        .setTitle('Output')
-		        .setDescription(`\`\`\`js\n${ff}\`\`\``)
+		        .setTitle('JavaScript')
 		        .setTimestamp()
+		        .addField(`Input`, `\`\`\`${txt}}\`\`\``)
+		        .addField(`Output`, `\`\`\`js\n${ff}\`\`\``)
 		        .setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer);
 		    message.channel.send({
