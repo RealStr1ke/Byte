@@ -7,29 +7,9 @@ const User = require("./models/User"),
     Log = require("./models/Log");
 
 class MongoHandler {
-    constructor(client) {
+    constructor() {
         this.client = client;
     }
-
-    // Finds or creates a new user in the database
-	async getUser(userID) {
-		let user;
-		try {
-			user = await User.findOne({
-				userID: userID
-			});
-			if (!user) {
-				let user = await User.create({ 
-					userID: userID
-				});
-				user.save();
-				return user;
-			}
-			return user;
-		} catch (err) {
-			console.log(err);
-		}
-	}
 
 	// Finds or creates a new member in the database
 	async getMember(userID, guildID) {
@@ -40,15 +20,27 @@ class MongoHandler {
 				guildID: guildID
 			});
 			if (!member) {
-				let member = await Member.create({
-					userID: userID,
-					guildID: guildID
-				});
-				member.save();
+				member = this.createMember(userID, guildID);
 				return member;
 			}
 			return member;
 		} catch (err) {
+			this.client.logger.fail(error.message)
+			console.log(err);
+		}
+	}
+	// Creates a new member in the database
+	async createMember(userID, guildID) {
+		let member;
+		try {
+			member = await Member.create({
+				userID: userID,
+				guildID: guildID
+			});
+			member.save();
+			return member;
+		} catch (err) {
+			this.client.logger.fail(error.message)
 			console.log(err);
 		}
 	}
@@ -62,15 +54,59 @@ class MongoHandler {
 				guildID: guildID
 			});
 			if (!student) {
-				let student = await Student.create({
-					userID: userID,
-					guildID: guildID
-				});
-				student.save();
+				student = this.createStudent(userID, guildID);
 				return student;
 			}
 			return student;
 		} catch (err) {
+			this.client.logger.fail(error.message)
+			console.log(err);
+		}
+	}
+	// Creates a new member in the database
+	async createStudent(userID, guildID) {
+		let student;
+		try {
+			student = await Student.create({
+				userID: userID,
+				guildID: guildID
+			});
+			student.save();
+			return student;
+		} catch (err) {
+			this.client.logger.fail(error.message)
+			console.log(err);
+		}
+	}
+
+	// Finds or creates a new user in the database
+	async getUser(userID) {
+		let user;
+		try {
+			user = await User.findOne({
+				userID: userID
+			});
+			if (!user) {
+				user = this.createUser(userID);
+				return user;
+			}
+			return user;
+		} catch (err) {
+			this.client.logger.fail(error.message)
+			console.log(err);
+		}
+	}
+	// Creates a new user in the database
+	async createUser(userID) {
+		let user;
+		try {
+			user = await User.create({
+				userID: userID
+			});
+			user.save();
+			return user;
+		} catch (err) {
+			this.client.logger.fail(error.message)
 			console.log(err);
 		}
 	}
@@ -80,40 +116,30 @@ class MongoHandler {
 		let guild;
 		try {
 			guild = await Guild.findOne({
-				guildID: guildID,
+				guildID: guildID
 			});
 			if (!guild) {
-				let guild = await Guild.create({
-					guildID: guildID,
-				});
-				guild.save();
+				guild = this.createGuild(guildID);
 				return guild;
 			}
 			return guild;
 		} catch (err) {
+			this.client.logger.fail(error.message)
 			console.log(err);
 		}
 	}
-
-	// Finds and deletes a new user in the database
-	async deleteGuild(guildID) {
+	// Creates a new guild in the database
+	async createGuild(guildID) {
 		let guild;
 		try {
-			guild = await Guild.findOne({
-				guildID: guildID,
+			guild = await Guild.create({
+				guildID: guildID
 			});
-			if (!guild) {
-				return false
-			}
-			Guild.findOneAndDelete({
-				guildID: guildID,
-			})
-			return true;
+			guild.save();
+			return guild;
 		} catch (err) {
+			this.client.logger.fail(error.message)
 			console.log(err);
-			return false;
 		}
 	}
-
-	
 }

@@ -23,6 +23,14 @@ const Functions = require('../helpers/Functions');
 const Command = require("./Command.js");
 const Event = require("./Event.js");
 
+// Database
+const Handler = require('../database/Handler'),
+	Guild = require('../database/Guild'),
+	Log = require('../database/Log'),
+	Member = require('../database/Member'),
+	Student = require('../database/Student'),
+	User = require('../database/User');
+
 const config = require('../config');
 
 class Byte extends Client {
@@ -49,6 +57,7 @@ class Byte extends Client {
 		this.Stopwatch = Stopwatch;
 		this.sw = new Stopwatch();
 
+		this.database = new Handler(this);
 		this.logs = require("../database/models/Log");
 		this.guildsData = require("../database/models/Guild"); 
 		this.membersData = require("../database/models/Member"); 

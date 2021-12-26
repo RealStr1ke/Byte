@@ -12,14 +12,19 @@ class messageCreate extends Event {
 		const client = this.client;
 		if (message.author.bot) return;
 
-		const data = {
-			member: await this.client.findOrCreateMember(message.author.id, message.guild.id), 
-			user: await this.client.findOrCreateUser(message.author.id), 
-			guild: await this.client.findOrCreateGuild(message.guild.id)
-		};
+		// Collecting information from the database
+		const data = {};
+		data.user =  await this.client.database.getUser(message.author.id); 
+		if (message.guild) {
+			data.guild =  await this.client.database.getGuild(message.guild.id);
+			data.member =  await this.client.database.getMember(message.author.id, message.guild.id); 
+			if (data.guild.plugins.education.enabled) {
+				data.student =  await this.client.database.getStudent(message.author.id, message.guild.id);
+			}
+		}
 		
+		// Retrieving the prefix of the guild/DM
 		let prefix;
-
 		if (message.guild) {
 			if (message.content.startsWith(client.config.prefix)) {
 				prefix = client.config.prefix;
@@ -30,25 +35,28 @@ class messageCreate extends Event {
 			prefix = client.config.prefix;
 		}
 
+		// Responds to a prefix mention
 		if (message.content.match(new RegExp(`^<@!?${client.user.id}> ?$`))) {
 			if (message.guild) return message.reply(`My prefix on this guild is \`${data.guild.prefix}\``);
 			return message.reply(`My global prefix is \`${client.config.prefix}\``);
 		}
 		
-		if (!prefix) return;
+		if (!prefix) return; // Returns if message doesn't start with a prefix
 
+		// Trims the message into a potential command and arguments
 		const [ cmd, ...args ] = message.content.slice( prefix.length ).trim().split( / +/g );
         const command = client.commands.get( cmd.toLowerCase() ) || client.commands.get( client.commands.aliases.get( cmd.toLowerCase() ) );
 
-        if (!command) return;
+        if (!command) return; // Returns if the requested command wasn't found
 		
+		// Returns if the following requirements weren't met
         if (command.nsfw && !message.channel.nsfw) return message.reply( '**You must run this command in an NSFW channel.**' );
 		if ( !command.guildOnly && !message.guild ) return message.reply( '**This command can only be used in guilds.**' );
 		if (command.ownerOnly && this.client.config.owner.discord.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
 		if ( command.args && !args.length ) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 
+		// Logs the command usage to the console and the database
 		this.client.logger.command(message.author.tag, message.content, message.guild.name)
-		// this.client.logger.log(`${message.author.tag} ran the command ${message.content}`);
 		const log = new this.client.logs({
 			commandName: command.name,
 			author: { 
@@ -63,6 +71,7 @@ class messageCreate extends Event {
 		});
 		log.save();
 		
+		// Runs the command
 		command.setMessage(message);
 		if (command.requireData) {
 			command.run(message,args,data);
