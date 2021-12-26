@@ -25,11 +25,11 @@ const Event = require("./Event.js");
 
 // Database
 const Handler = require('../database/Handler'),
-	Guild = require('../database/Guild'),
-	Log = require('../database/Log'),
-	Member = require('../database/Member'),
-	Student = require('../database/Student'),
-	User = require('../database/User');
+	Guild = require('../database/models/Guild'),
+	Log = require('../database/models/Log'),
+	Member = require('../database/models/Member'),
+	Student = require('../database/models/Student'),
+	User = require('../database/models/User');
 
 const config = require('../config');
 
