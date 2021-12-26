@@ -31,7 +31,6 @@ class PrefixCommand extends Command {
 			data.guild.prefix = prefix;
 			data.guild.markModified("prefix");
 			data.guild.save();
-			this.client.logger.success(`${message.author.tag} set the prefix of ${message.guild.name} to ${prefix}`)
 			return message.channel.send(`Successfully set prefix to \`${data.guild.prefix}\``);
 		}
 		return message.channel.send(`Prefix is \`${data.guild.prefix}\``);
