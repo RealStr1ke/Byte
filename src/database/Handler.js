@@ -6,8 +6,8 @@ const User = require("./models/User"),
     Student = require("./models/Student"),
     Log = require("./models/Log");
 
-class MongoHandler {
-    constructor() {
+class Handler {
+    constructor(client) {
         this.client = client;
     }
 
@@ -143,3 +143,5 @@ class MongoHandler {
 		}
 	}
 }
+
+module.exports = Handler;
