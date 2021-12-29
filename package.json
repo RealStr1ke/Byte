@@ -42,7 +42,6 @@
     "discord-player": "^5.2.0",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
-    "eslint": "^8.5.0",
     "figlet": "^1.5.2",
     "fs": "^0.0.1-security",
     "google-it": "^1.6.2",
@@ -61,5 +60,8 @@
     "statman-stopwatch": "^2.13.0",
     "tar": "^6.1.11",
     "ws": "^8.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.5.0"
   }
 }
