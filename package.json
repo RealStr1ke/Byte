@@ -5,7 +5,10 @@
   "main": "Byte.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node Byte.js"
+    "start": "node .",
+    "update": "git pull && npm install",
+    "format": "prettier --write",
+    "lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -52,8 +55,6 @@
     "os": "^0.1.2",
     "os-utils": "^0.0.14",
     "path": "^0.12.7",
-    "sequelize": "^6.12.0-beta.3",
-    "sqlite3": "^5.0.2",
     "statman-stopwatch": "^2.13.0",
     "tar": "^6.1.11",
     "ws": "^8.3.0"
