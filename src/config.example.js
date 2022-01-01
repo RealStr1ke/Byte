@@ -5,6 +5,11 @@ module.exports = {
 		
 		/* The prefix(s) of the Discord Bot */
 		prefix: 'b!',
+
+		support: {
+			id: '',
+			logs: ''
+		},
 		
 		embed: {
 			color: "#0091fc", // The default color for embeds
@@ -15,32 +20,25 @@ module.exports = {
 		
 		/* The information of the bot's owner */
 		owner: {
-			discord: {
-				id: '',
-				name: ''
-			},
-			github: {
-				name: '',
-				profile: ''
-			}
-		},
-		webhook: {
-			console: ''
+			id: '',
+			name: ''
 		},
 	
 		apiKeys: { // The API keys that are used 
 			// AlexFlipnote's API
 			flipnoteAPI: '',
-			// Hypixel API
-			hypixelAPI: ''
+			// Hypixel API 
+			hypixelAPI: '',
+			// Amethyste API 
+			amethyste: ''
 		},
 		status: {
 			name: `with Str1ke's mind`, // The status text of the bot
 			type: 'PLAYING' // The status type of the bot
 		},
 
-		fun: {
-			quotes: [""]
+		custom: {
+			/* You can put any custom values here in the format of "<variable>: <value>". */
 		},
 		
 		// Developer Zone
@@ -60,6 +58,8 @@ module.exports = {
 		
 		/* The Discord partials for the bot*/
 		partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
+
+		/* The Discord permissions for the bot*/
 		permisions: [
 			Permissions.FLAGS.CREATE_INSTANT_INVITE,
 			Permissions.FLAGS.SEND_MESSAGES,
