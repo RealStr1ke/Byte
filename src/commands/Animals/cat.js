@@ -24,7 +24,7 @@ class CatCommand extends Command {
 		const cat = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(link.file)
-			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, bot.user.displayAvatarURL())
+			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
         return message.channel.send({
             embeds: [cat]
         });

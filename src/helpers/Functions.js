@@ -92,7 +92,7 @@ class Functions {
             }
         }
         return str;
-    };
+    }
 	
     formatDate(date) {
 		let formats = {
@@ -137,7 +137,7 @@ class Functions {
         let month = formats.month[date.getMonth()];
         let formatted = dayOfMonth.substring(2).length > 0 ? formats.date[dayOfMonth.substring(2)] : formats.date[dayOfMonth];
         return `${dayOfWeek} ${dayOfMonth}${formatted} ${month} | ${date.toLocaleTimeString()}`;
-            };
+            }
 	}
 
 Functions.titleCaseVariants = {

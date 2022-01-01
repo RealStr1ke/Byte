@@ -1,35 +1,24 @@
 // Modules
-const { MessageEmbed, Util, Client, Collection, Intents } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const Stopwatch = require('statman-stopwatch');
 const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
-const beautify = require('js-beautify').js;
 const mongoose = require('mongoose');
-const WebSocket = require('ws');
 const path = require('path');
 const glob = require('glob');
-
 const util = require("util");
-const fs = require("fs");
-const readdir = util.promisify(fs.readdir);
-const { readdirSync } = require('fs');
 
 // Helpers
+const Functions = require('../helpers/Functions');
 const Logger = require('../helpers/Logger');
 const Cli = require('../helpers/Cli');
-const Functions = require('../helpers/Functions');
 
 // Structures
 const Command = require("./Command.js");
 const Event = require("./Event.js");
 
 // Database
-const Handler = require('../database/Handler'),
-	Guild = require('../database/models/Guild'),
-	Log = require('../database/models/Log'),
-	Member = require('../database/models/Member'),
-	Student = require('../database/models/Student'),
-	User = require('../database/models/User');
+const Handler = require('../database/Handler');
 
 const config = require('../config');
 
@@ -49,6 +38,7 @@ class Byte extends Client {
 		this.commands.aliases = new Collection();
 		this.events = new Collection();
 		this.slash = new Collection();
+		this.Cli = new Cli(this);
 
 		this.wait = util.promisify(setTimeout);
 		this.logger = new Logger;
@@ -77,58 +67,51 @@ class Byte extends Client {
 		this.hypixel = new Hypixel.Client(this.config.apiKeys.hypixelAPI);
 		this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI)
 
-		if(this.config.webhook.console){
-			this.discordconsole = new DiscordConsoleLogger({ 
-				hookURL: this.config.webhook.console,
-				iconURL: this.config.embed.icon, 
-				footer: this.config.embed.footer, 
-				console: true, 
-			    errorHandler: err => {
-				    this.logger.fail(`[DISCORD CONSOLE LOGGER] ${err}`); 
-				}
-			});
-		}
-
 		console.clear();
 		if (this.config.debug) this.logger.success(`Client initialised —— Node ${process.version}.`);
-	};
+	}
 	
 	async startCLI() {
 		this.logger.log('Client starting in 5 seconds..')
-		sleep(2000)
+		this.sleep(2000)
 		this.logger.log('3 seconds..')
-		sleep(1000)
+		this.sleep(1000)
 		this.logger.log('2 seconds..')
-		sleep(1000)
+		this.sleep(1000)
 		this.logger.log('1 seconds..')
-		sleep(1000)
+		this.sleep(1000)
 		this.logger.log(`Client starting..`)
 		this.Cli.start();
-	};
-	
+	}
+
     async search(query, results) {
-        return await google({ 'query': query, 'no-display': true, 'limit': results });
-    };
+		const google = require('google-it');
+        return await google({ 
+			'query': query, 
+			'no-display': true, 
+			'limit': results 
+		});
+    }
 	
 	generateInvite() {
 		return super.generateInvite({
 			permisions: this.config.permissions,
 			scopes: this.config.scopes
 		});
-	}; 
+	} 
 	
 	sleep(secs) {
 		return new Promise((resolve) => setTimeout(resolve, secs * 1000));
-	};
+	}
 	
 	get directory() {
         return `${path.dirname(require.main.filename)}${path.sep}`;
-    };
+    }
 	
 	getFiles(dir, ext) {
 		// console.log(`${this.directory}${dir}/**/*${ext}`);
 		return glob.sync(`${this.directory}${dir}/**/*${ext}`);
-	};
+	}
 	
 	// Event Handler
 	async loadEvents() {
@@ -145,7 +128,7 @@ class Byte extends Client {
 			}
 			delete require.cache[require.resolve(`${file}`)];
 		});
-	};
+	}
 	// Command Handler
 	async loadCommands() {
 		const cmdFiles = await this.getFiles('src/commands', '.js');
@@ -155,7 +138,7 @@ class Byte extends Client {
 			if(!(file instanceof Command)) return;
 			this.loadCommand(file.name, commandPath);
         }
-	};
+	}
 
 	async loadCommand(commandName, commandPath) {
 		try {
@@ -214,7 +197,7 @@ class Byte extends Client {
 			throw new Error("You must pass the token for your bot.")
 		}
 		super.login(this.config.token);
-	};
+	}
 
 	async destroy() {
 		this.logger.shutdown('Bot is now shutting down.');
@@ -227,6 +210,6 @@ class Byte extends Client {
 		this.loadCommands();
 		this.loadEvents();
 		this.login();
-	};
+	}
 }
 module.exports = Byte;

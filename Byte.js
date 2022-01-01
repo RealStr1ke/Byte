@@ -1,4 +1,4 @@
-const ByteClient = require('./src/structs/Byte')
+const ByteClient = require('./src/structs/Byte');
 const Byte = new ByteClient();
 
 Byte.start();

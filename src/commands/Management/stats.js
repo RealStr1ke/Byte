@@ -1,5 +1,5 @@
 const Command = require("../../structs/Command"),
-	{ MessageEmbed, MessageActionRow, MessageButton } = require('discord.js'),
+	{ MessageEmbed } = require('discord.js'),
 	{ dependencies } = require('../../../package.json'),
 	os = require('os'),
 	osu = require('os-utils'),

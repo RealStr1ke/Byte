@@ -22,7 +22,7 @@ class DogCommand extends Command {
 		const cat = new MessageEmbed()
 			.setTitle('**Here is your cat picture:**')
 			.setImage(link.file)
-			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, bot.user.displayAvatarURL());
+			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL());
         return message.channel.send({
             embeds: [cat]
         });
