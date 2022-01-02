@@ -19,9 +19,12 @@ class ASCIICommand extends Command {
 
     async run(message, args) {
 		const text = args.join(" ");
-		if (!text || text.length > 20) {
+		if (!text) {
 			return message.reply(`You must run the command with the text you want to convert: ${this.usage}`);
 		}
+        if (text.length > 20) {
+            return message.reply(`Your message must be under 20 characters.`);
+        }
 
 		const rendered = await figletAsync(text);
 		message.channel.send("```" + rendered + "```");
