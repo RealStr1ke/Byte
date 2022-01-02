@@ -13,6 +13,7 @@ class Command {
 		this.args        = options.args        || false;
 		this.usage       = options.usage       || null;
         this.example     = options.example     || [];
+		this.enabled     = options.enabled     || true;
 
 		this.userPerms   = new Permissions( options.userPerms || "SEND_MESSAGES" ).freeze();
 		this.botPerms    = new Permissions( options.botPerms  || "SEND_MESSAGES" ).freeze();

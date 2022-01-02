@@ -83,26 +83,6 @@ class Byte extends Client {
 		this.logger.log(`Client starting..`)
 		this.Cli.start();
 	}
-
-    async search(query, results) {
-		const google = require('google-it');
-        return await google({ 
-			'query': query, 
-			'no-display': true, 
-			'limit': results 
-		});
-    }
-	
-	generateInvite() {
-		return super.generateInvite({
-			permisions: this.config.permissions,
-			scopes: this.config.scopes
-		});
-	} 
-	
-	sleep(secs) {
-		return new Promise((resolve) => setTimeout(resolve, secs * 1000));
-	}
 	
 	get directory() {
         return `${path.dirname(require.main.filename)}${path.sep}`;
@@ -201,12 +181,13 @@ class Byte extends Client {
 
 	async destroy() {
 		this.logger.shutdown('Bot is now shutting down.');
-		mongoose.connection.close();
+		this.database.closeDatabase();
 		super.destroy();
 	}
+
 	async start() {
 		this.sw.start();
-		this.loadDatabase();
+		this.database.loadDatabase();
 		this.loadCommands();
 		this.loadEvents();
 		this.login();

@@ -4,7 +4,6 @@ const colors = require('colors');
 const os = require('os');
 
 class Cli {
-
     constructor(client) {
 		this.client = client;
     }

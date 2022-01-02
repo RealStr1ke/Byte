@@ -137,8 +137,23 @@ class Functions {
         let month = formats.month[date.getMonth()];
         let formatted = dayOfMonth.substring(2).length > 0 ? formats.date[dayOfMonth.substring(2)] : formats.date[dayOfMonth];
         return `${dayOfWeek} ${dayOfMonth}${formatted} ${month} | ${date.toLocaleTimeString()}`;
-            }
-	}
+    }
+    async search(query, results) {
+		const google = require('google-it');
+        return await google({ 
+			'query': query, 
+			'no-display': true, 
+			'limit': results 
+		});
+    }
+	
+	generateInvite() {
+		return this.client.generateInvite({
+			permisions: this.config.permissions,
+			scopes: this.config.scopes
+		});
+	} 
+}
 
 Functions.titleCaseVariants = {
     textchannel: 'TextChannel',

@@ -1,15 +1,47 @@
 const Discord = require('discord.js');
 
+const mongoose = require('mongoose');
 const User = require("./models/User"),
     Guild = require("./models/Guild"),
     Member = require("./models/Member"),
     Student = require("./models/Student"),
     Log = require("./models/Log");
 
+
 class Handler {
     constructor(client) {
         this.client = client;
     }
+
+	// Loads the database
+	async loadDatabase() {
+		mongoose.connect(this.client.config.mongodb, {
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+			// useFindAndModify: false
+		}).then(() => {
+			this.client.logger.startup("Connected to mongoDB database!");	
+			mongoose.connection.on("error", console.error.bind(console, "Database connection error!"));
+			return true;
+		}).catch((err) => {
+			this.client.logger.fail('An error occured while connecting to the database.');
+			console.log(err);
+			return false;
+		});
+	}
+	
+	// Closes the database connection
+	async closeDatabase() {
+		mongoose.connection.close().then(() => {
+			this.client.logger.shutdown('Database closed.');
+			return true;
+		}).catch(() => {
+			this.client.logger.fail('An error occured while closing the connection to the database.');
+			console.log(err);
+			return false;
+		});
+	}
+
 
 	// Finds or creates a new member in the database
 	async getMember(userID, guildID) {
@@ -29,6 +61,7 @@ class Handler {
 			console.log(err);
 		}
 	}
+
 	// Creates a new member in the database
 	async createMember(userID, guildID) {
 		let member;
@@ -63,6 +96,7 @@ class Handler {
 			console.log(err);
 		}
 	}
+	
 	// Creates a new member in the database
 	async createStudent(userID, guildID) {
 		let student;

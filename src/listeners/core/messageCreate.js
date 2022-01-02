@@ -1,7 +1,4 @@
 const Event = require('../../structs/Event');
-const Member = require('../../database/models/Member');
-const User = require('../../database/models/User');
-const Guild = require('../../database/models/Guild');
 
 class messageCreate extends Event {
 	constructor(client) {
@@ -52,7 +49,7 @@ class messageCreate extends Event {
 		// Returns if the following requirements weren't met
         if (command.nsfw && !message.channel.nsfw) return message.reply( '**You must run this command in an NSFW channel.**' );
 		if ( !command.guildOnly && !message.guild ) return message.reply( '**This command can only be used in guilds.**' );
-		if (command.ownerOnly && this.client.config.owner.discord.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
+		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
 		if ( command.args && !args.length ) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 
 		// Logs the command usage to the console and the database
