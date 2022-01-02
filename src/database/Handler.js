@@ -43,6 +43,7 @@ class Handler {
 	}
 
 
+
 	// Finds or creates a new member in the database
 	async getMember(userID, guildID) {
 		let member;
@@ -77,6 +78,31 @@ class Handler {
 			console.log(err);
 		}
 	}
+
+	// Deletes an existing member in the database
+	async deleteMember(userID, guildID) {
+		let member;
+		try {
+			member = await Member.findOne({
+				userID: userID,
+				guildID: guildID
+			});
+			if (!member) {
+				return false;
+			}
+			await Member.findOneAndDelete({
+				userID: userID,
+				guildID: guildID
+			});
+			return true;
+		} catch (err) {
+			this.client.logger.fail(error.message);
+			console.log(err);
+			return false;
+		}
+	}
+
+
 
 	// Finds or creates a new student in the database
 	async getStudent(userID, guildID) {
@@ -113,6 +139,31 @@ class Handler {
 		}
 	}
 
+	// Deletes an existing student in the database
+	async deleteStudent(userID, guildID) {
+		let student;
+		try {
+			student = await Student.findOne({
+				userID: userID,
+				guildID: guildID
+			});
+			if (!student) {
+				return false;
+			}
+			await Student.findOneAndDelete({
+				userID: userID,
+				guildID: guildID
+			});
+			return true;
+		} catch (err) {
+			this.client.logger.fail(error.message);
+			console.log(err);
+			return false;
+		}
+	}
+
+
+
 	// Finds or creates a new user in the database
 	async getUser(userID) {
 		let user;
@@ -130,6 +181,7 @@ class Handler {
 			console.log(err);
 		}
 	}
+
 	// Creates a new user in the database
 	async createUser(userID) {
 		let user;
@@ -144,6 +196,29 @@ class Handler {
 			console.log(err);
 		}
 	}
+
+	// Deletes an existing user in the database
+	async deleteUser(userID) {
+		let user;
+		try {
+			user = await User.findOne({
+				userID: userID
+			});
+			if (!user) {
+				return false;
+			}
+			await User.findOneAndDelete({
+				userID: userID
+			});
+			return true;
+		} catch (err) {
+			this.client.logger.fail(error.message);
+			console.log(err);
+			return false;
+		}
+	}
+	
+
 
 	// Finds or creates a new guild in the database
 	async getGuild(guildID) {
@@ -162,6 +237,7 @@ class Handler {
 			console.log(err);
 		}
 	}
+
 	// Creates a new guild in the database
 	async createGuild(guildID) {
 		let guild;
@@ -174,6 +250,27 @@ class Handler {
 		} catch (err) {
 			this.client.logger.fail(error.message)
 			console.log(err);
+		}
+	}
+
+	// Deletes an existing user in the database
+	async deleteGuild(guildID) {
+		let guild;
+		try {
+			guild = await Guild.findOne({
+				guildID: guildID
+			});
+			if (!guild) {
+				return false;
+			}
+			await Guild.findOneAndDelete({
+				guildID: guildID
+			});
+			return true;
+		} catch (err) {
+			this.client.logger.fail(error.message);
+			console.log(err);
+			return false;
 		}
 	}
 }
