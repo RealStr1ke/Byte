@@ -8,6 +8,7 @@ class CatCommand extends Command {
     constructor(client) {
         super(client, {
             name        : "cat",
+            enabled     : false,
             description : "Responds with a random cat picture.",
             usage       : "cat",
             args        : false,
