@@ -13,7 +13,9 @@ class error extends Event {
             .setTitle('Error')
             .setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)
             .setTimestamp();
-
+		this.client.support.errors.send({
+			embeds: embed
+		})
 		// return message.reply({embeds: embed});
 		return message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
 	}

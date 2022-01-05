@@ -37,7 +37,7 @@ class ExecCommand extends Command {
                 message.channel.send({
                     embeds: [err]
                 })
-                this.client.logger.error(error.message);
+                this.client.logger.fail(error.message);
             } else {
                 const result = new Discord.MessageEmbed()
                     .setTitle('Terminal')

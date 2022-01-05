@@ -1,5 +1,6 @@
 const Command = require("../../structs/Command");
 const { MessageEmbed } = require('discord.js');
+const axios = require('axios');
 const path = require("path");
 
 class DogCommand extends Command {
@@ -18,13 +19,15 @@ class DogCommand extends Command {
     }
 
     async run(message) {
-		let link = await (this.client.flipnote).image.cats();
-		const cat = new MessageEmbed()
-			.setTitle('**Here is your cat picture:**')
-			.setImage(link.file)
-			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL());
+		// let link = await (this.client.flipnote).image.cats();
+        const response = await axios.get('https://dog.ceo/api/breeds/image/random');
+		const DogEmbed = new MessageEmbed()
+			.setTitle('**😍 | Awwwww | 😍**')
+			.setImage(response.message)
+			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+            .setTimestamp();
         return message.channel.send({
-            embeds: [cat]
+            embeds: [DogEmbed]
         });
     }
 }

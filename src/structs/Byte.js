@@ -42,7 +42,7 @@ class Byte extends Client {
 
 		this.wait = util.promisify(setTimeout);
 		this.logger = new Logger;
-		this.Functions = new Functions(this);
+		this.util = new Functions(this);
 		
 		this.Stopwatch = Stopwatch;
 		this.sw = new Stopwatch();
@@ -58,9 +58,14 @@ class Byte extends Client {
 		this.databaseCache.users = new Collection();
 		this.databaseCache.guilds = new Collection();
 		this.databaseCache.members = new Collection();
-
 		this.databaseCache.usersReminds = new Collection(); // members with active reminds
 		this.databaseCache.mutedUsers = new Collection(); // members who are currently muted
+
+		this.support = {};
+		this.support.database = this.config.support.logs.database;
+		this.support.commands = this.config.support.logs.commands;
+		this.support.errors = this.config.support.logs.errors;
+		this.support.status = this.config.support.logs.status;
 		
 		if (this.config.debug) this.logger.log(`Current Directory: ${this.directory}`);
 

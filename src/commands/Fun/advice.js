@@ -18,19 +18,19 @@ class AdviceCommand extends Command {
     }
 
     async run(message) {
-		axios.get("https://api.adviceslip.com/advice")
-			.then(async response => {
-				const AdviceEmbed = new MessageEmbed()
-					.setTitle("Here's an piece of advice")
-					.setDescription(response.data.slip.advice)
-					.setFooter(`You got advice #${response.data.slip.id} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
-					.setColor(this.client.config.embed.color)
-					.setTimestamp();
-	
-				await message.reply({
-					embeds: [AdviceEmbed]
-				});
-		}).catch(err => console.error(err));
+		const response = axios.get("https://api.adviceslip.com/advice");
+		
+		const AdviceEmbed = new MessageEmbed()
+			.setTitle("Here's an piece of advice")
+			.setDescription(response.data.slip.advice)
+			.setFooter(`You got advice #${response.data.slip.id} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setColor(this.client.config.embed.color)
+			.setTimestamp();
+
+		await message.reply({
+			embeds: [AdviceEmbed]
+		});		
+		
     }
 }
 

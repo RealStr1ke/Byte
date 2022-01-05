@@ -8,7 +8,6 @@ class CatCommand extends Command {
     constructor(client) {
         super(client, {
             name        : "cat",
-            enabled     : false,
             description : "Responds with a random cat picture.",
             usage       : "cat",
             args        : false,
@@ -21,13 +20,13 @@ class CatCommand extends Command {
 
     async run(message) {
 		// let link = await (this.client.flipnote).image.cats();
-        const response = await axios.get()
-		const cat = new MessageEmbed()
+        const response = await axios.get(`https://aws.random.cat/meow`)
+		const CatEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
-			.setImage(link.file)
+			.setImage(response.file)
 			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
         return message.channel.send({
-            embeds: [cat]
+            embeds: [CatEmbed]
         });
     }
 }
