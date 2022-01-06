@@ -18,11 +18,11 @@ class DuckCommand extends Command {
     }
 
     async run(message) {
-		const response = axios.get("https://random-d.uk/api/v2/random");
+		const response = await axios.get("https://random-d.uk/api/v2/random");
 		
 		const DuckEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
-			.setImage(response.url)
+			.setImage(response.data.url)
 			.setFooter(`${response.message} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();

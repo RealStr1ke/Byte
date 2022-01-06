@@ -19,11 +19,10 @@ class DogCommand extends Command {
     }
 
     async run(message) {
-		// let link = await (this.client.flipnote).image.cats();
         const response = await axios.get('https://dog.ceo/api/breeds/image/random');
 		const DogEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
-			.setImage(response.message)
+			.setImage(response.data.message)
 			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
             .setTimestamp();
         return message.channel.send({

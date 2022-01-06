@@ -18,7 +18,7 @@ class AdviceCommand extends Command {
     }
 
     async run(message) {
-		const response = axios.get("https://api.adviceslip.com/advice");
+		const response = await axios.get("https://api.adviceslip.com/advice");
 		
 		const AdviceEmbed = new MessageEmbed()
 			.setTitle("Here's an piece of advice")

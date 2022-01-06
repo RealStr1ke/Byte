@@ -18,19 +18,17 @@ class FMLCommand extends Command {
     }
 
     async run(message) {
-		axios.get("https://blague.xyz/api/vdm/random?lang=EN")
-			.then(async response => {
-				const FMLEmbed = new MessageEmbed()
-					.setTitle("Here's an FML quote")
-					.setDescription(`${response.data.vdm.content} **FML**`)
-					.setFooter(`You got FML quote #${response.data.vdm.id} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
-					.setColor(this.client.config.embed.color)
-					.setTimestamp();
-	
-				await message.reply({
-					embeds: [FMLEmbed]
-				});
-		}).catch(err => console.error(err));
+		const response = await axios.get("https://blague.xyz/api/vdm/random?lang=EN");
+		const FMLEmbed = new MessageEmbed()
+			.setTitle("Here's an FML quote")
+			.setDescription(`${response.data.vdm.content} **FML**`)
+			.setFooter(`You got FML quote #${response.data.vdm.id} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setColor(this.client.config.embed.color)
+			.setTimestamp();
+
+		await message.reply({
+			embeds: [FMLEmbed]
+		});
     }
 }
 

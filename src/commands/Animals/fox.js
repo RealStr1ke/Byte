@@ -18,11 +18,11 @@ class FoxCommand extends Command {
     }
 
     async run(message) {
-		const response = axios.get("https://randomfox.ca/floof/");
+		const response = await axios.get("https://randomfox.ca/floof/");
 		
 		const FoxEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
-			.setImage(response.image)
+			.setImage(response.data.image)
 			.setFooter(`${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
