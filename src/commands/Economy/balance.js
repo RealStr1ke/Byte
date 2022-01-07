@@ -13,18 +13,22 @@ class BalanceCommand extends Command {
 			directory   : __dirname,
             aliases     : ["bal"],
             userPerms   : "SEND_MESSAGES",
+			requireData : true,
             ownerOnly   : false,
         });
     }
 
-    async run(message) {
-		let link = await (this.client.flipnote).image.cats();
-		const cat = new MessageEmbed()
-			.setTitle('**Here is your cat picture:**')
-			.setImage(link.file)
+    async run(message, args, data) {
+		const balance = new MessageEmbed()
+			.setTitle('**Your Stats:**')
+			.addField('**Wallet:**', `\`${data.member.wallet}\``, true)
+			.addField('**Bank:**', `\`${data.member.bank}\``, true)
 			.setFooter(`Requested by ${message.author.tag}`)
-        return message.channel.send({embeds: [ cat ]});
-		// message.channel.send(`Your wallet bal is ${profileData.coins}, you banks bal is ${profileData.bank}`);
+			.setColor(this.client.config.embed.color)
+			.setTimestamp();
+        return await message.channel.send({
+			embeds: [balance]
+		});
     }
 }
 

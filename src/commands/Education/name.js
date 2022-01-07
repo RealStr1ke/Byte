@@ -8,7 +8,7 @@ class NameCommand extends Command {
         super(client, {
             name        : "name",
             description : "Changes your set name",
-            usage       : "name <Last Name> <First Name> <Middle Initial>",
+            usage       : "name <First> <Last>",
             args        : false,
 			directory   : __dirname,
             userPerms   : "SEND_MESSAGES",

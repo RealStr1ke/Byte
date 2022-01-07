@@ -8,15 +8,14 @@ class error extends Event {
 
 	async run(message) {
 		this.client.log.fail(error.message);
-		let embed = new MessageEmbed()
-            .setColor(this.client.color)
+		const embed = new MessageEmbed()
+            .setColor(this.client.config.embed.color)
             .setTitle('Error')
             .setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)
             .setTimestamp();
 		this.client.support.errors.send({
 			embeds: embed
-		})
-		// return message.reply({embeds: embed});
+		});
 		return message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
 	}
 }

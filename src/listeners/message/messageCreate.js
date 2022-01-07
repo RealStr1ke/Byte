@@ -48,9 +48,12 @@ class messageCreate extends Event {
 		
 		// Returns if the following requirements weren't met
         if (command.nsfw && !message.channel.nsfw) return message.reply( '**You must run this command in an NSFW channel.**' );
+		if ( command.education && !message.guild ) return message.reply(`You can't use an education command in DMs.`);
 		if ( !command.guildOnly && !message.guild ) return message.reply( '**This command can only be used in guilds.**' );
 		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
 		if ( command.args && !args.length ) return message.reply(`You must use the command correctly: \`${command.usage}\``);
+		if ( command.education && !data.guild.education ) return message.reply(`This guild doesn't have the education module enabled.`);
+		
 
 		// Logs the command usage to the console and the database
 		this.client.logger.command(message.author.tag, message.content, message.guild.name)
