@@ -20,6 +20,7 @@ class Command {
 		this.guildOnly   = options.guildOnly   || false;
 		this.ownerOnly   = options.ownerOnly   || false;
 		this.nsfw        = options.nsfw        || false;
+		this.education   = options.education   || false;
 		this.requireData = options.requireData || false;
 	}
 

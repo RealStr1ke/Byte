@@ -23,9 +23,9 @@ class Handler {
 			this.client.logger.startup("Connected to mongoDB database!");	
 			mongoose.connection.on("error", console.error.bind(console, "Database connection error!"));
 			return true;
-		}).catch((err) => {
+		}).catch((error) => {
 			this.client.logger.fail('An error occured while connecting to the database.');
-			console.log(err);
+			console.log(error);
 			return false;
 		});
 	}
@@ -35,9 +35,9 @@ class Handler {
 		mongoose.connection.close().then(() => {
 			this.client.logger.shutdown('Database closed.');
 			return true;
-		}).catch(() => {
+		}).catch((error) => {
 			this.client.logger.fail('An error occured while closing the connection to the database.');
-			console.log(err);
+			console.log(error);
 			return false;
 		});
 	}
@@ -57,9 +57,9 @@ class Handler {
 				return member;
 			}
 			return member;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -73,9 +73,9 @@ class Handler {
 			});
 			member.save();
 			return member;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -95,9 +95,9 @@ class Handler {
 				guildID: guildID
 			});
 			return true;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
-			console.log(err);
+			console.log(error);
 			return false;
 		}
 	}
@@ -117,9 +117,9 @@ class Handler {
 				return student;
 			}
 			return student;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 	
@@ -133,9 +133,9 @@ class Handler {
 			});
 			student.save();
 			return student;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -155,9 +155,9 @@ class Handler {
 				guildID: guildID
 			});
 			return true;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
-			console.log(err);
+			console.log(error);
 			return false;
 		}
 	}
@@ -176,9 +176,9 @@ class Handler {
 				return user;
 			}
 			return user;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -191,9 +191,9 @@ class Handler {
 			});
 			user.save();
 			return user;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -211,9 +211,9 @@ class Handler {
 				userID: userID
 			});
 			return true;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
-			console.log(err);
+			console.log(error);
 			return false;
 		}
 	}
@@ -232,9 +232,9 @@ class Handler {
 				return guild;
 			}
 			return guild;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -247,9 +247,9 @@ class Handler {
 			});
 			guild.save();
 			return guild;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message)
-			console.log(err);
+			console.log(error);
 		}
 	}
 
@@ -267,9 +267,9 @@ class Handler {
 				guildID: guildID
 			});
 			return true;
-		} catch (err) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
-			console.log(err);
+			console.log(error);
 			return false;
 		}
 	}

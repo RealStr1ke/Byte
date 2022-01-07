@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-	userID: {type: String, require: true, unique: true},
+	userID: {type: String, require: true},
 	guildID: {type: String, require: true},
 
 	firstName: {type: String, default: null},
-	middleName: {type: String, default: null},
 	lastName: {type: String, default: null},
 
 	bio: {type: String, default: null},
