@@ -7,15 +7,16 @@ class ReverseCommand extends Command {
         super(client, {
             name        : "reverse",
             description : "Reverses the given text.",
-            usage       : "rv",
+            usage       : "reverse <text>",
             args        : true,
+			aliases     : ['rv'],
 			directory   : __dirname,
             userPerms   : "SEND_MESSAGES",
             ownerOnly   : false,
         });
     }
 
-    async run(message) {
+    async run(message, args) {
 		return message.reply(args.join(` `).split(``).reverse().join(""));
     }
 }

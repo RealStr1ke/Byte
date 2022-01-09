@@ -1,0 +1,46 @@
+const Command = require("../../structs/Command");
+const { MessageEmbed } = require('discord.js');
+const path = require('path');
+const axios = require("axios");
+
+class GitHubCommand extends Command {
+
+    constructor(client) {
+        super(client, {
+            name        : "github",
+            description : "Gives information about the given GitHub repository",
+            usage       : "github <repo>",
+            args        : true,
+			aliases     : ['gh'],
+			directory   : __dirname,
+            userPerms   : "SEND_MESSAGES",
+        });
+    }
+
+    async run(message, args) {
+		const repo = args[0];
+		if (!repo.includes('/', 1)) {
+			return message.reply('You must specify a proper repository. **Example:** \`RealStr1ke/Byte\`')
+		}
+		const res = await axios.get(`https://api.github.com/repos/${repo}`);
+
+		const GitHubEmbed = new MessageEmbed()
+			.setAuthor(this.client.user.tag, this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
+			.setTitle(`${repo}`)
+			.setDescription(`[${repo}](https://github.com/${repo})`)
+			.addField('Stars', `${res.data.stargazers_count}`, true)
+			.addField('Forks', `${res.data.forks_count}`, true)
+			.addField(`Programming Language`, res.data.language, true)
+			.addField('Repository Owner', `[${res.data.owner.login}](${res.data.owner.html_url})`, true)
+			.setColor(this.client.config.embed.color)
+			.setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL({ dynamic: true, size: 1024 }))
+			.setTimestamp();
+
+		return await message.reply({
+			embeds: [GitHubEmbed]
+		});		
+		
+    }
+}
+
+module.exports = GitHubCommand;
