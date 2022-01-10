@@ -16,14 +16,8 @@ jobs:
       - name: Install Npm
         uses: bahmutov/npm-install@v1
 
-      - name: Format Code
-        run: npm run format
-
-      - name: Correct Code
-        run: npm run lint
-
-      - name: Update Environment
-        run: npm run update
+      - name: Start Code
+        run: npm run start
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v4
