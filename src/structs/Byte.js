@@ -95,7 +95,9 @@ class Byte extends Client {
 
 	async init() {
 		console.clear();
-		if (this.config.debug) this.logger.success(`Client initialised —— Node ${process.version}.`);
+		if (this.config.debug) {
+			this.logger.success(`Client initialised —— Node ${process.version}.`);
+		}
 	}
 
 	async startCLI() {
