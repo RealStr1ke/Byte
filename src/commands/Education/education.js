@@ -1,35 +1,36 @@
-const Command = require("../../structs/Command");
+const Command = require('../../structs/Command');
 const { MessageEmbed } = require('discord.js');
-const path = require("path");
+const path = require('path');
 
 class EducationCommand extends Command {
 
-    constructor(client) {
-        super(client, {
-            name        : "education",
-            description : "Toggles the education module.",
-            usage       : "education",
-            args        : false,
+	constructor(client) {
+		super(client, {
+			name        : 'education',
+			description : 'Toggles the education module.',
+			usage       : 'education',
+			args        : false,
 			directory   : __dirname,
-            aliases     : ["edu"],
-            userPerms   : "SEND_MESSAGES",
-            ownerOnly   : true,
+			aliases     : ['edu'],
+			userPerms   : 'SEND_MESSAGES',
+			ownerOnly   : true,
 			requireData : true,
-        });
-    }
+		});
+	}
 
-    async run(message, args, data) {
+	async run(message, args, data) {
 		let eduStatus = data.guild.plugins.education.enabled;
-		
+
 		if (eduStatus == false) {
 			data.guild.plugins.education.enabled = true;
-		} else {
+		}
+		else {
 			data.guild.plugins.education.enabled = false;
 		}
-		
-		data.guild.markModified("plugins.education.enabled");
+
+		data.guild.markModified('plugins.education.enabled');
 		data.guild.save();
-		
+
 		eduStatus = data.guild.plugins.education.enabled;
 		const status = new MessageEmbed()
 			.setTitle(`**The education module has been toggled to ${eduStatus}**`)
@@ -37,7 +38,7 @@ class EducationCommand extends Command {
 			.setFooter(this.client.config.embed.footer);
 
 		return message.channel.send({
-			embeds: [status]
+			embeds: [status],
 		});
 	}
 }

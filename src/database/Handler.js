@@ -1,17 +1,17 @@
 const Discord = require('discord.js');
 
 const mongoose = require('mongoose');
-const User = require("./models/User"),
-    Guild = require("./models/Guild"),
-    Member = require("./models/Member"),
-    Student = require("./models/Student"),
-    Log = require("./models/Log");
+const User = require('./models/User'),
+	Guild = require('./models/Guild'),
+	Member = require('./models/Member'),
+	Student = require('./models/Student'),
+	Log = require('./models/Log');
 
 
 class Handler {
-    constructor(client) {
-        this.client = client;
-    }
+	constructor(client) {
+		this.client = client;
+	}
 
 	// Loads the database
 	async loadDatabase() {
@@ -20,8 +20,8 @@ class Handler {
 			useUnifiedTopology: true,
 			// useFindAndModify: false
 		}).then(() => {
-			this.client.logger.startup("Connected to mongoDB database!");	
-			mongoose.connection.on("error", console.error.bind(console, "Database connection error!"));
+			this.client.logger.startup('Connected to mongoDB database!');
+			mongoose.connection.on('error', console.error.bind(console, 'Database connection error!'));
 			return true;
 		}).catch((error) => {
 			this.client.logger.fail('An error occured while connecting to the database.');
@@ -29,7 +29,7 @@ class Handler {
 			return false;
 		});
 	}
-	
+
 	// Closes the database connection
 	async closeDatabase() {
 		mongoose.connection.close().then(() => {
@@ -43,22 +43,22 @@ class Handler {
 	}
 
 
-
 	// Finds or creates a new member in the database
 	async getMember(userID, guildID) {
 		let member;
 		try {
 			member = await Member.findOne({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			if (!member) {
 				member = this.createMember(userID, guildID);
 				return member;
 			}
 			return member;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -69,12 +69,13 @@ class Handler {
 		try {
 			member = await Member.create({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			member.save();
 			return member;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -85,23 +86,23 @@ class Handler {
 		try {
 			member = await Member.findOne({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			if (!member) {
 				return false;
 			}
 			await Member.findOneAndDelete({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			return true;
-		} catch (error) {
+		}
+		catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
 		}
 	}
-
 
 
 	// Finds or creates a new student in the database
@@ -110,31 +111,33 @@ class Handler {
 		try {
 			student = await Student.findOne({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			if (!student) {
 				student = this.createStudent(userID, guildID);
 				return student;
 			}
 			return student;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
-	
+
 	// Creates a new member in the database
 	async createStudent(userID, guildID) {
 		let student;
 		try {
 			student = await Student.create({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			student.save();
 			return student;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -145,17 +148,18 @@ class Handler {
 		try {
 			student = await Student.findOne({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			if (!student) {
 				return false;
 			}
 			await Student.findOneAndDelete({
 				userID: userID,
-				guildID: guildID
+				guildID: guildID,
 			});
 			return true;
-		} catch (error) {
+		}
+		catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
@@ -163,21 +167,21 @@ class Handler {
 	}
 
 
-
 	// Finds or creates a new user in the database
 	async getUser(userID) {
 		let user;
 		try {
 			user = await User.findOne({
-				userID: userID
+				userID: userID,
 			});
 			if (!user) {
 				user = this.createUser(userID);
 				return user;
 			}
 			return user;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -187,12 +191,13 @@ class Handler {
 		let user;
 		try {
 			user = await User.create({
-				userID: userID
+				userID: userID,
 			});
 			user.save();
 			return user;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -202,22 +207,22 @@ class Handler {
 		let user;
 		try {
 			user = await User.findOne({
-				userID: userID
+				userID: userID,
 			});
 			if (!user) {
 				return false;
 			}
 			await User.findOneAndDelete({
-				userID: userID
+				userID: userID,
 			});
 			return true;
-		} catch (error) {
+		}
+		catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
 		}
 	}
-	
 
 
 	// Finds or creates a new guild in the database
@@ -225,15 +230,16 @@ class Handler {
 		let guild;
 		try {
 			guild = await Guild.findOne({
-				guildID: guildID
+				guildID: guildID,
 			});
 			if (!guild) {
 				guild = this.createGuild(guildID);
 				return guild;
 			}
 			return guild;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -243,12 +249,13 @@ class Handler {
 		let guild;
 		try {
 			guild = await Guild.create({
-				guildID: guildID
+				guildID: guildID,
 			});
 			guild.save();
 			return guild;
-		} catch (error) {
-			this.client.logger.fail(error.message)
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
 			console.log(error);
 		}
 	}
@@ -258,16 +265,17 @@ class Handler {
 		let guild;
 		try {
 			guild = await Guild.findOne({
-				guildID: guildID
+				guildID: guildID,
 			});
 			if (!guild) {
 				return false;
 			}
 			await Guild.findOneAndDelete({
-				guildID: guildID
+				guildID: guildID,
 			});
 			return true;
-		} catch (error) {
+		}
+		catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;

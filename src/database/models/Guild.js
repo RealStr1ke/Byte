@@ -3,42 +3,42 @@ const config = require('../../config');
 
 const guildSchema = new mongoose.Schema({
 	guildID: { type: String, require: true },
-	
+
 	prefix: { type: String, default: config.prefix },
 	plugins: { type: Object, default: {
 		// Welcome Messages
 		welcome: {
-			enabled: false, 
-			message: null, 
-			channel: null
+			enabled: false,
+			message: null,
+			channel: null,
 		},
 		// Goodbye Messages
 		goodbye: {
-			enabled: false, 
-			message: null, 
-			channel: null
+			enabled: false,
+			message: null,
+			channel: null,
 		},
 		// Autorole
 		autorole: {
-			enabled: false, 
-			role: null 
+			enabled: false,
+			role: null,
 		},
 		// Auto moderation
 		automod: {
-			enabled: false, 
-			ignored: [] 
+			enabled: false,
+			ignored: [],
 		},
 		suggestions: {
 			enabled: false,
-			channel: null
+			channel: null,
 		},
 		modLogs: {
 			enabled: false,
-			channel: null
+			channel: null,
 		},
 		logs: {
 			enabled: false,
-			channel: null
+			channel: null,
 		},
 		education: {
 			enabled: false,
@@ -46,17 +46,17 @@ const guildSchema = new mongoose.Schema({
 			address: null,
 			phone: null,
 			logoURL: null,
-			staff: { 
-				teachers: [], 
-				administration: []
+			staff: {
+				teachers: [],
+				administration: [],
 			},
-			studentData: [], 
-			subjects: []
-		}
-	}},
-	autoDeleteModCommands: { type: Boolean, default: false }, 
+			studentData: [],
+			subjects: [],
+		},
+	} },
+	autoDeleteModCommands: { type: Boolean, default: false },
 	disabledCommands: { type: Array, default: [] },
-	disabledCategories: { type: Array, default: [] }
+	disabledCategories: { type: Array, default: [] },
 });
 
-module.exports = mongoose.model("Guild", guildSchema);
+module.exports = mongoose.model('Guild', guildSchema);

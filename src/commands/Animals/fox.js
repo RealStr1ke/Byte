@@ -1,25 +1,25 @@
-const Command = require("../../structs/Command");
+const Command = require('../../structs/Command');
 const { MessageEmbed } = require('discord.js');
-const axios = require("axios"),
+const axios = require('axios'),
 	path = require('path');
 
 class FoxCommand extends Command {
 
-    constructor(client) {
-        super(client, {
-            name        : "fox",
-            description : "Sends a random fox picture.",
-            usage       : "fox",
-            args        : false,
+	constructor(client) {
+		super(client, {
+			name        : 'fox',
+			description : 'Sends a random fox picture.',
+			usage       : 'fox',
+			args        : false,
 			directory   : __dirname,
-            userPerms   : "SEND_MESSAGES",
-            ownerOnly   : false,
-        });
-    }
+			userPerms   : 'SEND_MESSAGES',
+			ownerOnly   : false,
+		});
+	}
 
-    async run(message) {
-		const response = await axios.get("https://randomfox.ca/floof/");
-		
+	async run(message) {
+		const response = await axios.get('https://randomfox.ca/floof/');
+
 		const FoxEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.image)
@@ -28,10 +28,10 @@ class FoxCommand extends Command {
 			.setTimestamp();
 
 		await message.reply({
-			embeds: [FoxEmbed]
-		});		
-		
-    }
+			embeds: [FoxEmbed],
+		});
+
+	}
 }
 
 module.exports = FoxCommand;
