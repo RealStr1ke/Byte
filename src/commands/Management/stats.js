@@ -1,4 +1,4 @@
-const Command = require('../../structs/Command'),
+const Command = require('../../structs/templates/Command'),
 	{ MessageEmbed } = require('discord.js'),
 	{ dependencies } = require('../../../package.json'),
 	os = require('os'),

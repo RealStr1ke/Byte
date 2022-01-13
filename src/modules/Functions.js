@@ -8,6 +8,51 @@ class Functions {
 		this.client = client;
 	}
 
+	async fetchUser(key) {
+		if (!key || typeof key !== "string") return;
+
+		if (key.match(/^<@!?(\d+)>$/)) {
+			const user = this.client.users.fetch(key.match(/^<@!?(\d+)>$/)[1]).catch(() => {});
+
+			if (user) return user;
+		}
+
+		if (key.match(/^!?(\w+)#(\d+)$/)) {
+			const user = this.client.users.cache.find(
+				u => u.username === key.match(/^!?(\w+)#(\d+)$/)[0] && u.discriminator === key.match(/^!?(\w+)#(\d+)$/)[1],
+			);
+
+			if (user) return user;
+		}
+
+		return await this.client.users.fetch(key).catch(() => {});
+	}
+
+	async fetchMember(key, guild) {
+		if (!key || typeof key !== "string") {
+			return;
+		}
+
+		if (key.match(/^<@!?(\d+)>$/)) {
+			const member = guild.members.fetch(key.match(/^<@!?(\d+)>$/)[1]).catch(() => {});
+
+			if (member) {
+				return member;
+			}
+		}
+
+		if (key.match(/^!?(\w+)#(\d+)$/)) {
+			guild = await guild.fetch();
+			const member = guild.members.cache.find(m => m.user.tag === key);
+
+			if (member) {
+				return member;
+			}
+		}
+
+		return await guild.members.fetch(key).catch(() => {});
+	}
+
 	codeBlock(language, text) {
 		return `\`\`\`${language}\n${text || String.fromCharCode(8203)}\`\`\``;
 	}

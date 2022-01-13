@@ -1,4 +1,4 @@
-const Command = require('../../structs/Command');
+const Command = require('../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 
@@ -7,7 +7,7 @@ class ShutdownCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name        : 'shutdown',
-			description : 'Shows the bot\'s connection status to the Discord API.',
+			description : 'Shuts the bot down.',
 			usage       : 'shutdown',
 			args        : false,
 			directory   : __dirname,
@@ -19,7 +19,7 @@ class ShutdownCommand extends Command {
 
 	async run(message) {
 		message.reply('**Bot is now shutting down.**');
-		await this.client.util.sleep(1);
+		await this.client.functions.sleep(1);
 		await this.client.destroy();
 		await process.exit();
 	}

@@ -1,4 +1,4 @@
-const Event = require('../../structs/Event');
+const Event = require('../../structs/templates/Event');
 class messageUpdate extends Event {
 	constructor(client) {
 		super(client);

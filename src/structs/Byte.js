@@ -1,5 +1,8 @@
 // Submodules
 const { Client, Collection, MessageEmbed, Util } = require('discord.js');
+const { Routes } = require('discord-api-types/v9');
+const { REST } = require('@discordjs/rest');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 // const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require('discord-player');
 
@@ -14,14 +17,15 @@ const glob = require('glob');
 const util = require('util');
 
 // Helpers
-const Functions = require('../helpers/Functions');
+const Functions = require('../modules/Functions');
 const Database = require('../database/Handler');
-const Logger = require('../helpers/Logger');
-const Cli = require('../helpers/Cli');
+const Logger = require('../modules/Logger');
+const Cli = require('../modules/Cli');
 
 // Structures
-const Command = require('./Command.js');
-const Event = require('./Event.js');
+const Command = require('./templates/Command.js');
+const Slash = require('./templates/Slash.js');
+const Event = require('./templates/Event.js');
 
 // Config
 const config = require('../config');
@@ -40,6 +44,8 @@ class Byte extends Client {
 
 		this.commands = new Collection();
 		this.commands.aliases = new Collection();
+		this.commands.slash = new Collection();
+		this.commands.slash.data = new Collection();
 		this.events = new Collection();
 		this.slash = new Collection();
 
@@ -142,6 +148,37 @@ class Byte extends Client {
 			if (!(file instanceof Command)) return;
 			this.loadCommand(file.name, commandPath);
 		}
+	}
+
+	async loadSlashCommands() {
+		const cmdFiles = await this.getFiles('src/slash', '.js');
+		let commands = []
+		if (this.config.debug) console.log(cmdFiles);
+		for (const commandPath of cmdFiles) {
+			const file = new (require(path.resolve(commandPath)))(this);
+			if (!(file instanceof Slash)) return;
+			this.commands.slash.set(file.name, file);
+			commands.push(file.command());
+			this.commands.slash.data.set(file.name, file.command().toJSON());
+			/*
+			const command = file.command().toJSON();
+			console.log(command);
+			await this.api.applications(this.user.id).commands.post({
+				data: command
+			});
+			*/
+		}
+		commands = commands.map(command => command.toJSON());
+		if (this.config.debug) console.log(commands);
+		const rest = new REST({ 
+			version: '9' 
+		}).setToken(this.config.token);
+		await rest.put(
+			Routes.applicationCommands(this.user.id), { 
+				body: commands
+			},
+		);
+
 	}
 
 	async loadCommand(commandName, commandPath) {

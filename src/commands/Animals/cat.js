@@ -1,4 +1,4 @@
-const Command = require('../../structs/Command');
+const Command = require('../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const { default: axios } = require('axios');

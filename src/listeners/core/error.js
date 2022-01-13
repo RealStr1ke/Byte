@@ -1,4 +1,4 @@
-const Event = require('../../structs/Event');
+const Event = require('../../structs/templates/Event');
 const { MessageEmbed } = require('discord.js');
 
 class error extends Event {

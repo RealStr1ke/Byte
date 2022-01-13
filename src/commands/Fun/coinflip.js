@@ -1,4 +1,4 @@
-const Command = require('../../structs/Command');
+const Command = require('../../structs/templates/Command');
 const path = require('path');
 
 class CoinFlipCommand extends Command {

@@ -1,4 +1,4 @@
-const Command = require('../../structs/Command'),
+const Command = require('../../structs/templates/Command'),
 	figlet = require('figlet'),
 	util = require('util'),
 	figletAsync = util.promisify(figlet);

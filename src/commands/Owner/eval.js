@@ -1,4 +1,4 @@
-const Command = require('../../structs/Command');
+const Command = require('../../structs/templates/Command');
 const Discord = require('discord.js');
 const { inspect } = require('util');
 const path = require('path');

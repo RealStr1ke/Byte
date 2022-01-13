@@ -3,29 +3,35 @@ const { MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const { Canvacord } = require('canvacord');
 
-class InvertCommand extends Command {
+class ChangeMyMindCommand extends Command {
 
 	constructor(client) {
 		super(client, {
-			name        : 'invert',
+			name        : 'changemymind',
 			description : 'Inverts the given user\'s avatar.',
-			usage       : 'invert <User>',
-			args        : false,
+			usage       : 'cmm <User>',
+			aliases     : ['cmm'],
+			args        : true,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
 		});
 	}
 
 	async run(message, args) {
-		const User = (await this.client.resolveUser(args[0])) || message.author;
-		const inverted = await Canvacord.invert(User.displayAvatarURL({ format: 'png' }));
-		const invert = new MessageAttachment(inverted, 'invert.png');
+		if (!args || !args[0]) {
+			return await message.replyT(`Please provide text.`);
+		}
+
+		args = args.join(` `);
+	
+		const cmm = await Canvacord.changemymind(args);
+		const Image = new MessageAttachment(cmm, 'cmm.png');
 
 		return await message.reply({
-			files: [invert],
+			files: [Image],
 		});
 
 	}
 }
 
-module.exports = InvertCommand;
+module.exports = ChangeMyMindCommand;
