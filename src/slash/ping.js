@@ -18,7 +18,7 @@ class PingCommand extends Slash {
 
 	async run(interaction) {
 		const sent = await interaction.reply('Pinging...');
-		const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
+		const timeDiff = (sent.editedAt || sent.createdAt) - (interaction.createdAt);
 		const embed = new MessageEmbed()
 			.setThumbnail(this.client.avatar)
     	    .setTitle(`${this.client.user.username} Ping`)
@@ -27,7 +27,7 @@ class PingCommand extends Slash {
 	            `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
 	        ].join('\n'))
 	        .setColor(this.client.color)
-	        .setFooter(`Requested by ${message.author.username}`)
+	        .setFooter(`Requested by ${interaction.user.username}`)
 	        .setTimestamp();
 
 		sent.edit('**Pinged!**');
@@ -37,11 +37,10 @@ class PingCommand extends Slash {
 	}
 
 	command() {
-		const command = new SlashCommandBuilder().setName(this.name).setDescription(this.description).setDefaultPermission(true);
-		const rawData = command.toJSON();
-		// console.log(rawData)
-		this.client.functions.sleep(2);
-		// return rawData;
+		const command = new SlashCommandBuilder()
+			.setName(this.name)
+			.setDescription(this.description)
+			.setDefaultPermission(true);
 		return command;
 	}
 }

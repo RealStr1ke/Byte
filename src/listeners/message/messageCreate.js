@@ -42,7 +42,7 @@ class messageCreate extends Event {
 
 		// Trims the message into a potential command and arguments
 		const [ cmd, ...args ] = message.content.slice(prefix.length).trim().split(/ +/g);
-		const command = client.commands.get(cmd.toLowerCase()) || client.commands.get(client.commands.aliases.get(cmd.toLowerCase()));
+		const command = this.client.commands.get(cmd.toLowerCase()) || client.commands.get(client.commands.aliases.get(cmd.toLowerCase()));
 
 		if (!command) return; // Returns if the requested command wasn't found
 
