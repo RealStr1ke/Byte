@@ -17,8 +17,9 @@ class PingCommand extends Slash {
 	}
 
 	async run(interaction) {
-		const sent = await interaction.reply('Pinging...');
-		const timeDiff = (sent.editedAt || sent.createdAt) - (interaction.createdAt);
+		// const time = new Date().getTime() - interaction.createdTimestamp;
+		// const sent = await interaction.reply('Pinging...');
+		const timeDiff = new Date().getTime() - (interaction.createdTimestamp);
 		const embed = new MessageEmbed()
 			.setThumbnail(this.client.avatar)
     	    .setTitle(`${this.client.user.username} Ping`)
@@ -30,8 +31,7 @@ class PingCommand extends Slash {
 	        .setFooter(`Requested by ${interaction.user.username}`)
 	        .setTimestamp();
 
-		sent.edit('**Pinged!**');
-		sent.edit({
+		return interaction.reply({
 			embeds: [embed],
 		});
 	}

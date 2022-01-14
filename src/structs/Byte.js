@@ -152,7 +152,7 @@ class Byte extends Client {
 
 	async loadSlashCommands() {
 		const cmdFiles = await this.getFiles('src/slash', '.js');
-		let commands = []
+		let commands = [];
 		if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
@@ -170,12 +170,12 @@ class Byte extends Client {
 		}
 		commands = commands.map(command => command.toJSON());
 		if (this.config.debug) console.log(commands);
-		const rest = new REST({ 
-			version: '9' 
+		const rest = new REST({
+			version: '9',
 		}).setToken(this.config.token);
 		await rest.put(
-			Routes.applicationCommands(this.user.id), { 
-				body: commands
+			Routes.applicationCommands(this.user.id), {
+				body: commands,
 			},
 		);
 

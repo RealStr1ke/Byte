@@ -18,11 +18,11 @@ class DeployCommand extends Command {
 	}
 
 	async run(message) {
-        this.client.logger.startup('Application commands deploying.');
+		this.client.logger.startup('Application commands deploying.');
 		await client.application?.commands.set(this.client.commands.slash.map(c => c.data))
 			.catch(error => this.client.logger.fail(error.message));
-        this.client.logger.startup('Application commands deployed.');
-		
+		this.client.logger.startup('Application commands deployed.');
+
 	}
 }
 

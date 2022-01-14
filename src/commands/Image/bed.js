@@ -20,8 +20,8 @@ class BedCommand extends Command {
 		const User1 = (await this.client.resolveUser(args[0])) || message.author;
 		const User2 = (await this.client.resolveUser(args[1])) || message.author;
 		const bed = await Canvacord.bed(
-			User1.displayAvatarURL({ format: "png" }),
-			User2.displayAvatarURL({ format: "png" }),
+			User1.displayAvatarURL({ format: 'png' }),
+			User2.displayAvatarURL({ format: 'png' }),
 		);
 		const Image = new MessageAttachment(bed, 'bed.png');
 

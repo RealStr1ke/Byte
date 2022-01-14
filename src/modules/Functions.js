@@ -9,7 +9,7 @@ class Functions {
 	}
 
 	async fetchUser(key) {
-		if (!key || typeof key !== "string") return;
+		if (!key || typeof key !== 'string') return;
 
 		if (key.match(/^<@!?(\d+)>$/)) {
 			const user = this.client.users.fetch(key.match(/^<@!?(\d+)>$/)[1]).catch(() => {});
@@ -29,7 +29,7 @@ class Functions {
 	}
 
 	async fetchMember(key, guild) {
-		if (!key || typeof key !== "string") {
+		if (!key || typeof key !== 'string') {
 			return;
 		}
 
