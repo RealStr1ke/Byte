@@ -28,7 +28,10 @@ class PingCommand extends Slash {
 	            `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
 	        ].join('\n'))
 	        .setColor(this.client.color)
-	        .setFooter(`Requested by ${interaction.user.username}`)
+	        .setFooter({
+				text: `Requested by ${interaction.user.username}`,
+				iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 })
+			})
 	        .setTimestamp();
 
 		return interaction.reply({

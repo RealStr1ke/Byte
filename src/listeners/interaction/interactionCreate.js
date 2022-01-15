@@ -10,11 +10,10 @@ class interactionCreate extends Event {
 	}
 
 	async run(interaction) {
-		if (interaction) {
+		if (interaction.isCommand()) {
 			const client = this.client;
 
-			console.log(interaction.name);
-			// if (!interaction.isCommand()) return;
+			if (!interaction.isCommand()) return;
 			if (interaction.user.bot) return;
 
 			// Collecting information from the database
@@ -53,7 +52,7 @@ class interactionCreate extends Event {
 				this.client.logger.fail(error.message);
 			}
 			// Logs the command usage to the console
-			this.client.logger.command(interaction.user.tag, interaction.name, interaction.guild.name);
+			this.client.logger.command(interaction.user.tag, `/${interaction.commandName}`, interaction.guild.name);
 		}
 	}
 }
