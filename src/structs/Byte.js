@@ -149,6 +149,16 @@ class Byte extends Client {
 			this.loadCommand(file.name, commandPath);
 		}
 	}
+	async reloadCommands() {
+		const cmdFiles = await this.getFiles('src/commands', '.js');
+		if (this.config.debug) console.log(cmdFiles);
+		for (const commandPath of cmdFiles) {
+			const file = new (require(path.resolve(commandPath)))(this);
+			if (!(file instanceof Command)) return;
+			this.unloadCommand(file.name, commandPath);
+			this.loadCommand(file.name, commandPath);
+		}
+	}
 
 	async loadSlashCommands() {
 		const cmdFiles = await this.getFiles('src/slash', '.js');

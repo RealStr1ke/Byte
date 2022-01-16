@@ -82,6 +82,15 @@ class messageCreate extends Event {
 		}
 		catch (error) {
 			this.client.logger.fail(error.message);
+			const embed = new MessageEmbed()
+				.setColor(this.client.config.embed.color)
+				.setTitle('Error')
+				.setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)
+				.setTimestamp();
+			this.client.support.errors.send({
+				embeds: embed,
+			});
+			message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
 		}
 		// Logs the command usage to the console
 		this.client.logger.command(message.author.tag, message.content, message.guild.name);
