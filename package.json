@@ -51,7 +51,7 @@
     "js-beautify": "^1.14.0",
     "keyv": "^4.0.4",
     "mongoose": "^6.1.2",
-    "node-fetch": "^2.6.6",
+    "node-fetch": "^2.6.7",
     "npm": "^8.3.1",
     "os": "^0.1.2",
     "os-utils": "^0.0.14",
