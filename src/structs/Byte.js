@@ -3,7 +3,7 @@ const { Client, Collection, MessageEmbed, Util } = require('discord.js');
 const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-// const { GiveawaysManager } = require("discord-giveaways");
+const { GiveawaysManager } = require("discord-giveaways");
 const { Player } = require('discord-player');
 
 // Modules
@@ -17,10 +17,10 @@ const glob = require('glob');
 const util = require('util');
 
 // Helpers
-const Functions = require('../modules/Functions');
-const Database = require('../database/Handler');
-const Logger = require('../modules/Logger');
-const Cli = require('../modules/Cli');
+const Functions = require('../modules/helpers/Functions');
+const Database = require('../modules/database/Handler');
+const Logger = require('../modules/helpers/Logger');
+const Cli = require('../modules/helpers/Cli');
 
 // Structures
 const Command = require('./templates/Command.js');
@@ -57,11 +57,11 @@ class Byte extends Client {
 
 		// Database
 		this.database = new Database(this);
-		this.logs = require('../database/models/Log');
-		this.guildsData = require('../database/models/Guild');
-		this.membersData = require('../database/models/Member');
-		this.usersData = require('../database/models/User');
-		this.studentsData = require('../database/models/Student');
+		this.logs = require('../modules/database/models/Log');
+		this.guildsData = require('../modules/database/models/Guild');
+		this.membersData = require('../modules/database/models/Member');
+		this.usersData = require('../modules/database/models/User');
+		this.studentsData = require('../modules/database/models/Student');
 
 		// Database Cache
 		this.databaseCache = {};
@@ -87,16 +87,16 @@ class Byte extends Client {
 			this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI);
 		}
 
-		// this.giveawaysManager = new GiveawaysManager(this, {
-		// 	storage: `./giveaways.json`,
-		// 	updateCoundownEvery: 10000,
-		// 	default: {
-		// 		botsCanWin: false,
-		// 		exemptPermissions: [ 'MANAGE_MESSAGES', 'ADMINISTRATOR' ],
-		// 		embedColor: this.config.embed.color,
-		// 		reaction: '🎉',
-		// 	},
-		// });
+		this.giveawaysManager = new GiveawaysManager(this, {
+			storage: `./src/modules/data/giveaways.json`,
+			updateCoundownEvery: 10000,
+			default: {
+				botsCanWin: false,
+				exemptPermissions: [ 'MANAGE_MESSAGES', 'ADMINISTRATOR' ],
+				embedColor: this.config.embed.color,
+				reaction: '🎉',
+			},
+		});
 	}
 
 	async init() {
@@ -141,7 +141,7 @@ class Byte extends Client {
 	}
 	// Command Handler
 	async loadCommands() {
-		const cmdFiles = await this.getFiles('src/commands', '.js');
+		const cmdFiles = await this.getFiles('src/commands/commands', '.js');
 		if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
@@ -150,7 +150,7 @@ class Byte extends Client {
 		}
 	}
 	async reloadCommands() {
-		const cmdFiles = await this.getFiles('src/commands', '.js');
+		const cmdFiles = await this.getFiles('src/commands/commands', '.js');
 		if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
@@ -161,7 +161,7 @@ class Byte extends Client {
 	}
 
 	async loadSlashCommands() {
-		const cmdFiles = await this.getFiles('src/slash', '.js');
+		const cmdFiles = await this.getFiles('src/commands/slash', '.js');
 		let commands = [];
 		if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
