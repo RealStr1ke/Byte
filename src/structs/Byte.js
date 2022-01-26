@@ -171,11 +171,11 @@ class Byte extends Client {
 			commands.push(file.command());
 			this.commands.slash.data.set(file.name, file.command().toJSON());
 			/*
-			const command = file.command().toJSON();
-			console.log(command);
-			await this.api.applications(this.user.id).commands.post({
-				data: command
-			});
+				const command = file.command().toJSON();
+				console.log(command);
+				await this.api.applications(this.user.id).commands.post({
+					data: command
+				});
 			*/
 		}
 		commands = commands.map(command => command.toJSON());

@@ -11,3 +11,4 @@ Corebot/*
 ignore/*
 lang/*
 .gitpod.yml
+*/giveaways.json

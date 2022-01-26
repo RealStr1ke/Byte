@@ -72,6 +72,9 @@ class messageCreate extends Event {
 
 		// Runs the command
 		try {
+			message.channel.sendTyping();
+			// command.setInstance(message.author.id);
+			// command.setCooldown(message.author.id);
 			command.setMessage(message);
 			if (command.requireData) {
 				command.run(message, args, data);

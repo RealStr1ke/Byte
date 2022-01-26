@@ -281,6 +281,18 @@ class Handler {
 			return false;
 		}
 	}
+
+	async getGuildPrefix(guildID) {
+		let guild;
+		try {
+			this.getGuild(guildID);
+			return guild.prefix;
+		}
+		catch (error) {
+			this.client.logger.fail(error.message);
+			console.log(error);
+		}
+	}
 }
 
 module.exports = Handler;
