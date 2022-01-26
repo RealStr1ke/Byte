@@ -3,13 +3,14 @@ const { MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const { Canvacord } = require('canvacord');
 
-class InvertCommand extends Command {
+class FacePalmCommand extends Command {
 
 	constructor(client) {
 		super(client, {
-			name        : 'invert',
-			description : 'Inverts the given user\'s avatar.',
-			usage       : 'invert <User>',
+			name        : 'facepalm',
+			description : 'Smh.',
+			usage       : 'facepalm <User>',
+			aliases     : ['fp'],
 			args        : false,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
@@ -18,8 +19,8 @@ class InvertCommand extends Command {
 
 	async run(message, args) {
 		const User = (await this.client.resolveUser(args[0])) || message.author;
-		const inverted = await Canvacord.invert(User.displayAvatarURL({ format: 'png' }));
-		const Image = new MessageAttachment(inverted, 'invert.png');
+		const facepalm = await Canvacord.facepalm(User.displayAvatarURL({ format: 'png', dynamic: true }));
+		const Image = new MessageAttachment(facepalm, 'facepalm.png');
 
 		return await message.reply({
 			files: [Image],
@@ -28,4 +29,4 @@ class InvertCommand extends Command {
 	}
 }
 
-module.exports = InvertCommand;
+module.exports = FacePalmCommand;

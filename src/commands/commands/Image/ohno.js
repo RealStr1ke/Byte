@@ -3,14 +3,14 @@ const { MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path');
 const { Canvacord } = require('canvacord');
 
-class ChangeMyMindCommand extends Command {
+class OhNoCommand extends Command {
 
 	constructor(client) {
 		super(client, {
-			name        : 'changemymind',
-			description : 'Sends a "Change My Mind" image with the given text.',
-			usage       : 'cmm <Text>',
-			aliases     : ['cmm'],
+			name        : 'ohno',
+			description : 'Imagine being stupid smh.',
+			usage       : 'ohno <Text>',
+			aliases     : ['stupid'],
 			args        : true,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
@@ -24,8 +24,8 @@ class ChangeMyMindCommand extends Command {
 
 		args = args.join(' ');
 
-		const cmm = await Canvacord.changemymind(args);
-		const Image = new MessageAttachment(cmm, 'cmm.png');
+		const ohno = await Canvacord.ohno(args);
+		const Image = new MessageAttachment(ohno, 'ohno.png');
 
 		return await message.reply({
 			files: [Image],
@@ -34,4 +34,4 @@ class ChangeMyMindCommand extends Command {
 	}
 }
 
-module.exports = ChangeMyMindCommand;
+module.exports = OhNoCommand;
