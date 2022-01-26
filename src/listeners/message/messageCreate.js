@@ -1,4 +1,5 @@
 const Event = require('../../structs/templates/Event');
+const { MessageEmbed } = require('discord.js');
 
 class messageCreate extends Event {
 	constructor(client) {
@@ -46,15 +47,36 @@ class messageCreate extends Event {
 
 		if (!command) return; // Returns if the requested command wasn't found
 
-		// Returns if the following requirements weren't met
-		if (command.nsfw && !message.channel.nsfw) return message.reply('**You must run this command in an NSFW channel.**');
+		// Stops the command from executing if an instance is already running
+		const instanceExists = command.isInstanceRunning(message.author.id)
+		if (instanceExists) {
+			const inProgress = new MessageEmbed()
+			.setDescription(`Command already in progress, please wait for it.`);
+			return message.reply({
+				embeds: [inProgress]
+			}).then(reply => {
+				setTimeout( () => reply.delete(), 3000 )
+			});
+		} 
+
+		// Returns if the following requirements weren't met	  
+		if (command.nsfw && !message.channel.nsfw) {
+			const nsfw = new MessageEmbed()
+			.setTitle('You can\'t use this command.')
+			.setDescription(`NSFW Commands can only be run in NSFW channels.`)
+			.setColor(this.client.config.embed.color)
+			.setFooter(this.client.config.embed.footer)
+			.setAuthor(`${message.author.tag}`, message.author.displayAvatarURL())
+			.setTimestamp();
+			return message.reply(nsfw);
+		};
 		if (command.education && !message.guild) return message.reply('You can\'t use an education command in DMs.');
 		if (!command.guildOnly && !message.guild) return message.reply('**This command can only be used in guilds.**');
 		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
 		if (command.args && !args.length) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 		if (command.education && !data.guild.education) return message.reply('This guild doesn\'t have the education module enabled.');
-
-
+		
+		
 		// Logs the command usage to the database
 		const log = new this.client.logs({
 			commandName: command.name,
@@ -69,11 +91,13 @@ class messageCreate extends Event {
 			},
 		});
 		log.save();
-
+		
 		// Runs the command
 		try {
 			message.channel.sendTyping();
-			// command.setInstance(message.author.id);
+
+
+			command.setInstance(message.author.id);
 			// command.setCooldown(message.author.id);
 			command.setMessage(message);
 			if (command.requireData) {
@@ -82,21 +106,23 @@ class messageCreate extends Event {
 			else {
 				command.run(message, args);
 			}
+			command.done(message.author.id);
 		}
 		catch (error) {
+			command.done(message.author.id);
 			this.client.logger.fail(error.message);
-			const embed = new MessageEmbed()
+			const ErrorEmbed = new MessageEmbed()
 				.setColor(this.client.config.embed.color)
 				.setTitle('Error')
 				.setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)
 				.setTimestamp();
 			this.client.support.errors.send({
-				embeds: embed,
+				embeds: ErrorEmbed,
 			});
-			message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
+			if (this.client.config.debug) message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
 		}
 		// Logs the command usage to the console
-		this.client.logger.command(message.author.tag, message.content, message.guild.name);
+		return this.client.logger.command(message.author.tag, message.content, message.guild.name);
 	}
 }
 module.exports = messageCreate;

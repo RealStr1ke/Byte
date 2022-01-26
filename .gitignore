@@ -10,5 +10,10 @@ Corebot/*
 *.old
 ignore/*
 lang/*
+
+# GitPod Files
 .gitpod.yml
+
+# Giveaways File
+giveaways.json
 */giveaways.json
