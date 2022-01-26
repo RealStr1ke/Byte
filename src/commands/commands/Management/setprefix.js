@@ -1,13 +1,13 @@
 const Command = require('../../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
-class PrefixCommand extends Command {
+class SetPrefixCommand extends Command {
 
 	constructor(client) {
 		super(client, {
-			name        : 'prefix',
+			name        : 'setprefix',
 			description : 'Changes the prefix of the bot for the current guild.',
-			usage       : 'prefix <prefix>',
+			usage       : 'setprefix <prefix>',
 			args        : false,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
@@ -37,4 +37,4 @@ class PrefixCommand extends Command {
 	}
 }
 
-module.exports = PrefixCommand;
+module.exports = SetPrefixCommand;
