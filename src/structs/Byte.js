@@ -17,7 +17,7 @@ const glob = require('glob');
 const util = require('util');
 
 // Helpers
-const Functions = require('../modules/helpers/Functions');
+const Utils = require('../modules/helpers/Utils');
 const Database = require('../modules/database/Handler');
 const Logger = require('../modules/helpers/Logger');
 const Cli = require('../modules/helpers/Cli');
@@ -50,7 +50,7 @@ class Byte extends Client {
 		this.slash = new Collection();
 
 		this.wait = util.promisify(setTimeout);
-		this.functions = new Functions(this);
+		this.utils = new Utils(this);
 		this.Cli = new Cli(this);
 		this.logger = new Logger(this);
 		this.stopwatch = new Stopwatch();

@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 
-class Functions {
+class Utils {
 	constructor(client) {
 		if (!client) {
 			throw new TypeError('Discord client must be valid.');
@@ -122,9 +122,9 @@ class Functions {
 	objectIsEmpty = (obj) => {
 		return Object.entries(obj).length === 0;
 	};
-	sleep(ms) {
+	async sleep(ms) {
 		return new Promise((resolve) => {
-		    setTimeout(resolve, ms);
+		    setTimeout(resolve, (ms * 1000));
 		});
 	}
 	toggleCase(str) {
@@ -201,11 +201,11 @@ class Functions {
 	}
 }
 
-Functions.titleCaseVariants = {
+Utils.titleCaseVariants = {
 	textchannel: 'TextChannel',
 	voicechannel: 'VoiceChannel',
 	categorychannel: 'CategoryChannel',
 	guildmember: 'GuildMember',
 };
 
-module.exports = Functions;
+module.exports = Utils;

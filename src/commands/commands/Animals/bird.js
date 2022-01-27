@@ -1,0 +1,35 @@
+const Command = require('../../../structs/templates/Command');
+const { MessageEmbed } = require('discord.js');
+const path = require('path');
+const { default: axios } = require('axios');
+
+class BirdCommand extends Command {
+
+	constructor(client) {
+		super(client, {
+			name        : 'bird',
+			description : 'Responds with a random bird picture.',
+			usage       : 'bird',
+			args        : false,
+			directory   : __dirname,
+			userPerms   : 'SEND_MESSAGES',
+			ownerOnly   : false,
+		});
+	}
+
+	async run(message) {
+		const response = await axios.get('http://shibe.online/api/birds');
+		const BirdEmbed = new MessageEmbed()
+			.setTitle('**😍 | Awwwww | 😍**')
+			.setImage(response.data[0])
+			.setFooter({
+                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
+                iconURL: this.client.user.displayAvatarURL()
+            });
+		return message.channel.send({
+			embeds: [BirdEmbed],
+		});
+	}
+}
+
+module.exports = BirdCommand;
