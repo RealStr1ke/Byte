@@ -23,7 +23,10 @@ class DuckCommand extends Command {
 		const DuckEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.url)
-			.setFooter(`${response.message} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setFooter({
+                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
+                iconURL: this.client.user.displayAvatarURL()
+            })
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 

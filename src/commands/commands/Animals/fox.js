@@ -23,7 +23,10 @@ class FoxCommand extends Command {
 		const FoxEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.image)
-			.setFooter(`${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setFooter({
+                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
+                iconURL: this.client.user.displayAvatarURL()
+            })
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 

@@ -23,7 +23,11 @@ class CatCommand extends Command {
 		const CatEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.file)
-			.setFooter(`Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL());
+			.setFooter({
+                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
+                iconURL: this.client.user.displayAvatarURL()
+            })
+			.setTimestamp();
 		return message.channel.send({
 			embeds: [CatEmbed],
 		});
