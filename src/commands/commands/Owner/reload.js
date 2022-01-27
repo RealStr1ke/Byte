@@ -18,7 +18,7 @@ class ReloadCommand extends Command {
 
 	async run(message, args) {
 		if (args.length) {
-			let command = args[0];
+			const command = args[0];
 			const cmd = this.client.commands.get(command) || this.client.commands.get(this.client.commands.aliases.get(command));
 			if (!cmd) {
 				return message.channel.send('The given command was not found.');
@@ -27,7 +27,7 @@ class ReloadCommand extends Command {
 			await this.client.unloadCommand(cmd.name, cmdLoc);
 			await this.client.loadCommand(cmd.name, cmdLoc);
 			message.channel.send(`The command \`${cmd.name}\` was successfully reloaded.`);
-		} 
+		}
 	}
 }
 

@@ -11,14 +11,14 @@ class KickCommand extends Command {
 			args        : true,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
-            botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
+			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
 			guildOnly   : true,
 			requireData : true,
 		});
 	}
 
 	async run(message, args, data) {
-		
+
 	}
 }
 

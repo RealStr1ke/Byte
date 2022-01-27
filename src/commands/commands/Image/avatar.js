@@ -30,12 +30,12 @@ class AvatarCommand extends Command {
 			.setImage(avatar.default)
 			.setDescription(`**Links: [PNG](${avatar.png}) | [JPG](${avatar.jpg}) | [GIF](${avatar.gif}) | [WEBP](${avatar.webp})**`)
 			.setFooter({
-				text: `Requested by ${message.member.displayName}`, 
-				iconURL: message.author.displayAvatarURL({ dynamic: true, size: 1024 })
+				text: `Requested by ${message.member.displayName}`,
+				iconURL: message.author.displayAvatarURL({ dynamic: true, size: 1024 }),
 			})
 			.setAuthor({
-				name: member.user.tag, 
-				iconURL: avatar.default
+				name: member.user.tag,
+				iconURL: avatar.default,
 			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();

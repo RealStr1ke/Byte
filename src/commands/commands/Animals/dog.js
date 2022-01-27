@@ -24,9 +24,9 @@ class DogCommand extends Command {
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.message)
 			.setFooter({
-                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
-                iconURL: this.client.user.displayAvatarURL()
-            })
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setTimestamp();
 		return message.channel.send({
 			embeds: [DogEmbed],

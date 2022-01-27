@@ -23,8 +23,8 @@ class CatCommand extends Slash {
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.file)
 			.setFooter({
-				text: `Requested by ${interaction.user.tag} • ${this.client.config.embed.footer}`, 
-				iconURL: this.client.user.displayAvatarURL()
+				text: `Requested by ${interaction.user.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
 			});
 		return interaction.reply({
 			embeds: [CatEmbed],

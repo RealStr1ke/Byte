@@ -10,7 +10,7 @@ class SlapCommand extends Command {
 			name        : 'slap',
 			description : 'Sends an image of the given user being slapped XD.',
 			usage       : 'slap <User>',
-            aliases     : ['punch'],
+			aliases     : ['punch'],
 			args        : false,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
@@ -20,9 +20,9 @@ class SlapCommand extends Command {
 	async run(message, args) {
 		const User = (await this.client.resolveUser(args[0])) || message.author;
 		const slapped = await Canvacord.slap(
-            message.author.displayAvatarURL({ format: 'png', dynamic: true }),
-            User2.displayAvatarURL({ format: 'png', dynamic: true }),
-        );
+			message.author.displayAvatarURL({ format: 'png', dynamic: true }),
+			User2.displayAvatarURL({ format: 'png', dynamic: true }),
+		);
 		const Image = new MessageAttachment(slapped, 'slap.png');
 
 		return await message.reply({

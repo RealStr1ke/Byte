@@ -23,9 +23,9 @@ class ShibeCommand extends Command {
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data[0])
 			.setFooter({
-                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
-                iconURL: this.client.user.displayAvatarURL()
-            });
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			});
 		return message.channel.send({
 			embeds: [ShibeEmbed],
 		});

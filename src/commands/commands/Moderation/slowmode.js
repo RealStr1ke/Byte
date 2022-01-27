@@ -12,25 +12,25 @@ class SlowModeCommand extends Command {
 			args        : true,
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
-            botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
+			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
 			guildOnly   : true,
 		});
 	}
 
 	async run(message, args, data) {
-        if (isNaN(args[0])) {
-            return await message.reply(`That's not a number.`);
-        }
+		if (isNaN(args[0])) {
+			return await message.reply('That\'s not a number.');
+		}
 
-        if (args[0] > 21600) {
-            return await message.reply(
-                `Please pick a shorter time. Discord allows a slowmode time of up to 6 hours.`,
-            );
-        }
-    
-        message.channel.setRateLimitPerUser(args[0]);
-        return await message.reply(`Slowmode is now ${args[0]} seconds.`);
-    }
+		if (args[0] > 21600) {
+			return await message.reply(
+				'Please pick a shorter time. Discord allows a slowmode time of up to 6 hours.',
+			);
+		}
+
+		message.channel.setRateLimitPerUser(args[0]);
+		return await message.reply(`Slowmode is now ${args[0]} seconds.`);
+	}
 }
 
 module.exports = SlowModeCommand;

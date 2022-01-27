@@ -23,9 +23,9 @@ class KoalaCommand extends Command {
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.link)
 			.setFooter({
-                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
-                iconURL: this.client.user.displayAvatarURL()
-            });
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			});
 		return message.channel.send({
 			embeds: [KoalaEmbed],
 		});

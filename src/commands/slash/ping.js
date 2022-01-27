@@ -30,7 +30,7 @@ class PingCommand extends Slash {
 	        .setColor(this.client.color)
 	        .setFooter({
 				text: `Requested by ${interaction.user.username}`,
-				iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 })
+				iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }),
 			})
 	        .setTimestamp();
 

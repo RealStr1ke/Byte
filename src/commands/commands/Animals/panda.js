@@ -19,13 +19,13 @@ class PandaCommand extends Command {
 
 	async run(message) {
 		const response = await axios.get('https://some-random-api.ml/img/panda');
-		const  PandaEmbed = new MessageEmbed()
+		const PandaEmbed = new MessageEmbed()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.link)
 			.setFooter({
-                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
-                iconURL: this.client.user.displayAvatarURL()
-            });
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			});
 		return message.channel.send({
 			embeds: [PandaEmbed],
 		});

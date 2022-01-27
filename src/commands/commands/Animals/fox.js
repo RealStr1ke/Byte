@@ -24,9 +24,9 @@ class FoxCommand extends Command {
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.image)
 			.setFooter({
-                text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`, 
-                iconURL: this.client.user.displayAvatarURL()
-            })
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 

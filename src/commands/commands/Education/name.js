@@ -20,22 +20,22 @@ class NameCommand extends Command {
 	}
 
 	async run(message, args, data) {
-		
+
 		if (!args || args.length < 1) {
 			const NameEmbed = new MessageEmbed()
-			.setTitle(`**Your name is ${data.student.firstName + ' ' + data.student.lastName}**`)
-			.setColor(this.client.config.embed.color)
-			.setFooter(this.client.config.embed.footer)
-			.setTimestamp();
+				.setTitle(`**Your name is ${data.student.firstName + ' ' + data.student.lastName}**`)
+				.setColor(this.client.config.embed.color)
+				.setFooter(this.client.config.embed.footer)
+				.setTimestamp();
 			return message.channel.send({
 				embeds: [NameEmbed],
 		    });
 		}
-		
+
 		if (!args[0] || !args[1]) {
 			return message.reply('You must provide both your first name and your last name.');
 		}
-		
+
 		const firstName = args[0];
 		const lastName = args[1];
 

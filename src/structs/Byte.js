@@ -3,7 +3,7 @@ const { Client, Collection, MessageEmbed, Util } = require('discord.js');
 const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const { GiveawaysManager } = require("discord-giveaways");
+const { GiveawaysManager } = require('discord-giveaways');
 const { Player } = require('discord-player');
 
 // Modules
@@ -88,7 +88,7 @@ class Byte extends Client {
 		}
 
 		this.giveawaysManager = new GiveawaysManager(this, {
-			storage: `./src/modules/data/giveaways.json`,
+			storage: './src/modules/data/giveaways.json',
 			updateCoundownEvery: 10000,
 			default: {
 				botsCanWin: false,

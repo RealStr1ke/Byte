@@ -30,7 +30,7 @@ class PingCommand extends Command {
 	        .setColor(this.client.color)
 	        .setFooter({
 				text: `Requested by ${message.author.username}`,
-				iconURL: this.client.user.displayAvatarURL()
+				iconURL: this.client.user.displayAvatarURL(),
 			})
 	        .setTimestamp();
 

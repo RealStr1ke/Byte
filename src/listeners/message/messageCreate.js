@@ -48,35 +48,35 @@ class messageCreate extends Event {
 		if (!command) return; // Returns if the requested command wasn't found
 
 		// Stops the command from executing if an instance is already running
-		const instanceExists = command.isInstanceRunning(message.author.id)
+		const instanceExists = command.isInstanceRunning(message.author.id);
 		if (instanceExists) {
 			const inProgress = new MessageEmbed()
-			.setDescription(`Command already in progress, please wait for it.`);
+				.setDescription('Command already in progress, please wait for it.');
 			return message.reply({
-				embeds: [inProgress]
+				embeds: [inProgress],
 			}).then(reply => {
-				setTimeout( () => reply.delete(), 3000 )
+				setTimeout(() => reply.delete(), 3000);
 			});
-		} 
+		}
 
-		// Returns if the following requirements weren't met	  
+		// Returns if the following requirements weren't met
 		if (command.nsfw && !message.channel.nsfw) {
 			const nsfw = new MessageEmbed()
-			.setTitle('You can\'t use this command.')
-			.setDescription(`NSFW Commands can only be run in NSFW channels.`)
-			.setColor(this.client.config.embed.color)
-			.setFooter(this.client.config.embed.footer)
-			.setAuthor(`${message.author.tag}`, message.author.displayAvatarURL())
-			.setTimestamp();
+				.setTitle('You can\'t use this command.')
+				.setDescription('NSFW Commands can only be run in NSFW channels.')
+				.setColor(this.client.config.embed.color)
+				.setFooter(this.client.config.embed.footer)
+				.setAuthor(`${message.author.tag}`, message.author.displayAvatarURL())
+				.setTimestamp();
 			return message.reply(nsfw);
-		};
+		}
 		if (command.education && !message.guild) return message.reply('You can\'t use an education command in DMs.');
 		if (!command.guildOnly && !message.guild) return message.reply('**This command can only be used in guilds.**');
 		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
 		if (command.args && !args.length) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 		if (command.education && !data.guild.education) return message.reply('This guild doesn\'t have the education module enabled.');
-		
-		
+
+
 		// Logs the command usage to the database
 		const log = new this.client.logs({
 			commandName: command.name,
@@ -91,7 +91,7 @@ class messageCreate extends Event {
 			},
 		});
 		log.save();
-		
+
 		// Runs the command
 		try {
 			message.channel.sendTyping();
