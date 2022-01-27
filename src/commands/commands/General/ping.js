@@ -28,7 +28,10 @@ class PingCommand extends Command {
 	            `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
 	        ].join('\n'))
 	        .setColor(this.client.color)
-	        .setFooter(`Requested by ${message.author.username}`)
+	        .setFooter({
+				text: `Requested by ${message.author.username}`,
+				iconURL: this.client.user.displayAvatarURL()
+			})
 	        .setTimestamp();
 
 		sent.edit('**Pinged!**');
