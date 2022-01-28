@@ -23,7 +23,11 @@ class QRCodeCommand extends Command {
 
 		if (isurl(link) == false) return message.reply('Please provide a valid link with `https://`');
 
+<<<<<<< HEAD
 		const qrcode = new MessageAttachment(link, 'qrcode.png');
+=======
+		// const qrcode = new MessageAttachment(link, 'qrcode.png');
+>>>>>>> 1cebb54 (Minor code tweaks, linted code, package update)
 
 		const QRCodeEmbed = new MessageEmbed()
 			.setTitle('QR Code')
