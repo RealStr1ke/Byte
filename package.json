@@ -48,6 +48,7 @@
     "google-it": "^1.6.2",
     "hypixel-api-reborn": "^9.0.3",
     "inquirer": "^8.2.0",
+    "is-url": "^1.2.4",
     "js-beautify": "^1.14.0",
     "keyv": "^4.0.4",
     "mongoose": "^6.1.2",

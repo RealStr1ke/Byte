@@ -31,7 +31,10 @@ class EvalCommand extends Command {
 		        .addField('Input', `\`\`\`${txt}}\`\`\``)
 		        .addField('Output', `\`\`\`js\n${ff}\`\`\``)
 		        .setColor(this.client.config.embed.color)
-				.setFooter(this.client.config.embed.footer);
+				.setFooter({
+					text: this.client.config.embed.footer,
+					iconURL: this.client.user.displayAvatarURL(),
+				});
 		    message.channel.send({
 		        embeds: [result],
 		    });
@@ -42,7 +45,10 @@ class EvalCommand extends Command {
 			    .addField('❌| Error', `${err}`)
 		        .setTimestamp()
 		        .setColor(this.client.config.embed.color)
-				.setFooter(this.client.config.embed.footer);
+				.setFooter({
+					text: this.client.config.embed.footer,
+					iconURL: this.client.user.displayAvatarURL(),
+				});
 		    message.channel.send({
 				embeds: [error],
 			});
