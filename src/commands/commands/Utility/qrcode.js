@@ -1,7 +1,7 @@
 const Command = require('../../../structs/templates/Command');
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const path = require('path'),
-    isurl = require('is-url');
+	isurl = require('is-url');
 
 class QRCodeCommand extends Command {
 
@@ -21,7 +21,7 @@ class QRCodeCommand extends Command {
 	async run(message, args) {
 		const link = `http://api.qrserver.com/v1/create-qr-code/?data=${args[0]}&size=200x200`;
 
-		if (isurl(link) == false) return message.reply(`Please provide a valid link with \`https://\``)
+		if (isurl(link) == false) return message.reply('Please provide a valid link with `https://`');
 
 		const qrcode = new MessageAttachment(link, 'qrcode.png');
 
