@@ -1,5 +1,4 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
 const path = require('path');
 let restarting = false;
 
