@@ -6,17 +6,17 @@ class error extends Event {
 		super(client);
 	}
 
-	async run(error) {
-		this.client.logger.fail(error.message);
+	async run(err) {
+		this.client.logger.fail(err.message);
 		const embed = new MessageEmbed()
 			.setTitle('Websocket Error')
-			.setDescription(`Error: **${error.message}\nContent: \n ${error}`)
+			.setDescription(`Error: **${err.message}\nContent: \n ${err}`)
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 		this.client.support.errors.send({
 			embeds: embed,
 		});
-		return message.channel.send(`\`\`\`js\n${error.message}\`\`\``);
+		return message.channel.send(`\`\`\`js\n${err.message}\`\`\``);
 	}
 }
 module.exports = error;

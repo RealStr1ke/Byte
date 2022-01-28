@@ -3,7 +3,6 @@ const Command = require('../../../structs/templates/Command'),
 	{ dependencies } = require('../../../../package.json'),
 	os = require('os'),
 	osu = require('os-utils'),
-	fs = require('fs').promises,
 	{ DurationFormatter } = require('@sapphire/time-utilities'),
 	path = require('path'),
 	durationFormatter = new DurationFormatter();
@@ -30,32 +29,31 @@ class BotStatsCommand extends Command {
 				{
 					name: '**— Bot**',
 					value: '```' + [
-	                    `Servers    : ${ this.client.guilds.cache.size }`,
-	                    `Channels   : ${ this.client.channels.cache.size }`,
-	                    `Users      : ${ this.client.users.cache.size }`,
-	                    `Shards     : ${ this.client.shard && this.client.shard.count || 0 }`,
-	                    `Uptime     : ${ durationFormatter.format(this.client.uptime) }`,
-	                ].join('\n') + '```',
+						`Servers    : ${ this.client.guilds.cache.size }`,
+						`Channels   : ${ this.client.channels.cache.size }`,
+						`Users      : ${ this.client.users.cache.size }`,
+						`Shards     : ${ this.client.shard && this.client.shard.count || 0 }`,
+						`Uptime     : ${ durationFormatter.format(this.client.uptime) }`,
+					].join('\n') + '```',
 				},
 				{
 					name    : '**— Host**',
 					value: '```' + [
-	                    `DiscordJS  : ${ dependencies['discord.js'] }`,
-	                    `NodeJS     : ${ process.version }`,
-	                    `CPU        : ${os.cpus()[0].model.substring(0, os.cpus()[0].model.indexOf('CPU'))}`,
-	                    `CPU Usage  : ${~~(osu.loadavg(1))} %`,
-	                    `Mem Usage  : ${~~(process.memoryUsage().heapUsed / 1024 / 1024) } MB`,
-	                    `Arch       : ${process.arch}`,
-	                    `OS         : ${process.platform}`,
-	                ].join('\n') + '```',
+						`DiscordJS  : ${ dependencies['discord.js'] }`,
+						`NodeJS     : ${ process.version }`,
+						`CPU        : ${os.cpus()[0].model.substring(0, os.cpus()[0].model.indexOf('CPU'))}`,
+						`CPU Usage  : ${~~(osu.loadavg(1))} %`,
+						`Mem Usage  : ${~~(process.memoryUsage().heapUsed / 1024 / 1024) } MB`,
+						`Arch       : ${process.arch}`,
+						`OS         : ${process.platform}`,
+					].join('\n') + '```',
 				},
 			])
 			.setTimestamp()
-			// .setAuthor(
-			// 	this.client.user.tag, // Author Name
-			// 	this.client.user.avatar, // Author Avatar
-			// 	this.client.user.avatar // Author Avatar
-			// )
+			.setAuthor({
+				text: this.client.user.tag,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);
 

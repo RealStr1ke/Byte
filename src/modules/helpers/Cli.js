@@ -1,4 +1,3 @@
-const { execSync } = require('child_process');
 const inquirer = require('inquirer');
 const colors = require('colors');
 const os = require('os');

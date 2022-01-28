@@ -14,11 +14,10 @@ class ExecCommand extends Command {
 			aliases     : ['bash', 'cmd'],
 			userPerms   : 'SEND_MESSAGES',
 			ownerOnly   : true,
-			requireData : true,
 		});
 	}
 
-	async run(message, args, data) {
+	async run(message, args) {
 		const { exec } = require('child_process');
 		const lola = args.join(' ');
 		if (!lola) return message.channel.send('Please provide what to execute in the terminal!');

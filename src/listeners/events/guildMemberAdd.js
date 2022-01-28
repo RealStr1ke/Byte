@@ -6,9 +6,9 @@ class guildMemberAdd extends Event {
 	}
 
 	async run(member) {
-		const memberData = await this.client.findOrCreateMember(member.id, member.guild.id);
-		const userData = await this.client.findOrCreateUser(member.id);
-		const guildData = await this.client.findOrCreateGuild(member.guild.id);
+		await this.client.database.getMember(member.id, member.guild.id);
+		await this.client.database.getUser(member.id);
+		await this.client.database.getGuild(member.guild.id);
 	}
 }
 module.exports = guildMemberAdd;

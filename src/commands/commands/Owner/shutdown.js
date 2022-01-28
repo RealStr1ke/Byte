@@ -18,9 +18,19 @@ class ShutdownCommand extends Command {
 	}
 
 	async run(message) {
-		message.reply('**Bot is now shutting down.**');
+		const shutdown = new MessageEmbed()
+			.setTitle('🔴 **Bot is now shutting down.**')
+			.setAuthor()
+			.setFooter({
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
+			.setColor(this.client.config.embed.color)
+			.setTimestamp();
+		message.reply(shutdown);
 		await this.client.utils.sleep(1);
 		await this.client.destroy();
+		await this.client.utils.sleep(1);
 		await process.exit();
 	}
 }

@@ -18,9 +18,23 @@ class DeployCommand extends Command {
 	}
 
 	async run(message) {
+		const StatusEmbed = new MessageEmbed()
+			.setTitle('🟡 Application commands deploying.')
+			.setFooter({
+				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
+			.setColor(this.client.config.embed.color)
+			.setTimestamp();
+
+		const status = await message.channel.send(StatusEmbed);
 		this.client.logger.startup('Application commands deploying.');
+
 		await client.application?.commands.set(this.client.commands.slash.map(c => c.data))
 			.catch(error => this.client.logger.fail(error.message));
+
+		StatusEmbed.setTitle('🟢 Application commands deploying.');
+		status.edit(StatusEmbed);
 		this.client.logger.startup('Application commands deployed.');
 
 	}

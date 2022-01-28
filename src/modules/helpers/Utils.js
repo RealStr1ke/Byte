@@ -1,5 +1,3 @@
-const Discord = require('discord.js');
-
 class Utils {
 	constructor(client) {
 		if (!client) {
@@ -124,7 +122,7 @@ class Utils {
 	};
 	async sleep(ms) {
 		return new Promise((resolve) => {
-		    setTimeout(resolve, (ms * 1000));
+			setTimeout(resolve, (ms * 1000));
 		});
 	}
 	toggleCase(str) {

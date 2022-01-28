@@ -1,10 +1,9 @@
-const glob = require('glob'),
-	path = require('path'),
-	Event = require('../structs/templates/Event');
+const path = require('path');
+const Event = require('../structs/templates/Event');
 
 class ready extends Event {
 	constructor(client) {
-	    super(client, {
+		super(client, {
 			listener: true,
 		});
 	}

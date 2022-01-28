@@ -1,5 +1,4 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
 const path = require('path');
 class SlowModeCommand extends Command {
 
@@ -17,7 +16,7 @@ class SlowModeCommand extends Command {
 		});
 	}
 
-	async run(message, args, data) {
+	async run(message, args) {
 		if (isNaN(args[0])) {
 			return await message.reply('That\'s not a number.');
 		}

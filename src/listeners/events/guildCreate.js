@@ -7,7 +7,7 @@ class guildCreate extends Event {
 
 	async run(guild) {
 		this.client.logger.guildJoin(guild.name, guild.memberCount, guild.channels.channelCountWithoutThreads);
-		const guildData = await this.client.database.createGuild(guild.id);
+		await this.client.database.getGuild(guild.id);
 
 	}
 }

@@ -1,11 +1,8 @@
-const Discord = require('discord.js');
-
 const mongoose = require('mongoose');
 const User = require('./models/User'),
 	Guild = require('./models/Guild'),
 	Member = require('./models/Member'),
-	Student = require('./models/Student'),
-	Log = require('./models/Log');
+	Student = require('./models/Student');
 
 
 class Handler {

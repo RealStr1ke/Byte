@@ -1,8 +1,7 @@
 // Submodules
-const { Client, Collection, MessageEmbed, Util } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { Routes } = require('discord-api-types/v9');
 const { REST } = require('@discordjs/rest');
-const { SlashCommandBuilder } = require('@discordjs/builders');
 const { GiveawaysManager } = require('discord-giveaways');
 const { Player } = require('discord-player');
 
@@ -11,7 +10,6 @@ const Stopwatch = require('statman-stopwatch');
 const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
 const Amethyste = require('amethyste-api');
-const mongoose = require('mongoose');
 const path = require('path');
 const glob = require('glob');
 const util = require('util');
@@ -86,6 +84,10 @@ class Byte extends Client {
 		if (this.config.apiKeys.flipnoteAPI) {
 			this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI);
 		}
+		this.player = new Player(this, {
+			leaveOnEmpty: false,
+			enableLive: true,
+		});
 
 		this.giveawaysManager = new GiveawaysManager(this, {
 			storage: './src/modules/data/giveaways.json',
@@ -130,6 +132,7 @@ class Byte extends Client {
 			if (this.config.debug) this.logger.log(`Loading Event: ${name}`);
 			const event = new (require(file))(this);
 			this.events.set(event.name, event);
+			if (!(event instanceof Event)) return;
 			if (event.once) {
 				this.once(name, (...args) => event.run(...args));
 			}
@@ -199,7 +202,7 @@ class Byte extends Client {
 			}
 			const file = new (require(path.resolve(commandPath)))(this);
 			if (this.config.debug) this.logger.log(`Loading Command: ${file.name}`);
-	        this.commands.set(file.name, file);
+			this.commands.set(file.name, file);
 			if (file.aliases && Array.isArray(file.aliases)) {
 				file.aliases.forEach((alias) => this.commands.aliases.set(alias, file.name));
 			}
@@ -226,23 +229,6 @@ class Byte extends Client {
 		// delete require.cache[require.resolve(`.${commandPath}${path.sep}${commandName}.js`)];
 		delete require.cache[require.resolve(commandPath)];
 		return true;
-	}
-
-	// Database Handler
-	async loadDatabase() {
-		mongoose.connect(this.config.mongodb, {
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-			// useFindAndModify: false
-		}).then(() => {
-			mongoose.connection.on('error', console.error.bind(console, 'Database connection error!'));
-			mongoose.connection.on('open', () => this.logger.startup('Connected to mongoDB database!'));
-			return true;
-		}).catch((err) => {
-			this.logger.fail('An error occured while connecting to the database.');
-			console.log(err);
-			return false;
-		});
 	}
 
 	// This function is used to resolve a user from a string

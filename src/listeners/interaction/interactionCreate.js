@@ -1,17 +1,15 @@
-const glob = require('glob');
 const path = require('path');
 const Event = require('../../structs/templates/Event');
 
 class interactionCreate extends Event {
 	constructor(client) {
-	    super(client, {
+		super(client, {
 			listener: true,
 		});
 	}
 
 	async run(interaction) {
 		if (interaction.isCommand()) {
-			const client = this.client;
 
 			if (!interaction.isCommand()) return;
 			if (interaction.user.bot) return;

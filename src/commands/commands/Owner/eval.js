@@ -22,34 +22,34 @@ class EvalCommand extends Command {
 		const txt = args.join(' ');
 		if (!txt) return message.channel.send('Please specify something to Evaluate');
 		try {
-		    const evaled = eval(txt);
+			const evaled = eval(txt);
 			let ff = inspect(evaled, { depth: 0 });
-		    if (String(ff).length > 2000) ff = 'Output is too long';
+			if (String(ff).length > 2000) ff = 'Output is too long';
 			const result = new Discord.MessageEmbed()
-		        .setTitle('JavaScript')
-		        .setTimestamp()
-		        .addField('Input', `\`\`\`${txt}}\`\`\``)
-		        .addField('Output', `\`\`\`js\n${ff}\`\`\``)
-		        .setColor(this.client.config.embed.color)
+				.setTitle('JavaScript')
+				.setTimestamp()
+				.addField('Input', `\`\`\`${txt}}\`\`\``)
+				.addField('Output', `\`\`\`js\n${ff}\`\`\``)
+				.setColor(this.client.config.embed.color)
 				.setFooter({
 					text: this.client.config.embed.footer,
 					iconURL: this.client.user.displayAvatarURL(),
 				});
-		    message.channel.send({
-		        embeds: [result],
-		    });
+			message.channel.send({
+				embeds: [result],
+			});
 		}
 		catch (err) {
-		    const error = new Discord.MessageEmbed()
-			    .setTitle('Evaluation Error!')
-			    .addField('❌| Error', `${err}`)
-		        .setTimestamp()
-		        .setColor(this.client.config.embed.color)
+			const error = new Discord.MessageEmbed()
+				.setTitle('Evaluation Error!')
+				.addField('❌| Error', `${err}`)
+				.setTimestamp()
+				.setColor(this.client.config.embed.color)
 				.setFooter({
 					text: this.client.config.embed.footer,
 					iconURL: this.client.user.displayAvatarURL(),
 				});
-		    message.channel.send({
+			message.channel.send({
 				embeds: [error],
 			});
 		}

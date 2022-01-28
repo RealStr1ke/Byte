@@ -22,17 +22,17 @@ class PingCommand extends Slash {
 		const timeDiff = new Date().getTime() - (interaction.createdTimestamp);
 		const embed = new MessageEmbed()
 			.setThumbnail(this.client.avatar)
-    	    .setTitle(`${this.client.user.username} Ping`)
-	        .setDescription([
-	            `🔂 **RTT**: ${timeDiff} ms`,
-	            `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
-	        ].join('\n'))
-	        .setColor(this.client.color)
-	        .setFooter({
+			.setTitle(`${this.client.user.username} Ping`)
+			.setDescription([
+				`🔂 **RTT**: ${timeDiff} ms`,
+				`💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
+			].join('\n'))
+			.setColor(this.client.color)
+			.setFooter({
 				text: `Requested by ${interaction.user.username}`,
 				iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }),
 			})
-	        .setTimestamp();
+			.setTimestamp();
 
 		return interaction.reply({
 			embeds: [embed],
