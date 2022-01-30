@@ -5,8 +5,8 @@ class threadCreate extends Event {
 		super(client);
 	}
 
-	async run(message, thread) {
-		return thread.join();
+	async run(thread) {
+		return await thread.join();
 	}
 }
 module.exports = threadCreate;

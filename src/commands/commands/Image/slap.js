@@ -21,7 +21,7 @@ class SlapCommand extends Command {
 		const User = (await this.client.resolveUser(args[0])) || message.author;
 		const slapped = await Canvacord.slap(
 			message.author.displayAvatarURL({ format: 'png', dynamic: true }),
-			User2.displayAvatarURL({ format: 'png', dynamic: true }),
+			User.displayAvatarURL({ format: 'png', dynamic: true })
 		);
 		const Image = new MessageAttachment(slapped, 'slap.png');
 
