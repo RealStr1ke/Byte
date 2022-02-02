@@ -1,4 +1,4 @@
-const Event = require('../../structs/templates/Event');
+const Event = require('../structs/templates/Event');
 
 class guildMemberAdd extends Event {
 	constructor(client) {

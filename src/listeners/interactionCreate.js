@@ -1,5 +1,5 @@
 const path = require('path');
-const Event = require('../../structs/templates/Event');
+const Event = require('../structs/templates/Event');
 
 class interactionCreate extends Event {
 	constructor(client) {

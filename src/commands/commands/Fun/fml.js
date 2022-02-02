@@ -22,7 +22,10 @@ class FMLCommand extends Command {
 		const FMLEmbed = new MessageEmbed()
 			.setTitle('Here\'s an FML quote')
 			.setDescription(`${response.data.vdm.content} **FML**`)
-			.setFooter(`You got FML quote #${response.data.vdm.id} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setFooter({
+				text: `You got FML quote #${response.data.vdm.id} • ${this.client.config.embed.footer}`, 
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 
