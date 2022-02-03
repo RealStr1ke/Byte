@@ -74,7 +74,8 @@ class messageCreate extends Event {
 		if (!command.guildOnly && !message.guild) return message.reply('**This command can only be used in guilds.**');
 		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
 		if (command.args && !args.length) return message.reply(`You must use the command correctly: \`${command.usage}\``);
-		if (command.education && !data.guild.education) return message.reply('This guild doesn\'t have the education module enabled.');
+		if (command.education && (data.guild.education == false)) return message.reply('This guild doesn\'t have the education module enabled.');
+		// if (command.args && command.argNum && !args.length < command.argNum) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 
 
 		// Logs the command usage to the database
@@ -95,7 +96,6 @@ class messageCreate extends Event {
 		// Runs the command
 		try {
 			message.channel.sendTyping();
-
 
 			command.setInstance(message.author.id);
 			// command.setCooldown(message.author.id);

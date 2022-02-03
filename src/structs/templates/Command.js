@@ -11,6 +11,7 @@ class Command {
 		this.description = options.description || 'No information specified.';
 		this.category = options.category || (options.directory ? options.directory.split(path.sep)[parseInt(options.directory.split(path.sep).length - 1, 10)] : 'Other');
 		this.args = options.args || false;
+		this.argNum = options.argNum || null;
 		this.usage = options.usage || null;
 		this.example = options.example || [];
 		this.enabled = options.enabled || true;

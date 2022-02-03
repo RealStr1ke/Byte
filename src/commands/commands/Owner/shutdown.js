@@ -20,7 +20,6 @@ class ShutdownCommand extends Command {
 	async run(message) {
 		const shutdown = new MessageEmbed()
 			.setTitle('🔴 **Bot is now shutting down.**')
-			.setAuthor()
 			.setFooter({
 				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
 				iconURL: this.client.user.displayAvatarURL(),
