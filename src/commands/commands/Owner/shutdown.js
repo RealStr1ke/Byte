@@ -18,7 +18,7 @@ class ShutdownCommand extends Command {
 	}
 
 	async run(message) {
-		const shutdown = new MessageEmbed()
+		const ShutDownEmbed = new MessageEmbed()
 			.setTitle('🔴 **Bot is now shutting down.**')
 			.setFooter({
 				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
@@ -26,7 +26,9 @@ class ShutdownCommand extends Command {
 			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
-		message.reply(shutdown);
+		message.channel.send({
+			embeds: [ShutDownEmbed]
+		});
 		await this.client.utils.sleep(1);
 		await this.client.destroy();
 		await this.client.utils.sleep(1);

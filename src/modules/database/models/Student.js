@@ -12,18 +12,7 @@ const studentSchema = new mongoose.Schema({
 
 	gradelevel: { type: Number, default: 0 }, // 0 for Kindergarten
 
-	schedule: { type: Object, default: { // Periods
-		'1': null,
-		'2': null,
-		'3': null,
-		'4': null,
-		'5': null,
-		'6': null,
-		'7': null,
-		'8': null,
-		'9': null,
-		'10': null,
-	} },
+	schedule: { type: Object, default: {} },
 
 	registeredAt: { type: Number, default: Date.now() },
 });

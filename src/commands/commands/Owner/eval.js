@@ -15,10 +15,11 @@ class EvalCommand extends Command {
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
 			ownerOnly   : true,
+			requireData : true,
 		});
 	}
 
-	async run(message, args) {
+	async run(message, args, data) {
 		const txt = args.join(' ');
 		if (!txt) return message.channel.send('Please specify something to Evaluate');
 		try {
