@@ -10,25 +10,19 @@ class SlowModeCommand extends Command {
 			aliases     : ['sm'],
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
-			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
+			userPerms   : ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
+			botPerms    : ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
 			guildOnly   : true,
 		});
 	}
 
 	async run(message, args) {
-		if (isNaN(args[0])) {
-			return await message.reply('That\'s not a number.');
-		}
-
-		if (args[0] > 21600) {
-			return await message.reply(
-				'Please pick a shorter time. Discord allows a slowmode time of up to 6 hours.',
-			);
-		}
+		if (isNaN(args[0])) return message.reply('**That\'s not a number.**');
+		if (args[0] > 21600) return message.reply('**Please pick a shorter time. Discord allows a slowmode time of up to 6 hours.**');
 
 		message.channel.setRateLimitPerUser(args[0]);
-		return await message.reply(`Slowmode is now ${args[0]} seconds.`);
+		if (args[0] == 0) return message.reply('**Slowmode is now disabled.**');
+		return message.reply(`**Slowmode is now ${args[0]} seconds.**`);
 	}
 }
 
