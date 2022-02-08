@@ -13,6 +13,7 @@ class SlowModeCommand extends Command {
 			userPerms   : ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
 			botPerms    : ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
 			guildOnly   : true,
+			ownerOnly   : true,
 		});
 	}
 

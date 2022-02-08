@@ -60,23 +60,20 @@ class messageCreate extends Event {
 		}
 
 		// Returns if the following requirements weren't met
-		if (command.nsfw && !message.channel.nsfw) {
-			const nsfw = new MessageEmbed()
-				.setTitle('You can\'t use this command.')
-				.setDescription('NSFW Commands can only be run in NSFW channels.')
-				.setColor(this.client.config.embed.color)
-				.setFooter(this.client.config.embed.footer)
-				.setAuthor(`${message.author.tag}`, message.author.displayAvatarURL())
-				.setTimestamp();
-			return message.reply(nsfw);
-		}
-		if (command.education && !message.guild) return message.reply('You can\'t use an education command in DMs.');
-		if (!command.guildOnly && !message.guild) return message.reply('**This command can only be used in guilds.**');
-		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
-		if (command.args && !args.length) return message.reply(`You must use the command correctly: \`${command.usage}\``);
-		if (command.education && (data.guild.education == false)) return message.reply('This guild doesn\'t have the education module enabled.');
-		// if (command.args && command.argNum && !args.length < command.argNum) return message.reply(`You must use the command correctly: \`${command.usage}\``);
+		if (message.guild) {
+			const userPerms = message.channel.permissionsFor(message.member).missing(command.userPerms);
+			if (userPerms.length) return message.reply('**You lack the required privileges to execute this command**');
 
+			const botPerms = message.channel.permissionsFor(this.client.user).missing(command.botPerms);
+			if (botPerms.length) return message.reply('**I do not have sufficient rights to execute this command.**');
+		}
+		if (command.ownerOnly && this.client.config.owner.id !== message.author.id) return message.reply('**This command can only be used by the owner of this bot.**');
+		if (command.education && !message.guild) return message.reply('**You can\'t use an education command in DMs.**');
+		if (!command.guildOnly && !message.guild) return message.reply('**This command can only be used in guilds.**');
+		if (command.nsfw && !message.channel.nsfw) return message.reply('**NSFW Commands can only be run in NSFW channels.**');
+		if (command.args && !args.length) return message.reply(`**You must use the command correctly: \`${command.usage}\`**`);
+		if (command.education && data.guild.education == false) return message.reply('**This guild doesn\'t have the education module enabled.**');
+		// if (command.args && command.argNum && !args.length < command.argNum) return message.reply(`You must use the command correctly: \`${command.usage}\``);
 
 		// Logs the command usage to the database
 		const log = new this.client.logs({
@@ -87,8 +84,8 @@ class messageCreate extends Event {
 				id: message.author.id,
 			},
 			guild: {
-				name: message.guild ? message.guild.name : 'dm',
-				id: message.guild ? message.guild.id : 'dm',
+				name: message.guild ? message.guild.name : 'DM',
+				id: message.guild ? message.guild.id : 'DM',
 			},
 		});
 		log.save();

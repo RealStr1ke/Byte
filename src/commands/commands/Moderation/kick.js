@@ -10,7 +10,7 @@ class KickCommand extends Command {
 			usage       : 'kick <member>',
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : ['SEND_MESSAGES', 'KICK_MEMBERS'],
 			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
 			guildOnly   : true,
 			requireData : true,
@@ -18,7 +18,7 @@ class KickCommand extends Command {
 	}
 
 	async run(message, args, data) {
-
+		
 	}
 }
 
