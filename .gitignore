@@ -1,19 +1,24 @@
-.replit
-config.js
-.env
-.cache/*
-replit.nix
+# NodeJS Files
 node_modules/*
 */node_modules/*
-Corebot/*
-*.disabled
-*.old
-ignore/*
-lang/*
+
+# Config Files
+config.js
+.env
 
 # GitPod Files
 .gitpod.yml
 
+# Replit Files
+.replit
+replit.nix
+
 # Giveaways File
 giveaways.json
-*/giveaways.json
+
+# Other Files
+*.disabled
+*.old
+ignore/*
+.cache/*
+Corebot/*
