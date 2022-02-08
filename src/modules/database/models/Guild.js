@@ -50,7 +50,6 @@ const guildSchema = new mongoose.Schema({
 				teachers: [],
 				administration: [],
 			},
-			studentData: [],
 			subjects: [],
 		},
 	} },
