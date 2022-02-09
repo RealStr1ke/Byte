@@ -10,9 +10,9 @@ class BanCommand extends Command {
 			usage       : 'ban <member> <reason>',
 			args        : true,
 			directory   : __dirname,
-			userPerms   : ['SEND_MESSAGES', 'BAN_MEMBERS'],
+			userPerms   : ['BAN_MEMBERS'],
 			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'],
-			guildOnly   : true, test
+			guildOnly   : true,
 			requireData : true,
 		});
 	}
