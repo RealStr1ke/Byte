@@ -409,6 +409,11 @@
   "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.8.tgz"
   "version" "17.0.8"
 
+"@types/node@^14.0.1":
+  "integrity" "sha512-6iihJ/Pp5fsFJ/aEDGyvT4pHGmCpq7ToQ/yf4bl5SbVAvwpspYJ+v3jO7n8UyjhQVHTy+KNszOozDdv+O6sovQ=="
+  "resolved" "https://registry.npmjs.org/@types/node/-/node-14.18.10.tgz"
+  "version" "14.18.10"
+
 "@types/node@< 17.0.6":
   "integrity" "sha512-w3mrvNXLeDYV1GKTZorGJQivK6XLCoGwpnyJFbJVK/aTBQUxOCaa/GlFAAN3OTDFcb7h5tiFG+YXCO2By+riZw=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.5.tgz"
@@ -426,6 +431,13 @@
   dependencies:
     "@types/node" "*"
     "@types/webidl-conversions" "*"
+
+"@types/ws@^7.2.1":
+  "integrity" "sha512-JQbbmxZTZehdc2iszGKs5oC3NFnjeay7mtAWrdt7qNtAVK0g19muApzAy4bm9byz79xa2ZnO/BOBC2R8RC5Lww=="
+  "resolved" "https://registry.npmjs.org/@types/ws/-/ws-7.4.7.tgz"
+  "version" "7.4.7"
+  dependencies:
+    "@types/node" "*"
 
 "@types/ws@^8.2.0", "@types/ws@^8.2.2":
   "integrity" "sha512-NOn5eIcgWLOo6qW8AcuLZ7G8PycXu0xTxxkS6Q18VWFxgPUSOwV0pBj2a/4viNZVu25i7RIB7GttdkAIUUXOOg=="
@@ -1356,6 +1368,14 @@
     "deepmerge" "^4.2.2"
     "discord.js" "^13.1.0"
     "serialize-javascript" "^6.0.0"
+
+"discord-logs@^2.0.1":
+  "integrity" "sha512-Dof1JOxeeQnzAw5Em8oJwUg3Bk217VRn7q8lAfjPaNwQ88+y6PpdBItREylnxsuzoBs5aNwJ3pCwNAhU7LM6GQ=="
+  "resolved" "https://registry.npmjs.org/discord-logs/-/discord-logs-2.0.1.tgz"
+  "version" "2.0.1"
+  dependencies:
+    "@types/node" "^14.0.1"
+    "@types/ws" "^7.2.1"
 
 "discord-player@^5.2.0":
   "integrity" "sha512-PFMTOFYyPbvveR186/NexEbaQzOA6Ossgid7fIOiC7W3ulAyRfmRo2zXUU0nrLEcG8Wr3V87fI/F2H0FZIfTWQ=="

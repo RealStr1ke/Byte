@@ -25,12 +25,15 @@ class BanCommand extends Command {
 		if (target.id === this.client.user.id) return message.channel.send('*Nice try*, but you can\'t ban me.');
 		if (message.member.ownerID !== message.author.id && target.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('You can\'t ban a person that\'s above you in the role hierarchy');
 		if (!target.bannable) return message.channel.send('This member isn\'t bannable.');
+		const banList = await message.guild.bans.fetch();
+		if (banList.some((member) => member.user.id === target.id)) return message.channel.send(`This user (${target.tag}) is already banned.`);
+
 
 		try {
-			const reason = args.slice(1, args.length + 1);
-			console.log(reason);
+			const reason = args.slice(1);
 			const BanEmbed = new MessageEmbed()
 				.setTitle('**Ban**')
+				.addField('**Server**', `${message.guild.name}`, true)
 				.addField('**Offender**', `<@${target.user.id}>`, true)
 				.addField('**Reason**', `${reason.length ? reason.join(' ') : 'No Reason'}`, true)
 				.addField('**Moderator**', `<@${message.author.id}>`, true)

@@ -50,7 +50,9 @@ class EvalCommand extends Command {
 					text: this.client.config.embed.footer,
 					iconURL: this.client.user.displayAvatarURL(),
 				});
-			message.channel.send({
+			this.client.logger.fail(err.message);
+			console.log(err);
+			return message.channel.send({
 				embeds: [error],
 			});
 		}
