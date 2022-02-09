@@ -1,6 +1,5 @@
 # NodeJS Files
 node_modules/*
-*/node_modules/*
 
 # Config Files
 config.js
@@ -8,6 +7,9 @@ config.js
 
 # GitPod Files
 .gitpod.yml
+
+# VS Code Files
+.vscode
 
 # Replit Files
 .replit
