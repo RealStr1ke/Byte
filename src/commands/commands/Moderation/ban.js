@@ -12,7 +12,7 @@ class BanCommand extends Command {
 			directory   : __dirname,
 			userPerms   : ['SEND_MESSAGES', 'BAN_MEMBERS'],
 			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'BAN_MEMBERS'],
-			guildOnly   : true,
+			guildOnly   : true, test
 			requireData : true,
 		});
 	}
