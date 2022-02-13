@@ -13,7 +13,6 @@ class PingCommand extends Command {
 			aliases     : ['ping'],
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
-			guildOnly   : true,
 		});
 	}
 

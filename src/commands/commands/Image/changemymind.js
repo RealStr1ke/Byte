@@ -18,10 +18,6 @@ class ChangeMyMindCommand extends Command {
 	}
 
 	async run(message, args) {
-		if (!args || !args[0]) {
-			return await message.replyT('Please provide text.');
-		}
-
 		args = args.join(' ');
 
 		const cmm = await Canvacord.changemymind(args);

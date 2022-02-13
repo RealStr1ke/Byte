@@ -109,12 +109,13 @@ class Handler {
 			student = await Student.findOne({
 				userID: userID,
 				guildID: guildID,
-			});
-			if (!student) {
-				student = this.createStudent(userID, guildID);
+			}).then(() => {
+				if (!student) {
+					student = this.createStudent(userID, guildID);
+					return student;
+				}
 				return student;
-			}
-			return student;
+			});
 		}
 		catch (error) {
 			this.client.logger.fail(error.message);
