@@ -27,6 +27,7 @@ module.exports = {
 		'no-empty-function': ['error', { 'allow': ['arrowFunctions'] }],
 		'no-floating-decimal': 'error',
 		'no-lonely-if': 'error',
+		'no-mixed-spaces-and-tabs': 'error',
 		'no-multi-spaces': 'error',
 		'no-multiple-empty-lines': ['error', { 'max': 2, 'maxEOF': 1, 'maxBOF': 0 }],
 		'no-shadow': ['error', { 'allow': ['err', 'resolve', 'reject'] }],
