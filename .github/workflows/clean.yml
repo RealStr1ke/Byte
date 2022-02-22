@@ -16,8 +16,11 @@ jobs:
       - name: Install Npm
         uses: bahmutov/npm-install@v1
 
-      - name: Start Code
-        run: npm run start
+      - name: Lint Code
+        run: npm run lint
+        
+#       - name: Start Code
+#         run: npm run start
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v4
