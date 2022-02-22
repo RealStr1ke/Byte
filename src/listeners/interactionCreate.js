@@ -41,12 +41,10 @@ class interactionCreate extends Event {
 				command.setInteraction(interaction);
 				if (command.requireData) {
 					command.run(interaction, data);
-				}
-				else {
+				} else {
 					command.run(interaction);
 				}
-			}
-			catch (error) {
+			} catch (error) {
 				this.client.logger.fail(error.message);
 			}
 			// Logs the command usage to the console

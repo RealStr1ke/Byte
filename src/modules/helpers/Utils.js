@@ -130,8 +130,7 @@ class Utils {
 		if (str.match(/^[A-z]$/)) {
 			if (str.toUpperCase() === str) {
 				return str.toLowerCase();
-			}
-			else {
+			} else {
 				return str.toUpperCase();
 			}
 		}

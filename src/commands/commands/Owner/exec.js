@@ -37,8 +37,7 @@ class ExecCommand extends Command {
 					embeds: [err],
 				});
 				this.client.logger.fail(error.message);
-			}
-			else {
+			} else {
 				const result = new Discord.MessageEmbed()
 					.setTitle('Terminal')
 					.addField('Input', `\`\`\`${lola}\`\`\``)

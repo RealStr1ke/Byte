@@ -9,6 +9,7 @@ module.exports = {
 	'parserOptions': {
 		'ecmaVersion': 13,
 	},
+	'ignorePatterns': ['ignore/', 'node_modules/'],
 	'rules': {
 		'arrow-spacing': ['warn', { 'before': true, 'after': true }],
 		'brace-style': ['error', '1tbs', { 'allowSingleLine': true }],

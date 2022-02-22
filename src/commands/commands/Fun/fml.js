@@ -23,7 +23,7 @@ class FMLCommand extends Command {
 			.setTitle('Here\'s an FML quote')
 			.setDescription(`${response.data.vdm.content} **FML**`)
 			.setFooter({
-				text: `You got FML quote #${response.data.vdm.id} • ${this.client.config.embed.footer}`, 
+				text: `You got FML quote #${response.data.vdm.id} • ${this.client.config.embed.footer}`,
 				iconURL: this.client.user.displayAvatarURL(),
 			})
 			.setColor(this.client.config.embed.color)

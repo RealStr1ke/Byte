@@ -20,7 +20,7 @@ class ApprovedCommand extends Command {
 		const User = (await this.client.resolveUser(args[0])) || message.author;
 
 		const approved = await this.client.AmeAPI.generate('approved', {
-			url: User.displayAvatarURL({ format: 'png', size: 512 })
+			url: User.displayAvatarURL({ format: 'png', size: 512 }),
 		});
 
 		const Image = new MessageAttachment(approved, 'approved.png');

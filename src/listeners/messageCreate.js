@@ -97,13 +97,11 @@ class messageCreate extends Event {
 			command.setMessage(message);
 			if (command.requireData) {
 				command.run(message, args, data);
-			}
-			else {
+			} else {
 				command.run(message, args);
 			}
 			command.done(message.author.id);
-		}
-		catch (error) {
+		} catch (error) {
 			command.done(message.author.id);
 			this.client.logger.fail(error.message);
 			const ErrorEmbed = new MessageEmbed()

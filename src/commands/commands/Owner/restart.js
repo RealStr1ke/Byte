@@ -34,8 +34,7 @@ class RestartCommand extends Command {
 				}
 
 				status.edit(`**Byte is now preparing for restart. Time left: ${Timer} seconds.**`);
-			}
-			else {
+			} else {
 				if (restarting === true) {
 					return;
 				}

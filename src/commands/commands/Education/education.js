@@ -23,8 +23,7 @@ class EducationCommand extends Command {
 
 		if (eduStatus == false) {
 			data.guild.plugins.education.enabled = true;
-		}
-		else {
+		} else {
 			data.guild.plugins.education.enabled = false;
 		}
 

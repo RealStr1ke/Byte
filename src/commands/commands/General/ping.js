@@ -21,17 +21,17 @@ class PingCommand extends Command {
 		const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
 		const embed = new MessageEmbed()
 			.setThumbnail(this.client.avatar)
-    	    .setTitle(`${this.client.user.username} Ping`)
-	        .setDescription([
-	            `🔂 **RTT**: ${timeDiff} ms`,
-	            `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
-	        ].join('\n'))
-	        .setColor(this.client.color)
-	        .setFooter({
+			.setTitle(`${this.client.user.username} Ping`)
+			.setDescription([
+				`🔂 **RTT**: ${timeDiff} ms`,
+				`💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
+			].join('\n'))
+			.setColor(this.client.color)
+			.setFooter({
 				text: `Requested by ${message.author.username}`,
 				iconURL: this.client.user.displayAvatarURL(),
 			})
-	        .setTimestamp();
+			.setTimestamp();
 
 		sent.edit('**Pinged!**');
 		sent.edit({

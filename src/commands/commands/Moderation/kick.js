@@ -18,7 +18,7 @@ class KickCommand extends Command {
 	}
 
 	async run(message, args, data) {
-		
+		return message.reply('This command is currently in the works.');
 	}
 }
 

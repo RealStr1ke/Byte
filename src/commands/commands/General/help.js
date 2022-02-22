@@ -42,12 +42,12 @@ class HelpCommand extends Command {
 
 		categories.sort().forEach((category) => {
 			const tCommands = commands.filter((command) => command.category === category);
-			HelpEmbed.addField(`${category} (\`${tCommands.size}\`)`, tCommands.map((command) => `\`${command.name}\``).join(", "));
+			HelpEmbed.addField(`${category} (\`${tCommands.size}\`)`, tCommands.map((command) => `\`${command.name}\``).join(', '));
 			// embed.addField(`${category}`+" - ("+tCommands.size+")", tCommands.map((cmd) => "`"+cmd.help.name+"`").join(", "));
 		});
 		return message.channel.send({
 			embeds: [HelpEmbed],
-		})
+		});
 		// return message.channel.send(`Categories (Debugging): ${categories.join(', ')}`)
 	}
 }

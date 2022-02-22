@@ -39,8 +39,7 @@ class EvalCommand extends Command {
 			message.channel.send({
 				embeds: [result],
 			});
-		}
-		catch (err) {
+		} catch (err) {
 			const error = new Discord.MessageEmbed()
 				.setTitle('Evaluation Error!')
 				.addField('❌| Error', `${err}`)

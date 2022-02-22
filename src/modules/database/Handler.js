@@ -53,8 +53,7 @@ class Handler {
 				return member;
 			}
 			return member;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -70,8 +69,7 @@ class Handler {
 			});
 			member.save();
 			return member;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -93,8 +91,7 @@ class Handler {
 				guildID: guildID,
 			});
 			return true;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
@@ -116,8 +113,7 @@ class Handler {
 				}
 				return student;
 			});
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -133,8 +129,7 @@ class Handler {
 			});
 			student.save();
 			return student;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -156,8 +151,7 @@ class Handler {
 				guildID: guildID,
 			});
 			return true;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
@@ -177,8 +171,7 @@ class Handler {
 				return user;
 			}
 			return user;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -193,8 +186,7 @@ class Handler {
 			});
 			user.save();
 			return user;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -214,8 +206,7 @@ class Handler {
 				userID: userID,
 			});
 			return true;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
@@ -235,8 +226,7 @@ class Handler {
 				return guild;
 			}
 			return guild;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -251,8 +241,7 @@ class Handler {
 			});
 			guild.save();
 			return guild;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}
@@ -272,8 +261,7 @@ class Handler {
 				guildID: guildID,
 			});
 			return true;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 			return false;
@@ -285,8 +273,7 @@ class Handler {
 		try {
 			this.getGuild(guildID);
 			return guild.prefix;
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
 		}

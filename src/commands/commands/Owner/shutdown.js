@@ -27,7 +27,7 @@ class ShutdownCommand extends Command {
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 		message.channel.send({
-			embeds: [ShutDownEmbed]
+			embeds: [ShutDownEmbed],
 		});
 		await this.client.utils.sleep(1);
 		await this.client.destroy();

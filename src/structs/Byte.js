@@ -53,7 +53,7 @@ class Byte extends Client {
 		this.Cli = new Cli(this);
 		this.logger = new Logger(this);
 		this.stopwatch = new Stopwatch();
-		
+
 		// Database
 		this.database = new Database(this);
 		this.logs = require('../modules/database/models/Log');
@@ -61,7 +61,7 @@ class Byte extends Client {
 		this.membersData = require('../modules/database/models/Member');
 		this.usersData = require('../modules/database/models/User');
 		this.studentsData = require('../modules/database/models/Student');
-		
+
 		// Database Cache
 		this.databaseCache = {};
 		this.databaseCache.users = new Collection();
@@ -69,13 +69,13 @@ class Byte extends Client {
 		this.databaseCache.members = new Collection();
 		this.databaseCache.usersReminds = new Collection(); // members with active reminds
 		this.databaseCache.mutedUsers = new Collection(); // members who are currently muted
-		
+
 		this.support = {};
 		this.support.database = this.config.support.logs.database;
 		this.support.commands = this.config.support.logs.commands;
 		this.support.errors = this.config.support.logs.errors;
 		this.support.status = this.config.support.logs.status;
-		
+
 		if (this.config.apiKeys.amethyste) {
 			this.AmeAPI = new Amethyste(this.config.apiKeys.amethyste);
 		}
@@ -138,8 +138,7 @@ class Byte extends Client {
 			if (!(event instanceof Event)) return;
 			if (event.once) {
 				this.once(name, (...args) => event.run(...args));
-			}
-			else {
+			} else {
 				this.on(name, (...args) => event.run(...args));
 			}
 			delete require.cache[require.resolve(`${file}`)];
@@ -225,8 +224,7 @@ class Byte extends Client {
 		let command;
 		if (this.commands.has(commandName)) {
 			command = this.commands.get(commandName);
-		}
-		else if (this.aliases.has(commandName)) {
+		} else if (this.aliases.has(commandName)) {
 			command = this.commands.get(this.aliases.get(commandName));
 		}
 		if (!command) {

@@ -29,7 +29,7 @@ class NameCommand extends Command {
 				.setTimestamp();
 			return message.channel.send({
 				embeds: [NameEmbed],
-		    });
+			});
 		}
 
 		if (!args[0] || !args[1]) {

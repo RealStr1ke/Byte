@@ -81,8 +81,7 @@ class Cli {
 					console.log(`❌ ${e.message}`);
 				});
 			setTimeout(() => { this.runCommand(); }, 2000);
-		}
-		catch (e) {
+		} catch (e) {
 			console.log('❌ Invalid guild ID: Try again');
 			this.invite();
 		}

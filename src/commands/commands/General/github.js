@@ -25,10 +25,9 @@ class GitHubCommand extends Command {
 		let res;
 		try {
 			res = await axios.get(`https://api.github.com/repos/${repo}`);
-		}
-		catch (error) {
-			return message.channel.send('**The repository you specified doesn\'t exist.**');
+		} catch (error) {
 			this.client.logger.fail(error.message);
+			return message.channel.send('**The repository you specified doesn\'t exist.**');
 		}
 		try {
 			const GitHubEmbed = new MessageEmbed()
@@ -46,8 +45,7 @@ class GitHubCommand extends Command {
 			return await message.reply({
 				embeds: [GitHubEmbed],
 			});
-		}
-		catch (error) {
+		} catch (error) {
 			this.client.logger.fail(error.message);
 		}
 	}
