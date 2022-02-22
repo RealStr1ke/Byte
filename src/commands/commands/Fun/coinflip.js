@@ -19,7 +19,7 @@ class CoinFlipCommand extends Command {
 	async run(message) {
 		// In the future, this will integrate the economy to add coinflip betting.
 		const sides = ['heads', 'tails'];
-		return message.reply(`I flipped a coin for you and it landed on ${sides[Math.floor(Math.random() * sides.length)]}!`);
+		return message.reply(`I flipped a coin for you and it landed on **${sides[Math.floor(Math.random() * sides.length)]}!**`);
 	}
 }
 

@@ -1,0 +1,27 @@
+{
+	"region": {
+		"us-central": ":flag_us:  `US Central`",
+		"us-east": ":flag_us:  `US East`",
+		"us-south": ":flag_us:  `US South`",
+		"us-west": ":flag_us:  `US West`",
+		"europe": ":flag_eu:  `Europe`",
+		"singapore": ":flag_sg:  `Singapore`",
+		"japan": ":flag_jp:  `Japan`",
+		"russia": ":flag_ru:  `Russia`",
+		"hongkong": ":flag_hk:  `Hong Kong`",
+		"brazil": ":flag_br:  `Brazil`",
+		"sydney": ":flag_au:  `Sydney`",
+		"southafrica": "`South Africa` :flag_za:"
+	},
+	"verificationLevels": {
+		"NONE": "`None`",
+		"LOW": "`Low`",
+		"MEDIUM": "`Medium`",
+		"HIGH": "`High`",
+		"VERY_HIGH": "`Highest`"
+	},
+	"notifications": {
+		"ALL": "`All`",
+		"MENTIONS": "`Mentions`"
+	}
+}

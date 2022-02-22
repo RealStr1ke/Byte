@@ -150,9 +150,13 @@ class Byte extends Client {
 		const cmdFiles = await this.getFiles('src/commands/commands', '.js');
 		if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
-			const file = new (require(path.resolve(commandPath)))(this);
-			if (!(file instanceof Command)) return;
-			this.loadCommand(file.name, commandPath);
+			try {
+				const file = new (require(path.resolve(commandPath)))(this);
+				if (!(file instanceof Command)) return;
+				this.loadCommand(file.name, commandPath);
+			} catch (error) {
+				this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: ${error.message}`);
+			}
 		}
 	}
 	async reloadCommands() {
@@ -210,10 +214,9 @@ class Byte extends Client {
 				file.aliases.forEach((alias) => this.commands.aliases.set(alias, file.name));
 			}
 			return true;
-		}
-		catch (error) {
-			this.logger.fail(`Command ${commandPath} failed to load`);
-			this.logger.fail(error.message);
+		} catch (error) {
+			this.logger.fail(`Command ${commandName} failed to load`);
+			// this.logger.fail(error.message);
 			return false;
 		}
 	}

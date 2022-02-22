@@ -23,7 +23,10 @@ class AdviceCommand extends Command {
 		const AdviceEmbed = new MessageEmbed()
 			.setTitle('Here\'s an piece of advice')
 			.setDescription(response.data.slip.advice)
-			.setFooter(`You got advice #${response.data.slip.id} • ${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setFooter({
+				text: `You got advice #${response.data.slip.id} • ${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 

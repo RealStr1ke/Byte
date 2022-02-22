@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed, MessageAttachment } = require('discord.js');
+const { MessageAttachment } = require('discord.js');
 const path = require('path');
 const { Canvacord } = require('canvacord');
 

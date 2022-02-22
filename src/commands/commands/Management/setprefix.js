@@ -10,7 +10,7 @@ class SetPrefixCommand extends Command {
 			usage       : 'setprefix <prefix>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : ['SEND_MESSAGES', 'MANAGE_GUILD'],
 			guildOnly   : true,
 			requireData : true,
 		});
@@ -20,7 +20,7 @@ class SetPrefixCommand extends Command {
 		if (args.length) {
 			const prefix = args[0];
 			if (prefix.match('default') || prefix.match(this.client.config.prefix)) {
-				data.guild.prefix = prefix;
+				data.guild.prefix = this.client.config.prefix;
 				data.guild.save();
 				this.client.logger.success(`${message.author.tag} set the prefix of ${message.guild.name} to ${prefix}`);
 				return message.reply(`The prefix has been reset to \`${this.client.config.prefix}\``);

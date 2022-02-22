@@ -23,8 +23,8 @@ class BotStatsCommand extends Command {
 
 	async run(message) {
 		const botStats = new MessageEmbed()
-			.setTitle('Byte Statistics')
-			.setDescription(`Detailed information about ${this.client.user.username}'s hardware and other statistics`)
+			.setTitle(`<@!${this.client.user.id}>'s Statistics`)
+			.setDescription(`Detailed information about <@!${this.client.user.id}>'s hardware and other statistics`)
 			.addFields([
 				{
 					name: '**— Bot**',
@@ -51,11 +51,14 @@ class BotStatsCommand extends Command {
 			])
 			.setTimestamp()
 			.setAuthor({
-				text: this.client.user.tag,
+				name: this.client.user.tag,
 				iconURL: this.client.user.displayAvatarURL(),
 			})
 			.setColor(this.client.config.embed.color)
-			.setFooter(this.client.config.embed.footer);
+			.setFooter({
+				text: this.client.config.embed.footer,
+				iconURL: this.client.user.displayAvatarURL(),
+			});
 
 		return message.reply({
 			embeds: [botStats],

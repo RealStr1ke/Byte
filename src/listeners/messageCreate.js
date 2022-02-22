@@ -26,10 +26,8 @@ class messageCreate extends Event {
 		if (message.guild) {
 			if (message.content.startsWith(client.config.prefix)) {
 				prefix = client.config.prefix;
-			}
-			else if (message.content.startsWith(data.guild.prefix)) {prefix = data.guild.prefix;}
-		}
-		else {
+			} else if (message.content.startsWith(data.guild.prefix)) {prefix = data.guild.prefix;}
+		} else {
 			prefix = client.config.prefix;
 		}
 

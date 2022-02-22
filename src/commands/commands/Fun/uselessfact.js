@@ -24,7 +24,10 @@ class UselessFactCommand extends Command {
 		const UselessFactEmbed = new MessageEmbed()
 			.setTitle('Here\'s a useless fact')
 			.setDescription(response.data.text)
-			.setFooter(`${this.client.config.embed.footer}`, this.client.user.displayAvatarURL())
+			.setFooter({
+				text: `${this.client.config.embed.footer}`,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 
