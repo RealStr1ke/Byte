@@ -5,7 +5,7 @@
 **This is a multipurpose Discord bot that @RealStr1ke is currently working on.**
 
 ## Commands
-![**Click here](https://github.com/RealStr1ke/Byte/blob/main/docs/Commands.md) for all of Byte's commands**
+**![Click here](https://github.com/RealStr1ke/Byte/blob/main/docs/Commands.md) for all of Byte's commands**
 
 ## Credits
 
