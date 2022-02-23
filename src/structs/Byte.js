@@ -1,8 +1,8 @@
 // Submodules
-const { Client, Collection } = require('discord.js');
-const { Routes } = require('discord-api-types/v9');
-const { REST } = require('@discordjs/rest');
 const { GiveawaysManager } = require('discord-giveaways');
+const { Client, Collection } = require('discord.js');
+const { Routes } = require('discord-api-types/v10');
+const { REST } = require('@discordjs/rest');
 const { Player } = require('discord-player');
 
 // Modules
@@ -16,9 +16,10 @@ const glob = require('glob');
 const util = require('util');
 
 // Helpers
-const Utils = require('../modules/helpers/Utils');
+const DocsUpdater = require('../modules/helpers/DocsUpdater');
 const Database = require('../modules/database/Handler');
 const Logger = require('../modules/helpers/Logger');
+const Utils = require('../modules/helpers/Utils');
 const Cli = require('../modules/helpers/Cli');
 
 // Structures
@@ -48,6 +49,7 @@ class Byte extends Client {
 		this.events = new Collection();
 		this.slash = new Collection();
 
+		this.DocsUpdater = new DocsUpdater(this);
 		this.wait = util.promisify(setTimeout);
 		this.utils = new Utils(this);
 		this.Cli = new Cli(this);
