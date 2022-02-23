@@ -22,7 +22,7 @@ class CoinFlipCommand extends Command {
 		const chance = Math.random() * sides.length;
 		const result = `I flipped a coin for you and it landed on **${sides[Math.floor(Math.random() * sides.length)]}!**`;
 		if (chance < 0.02) {
-			result = `I flipped a coin for you and it landed on it's edge!`;
+			result = 'I flipped a coin for you and it landed on it\'s edge! L+Ratio';
 		}
 		return message.reply(result);
 	}
