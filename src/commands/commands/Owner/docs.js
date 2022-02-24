@@ -18,7 +18,7 @@ class DocsCommand extends Command {
 	}
 
 	async run(message) {
-		this.client.DocsUpdater.update();
+		this.client.updateDocs();
 		const DocsEmbed = new MessageEmbed()
 			.setTitle('Command documentation has been updated!')
 			.setFooter({

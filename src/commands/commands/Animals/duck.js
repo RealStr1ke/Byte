@@ -8,7 +8,7 @@ class DuckCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name        : 'duck',
-			description : 'Sends a random duck picture.',
+			description : 'Responds with a random duck picture.',
 			usage       : 'duck',
 			args        : false,
 			directory   : __dirname,

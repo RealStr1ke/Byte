@@ -120,6 +120,10 @@ class Byte extends Client {
 		this.Cli.start();
 	}
 
+	async updateDocs() {
+		this.DocsUpdater.update();
+	}
+
 	get directory() {
 		return `${path.dirname(require.main.filename)}${path.sep}`;
 	}

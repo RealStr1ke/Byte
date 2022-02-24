@@ -8,7 +8,7 @@ class FoxCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name        : 'fox',
-			description : 'Sends a random fox picture.',
+			description : 'Responds with a random fox picture.',
 			usage       : 'fox',
 			args        : false,
 			directory   : __dirname,
