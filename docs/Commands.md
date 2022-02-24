@@ -31,8 +31,8 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **bird**     | Responds with a random bird picture.      | bird     | 2 seconds |
 | **cat**      | Responds with a random cat picture.       | cat      | 2 seconds |
 | **dog**      | Responds with a random dog picture.       | dog      | 2 seconds |
-| **duck**     | Sends a random duck picture.              | duck     | 2 seconds |
-| **fox**      | Sends a random fox picture.               | fox      | 2 seconds |
+| **duck**     | Responds with a random duck picture.      | duck     | 2 seconds |
+| **fox**      | Responds with a random fox picture.       | fox      | 2 seconds |
 | **kangaroo** | Responds with a random kangaroo picture.  | kangaroo | 2 seconds |
 | **koala**    | Responds with a random koala picture.     | koala    | 2 seconds |
 | **panda**    | Responds with a random panda picture.     | panda    | 2 seconds |
