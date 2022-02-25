@@ -9,7 +9,7 @@ class QRCodeCommand extends Command {
 		super(client, {
 			name        : 'qrcode',
 			description : 'Creates a QR Code for the given link.',
-			usage       : 'qrcode',
+			usage       : 'qrcode <value>',
 			args        : true,
 			aliases     : ['qr', 'qrc'],
 			directory   : __dirname,

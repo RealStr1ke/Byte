@@ -19,7 +19,7 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **facepalm**        | Smh.                                                   | facepalm <User> | 2 seconds |
 | **invert**          | Inverts the given user's avatar.                       | invert <User>   | 2 seconds |
 | **ohno**            | Imagine being stupid smh.                              | ohno <Text>     | 2 seconds |
-| **qrcode**          | Creates a QR Code for the given link.                  | qrcode          | 2 seconds |
+| **qrcode**          | Creates a QR Code for the given link.                  | qrcode <value>  | 2 seconds |
 | **slap**            | Sends an image of the given user being slapped XD.     | slap <User>     | 2 seconds |
 | **trigger**         | Sends a TRIGGERED image of that user being mad (lol).  | trigger <User>  | 2 seconds |
 | **youtube-comment** | Sends the given text in the form of a Youtube comment. | ytc <Text>      | 2 seconds |
