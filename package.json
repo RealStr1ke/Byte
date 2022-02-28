@@ -66,6 +66,7 @@
     "string-width": "^5.1.0",
     "strip-ansi": "^7.0.1",
     "tar": "^6.1.11",
+    "to-zalgo": "^1.0.1",
     "uuid": "^8.3.2",
     "validator": "^13.7.0",
     "ws": "^8.3.0"

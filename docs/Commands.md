@@ -39,6 +39,19 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **redpanda** | Responds with a random red panda picture. | redpanda | 2 seconds |
 | **shibe**    | Responds with a random shibe picture.     | shibe    | 2 seconds |
 
+### Owner (8 commands)
+
+| Name           | Description                         | Usage                | Cooldown  |
+| -------------- | ----------------------------------- | -------------------- | --------- |
+| **deploy**     | Deploys all application commands.   | deploy               | 2 seconds |
+| **docs**       | Updates documentation.              | docs                 | 2 seconds |
+| **eval**       | Executes arbituary JavaScript code. | eval <code>          | 2 seconds |
+| **exec**       | Executes a terminal command.        | exec                 | 2 seconds |
+| **reload**     | Reloads the given command.          | reload <command/all> | 2 seconds |
+| **restart**    | Restarts the bot process.           | restart              | 2 seconds |
+| **serverlist** | No information specified.           | serverlist           | 2 seconds |
+| **shutdown**   | Shuts the bot down.                 | shutdown             | 2 seconds |
+
 ### Fun (7 commands)
 
 | Name            | Description                                      | Usage          | Cooldown  |
@@ -51,18 +64,6 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **reverse**     | Reverses the given text.                         | reverse <text> | 2 seconds |
 | **uselessfact** | Responds with a random useless fact.             | uselessfact    | 2 seconds |
 
-### Owner (7 commands)
-
-| Name         | Description                         | Usage                | Cooldown  |
-| ------------ | ----------------------------------- | -------------------- | --------- |
-| **deploy**   | Deploys all application commands.   | deploy               | 2 seconds |
-| **docs**     | Updates documentation.              | docs                 | 2 seconds |
-| **eval**     | Executes arbituary JavaScript code. | eval <code>          | 2 seconds |
-| **exec**     | Executes a terminal command.        | exec                 | 2 seconds |
-| **reload**   | Reloads the given command.          | reload <command/all> | 2 seconds |
-| **restart**  | Restarts the bot process.           | restart              | 2 seconds |
-| **shutdown** | Shuts the bot down.                 | shutdown             | 2 seconds |
-
 ### Education (6 commands)
 
 | Name          | Description                   | Usage                                     | Cooldown  |
@@ -74,7 +75,7 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **schedule**  | Sets your schedule            | schedule <set/clear> <Period #> <Subject> | 2 seconds |
 | **subjects**  | Sets the server's subjects    | subjects <add/remove/clear> <Subject>     | 2 seconds |
 
-### General (4 commands)
+### General (6 commands)
 
 | Name           | Description                                           | Usage         | Cooldown  |
 | -------------- | ----------------------------------------------------- | ------------- | --------- |
@@ -82,6 +83,8 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **help**       | Responds with command info.                           | help          | 2 seconds |
 | **ping**       | Shows the bot's connection status to the Discord API. | ping          | 2 seconds |
 | **serverinfo** | Gives information about the current server            | serverinfo    | 2 seconds |
+| **someone**    | No information specified.                             | someone       | 2 seconds |
+| **zalgo**      | Changes the given text to zalgo text                  | zalgo <text>  | 2 seconds |
 
 ### Moderation (4 commands)
 
