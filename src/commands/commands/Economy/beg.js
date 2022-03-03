@@ -13,6 +13,7 @@ class BegCommand extends Command {
 			directory   : __dirname,
 			userPerms   : 'SEND_MESSAGES',
 			requireData : true,
+			guildOnly   : true,
 			ownerOnly   : true,
 		});
 	}

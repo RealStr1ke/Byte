@@ -26,7 +26,7 @@ class PingCommand extends Command {
 				`🔂 **RTT**: ${timeDiff} ms`,
 				`💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
 			].join('\n'))
-			.setColor(this.client.color)
+			.setColor(this.client.config.embed.color)
 			.setFooter({
 				text: `Requested by ${message.author.username}`,
 				iconURL: this.client.user.displayAvatarURL(),

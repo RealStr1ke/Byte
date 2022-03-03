@@ -28,6 +28,7 @@ const Slash = require('./templates/Slash.js');
 const Event = require('./templates/Event.js');
 
 // Config
+// const constants = require('../modules/constants/constants');
 const config = require('../config');
 
 class Byte extends Client {
@@ -49,6 +50,7 @@ class Byte extends Client {
 		this.events = new Collection();
 		this.slash = new Collection();
 
+		// this.constants = constants;
 		this.DocsUpdater = new DocsUpdater(this);
 		this.wait = util.promisify(setTimeout);
 		this.utils = new Utils(this);

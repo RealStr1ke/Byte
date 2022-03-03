@@ -25,7 +25,7 @@ class UselessFactCommand extends Command {
 			.setTitle('Here\'s a useless fact')
 			.setDescription(response.data.text)
 			.setFooter({
-				text: `${this.client.config.embed.footer}`,
+				text: this.client.config.embed.footer,
 				iconURL: this.client.user.displayAvatarURL(),
 			})
 			.setColor(this.client.config.embed.color)

@@ -12,8 +12,8 @@ class EducationCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['edu'],
-			userPerms   : 'SEND_MESSAGES',
-			ownerOnly   : true,
+			userPerms   : ['SEND_MESSAGES', 'MANAGE_GUILD'],
+			guildOnly   : true,
 			requireData : true,
 		});
 	}

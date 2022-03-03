@@ -19,6 +19,14 @@ class CustomLog {
 		console.log(`${colors.bgGray(`\n ${new Date().toLocaleTimeString()} `)}${colors.bgGreen.white(' ✓ ')} ${message}`);
 	}
 
+	debug(info) {
+		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgBrightYellow.white(' ! ')} ${info}`);
+	}
+
+	warn(info) {
+		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgYellow.white(' ⚠ ')} ${info}`);
+	}
+
 	fail(message) {
 		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgRed.white(' ✘ ')} ${message}`);
 		return true;
@@ -47,14 +55,10 @@ class CustomLog {
 		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgBrightBlue.white(' - ')} Added to ${colors.underline(guild)} ${colors.brightBlue(`(${colors.underline(members)} members and ${colors.underline(channels)} channels)`)}`);
 	}
 
-
-	debug(info) {
-		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgBrightYellow.white(' ! ')} ${info}`);
+	guildLeave(guild, members, channels) {
+		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgBrightBlue.white(' - ')} Removed from ${colors.underline(guild)} ${colors.brightBlue(`(${colors.underline(members)} members and ${colors.underline(channels)} channels)`)}`);
 	}
 
-	warn(info) {
-		console.log(`${colors.bgGray(` ${new Date().toLocaleTimeString()} `)}${colors.bgYellow.white(' ⚠ ')} ${info}`);
-	}
 }
 
 module.exports = CustomLog;

@@ -24,10 +24,10 @@ class SomeoneCommand extends Command {
 			.addField('Username', member.user.username, true)
 			.addField('Discriminator', member.user.discriminator, true)
 			.addField('ID', member.user.id, true)
-			.setThumbnail(member.user.displayAvatarURL({ 
+			.setThumbnail(member.user.displayAvatarURL({
 				size: 512,
 				dynamic: true,
-				format: 'png' 
+				format: 'png',
 			}))
 			.setColor(this.client.config.embed.color);
 

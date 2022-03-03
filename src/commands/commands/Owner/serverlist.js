@@ -18,7 +18,7 @@ class ServerListCommand extends Command {
 	}
 
 	async run(message) {
-		
+		return;
 	}
 }
 
