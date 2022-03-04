@@ -8,15 +8,18 @@ class error extends Event {
 
 	async run(err) {
 		this.client.logger.fail(err.message);
-		const embed = new MessageEmbed()
-			.setTitle('Websocket Error')
-			.setDescription(`Error: **${err.message}\nContent: \n ${err}`)
-			.setColor(this.client.config.embed.color)
-			.setTimestamp();
-		this.client.support.errors.send({
-			embeds: embed,
-		});
-		return message.channel.send(`\`\`\`js\n${err.message}\`\`\``);
+		if (this.client.config.logs.support.errors) {
+			const ErrorEmbed = new MessageEmbed()
+				.setTitle('Websocket Error')
+				.setDescription(`Error: **${err.message}\nContent: \n ${err}`)
+				.setColor('RED')
+				.setTimestamp();
+			const ErrorLog = this.client.channels.cache.get(this.client.support.errors);
+			ErrorLog.send({
+				embeds: [ErrorEmbed],
+			});
+			// return message.channel.send(`\`\`\`js\n${err.message}\`\`\``);
+		}
 	}
 }
 module.exports = error;

@@ -12,10 +12,10 @@ class ready extends Event {
 		this.client.loadSlashCommands();
 
 		const time = (await this.client.stopwatch.stop()) / 100;
-		this.client.support.database = this.client.channels.cache.get(this.client.config.support.logs.database);
-		this.client.support.commands = this.client.channels.cache.get(this.client.config.support.logs.commands);
-		this.client.support.errors = this.client.channels.cache.get(this.client.config.support.logs.errors);
-		this.client.support.status = this.client.channels.cache.get(this.client.config.support.logs.status);
+		// this.client.support.database = this.client.channels.cache.get(this.client.config.support.logs.database);
+		// this.client.support.commands = this.client.channels.cache.get(this.client.config.support.logs.commands);
+		// this.client.support.errors = this.client.channels.cache.get(this.client.config.support.logs.errors);
+		// this.client.support.status = this.client.channels.cache.get(this.client.config.support.logs.status);
 
 
 		this.client.logger.startup(`Loaded ${this.client.commands.size} commands`);

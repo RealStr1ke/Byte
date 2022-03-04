@@ -110,6 +110,7 @@ class messageCreate extends Event {
 			command.setInstance(message.author.id);
 			// command.setCooldown(message.author.id);
 			command.setMessage(message);
+
 			if (command.requireData) {
 				command.run(message, args, data);
 			} else {
@@ -125,7 +126,8 @@ class messageCreate extends Event {
 				.setTitle('Error')
 				.setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct Messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)
 				.setTimestamp();
-			this.client.support.errors.send({
+			const ErrorLog = this.client.channels.cache.get(this.client.support.errors);
+			ErrorLog.send({
 				embeds: [ErrorEmbed],
 			});
 			if (this.client.config.debug) message.channel.send(`\`\`\`js\n${error.message}\`\`\``);

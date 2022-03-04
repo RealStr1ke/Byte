@@ -79,6 +79,7 @@ class Byte extends Client {
 		this.support.commands = this.config.support.logs.commands;
 		this.support.errors = this.config.support.logs.errors;
 		this.support.status = this.config.support.logs.status;
+		this.support.debug = this.config.support.logs.debug;
 
 		if (this.config.apiKeys.amethyste) {
 			this.AmeAPI = new Amethyste(this.config.apiKeys.amethyste);
