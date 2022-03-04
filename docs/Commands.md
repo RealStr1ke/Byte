@@ -1,5 +1,5 @@
 # Commands  
-Here's the list of Byte's commands. This one contains more than **50 commands** in **9 categories**!  
+Here's the list of Byte's commands. This one contains more than **60 commands** in **9 categories**!  
 
 #### Contents of the table  
 **Name**: The name of the command  
@@ -39,6 +39,19 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **redpanda** | Responds with a random red panda picture. | redpanda | 2 seconds |
 | **shibe**    | Responds with a random shibe picture.     | shibe    | 2 seconds |
 
+### Fun (8 commands)
+
+| Name            | Description                                      | Usage            | Cooldown  |
+| --------------- | ------------------------------------------------ | ---------------- | --------- |
+| **8ball**       | Ask the Magic 8-Ball!                            | 8ball <question> | 2 seconds |
+| **advice**      | Responds with a random piece of advice.          | advice           | 2 seconds |
+| **ascii**       | Turns the given text to ASCII text.              | ascii <text>     | 2 seconds |
+| **coinflip**    | Flips a coin, obviously.                         | coinflip         | 2 seconds |
+| **fml**         | Responds with a random FML (F*** my life) quote. | fml              | 2 seconds |
+| **joke**        | Responds with a random joke.                     | joke             | 2 seconds |
+| **reverse**     | Reverses the given text.                         | reverse <text>   | 2 seconds |
+| **uselessfact** | Responds with a random useless fact.             | uselessfact      | 2 seconds |
+
 ### Owner (8 commands)
 
 | Name           | Description                         | Usage                | Cooldown  |
@@ -52,17 +65,17 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **serverlist** | No information specified.           | serverlist           | 2 seconds |
 | **shutdown**   | Shuts the bot down.                 | shutdown             | 2 seconds |
 
-### Fun (7 commands)
+### General (7 commands)
 
-| Name            | Description                                      | Usage          | Cooldown  |
-| --------------- | ------------------------------------------------ | -------------- | --------- |
-| **advice**      | Responds with a random piece of advice.          | advice         | 2 seconds |
-| **ascii**       | Turns the given text to ASCII text.              | ascii <text>   | 2 seconds |
-| **coinflip**    | Flips a coin, obviously.                         | coinflip       | 2 seconds |
-| **fml**         | Responds with a random FML (F*** my life) quote. | fml            | 2 seconds |
-| **joke**        | Responds with a random joke.                     | joke           | 2 seconds |
-| **reverse**     | Reverses the given text.                         | reverse <text> | 2 seconds |
-| **uselessfact** | Responds with a random useless fact.             | uselessfact    | 2 seconds |
+| Name           | Description                                           | Usage         | Cooldown  |
+| -------------- | ----------------------------------------------------- | ------------- | --------- |
+| **github**     | Gives information about the given GitHub repository   | github <repo> | 2 seconds |
+| **help**       | Responds with command info.                           | help          | 2 seconds |
+| **ping**       | Shows the bot's connection status to the Discord API. | ping          | 2 seconds |
+| **serverinfo** | Gives information about the current server            | serverinfo    | 2 seconds |
+| **shorten**    | Kicks a member from the current server.               | kick <member> | 2 seconds |
+| **someone**    | No information specified.                             | someone       | 2 seconds |
+| **zalgo**      | Changes the given text to zalgo text                  | zalgo <text>  | 2 seconds |
 
 ### Education (6 commands)
 
@@ -75,17 +88,6 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **schedule**  | Sets your schedule            | schedule <set/clear> <Period #> <Subject> | 2 seconds |
 | **subjects**  | Sets the server's subjects    | subjects <add/remove/clear> <Subject>     | 2 seconds |
 
-### General (6 commands)
-
-| Name           | Description                                           | Usage         | Cooldown  |
-| -------------- | ----------------------------------------------------- | ------------- | --------- |
-| **github**     | Gives information about the given GitHub repository   | github <repo> | 2 seconds |
-| **help**       | Responds with command info.                           | help          | 2 seconds |
-| **ping**       | Shows the bot's connection status to the Discord API. | ping          | 2 seconds |
-| **serverinfo** | Gives information about the current server            | serverinfo    | 2 seconds |
-| **someone**    | No information specified.                             | someone       | 2 seconds |
-| **zalgo**      | Changes the given text to zalgo text                  | zalgo <text>  | 2 seconds |
-
 ### Moderation (4 commands)
 
 | Name         | Description                                | Usage                 | Cooldown  |
@@ -95,12 +97,13 @@ Here's the list of Byte's commands. This one contains more than **50 commands** 
 | **slowmode** | Sets the slowmode for the current channel. | slowmode <secs>       | 2 seconds |
 | **unban**    | Unbans a member from the current server.   | unban <User ID>       | 2 seconds |
 
-### Economy (2 commands)
+### Economy (3 commands)
 
-| Name        | Description                         | Usage          | Cooldown  |
-| ----------- | ----------------------------------- | -------------- | --------- |
-| **balance** | Responds with the user's balance.   | balance <user> | 2 seconds |
-| **beg**     | Gives you a random number of coins. | beg            | 2 seconds |
+| Name          | Description                         | Usage                | Cooldown  |
+| ------------- | ----------------------------------- | -------------------- | --------- |
+| **balance**   | Responds with the user's balance.   | balance <user>       | 2 seconds |
+| **beg**       | Gives you a random number of coins. | beg                  | 2 seconds |
+| **birthdate** | Sets your birthdate.                | birthdate DD/MM/YYYY | 2 seconds |
 
 ### Management (2 commands)
 
