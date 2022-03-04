@@ -6,6 +6,7 @@ class debug extends Event {
 	}
 
 	async run(info) {
+		if (!this.client.config.debug) return;
 		if (this.client.isReady() && this.client.status) {
 			if (this.client.config.support.logs.debug) {
 				const DebugEmbed = new MessageEmbed()
@@ -18,7 +19,6 @@ class debug extends Event {
 				});
 			}
 		}
-		if (!this.client.config.debug) return;
 		return this.client.logger.debug(info);
 	}
 }
