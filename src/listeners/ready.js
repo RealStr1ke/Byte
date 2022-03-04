@@ -32,7 +32,7 @@ class ready extends Event {
 			.setTitle('**Online**')
 			.setColor('GREEN')
 			.setTimestamp();
-		const StatusLog = this.client.channels.cache.get(this.client.support.status)
+		const StatusLog = this.client.channels.cache.get(this.client.support.status);
 		StatusLog.send({
 			embeds: [StartupEmbed],
 		});

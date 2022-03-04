@@ -6,7 +6,7 @@ class messageUpdate extends Event {
 
 	async run(oldMessage, newMessage) {
 		if (!newMessage.editedAt) return;
-		this.client.emit('messageCreate', newMessage);
+		return this.client.emit('messageCreate', newMessage);
 	}
 }
 
