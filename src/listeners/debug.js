@@ -6,7 +6,7 @@ class debug extends Event {
 	}
 
 	async run(info) {
-		if (this.client.isReady()) {
+		if (this.client.isReady() && this.client.status) {
 			if (this.client.config.support.logs.debug) {
 				const DebugEmbed = new MessageEmbed()
 					.setTitle(`**${info}**`)

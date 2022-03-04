@@ -1,6 +1,6 @@
 // Submodules
 const { GiveawaysManager } = require('discord-giveaways');
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, MessageEmbed } = require('discord.js');
 const { Routes } = require('discord-api-types/v10');
 const { REST } = require('@discordjs/rest');
 const { Player } = require('discord-player');
@@ -57,6 +57,7 @@ class Byte extends Client {
 		this.Cli = new Cli(this);
 		this.logger = new Logger(this);
 		this.stopwatch = new Stopwatch();
+		this.status = false;
 
 		// Database
 		this.database = new Database(this);
@@ -156,7 +157,7 @@ class Byte extends Client {
 	// Command Handler
 	async loadCommands() {
 		const cmdFiles = await this.getFiles('src/commands/commands', '.js');
-		if (this.config.debug) console.log(cmdFiles);
+		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			try {
 				const file = new (require(path.resolve(commandPath)))(this);
@@ -169,7 +170,7 @@ class Byte extends Client {
 	}
 	async reloadCommands() {
 		const cmdFiles = await this.getFiles('src/commands/commands', '.js');
-		if (this.config.debug) console.log(cmdFiles);
+		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
 			if (!(file instanceof Command)) return;
@@ -181,7 +182,7 @@ class Byte extends Client {
 	async loadSlashCommands() {
 		const cmdFiles = await this.getFiles('src/commands/slash', '.js');
 		let commands = [];
-		if (this.config.debug) console.log(cmdFiles);
+		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
 			if (!(file instanceof Slash)) return;
@@ -197,7 +198,7 @@ class Byte extends Client {
 			*/
 		}
 		commands = commands.map(command => command.toJSON());
-		if (this.config.debug) console.log(commands);
+		// if (this.config.debug) console.log(`Slash Commands:\n${commands}`);
 		const rest = new REST({
 			version: '9',
 		}).setToken(this.config.token);
@@ -211,10 +212,10 @@ class Byte extends Client {
 
 	async loadCommand(commandName, commandPath) {
 		try {
-			if (this.config.debug) {
-				console.log(commandPath);
-				console.log(path.parse(commandPath));
-			}
+			// if (this.config.debug) {
+			// 	console.log(commandPath);
+			// 	console.log(path.parse(commandPath));
+			// }
 			const file = new (require(path.resolve(commandPath)))(this);
 			if (this.config.debug) this.logger.log(`Loading Command: ${file.name}`);
 			this.commands.set(file.name, file);
@@ -308,9 +309,23 @@ class Byte extends Client {
 	}
 
 	async destroy() {
+		this.status = false;
+		const ShutDownEmbed = new MessageEmbed()
+			.setTitle('**Offline**')
+			.setColor('RED')
+			.setTimestamp();
+		const StatusLog = this.channels.cache.get(this.support.status)
+		StatusLog.send({
+			embeds: [ShutDownEmbed],
+		});
+
 		this.logger.shutdown('Bot is now shutting down.');
+		await this.utils.sleep(1);
+
 		this.database.closeDatabase();
 		super.destroy();
+		// await this.utils.sleep(1);
+		// await this.utils.sleep(1);
 	}
 
 	async start() {

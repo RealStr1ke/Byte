@@ -1,5 +1,6 @@
-const path = require('path');
 const Event = require('../structs/templates/Event');
+const { MessageEmbed } = require('discord.js');
+const path = require('path');
 
 class ready extends Event {
 	constructor(client) {
@@ -9,14 +10,10 @@ class ready extends Event {
 	}
 
 	async run() {
+		this.client.status = true;
 		this.client.loadSlashCommands();
 
 		const time = (await this.client.stopwatch.stop()) / 100;
-		// this.client.support.database = this.client.channels.cache.get(this.client.config.support.logs.database);
-		// this.client.support.commands = this.client.channels.cache.get(this.client.config.support.logs.commands);
-		// this.client.support.errors = this.client.channels.cache.get(this.client.config.support.logs.errors);
-		// this.client.support.status = this.client.channels.cache.get(this.client.config.support.logs.status);
-
 
 		this.client.logger.startup(`Loaded ${this.client.commands.size} commands`);
 		this.client.logger.startup(`Loaded ${this.client.commands.slash.size} slash commands`);
@@ -30,11 +27,19 @@ class ready extends Event {
 			}],
 			status: 'idle',
 		});
+
+		const StartupEmbed = new MessageEmbed()
+			.setTitle('**Online**')
+			.setColor('GREEN')
+			.setTimestamp();
+		const StatusLog = this.client.channels.cache.get(this.client.support.status)
+		StatusLog.send({
+			embeds: [StartupEmbed],
+		});
+
 		this.client.logger.startup(`Startup Time: ${time} seconds`);
 		// this.client.logger.log(`You can use this link to invite this bot to your server ${this.client.generateInvite()}`)
-		if (this.client.config.debug) {
-			this.client.startCLI();
-		}
+		// if (this.client.config.debug) this.client.startCLI();
 
 	}
 }
