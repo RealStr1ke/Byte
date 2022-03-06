@@ -73,7 +73,7 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **help**       | Responds with command info.                           | help          | 2 seconds |
 | **ping**       | Shows the bot's connection status to the Discord API. | ping          | 2 seconds |
 | **serverinfo** | Gives information about the current server            | serverinfo    | 2 seconds |
-| **shorten**    | Kicks a member from the current server.               | kick <member> | 2 seconds |
+| **shorten**    | Shortens a given URL.                                 | shorten <URL> | 2 seconds |
 | **someone**    | No information specified.                             | someone       | 2 seconds |
 | **zalgo**      | Changes the given text to zalgo text                  | zalgo <text>  | 2 seconds |
 

@@ -21,7 +21,7 @@ class QRCodeCommand extends Command {
 	async run(message, args) {
 		const link = `http://api.qrserver.com/v1/create-qr-code/?data=${args[0]}&size=200x200`;
 
-		if (isurl(link) == false) return message.reply('Please provide a valid link with `https://`');
+		if (!isurl(link)) return message.reply('Please provide a valid link with `https://`');
 
 		// const qrcode = new MessageAttachment(link, 'qrcode.png');
 
