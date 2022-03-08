@@ -281,6 +281,9 @@ class Byte extends Client {
 		return true;
 	}
 
+	// RESOLVERS
+	// Note: They all used to be async-ed.
+
 	// This function is used to resolve a user from a string
 	async resolveUser(search) {
 		let user = null;
@@ -321,7 +324,7 @@ class Byte extends Client {
 		return member;
 	}
 
-	async resolveRole(search, guild) {
+	resolveRole(search, guild) {
 		let role = null;
 		if (!search || typeof search !== 'string') return;
 		// Try ID search
@@ -335,6 +338,22 @@ class Byte extends Client {
 		if (role) return role;
 		role = guild.roles.cache.get(search);
 		return role;
+	}
+
+	resolveChannel(search, guild) {
+		let channel = null;
+		if (!search || typeof search !== 'string') return;
+		// Try ID Search
+		if (search.match(/^<#?(\d+)>$/)) {
+			const id = search.match(/^<#?(\d+)>$/)[1];
+			channel = guild.channels.cache.get(id);
+			if (channel) return channel;
+		}
+		// Try name search
+		channel = guild.channels.cache.find((r) => search === r.name);
+		if (channel) return channel;
+		channel = guild.channels.cache.get(search);
+		return channel;
 	}
 
 	async login() {

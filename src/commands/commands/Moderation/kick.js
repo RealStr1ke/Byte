@@ -39,13 +39,13 @@ class KickCommand extends Command {
 					iconURL: this.client.user.displayAvatarURL(),
 				})
 				.setTimestamp();
-			member.kick(`${reason.length ? reason.join(' ') : 'No Reason'}\n> — <@${message.author.id}>`);
+			target.kick(`${reason.length ? reason.join(' ') : 'No Reason'}\n> — <@${message.author.id}>`);
 
 			return message.channel.send({
 				embeds: [KickEmbed],
 			});
 		} catch (error) {
-			message.channel.send(`An error occured while trying to ban <@${target.id}>.`);
+			message.channel.send(`An error occured while trying to kick <@${target.id}>.`);
 			this.client.logger.fail(error.message);
 			return console.log(error);
 		}

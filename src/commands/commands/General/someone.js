@@ -17,9 +17,10 @@ class SomeoneCommand extends Command {
 	}
 
 	async run(message) {
+		await message.guild.members.fetch();
 		const member = message.guild.members.cache.random(1)[0];
 
-		const embed = new MessageEmbed()
+		const SomeoneEmbed = new MessageEmbed()
 			.setTitle(`<@!${member.user.id}>`)
 			.addField('Username', member.user.username, true)
 			.addField('Discriminator', member.user.discriminator, true)
@@ -32,7 +33,7 @@ class SomeoneCommand extends Command {
 			.setColor(this.client.config.embed.color);
 
 		message.channel.send({
-			embeds: [embed],
+			embeds: [SomeoneEmbed],
 		});
 
 	}

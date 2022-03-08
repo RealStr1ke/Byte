@@ -23,5 +23,13 @@
 	"notifications": {
 		"ALL": "`All`",
 		"MENTIONS": "`Mentions`"
+	},
+	"channelTypes": {
+		"DM": "DM",
+		"GUILD_TEXT": "Text",
+		"GUILD_VOICE": "Voice",
+		"GUILD_CATEGORY": "Category",
+		"GUILD_NEWS": "News",
+		"GUILD_STORE": "Store"
 	}
 }

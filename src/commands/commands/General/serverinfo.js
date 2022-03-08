@@ -44,7 +44,8 @@ class ServerInfoCommand extends Command {
 			.setFooter({
 				text: this.client.config.embed.footer,
 				iconURL: this.client.user.displayUse,
-			});
+			})
+			.setTimestamp();
 
 		if (message.guild?.welcome_screen?.description) ServerInfo.setDescription(message.guild.welcome_screen.description);
 		if (message.guild?.banner) ServerInfo.setImage(`https://cdn.discordapp.com/banners/${message.guild.id}/${message.guild.banner}.png?size=1024`);
