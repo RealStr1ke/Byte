@@ -2,7 +2,6 @@ const Command = require('../../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const moment = require('moment');
-const { oneLine, stripIndent } = require('common-tags');
 const { channelTypes } = require('../../../modules/constants/utils/serverinfo.json');
 
 class ChannelInfoCommand extends Command {
