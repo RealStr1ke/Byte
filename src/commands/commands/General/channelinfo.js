@@ -2,7 +2,8 @@ const Command = require('../../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
 const path = require('path');
 const moment = require('moment');
-const { channelTypes } = require('../../../modules/constants/utils/serverinfo.json');
+const { serverInfo } = require('../../../modules/constants/constants'),
+	{ channelTypes } = serverInfo;
 
 class ChannelInfoCommand extends Command {
 
@@ -29,8 +30,8 @@ class ChannelInfoCommand extends Command {
 			.setTitle(`**<#${channel.id}>'s Info**`)
 			.addField('Channel', `<#${channel.id}>`, true)
 			.addField('ID', `\`${channel.id}\``, true)
-			.addField('Type', `\`${channelTypes[channel.type]}\``, true)
-			.addField('Members', `\`${Array.from(channel.members.values()).filter(member => !member.user.bot).length}\``, true)
+			.addField('Type', `\`${channelTypes[channel.type]} Channel\``, true)
+			.addField('Users', `\`${Array.from(channel.members.values()).filter(member => !member.user.bot).length}\``, true)
 			.addField('Bots', `\`${Array.from(channel.members.values()).filter(member => member.user.bot).length}\``, true)
 			.addField('Created On', `\`${moment(channel.createdAt).format('MMM DD YYYY')}\``, true)
 			.setThumbnail(message.guild.iconURL({ dynamic: true }))

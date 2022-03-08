@@ -1,7 +1,6 @@
 const Command = require('../../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
 
-
 class EightBallCommand extends Command {
 
 	constructor(client) {
