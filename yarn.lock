@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@aero/centra@^1.0.8":
+"@aero/centra@^1.0.3", "@aero/centra@^1.0.8":
   "integrity" "sha512-ku3GzR89TCFAzBqK6j41SRAUPZHYrZO57ZzuQnmanlED509sIWt362rz+Msoytq0s9V0j0TqqZCoaK/fszb07g=="
   "resolved" "https://registry.npmjs.org/@aero/centra/-/centra-1.0.8.tgz"
   "version" "1.0.8"
@@ -2827,7 +2827,14 @@
   "resolved" "https://registry.npmjs.org/moment-duration-format/-/moment-duration-format-2.3.2.tgz"
   "version" "2.3.2"
 
-"moment@^2.29.1":
+"moment-timezone@^0.5.34":
+  "integrity" "sha512-3zAEHh2hKUs3EXLESx/wsgw6IQdusOT8Bxm3D9UrHPQR7zlMmzwybC8zHEM1tQ4LJwP7fcxrWr8tuBg05fFCbg=="
+  "resolved" "https://registry.npmjs.org/moment-timezone/-/moment-timezone-0.5.34.tgz"
+  "version" "0.5.34"
+  dependencies:
+    "moment" ">= 2.9.0"
+
+"moment@^2.29.1", "moment@>= 2.9.0":
   "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
   "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
   "version" "2.29.1"
@@ -2973,6 +2980,13 @@
   "integrity" "sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA=="
   "resolved" "https://registry.npmjs.org/normalize-path/-/normalize-path-3.0.0.tgz"
   "version" "3.0.0"
+
+"novelcovid@^3.0.2":
+  "integrity" "sha512-JPMmLip5ZIyhXg70oRszXpBjMuitN0vKq0cj5hs1lY0w99fmqjyu4o36P9WntGAlzPDTE1wuj29P3HzUutxQrg=="
+  "resolved" "https://registry.npmjs.org/novelcovid/-/novelcovid-3.0.2.tgz"
+  "version" "3.0.2"
+  dependencies:
+    "@aero/centra" "^1.0.3"
 
 "npm-audit-report@*":
   "integrity" "sha512-YB8qOoEmBhUH1UJgh1xFAv7Jg1d+xoNhsDYiFQlEFThEBui0W1vIz2ZK6FVg4WZjwEdl7uBQlm1jy3MUfyHeEw=="

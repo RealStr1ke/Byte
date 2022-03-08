@@ -39,6 +39,20 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **redpanda** | Responds with a random red panda picture. | redpanda | 2 seconds |
 | **shibe**    | Responds with a random shibe picture.     | shibe    | 2 seconds |
 
+### General (9 commands)
+
+| Name            | Description                                           | Usage              | Cooldown  |
+| --------------- | ----------------------------------------------------- | ------------------ | --------- |
+| **channelinfo** | Gives information about the given channe              | channelinfo        | 2 seconds |
+| **covid-19**    | Gives you the latest COVID-19 data.                   | covid-19 <country> | 2 seconds |
+| **github**      | Gives information about the given GitHub repository   | github <repo>      | 2 seconds |
+| **help**        | Responds with command info.                           | help               | 2 seconds |
+| **ping**        | Shows the bot's connection status to the Discord API. | ping               | 2 seconds |
+| **serverinfo**  | Gives information about the current server            | serverinfo         | 2 seconds |
+| **shorten**     | Shortens a given URL.                                 | shorten <URL>      | 2 seconds |
+| **someone**     | No information specified.                             | someone            | 2 seconds |
+| **zalgo**       | Changes the given text to zalgo text                  | zalgo <text>       | 2 seconds |
+
 ### Fun (8 commands)
 
 | Name            | Description                                      | Usage            | Cooldown  |
@@ -64,18 +78,6 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **restart**    | Restarts the bot process.           | restart              | 2 seconds |
 | **serverlist** | No information specified.           | serverlist           | 2 seconds |
 | **shutdown**   | Shuts the bot down.                 | shutdown             | 2 seconds |
-
-### General (7 commands)
-
-| Name           | Description                                           | Usage         | Cooldown  |
-| -------------- | ----------------------------------------------------- | ------------- | --------- |
-| **github**     | Gives information about the given GitHub repository   | github <repo> | 2 seconds |
-| **help**       | Responds with command info.                           | help          | 2 seconds |
-| **ping**       | Shows the bot's connection status to the Discord API. | ping          | 2 seconds |
-| **serverinfo** | Gives information about the current server            | serverinfo    | 2 seconds |
-| **shorten**    | Shortens a given URL.                                 | shorten <URL> | 2 seconds |
-| **someone**    | No information specified.                             | someone       | 2 seconds |
-| **zalgo**      | Changes the given text to zalgo text                  | zalgo <text>  | 2 seconds |
 
 ### Education (6 commands)
 
