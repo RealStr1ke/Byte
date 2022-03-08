@@ -25,7 +25,7 @@ class KickCommand extends Command {
 		if (target.id === this.client.user.id) return message.channel.send('*Nice try*, but you can\'t kick me.');
 		if (message.member.ownerID !== message.author.id && target.roles.highest.position >= message.member.roles.highest.position) return message.channel.send('You can\'t kick a person that\'s above you in the role hierarchy');
 		if (!target.kickable) return message.channel.send('This member isn\'t kickable.');
-		
+
 		try {
 			const reason = args.slice(1);
 			const KickEmbed = new MessageEmbed()

@@ -46,7 +46,7 @@ const constants = {
 		'South America and Canada are technically the same thing. They\'re both Americas.',
 		'Confusing Confucianism.',
 		'Were breastplates a predecessor to bras?',
-		'`(TRIGGER WARNING)` Women have great debate skills. They have something called stubbornness.'
+		'`(TRIGGER WARNING)` Women have great debate skills. They have something called stubbornness.',
 	],
 
 	// F*** My Life Quotes (Incomplete)
