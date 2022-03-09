@@ -23,7 +23,7 @@ class CoinFlipCommand extends Command {
 		console.log(chance);
 		let result;
 		const edgeString = 'L + ratio + don\'t care + didn\'t ask + cry about it + stay mad + get real + mald seethe cope harder + mad + basic + skill issue + you fell off + the audacity + triggered + any askers + redpilled + get a life + ok and? + cringe + touch grass + donowalled + not based + you\'re a (insert stereotype) + not funny didn\'t laugh + you\'re* + grammar issue + go outside + get good + reported + ad hominem + GG! + ur mom + mad about ping smh + Peak Slayer > Mid 3';
-		if (chance < 0.25) {
+		if (chance < 0.125 || chance > 0.875) {
 			result = `I flipped a coin for you and it landed on it\'s edge! ${edgeString}`;
 		} else {
 			result = `I flipped a coin for you and it landed on ${sides[Math.floor(Math.random() * sides.length)]}!`;
