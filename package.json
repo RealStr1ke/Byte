@@ -31,6 +31,7 @@
     "alexflipnote.js": "^2.5.0",
     "amethyste-api": "^1.1.5",
     "ansi-regex": "^5.0.1",
+    "ascii-table": "^0.0.9",
     "axios": "^0.24.0",
     "blague.xyz": "^1.0.6",
     "canvacord": "^5.2.3",

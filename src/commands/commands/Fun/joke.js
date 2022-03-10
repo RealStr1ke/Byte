@@ -24,7 +24,7 @@ class JokeCommand extends Command {
 			.setTitle('Here\'s an bad joke')
 			.setDescription(`**${response.data.joke.question} ${response.data.joke.answer}**`)
 			.setFooter({
-				text: `You got joke #${response.data.joke.id} • ${this.client.config.embed.footer}`,
+				text: this.client.config.embed.footer,
 				iconURL: this.client.user.displayAvatarURL(),
 			})
 			.setColor(this.client.config.embed.color)

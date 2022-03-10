@@ -39,7 +39,10 @@ class GitHubCommand extends Command {
 				.addField('Programming Language', res.data.language, true)
 				.addField('Repository Owner', `[${res.data.owner.login}](${res.data.owner.html_url})`, true)
 				.setColor(this.client.config.embed.color)
-				.setFooter(`Requested by ${message.member.displayName}`, message.author.displayAvatarURL({ dynamic: true, size: 1024 }))
+				.setFooter({
+					text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+					iconURL: this.client.user.displayAvatarURL(),
+				})
 				.setTimestamp();
 
 			return await message.reply({

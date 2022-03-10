@@ -645,6 +645,11 @@
   "resolved" "https://registry.npmjs.org/asap/-/asap-2.0.6.tgz"
   "version" "2.0.6"
 
+"ascii-table@^0.0.9":
+  "integrity" "sha1-BqZgTWpV1L9BqaR9mHLXp42jHnM="
+  "resolved" "https://registry.npmjs.org/ascii-table/-/ascii-table-0.0.9.tgz"
+  "version" "0.0.9"
+
 "asn1@~0.2.3":
   "integrity" "sha512-ix/FxPn0MDjeyJ7i/yoHGFt/EX6LyNbxSEhPPXODPL+KB0VPk86UYfL0lMdy+KCnv+fmvIzySwaK5COwqVbWTQ=="
   "resolved" "https://registry.npmjs.org/asn1/-/asn1-0.2.6.tgz"

@@ -7,22 +7,23 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### Image (12 commands)
+### Image (13 commands)
 
-| Name                | Description                                            | Usage           | Cooldown  |
-| ------------------- | ------------------------------------------------------ | --------------- | --------- |
-| **approved**        | Sends the given user's avatar as an "approved" image.  | approved <User> | 2 seconds |
-| **avatar**          | Responds with the given user's avatar.                 | advice <User>   | 2 seconds |
-| **bed**             | Inverts the given user's avatar.                       | bed <User>      | 2 seconds |
-| **changemymind**    | Sends a "Change My Mind" image with the given text.    | cmm <Text>      | 2 seconds |
-| **coffee**          | Responds with a random coffee picture.                 | coffee          | 2 seconds |
-| **facepalm**        | Smh.                                                   | facepalm <User> | 2 seconds |
-| **invert**          | Inverts the given user's avatar.                       | invert <User>   | 2 seconds |
-| **ohno**            | Imagine being stupid smh.                              | ohno <Text>     | 2 seconds |
-| **qrcode**          | Creates a QR Code for the given link.                  | qrcode <value>  | 2 seconds |
-| **slap**            | Sends an image of the given user being slapped XD.     | slap <User>     | 2 seconds |
-| **trigger**         | Sends a TRIGGERED image of that user being mad (lol).  | trigger <User>  | 2 seconds |
-| **youtube-comment** | Sends the given text in the form of a Youtube comment. | ytc <Text>      | 2 seconds |
+| Name                | Description                                             | Usage           | Cooldown  |
+| ------------------- | ------------------------------------------------------- | --------------- | --------- |
+| **approved**        | Sends the given user's avatar as an "approved" image.   | approved <User> | 2 seconds |
+| **avatar**          | Responds with the given user's avatar.                  | advice <User>   | 2 seconds |
+| **bed**             | Inverts the given user's avatar.                        | bed <User>      | 2 seconds |
+| **changemymind**    | Sends a "Change My Mind" image with the given text.     | cmm <Text>      | 2 seconds |
+| **coffee**          | Responds with a random coffee picture.                  | coffee          | 2 seconds |
+| **facepalm**        | Smh.                                                    | facepalm <User> | 2 seconds |
+| **invert**          | Inverts the given user's avatar.                        | invert <User>   | 2 seconds |
+| **ohno**            | Imagine being stupid smh.                               | ohno <Text>     | 2 seconds |
+| **qrcode**          | Creates a QR Code for the given link.                   | qrcode <value>  | 2 seconds |
+| **slap**            | Sends an image of the given user being slapped XD.      | slap <User>     | 2 seconds |
+| **trigger**         | Sends a TRIGGERED image of that user being mad (lol).   | trigger <User>  | 2 seconds |
+| **wasted**          | Turns the given user's avatar into a WASTED image lmao. | wasted <User>   | 2 seconds |
+| **youtube-comment** | Sends the given text in the form of a Youtube comment.  | ytc <Text>      | 2 seconds |
 
 ### Animals (10 commands)
 
@@ -39,7 +40,7 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **redpanda** | Responds with a random red panda picture. | redpanda | 2 seconds |
 | **shibe**    | Responds with a random shibe picture.     | shibe    | 2 seconds |
 
-### General (9 commands)
+### General (10 commands)
 
 | Name            | Description                                           | Usage              | Cooldown  |
 | --------------- | ----------------------------------------------------- | ------------------ | --------- |
@@ -48,6 +49,7 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **github**      | Gives information about the given GitHub repository   | github <repo>      | 2 seconds |
 | **help**        | Responds with command info.                           | help               | 2 seconds |
 | **ping**        | Shows the bot's connection status to the Discord API. | ping               | 2 seconds |
+| **prefix**      | Shows the current command prefix                      | prefix             | 2 seconds |
 | **serverinfo**  | Gives information about the current server            | serverinfo         | 2 seconds |
 | **shorten**     | Shortens a given URL.                                 | shorten <URL>      | 2 seconds |
 | **someone**     | No information specified.                             | someone            | 2 seconds |
@@ -68,16 +70,16 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 
 ### Owner (8 commands)
 
-| Name           | Description                         | Usage                | Cooldown  |
-| -------------- | ----------------------------------- | -------------------- | --------- |
-| **deploy**     | Deploys all application commands.   | deploy               | 2 seconds |
-| **docs**       | Updates documentation.              | docs                 | 2 seconds |
-| **eval**       | Executes arbituary JavaScript code. | eval <code>          | 2 seconds |
-| **exec**       | Executes a terminal command.        | exec                 | 2 seconds |
-| **reload**     | Reloads the given command.          | reload <command/all> | 2 seconds |
-| **restart**    | Restarts the bot process.           | restart              | 2 seconds |
-| **serverlist** | No information specified.           | serverlist           | 2 seconds |
-| **shutdown**   | Shuts the bot down.                 | shutdown             | 2 seconds |
+| Name           | Description                                | Usage                | Cooldown  |
+| -------------- | ------------------------------------------ | -------------------- | --------- |
+| **deploy**     | Deploys all application commands.          | deploy               | 2 seconds |
+| **docs**       | Updates documentation.                     | docs                 | 2 seconds |
+| **eval**       | Executes arbituary JavaScript code.        | eval <code>          | 2 seconds |
+| **exec**       | Executes a terminal command.               | exec                 | 2 seconds |
+| **reload**     | Reloads the given command.                 | reload <command/all> | 2 seconds |
+| **restart**    | Restarts the bot process.                  | restart              | 2 seconds |
+| **serverlist** | Shows all the servers that this bot is in. | serverlist           | 2 seconds |
+| **shutdown**   | Shuts the bot down.                        | shutdown             | 2 seconds |
 
 ### Education (6 commands)
 
