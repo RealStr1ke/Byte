@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const axios = require('axios');
 const path = require('path');
 
@@ -17,10 +17,11 @@ class MemeCommand extends Command {
 	}
 
 	async run(message) {
-		const Meme = async (response) => {
+		const Meme = async () => {
+			const response = await axios.get('https://meme-api.herokuapp.com/gimme');
 			const MemeEmbed = new MessageEmbed()
 				.setTitle(response.data.title)
-				// .setDescription(`[r/${response.data.subreddit}](${response.data.postLink})`)
+				.setDescription(`[r/${response.data.subreddit}](${response.data.postLink})`)
 				.setImage(response.data.url)
 				.setFooter({
 					text: this.client.config.embed.footer,
@@ -31,36 +32,54 @@ class MemeCommand extends Command {
 			return MemeEmbed;
 		};
 
-		const firstRes = await axios.get('https://meme-api.herokuapp.com/gimme');
-		const FirstMeme = await Meme(firstRes);
-		const MemeMessage = await message.channel.send({
-			embeds: [FirstMeme],
+		let MemeEmbed;
+		MemeEmbed = await Meme();
+
+		const NextMeme = new MessageButton()
+			.setCustomId('next')
+			.setLabel('Next Meme')
+			.setStyle('PRIMARY');
+		const EndInteraction = new MessageButton()
+			.setCustomId('end')
+			.setLabel('End Interaction')
+			.setStyle('DANGER');
+		const MemeRow = new MessageActionRow()
+			.addComponents(NextMeme, EndInteraction);
+
+		const MemeMessage = await message.reply({
+			embeds: [MemeEmbed],
+			components: [MemeRow],
 		});
 
-		MemeMessage.react('⏭️');
-		const filter = (reaction, user) => {
-			return reaction.emoji.name === '⏭️' && user.id === message.author.id;
-		};
+		const NextFilter = i => i.customId === 'next' && i.user.id === message.author.id;
+		const EndFilter = i => i.customId === 'end' && i.user.id === message.author.id;
+		const FullFilter = NextFilter && EndFilter;
+		const ButtonCollector = message.channel.createMessageComponentCollector({ FullFilter, time: 15000 });
 
-		const collector = MemeMessage.createReactionCollector({
-			filter,
-			time: 15000,
+		ButtonCollector.on('collect', async i => {
+			if (NextFilter(i)) {
+				await i.deferUpdate();
+				MemeEmbed = await Meme();
+				await MemeMessage.edit({
+					embeds: [MemeEmbed],
+					components: [MemeRow],
+				});
+			} else if (EndFilter(i)) {
+				await i.deferUpdate();
+				ButtonCollector.stop('User ended interaction.');
+			}
 		});
 
-		collector.on('collect', async (reaction, user) => {
-			if (reaction.me) return;
-			console.log(reaction);
-			if (!filter(reaction, user)) return reaction.users.remove(user.id);
-			const res = await axios.get('https://meme-api.herokuapp.com/gimme');
-			const CurrentMeme = Meme(res);
-			MemeMessage.edit({
-				embeds: [CurrentMeme],
+		ButtonCollector.on('end', async () => {
+			NextMeme.setDisabled(true);
+			EndInteraction.setDisabled(true);
+			MemeRow.setComponents(NextMeme, EndInteraction);
+			await MemeMessage.edit({
+				embeds: [MemeEmbed],
+				components: [MemeRow],
 			});
 		});
 
-		collector.on('end', async () => {
-			MemeMessage.edit('```No more memes lol```');
-		});
 
 	}
 }
