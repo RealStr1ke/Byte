@@ -7,23 +7,24 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 **Usage**: The arguments/options that the command takes in parameters  
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
-### Image (13 commands)
+### Image (14 commands)
 
-| Name                | Description                                             | Usage           | Cooldown  |
-| ------------------- | ------------------------------------------------------- | --------------- | --------- |
-| **approved**        | Sends the given user's avatar as an "approved" image.   | approved <User> | 2 seconds |
-| **avatar**          | Responds with the given user's avatar.                  | advice <User>   | 2 seconds |
-| **bed**             | Inverts the given user's avatar.                        | bed <User>      | 2 seconds |
-| **changemymind**    | Sends a "Change My Mind" image with the given text.     | cmm <Text>      | 2 seconds |
-| **coffee**          | Responds with a random coffee picture.                  | coffee          | 2 seconds |
-| **facepalm**        | Smh.                                                    | facepalm <User> | 2 seconds |
-| **invert**          | Inverts the given user's avatar.                        | invert <User>   | 2 seconds |
-| **ohno**            | Imagine being stupid smh.                               | ohno <Text>     | 2 seconds |
-| **qrcode**          | Creates a QR Code for the given link.                   | qrcode <value>  | 2 seconds |
-| **slap**            | Sends an image of the given user being slapped XD.      | slap <User>     | 2 seconds |
-| **trigger**         | Sends a TRIGGERED image of that user being mad (lol).   | trigger <User>  | 2 seconds |
-| **wasted**          | Turns the given user's avatar into a WASTED image lmao. | wasted <User>   | 2 seconds |
-| **youtube-comment** | Sends the given text in the form of a Youtube comment.  | ytc <Text>      | 2 seconds |
+| Name                | Description                                             | Usage             | Cooldown  |
+| ------------------- | ------------------------------------------------------- | ----------------- | --------- |
+| **approved**        | Sends the given user's avatar as an "approved" image.   | approved <User>   | 2 seconds |
+| **avatar**          | Responds with the given user's avatar.                  | advice <User>     | 2 seconds |
+| **bed**             | Inverts the given user's avatar.                        | bed <User>        | 2 seconds |
+| **changemymind**    | Sends a "Change My Mind" image with the given text.     | cmm <Text>        | 2 seconds |
+| **coffee**          | Responds with a random coffee picture.                  | coffee            | 2 seconds |
+| **facepalm**        | Smh.                                                    | facepalm <User>   | 2 seconds |
+| **invert**          | Inverts the given user's avatar.                        | invert <User>     | 2 seconds |
+| **ohno**            | Imagine being stupid smh.                               | ohno <Text>       | 2 seconds |
+| **qrcode**          | Creates a QR Code for the given link.                   | qrcode <value>    | 2 seconds |
+| **slap**            | Sends an image of the given user being slapped XD.      | slap <User>       | 2 seconds |
+| **trigger**         | Sends a TRIGGERED image of that user being mad (lol).   | trigger <User>    | 2 seconds |
+| **trumptweet**      | Returns the given text as a tweet from Donald Trump.    | trumptweet <Text> | 2 seconds |
+| **wasted**          | Turns the given user's avatar into a WASTED image lmao. | wasted <User>     | 2 seconds |
+| **youtube-comment** | Sends the given text in the form of a Youtube comment.  | ytc <Text>        | 2 seconds |
 
 ### Animals (10 commands)
 
@@ -55,18 +56,19 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **someone**     | No information specified.                             | someone            | 2 seconds |
 | **zalgo**       | Changes the given text to zalgo text                  | zalgo <text>       | 2 seconds |
 
-### Fun (8 commands)
+### Fun (9 commands)
 
-| Name            | Description                                      | Usage            | Cooldown  |
-| --------------- | ------------------------------------------------ | ---------------- | --------- |
-| **8ball**       | Ask the Magic 8-Ball!                            | 8ball <question> | 2 seconds |
-| **advice**      | Responds with a random piece of advice.          | advice           | 2 seconds |
-| **ascii**       | Turns the given text to ASCII text.              | ascii <text>     | 2 seconds |
-| **coinflip**    | Flips a coin, obviously.                         | coinflip         | 2 seconds |
-| **fml**         | Responds with a random FML (F*** my life) quote. | fml              | 2 seconds |
-| **joke**        | Responds with a random joke.                     | joke             | 2 seconds |
-| **reverse**     | Reverses the given text.                         | reverse <text>   | 2 seconds |
-| **uselessfact** | Responds with a random useless fact.             | uselessfact      | 2 seconds |
+| Name            | Description                                                           | Usage            | Cooldown  |
+| --------------- | --------------------------------------------------------------------- | ---------------- | --------- |
+| **8ball**       | Ask the Magic 8-Ball!                                                 | 8ball <question> | 2 seconds |
+| **advice**      | Responds with a random piece of advice.                               | advice           | 2 seconds |
+| **ascii**       | Turns the given text to ASCII text.                                   | ascii <text>     | 2 seconds |
+| **coinflip**    | Flips a coin, obviously.                                              | coinflip         | 2 seconds |
+| **fml**         | Responds with a random FML (F*** my life) quote.                      | fml              | 2 seconds |
+| **joke**        | Responds with a random joke.                                          | joke             | 2 seconds |
+| **meme**        | Gets a random meme from r/memes, r/dankmemes, or r/me_irl subreddits. | meme             | 2 seconds |
+| **reverse**     | Reverses the given text.                                              | reverse <text>   | 2 seconds |
+| **uselessfact** | Responds with a random useless fact.                                  | uselessfact      | 2 seconds |
 
 ### Owner (8 commands)
 
