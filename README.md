@@ -9,7 +9,7 @@
 
 ## Credits
 
-**This bot was made from the inspiration and was based off of some of these GitHub repositories.** <br>
+**This bot was made from the inspiration and was based off the following repositories.** <br>
 [BetterDiscordPanel (SanjaySunil/BetterDiscordPanel)](https://github.com/SanjaySunil/BetterDiscordPanel) <br>
 [GuideBot (AnIdiotsGuide/guidebot)](https://github.com/AnIdiotsGuide/guidebot) <br>
 [AtlantaBot (Androz2091/AtlantaBot)](https://github.com/Androz2091/AtlantaBot) <br>
@@ -17,3 +17,4 @@
 [Rada (RadaBot/Rada)](https://github.com/RadaBot/Rada) <br>
 [Rada (br4dw/Rada)](https://github.com/br4dw/Rada) <br>
 [SparkV (Ch1ll-Studio/SparkV)](https://github.com/Ch1ll-Studio/SparkV) <br>
+[CalypsoBot (sabattle/CalypsoBot)](https://github.com/sabattle/CalypsoBot) <br>
