@@ -21,8 +21,8 @@ class PrefixCommand extends Command {
 		const prefix = data.guild.prefix;
 		const PrefixEmbed = new MessageEmbed()
 			.setTitle(`${this.client.user.username}'s Prefix`)
-			.addField('Prefix', prefix, true)
-			.addField('Example', `${prefix}help`, true)
+			.addField('**Prefix**', `\`${prefix}\``, true)
+			.addField('**Example**', `\`${prefix}help\``, true)
 			.setAuthor({
 				name: message.guild.name,
 				iconURL: message.guild.iconURL({ dynamic: true }),
