@@ -20,8 +20,7 @@ class MemeCommand extends Command {
 		const Meme = async () => {
 			const response = await axios.get('https://meme-api.herokuapp.com/gimme');
 			const MemeEmbed = new MessageEmbed()
-				.setTitle(response.data.title)
-				.setDescription(`[r/${response.data.subreddit}](${response.data.postLink})`)
+				.setDescription(`[**${response.data.title}** (r/${response.data.subreddit})](${response.data.postLink})`)
 				.setImage(response.data.url)
 				.setFooter({
 					text: this.client.config.embed.footer,
@@ -59,6 +58,9 @@ class MemeCommand extends Command {
 		ButtonCollector.on('collect', async i => {
 			if (NextFilter(i)) {
 				await i.deferUpdate();
+				await ButtonCollector.resetTimer({
+					time: 30000,
+				});
 				MemeEmbed = await Meme();
 				await MemeMessage.edit({
 					embeds: [MemeEmbed],
