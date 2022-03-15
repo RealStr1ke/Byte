@@ -16,4 +16,4 @@
 [Rada (RadaBot/Rada)](https://github.com/RadaBot/Rada)\
 [Rada (br4dw/Rada)](https://github.com/br4dw/Rada)\
 [SparkV (Ch1ll-Studio/SparkV)](https://github.com/Ch1ll-Studio/SparkV)\
-[CalypsoBot (sabattle/CalypsoBot)](https://github.com/sabattle/CalypsoBot)\
+[CalypsoBot (sabattle/CalypsoBot)](https://github.com/sabattle/CalypsoBot)
