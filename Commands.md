@@ -75,7 +75,7 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | Name           | Description                                | Usage                | Cooldown  |
 | -------------- | ------------------------------------------ | -------------------- | --------- |
 | **deploy**     | Deploys all application commands.          | deploy               | 2 seconds |
-| **docs**       | Updates documentation.                     | docs                 | 2 seconds |
+| **docs**       | Updates command documentation.             | docs                 | 2 seconds |
 | **eval**       | Executes arbituary JavaScript code.        | eval <code>          | 2 seconds |
 | **exec**       | Executes a terminal command.               | exec                 | 2 seconds |
 | **reload**     | Reloads the given command.                 | reload <command/all> | 2 seconds |
