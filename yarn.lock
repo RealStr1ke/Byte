@@ -108,6 +108,18 @@
   "resolved" "https://registry.npmjs.org/@js-joda/core/-/core-4.3.1.tgz"
   "version" "4.3.1"
 
+"@kwsites/file-exists@^1.1.1":
+  "integrity" "sha512-m9/5YGR18lIwxSFDwfE3oA7bWuq9kdau6ugN4H2rJeyhFQZcG9AgSHkQtSD15a8WvTgfz9aikZMrKPHvbpqFiw=="
+  "resolved" "https://registry.npmjs.org/@kwsites/file-exists/-/file-exists-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "debug" "^4.1.1"
+
+"@kwsites/promise-deferred@^1.1.1":
+  "integrity" "sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw=="
+  "resolved" "https://registry.npmjs.org/@kwsites/promise-deferred/-/promise-deferred-1.1.1.tgz"
+  "version" "1.1.1"
+
 "@mapbox/node-pre-gyp@^1.0.0":
   "integrity" "sha512-CMGKi28CF+qlbXh26hDe6NxCd7amqeAzEqnS6IHeO6LoaKyM/n+Xw3HT1COdq8cuioOdlKdqn/hCmqPUOMOywg=="
   "resolved" "https://registry.npmjs.org/@mapbox/node-pre-gyp/-/node-pre-gyp-1.0.8.tgz"
@@ -1265,7 +1277,7 @@
   dependencies:
     "ms" "^2.1.1"
 
-"debug@^4.1.0", "debug@^4.1.1", "debug@^4.3.1", "debug@^4.3.2", "debug@~4.3.1", "debug@4", "debug@4.x":
+"debug@^4.1.0", "debug@^4.1.1", "debug@^4.3.1", "debug@^4.3.2", "debug@^4.3.3", "debug@~4.3.1", "debug@4", "debug@4.x":
   "integrity" "sha512-/zxw5+vh1Tfv+4Qn7a5nsbcJKPaSvCDhojn6FEl9vupwK2VCSDtEiEtqr8DFtzYFOdz63LBkxec7DYuc2jon6Q=="
   "resolved" "https://registry.npmjs.org/debug/-/debug-4.3.3.tgz"
   "version" "4.3.3"
@@ -3970,6 +3982,15 @@
     "decompress-response" "^4.2.0"
     "once" "^1.3.1"
     "simple-concat" "^1.0.0"
+
+"simple-git@^3.3.0":
+  "integrity" "sha512-K9qcbbZwPHhk7MLi0k0ekvSFXJIrRoXgHhqMXAFM75qS68vdHTcuzmul1ilKI02F/4lXshVgBoDll2t++JK0PQ=="
+  "resolved" "https://registry.npmjs.org/simple-git/-/simple-git-3.3.0.tgz"
+  "version" "3.3.0"
+  dependencies:
+    "@kwsites/file-exists" "^1.1.1"
+    "@kwsites/promise-deferred" "^1.1.1"
+    "debug" "^4.3.3"
 
 "smart-buffer@^4.2.0":
   "integrity" "sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg=="

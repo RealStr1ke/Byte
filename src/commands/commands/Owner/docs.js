@@ -7,7 +7,7 @@ class DocsCommand extends Command {
 	constructor(client) {
 		super(client, {
 			name        : 'docs',
-			description : 'Updates documentation.',
+			description : 'Updates command documentation.',
 			usage       : 'docs',
 			args        : false,
 			directory   : __dirname,

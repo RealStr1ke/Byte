@@ -1,15 +1,18 @@
 // Credit to Androz2091 (https://github.com/Androz2091/AtlantaBot) for the original code
 // Minor code tweaks have been made
 
+const { exec } = require('child_process');
 const table = require('markdown-table');
 const fs = require('fs');
 
+const simpleGit = require('simple-git');
+simpleGit().clean(simpleGit.CleanOptions.FORCE);
 class DocsUpdater {
 	constructor(client) {
 		this.client = client;
 	}
 
-	update() {
+	async update() {
 		const commands = this.client.commands;
 		const categories = [];
 
@@ -54,6 +57,19 @@ class DocsUpdater {
 			fs.writeFileSync('./docs/Commands.md', text);
 			this.client.logger.log('The command documentation has been successfully updated!');
 		}
+		await this.commit();
+	}
+
+	async commit() {
+		// const git = simpleGit();
+		// await git.add('./docs/Commands.md');
+		// await git.commit('📓 Updated documentation');
+		// await git.push();
+
+		await exec('git add "./docs/Commands.md"');
+		await exec('git commit -m "📓 Updated documentation"');
+		await exec('git merge');
+		await exec('git push');
 	}
 }
 

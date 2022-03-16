@@ -11,6 +11,7 @@ const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
 const Amethyste = require('amethyste-api');
 const dlogs = require('discord-logs');
+const git = require('simple-git');
 const path = require('path');
 const glob = require('glob');
 const util = require('util');
