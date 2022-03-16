@@ -48,8 +48,6 @@
     "dotenv": "^10.0.0",
     "figlet": "^1.5.2",
     "fs": "^0.0.1-security",
-    "gitbook": "^2.6.9",
-    "gitbook-cli": "^2.3.2",
     "google-it": "^1.6.2",
     "hypixel-api-reborn": "^9.0.3",
     "inquirer": "^8.2.0",
