@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const simpleGit = require('simple-git');
 simpleGit().clean(simpleGit.CleanOptions.FORCE);
+
 class DocsUpdater {
 	constructor(client) {
 		this.client = client;
@@ -54,7 +55,7 @@ class DocsUpdater {
 			text += `${table(arrCat)}\n\n`;
 		});
 		if (fs.existsSync('./docs')) {
-			fs.writeFileSync('./docs/Commands.md', text);
+			fs.writeFileSync('./docs/commands.md', text);
 			this.client.logger.log('The command documentation has been successfully updated!');
 		}
 		await this.commit();
@@ -62,11 +63,11 @@ class DocsUpdater {
 
 	async commit() {
 		// const git = simpleGit();
-		// await git.add('./docs/Commands.md');
+		// await git.add('./docs/commands.md');
 		// await git.commit('📓 Updated documentation');
 		// await git.push();
 
-		await exec('git add "./docs/Commands.md"');
+		await exec('git add "./docs/commands.md"');
 		await exec('git commit -m "📓 Updated documentation"');
 		await exec('git merge');
 		await exec('git push');
