@@ -1,10 +1,10 @@
-# Commands  
-Here's the list of Byte's commands. This one contains more than **60 commands** in **9 categories**!  
+# Commands
+Here's the list of Byte's commands. This one contains more than **60 commands** in **9 categories**!
 
-#### Contents of the table  
-**Name**: The name of the command  
-**Description**: A brief explanation of the purpose of the command  
-**Usage**: The arguments/options that the command takes in parameters  
+#### Contents of the table
+**Name**: The name of the command
+**Description**: A brief explanation of the purpose of the command
+**Usage**: The arguments/options that the command takes in parameters
 **Cooldown**: The time that must elapse between each command so that it can be executed again by the user
 
 ### Image (14 commands)
