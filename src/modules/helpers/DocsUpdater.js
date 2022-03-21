@@ -21,7 +21,18 @@ class DocsUpdater {
 			if (!categories.includes(command.category)) categories.push(command.category);
 		});
 
-		let text = `# Commands  \nHere's the list of Byte's commands. This one contains more than **${Math.floor(commands.size / 10)}0 commands** in **${categories.length} categories**!  \n\n#### Contents of the table  \n**Name**: The name of the command  \n**Description**: A brief explanation of the purpose of the command  \n**Usage**: The arguments/options that the command takes in parameters  \n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
+		// let text = `# Commands\nHere's the list of Byte's commands. This one contains more than **${Math.floor(commands.size / 10)}0 commands** in **${categories.length} categories**!\n\n#### Contents of the table\n**Name**: The name of the command\n**Description**: A brief explanation of the purpose of the command\n**Usage**: The arguments/options that the command takes in parameters\n**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n`;
+		let text = [
+			'# Commands',
+			`Here's the list of Byte's commands. This one contains more than **${Math.floor(commands.size / 10)}0 commands** in **${categories.length} categories**!\n`,
+			'#### Contents of the table',
+			'**Name**: The name of the command',
+			'**Description**: A brief explanation of the purpose of the command',
+			'**Usage**: The arguments/options that the command takes in parameters',
+			'**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n'
+		].join('\n');
+
+
 
 		categories.sort(function(a, b) {
 			const aCmdsLength = Array.from(commands.filter((command) => command.category === a)).length;
@@ -62,15 +73,25 @@ class DocsUpdater {
 	}
 
 	async commit() {
-		// const git = simpleGit();
-		// await git.add('./docs/commands.md');
-		// await git.commit('📓 Updated documentation');
+		let git = simpleGit({
+			baseDir: `${process.cwd()}/docs`,
+			binary: 'git',
+			maxConcurrentProcesses: 6,
+		});
+
+		await git.add('./commands.md');
+		await git.commit('📓 Updated documentation');
 		// await git.push();
 
-		await exec('git add "./docs/commands.md"');
-		await exec('git commit -m "📓 Updated documentation"');
-		await exec('git merge');
-		await exec('git push');
+		git = simpleGit({
+			baseDir: process.cwd(),
+			binary: 'git',
+			maxConcurrentProcesses: 6,
+		});
+
+		await git.add('./docs');
+		await git.commit('📓 Updated documentation');
+		// await git.push();
 	}
 }
 
