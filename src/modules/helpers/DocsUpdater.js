@@ -29,10 +29,8 @@ class DocsUpdater {
 			'**Name**: The name of the command',
 			'**Description**: A brief explanation of the purpose of the command',
 			'**Usage**: The arguments/options that the command takes in parameters',
-			'**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n'
+			'**Cooldown**: The time that must elapse between each command so that it can be executed again by the user\n\n',
 		].join('\n');
-
-
 
 		categories.sort(function(a, b) {
 			const aCmdsLength = Array.from(commands.filter((command) => command.category === a)).length;
