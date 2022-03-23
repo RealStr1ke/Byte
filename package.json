@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "update": "git pull && npm install",
-    "format": "prettier --write .",
-    "lint": "eslint . --fix"
+    "format": "npx prettier --write .",
+    "lint": "npx eslint . --fix"
   },
   "repository": {
     "type": "git",
