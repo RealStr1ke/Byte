@@ -31,6 +31,7 @@ const Event = require('./templates/Event.js');
 // Config
 // const constants = require('../modules/constants/constants');
 const config = require('../config');
+require('./extenders');
 
 class Byte extends Client {
 	constructor() {
