@@ -1,8 +1,8 @@
 // const { Message, MessageEmbed, Interaction } = require('discord.js');
-const { Message } = require('discord.js');
+const { Message, MessageEmbed } = require('discord.js');
 
-async function AmongUs() {
+async function AmongUsMessage() {
 	this.reply('Among Us!');
 }
 
-Message.prototype.sus = AmongUs;
+Message.prototype.sus = AmongUsMessage;
