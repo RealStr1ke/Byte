@@ -2,8 +2,8 @@
 const { Client, Collection, Permissions, MessageEmbed } = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
 const { Routes } = require('discord-api-types/v10');
-const { REST } = require('@discordjs/rest');
 const { Player } = require('discord-player');
+const { REST } = require('@discordjs/rest');
 
 // Modules
 const Stopwatch = require('statman-stopwatch');
@@ -31,7 +31,9 @@ const Event = require('./templates/Event.js');
 // Config
 // const constants = require('../modules/constants/constants');
 const config = require('../config');
-require('./extenders');
+
+// Running Extenders
+require('../modules/helpers/Extenders');
 
 class Byte extends Client {
 	constructor() {
@@ -84,15 +86,10 @@ class Byte extends Client {
 		this.support.status = this.config.support.logs.status;
 		this.support.debug = this.config.support.logs.debug;
 
-		if (this.config.apiKeys.amethyste) {
-			this.AmeAPI = new Amethyste(this.config.apiKeys.amethyste);
-		}
-		if (this.config.apiKeys.hypixelAPI) {
-			this.hypixel = new Hypixel.Client(this.config.apiKeys.hypixelAPI);
-		}
-		if (this.config.apiKeys.flipnoteAPI) {
-			this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI);
-		}
+		if (this.config.apiKeys.amethyste) this.AmeAPI = new Amethyste(this.config.apiKeys.amethyste);
+		if (this.config.apiKeys.hypixelAPI) this.hypixel = new Hypixel.Client(this.config.apiKeys.hypixelAPI);
+		if (this.config.apiKeys.flipnoteAPI) this.flipnote = new Flipnote(this.config.apiKeys.flipnoteAPI);
+
 		this.player = new Player(this, {
 			leaveOnEmpty: false,
 			enableLive: true,
