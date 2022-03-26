@@ -2,7 +2,7 @@ const Command = require('../../../structs/templates/Command');
 const { MessageAttachment, MessageEmbed } = require('discord.js');
 const Sentry = require('@sentry/node');
 const gamedig = require('gamedig');
-const axios = require('axio');
+const axios = require('axios');
 const path = require('path');
 
 class MinecraftCommand extends Command {
