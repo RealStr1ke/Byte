@@ -1,8 +1,8 @@
 const Command = require('../../../structs/templates/Command');
 const { MessageAttachment, MessageEmbed } = require('discord.js');
 const Sentry = require('@sentry/node');
+const fetch = require('node-fetch');
 const gamedig = require('gamedig');
-const axios = require('axios');
 const path = require('path');
 
 class MinecraftCommand extends Command {
@@ -59,7 +59,7 @@ class MinecraftCommand extends Command {
 		if (!json) {
 			const ErrorEmbed = new MessageEmbed()
 				.setTitle('🔴 Unavailable')
-				.setDescription(`This server either doesn't exist, is offline or blocking access!`)
+				.setDescription('This server either doesn\'t exist, is offline or blocking access!')
 				.setColor('RED')
 				.setTimestamp();
 			return message.reply({
@@ -71,11 +71,11 @@ class MinecraftCommand extends Command {
 		const ImageAttachment = new MessageAttachment(await ImageResponse.buffer(), 'success.png');
 
 		const MinecraftEmbed = new MessageEmbed()
-			.setTitle(`Information about \`${ip}\``)
-			.addField('Version', json.raw.vanilla.raw.version.name)
-			.addField('Players Online', `${(json.raw.players ? json.raw.players.online : json.players.length)}/${(json.raw.players ? json.raw.players.max : json.maxplayers)}`)
+			.setTitle(`**Information about \`${ip}\`**`)
+			.addField('Version', `**\`${json.raw.vanilla.raw.version.name}\`**`)
+			.addField('Players Online', `**\`${(json.raw.players ? json.raw.players.online : json.players.length)}/${(json.raw.players ? json.raw.players.max : json.maxplayers)}\`**`)
 			.addField('Status', '🟢 Online')
-			.addField('IP', json.connect)
+			.addField('IP', `**\`${json.connect}\`**`)
 			.setThumbnail(favicon)
 			.setColor(this.client.config.embed.color)
 			.setFooter({
@@ -84,6 +84,7 @@ class MinecraftCommand extends Command {
 			});
 
 		MCMessage.edit({
+			content: '`hypixel.net` has been found!',
 			embeds: [MinecraftEmbed],
 			files: [ImageAttachment],
 		});
