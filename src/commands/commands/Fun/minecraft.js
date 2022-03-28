@@ -84,7 +84,7 @@ class MinecraftCommand extends Command {
 			});
 
 		MCMessage.edit({
-			content: '`hypixel.net` has been found!',
+			content: `\`${ip}\` has been found!`,
 			embeds: [MinecraftEmbed],
 			files: [ImageAttachment],
 		});
