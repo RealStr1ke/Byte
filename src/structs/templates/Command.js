@@ -39,13 +39,13 @@ class Command {
 		this.message = message;
 	}
 
-	setCooldown(userID) {
-		// Future Reference: This will implement the database instead of in-command Collection-based cooldowns.
-	}
+	// setCooldown(userID) {
+	// 	// Future Reference: This will implement the database instead of in-command Collection-based cooldowns.
+	// }
 
-	async isOnCooldown(userID) {
-		// Future Reference: This will implement the database instead of in-command Collection-based cooldowns.
-	}
+	// async isOnCooldown(userID) {
+	// 	// Future Reference: This will implement the database instead of in-command Collection-based cooldowns.
+	// }
 
 	setInstance(userID) {
 		if (!this.exclusive) return;

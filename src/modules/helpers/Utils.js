@@ -181,6 +181,34 @@ class Utils {
 		const formatted = dayOfMonth.substring(2).length > 0 ? formats.date[dayOfMonth.substring(2)] : formats.date[dayOfMonth];
 		return `${dayOfWeek} ${dayOfMonth}${formatted} ${month} | ${date.toLocaleTimeString()}`;
 	}
+
+	formatNumber(Number) {
+		if (typeof Number === 'string') {
+			Number = parseInt(Number);
+		}
+
+		const DecPlaces = Math.pow(10, 1);
+		const Abbrev = ['k', 'm', 'g', 't', 'p', 'e'];
+
+		for (let i = Abbrev.length - 1; i >= 0; i--) {
+			const Size = Math.pow(10, (i + 1) * 3);
+
+			if (Size <= Number) {
+				Number = Math.round((Number * DecPlaces) / Size) / DecPlaces;
+
+				if (Number === 1000 && i < Abbrev.length - 1) {
+					Number = 1;
+					i++;
+				}
+
+				Number += Abbrev[i];
+				break;
+			}
+		}
+
+		return Number;
+	}
+
 	async search(query, results) {
 		const google = require('google-it');
 		return await google({

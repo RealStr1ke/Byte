@@ -10,8 +10,8 @@ const Stopwatch = require('statman-stopwatch');
 const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
 const Amethyste = require('amethyste-api');
+const simpleGit = require('simple-git');
 const dlogs = require('discord-logs');
-const git = require('simple-git');
 const path = require('path');
 const glob = require('glob');
 const util = require('util');
@@ -55,12 +55,13 @@ class Byte extends Client {
 		this.slash = new Collection();
 
 		// this.constants = constants;
+		this.git = simpleGit().clean(simpleGit.CleanOptions.FORCE);
 		this.DocsUpdater = new DocsUpdater(this);
 		this.wait = util.promisify(setTimeout);
+		this.stopwatch = new Stopwatch();
+		this.logger = new Logger(this);
 		this.utils = new Utils(this);
 		this.Cli = new Cli(this);
-		this.logger = new Logger(this);
-		this.stopwatch = new Stopwatch();
 		this.status = false;
 
 		// Database

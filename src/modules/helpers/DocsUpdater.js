@@ -1,7 +1,6 @@
 // Credit to Androz2091 (https://github.com/Androz2091/AtlantaBot) for the original code
 // Minor code tweaks have been made
 
-const { exec } = require('child_process');
 const table = require('markdown-table');
 const fs = require('fs');
 
