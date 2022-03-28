@@ -22,8 +22,8 @@ class BalanceCommand extends Command {
 	async run(message, args, data) {
 		const balance = new MessageEmbed()
 			.setTitle('**Your Stats:**')
-			.addField('**Wallet:**', `\`${data.member.wallet}\``, true)
-			.addField('**Bank:**', `\`${data.member.bank}\``, true)
+			.addField('**Wallet:**', `\`${data.member.economy.wallet}\``, true)
+			.addField('**Bank:**', `\`${data.member.economy.bank}\``, true)
 			.setFooter(`Requested by ${message.author.tag}`)
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
