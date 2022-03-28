@@ -7,7 +7,7 @@ const memberSchema = new mongoose.Schema({
 	economy: { type: Object, default: {
 		wallet: 1000,
 		bank: 0,
-		multiplier: 0,
+		multiplier: 1,
 	} },
 
 	exp: { type: Number, default: 0 },

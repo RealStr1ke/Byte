@@ -34,7 +34,10 @@ class messageCreate extends Event {
 			}
 			data.member.markModified('exp');
 			data.member.save();
+
+			data.member = await this.client.database.getMember(message.author.id, message.guild.id);
 		}
+
 
 		// Retrieving the prefix of the guild/DM
 		let prefix;

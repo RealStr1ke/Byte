@@ -40,19 +40,19 @@ class DailyCommand extends Command {
 			});
 		}
 
-		data.member.economy.wallet = (parseInt(data.member.economy.balance) + 15000) * data.member.economy.multiplier;
+		data.member.economy.wallet = parseInt(data.member.economy.wallet) + (15000 * data.member.economy.multiplier);
 		data.member.cooldowns.daily = Date.now();
 
-		data.member.markModified('economy.balance');
+		data.member.markModified('economy.wallet');
 		data.member.markModified('cooldowns.daily');
 
 		await data.member.save();
 
-		const Embed = new MessageEmbed()
+		const DailyEmbed = new MessageEmbed()
 			.setTitle('Daily Reward')
 			.setDescription([
-				`You obtained your daily reward of ⏣15,000 coins!${data.user.money.multiplier > 1 ? ` Wow, it also seems you also have a **${data.user.money.multiplier}x** coin multiplier!` : ''}`,
-				`You now have ⏣${await this.client.formatNumber(data.user.money.wallet)} coins.`,
+				`You obtained your daily reward of ⏣15,000 coins!${data.member.economy.multiplier > 1 ? ` Wow, it also seems you also have a **${data.member.economy.multiplier}x** coin multiplier!` : ''}`,
+				`You now have ⏣${await this.client.utils.formatNumber(data.member.economy.wallet)} coins in your wallet.`,
 			].join('\n'))
 			.setAuthor({
 				name: this.client.user.tag,
@@ -65,7 +65,7 @@ class DailyCommand extends Command {
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 
-		await message.reply({
+		return await message.reply({
 			embeds: [DailyEmbed],
 		});
 	}

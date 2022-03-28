@@ -24,7 +24,14 @@ class BalanceCommand extends Command {
 			.setTitle('**Your Stats:**')
 			.addField('**Wallet:**', `\`${data.member.economy.wallet}\``, true)
 			.addField('**Bank:**', `\`${data.member.economy.bank}\``, true)
-			.setFooter(`Requested by ${message.author.tag}`)
+			.setAuthor({
+				name: this.client.user.tag,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
+			.setFooter({
+				text: this.client.config.embed.footer,
+				iconURL: this.client.user.displayAvatarURL(),
+			})
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 		return await message.channel.send({
