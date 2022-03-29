@@ -51,8 +51,8 @@ class DailyCommand extends Command {
 		const DailyEmbed = new MessageEmbed()
 			.setTitle('Daily Reward')
 			.setDescription([
-				`You obtained your daily reward of ⏣15,000 coins!${data.member.economy.multiplier > 1 ? ` Wow, it also seems you also have a **${data.member.economy.multiplier}x** coin multiplier!` : ''}`,
-				`You now have ⏣${await this.client.utils.formatNumber(data.member.economy.wallet)} coins in your wallet.`,
+				`Daily Reward: ⏣${this.client.utils.formatNumber(15000 * data.member.economy.multiplier)} coins${data.member.economy.multiplier > 1 ? ` (**${data.member.economy.multiplier}x** coin multiplier)!` : '!'}`,
+				`Wallet Balance: ⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}`,
 			].join('\n'))
 			.setAuthor({
 				name: this.client.user.tag,

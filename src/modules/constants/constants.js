@@ -9,6 +9,9 @@ const constants = {
 	// Permissions
 	permissions: require('./utils/permissions.json'),
 
+	// Responses
+	responses: require('./utils/responses.json'),
+
 	/**
 	 * Wordle
 	 * Daily Wordle Answers: "daily"

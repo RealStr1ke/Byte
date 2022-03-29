@@ -1,0 +1,14 @@
+{
+	"beg": {
+		"yes": [
+			"Your long-lost relative hacked the bank to get you some money.",
+			"I decided to summon money for you.",
+			"Your uncle pities you."
+		],
+		"no": [
+			"The local baker kicked you out of his store.",
+			"Turns out nobody likes you.",
+			"Your mom told you to get a job."
+		]
+	}
+}
