@@ -29,7 +29,7 @@ const Slash = require('./templates/Slash.js');
 const Event = require('./templates/Event.js');
 
 // Config
-// const constants = require('../modules/constants/constants');
+const constants = require('../modules/constants/constants');
 const config = require('../config');
 
 // Running Extenders
@@ -61,6 +61,7 @@ class Byte extends Client {
 		this.stopwatch = new Stopwatch();
 		this.logger = new Logger(this);
 		this.utils = new Utils(this);
+		this.constants = constants;
 		this.Cli = new Cli(this);
 		this.status = false;
 

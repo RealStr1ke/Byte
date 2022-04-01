@@ -19,9 +19,13 @@ const userSchema = new mongoose.Schema({
 
 	registeredAt: { type: Number, default: Date.now() },
 
-	cooldowns: { type: Object, default: {
-		rep: 0,
+	economy: { type: Object, default: {
+		wallet: 1000,
+		bank: 0,
+		multiplier: 1,
 	} },
+
+	cooldowns: { type: Object, default: {} },
 
 	afk: { type: String, default: null },
 	reminds: { type: Array, default: [] },

@@ -5,7 +5,7 @@
   "main": "Byte.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node .",
+    "start": "npx nodemon .",
     "update": "git pull && npm install",
     "format": "npx prettier --write .",
     "lint": "npx eslint . --fix"

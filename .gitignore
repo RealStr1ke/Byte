@@ -1,5 +1,6 @@
 # NodeJS Files
 node_modules/*
+nodemon.json
 
 # Config Files
 config.js

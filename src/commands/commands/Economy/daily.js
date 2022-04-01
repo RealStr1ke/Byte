@@ -13,46 +13,34 @@ class DailyCommand extends Command {
 			userPerms   : 'SEND_MESSAGES',
 			requireData : true,
 			guildOnly   : true,
+			cooldown    : 43200000,
+			localCool   : false,
+			customCool  : true,
 		});
 	}
 
 	async run(message, args, data) {
-		if (43200000 - (Date.now() - data.member.cooldowns.daily) > 0) {
-			const DailyEmbed = new MessageEmbed()
-				.setTitle('Daily Reward')
-				.setDescription([
-					'You\'ve already claimed your daily reward today.',
-					`Check back <t:${~~((data.member.cooldowns.daily / 1000) + 43200)}:R> at <t:${~~((data.member.cooldowns.daily / 1000) + 43200)}:t>.`,
-				].join('\n'))
-				.setAuthor({
-					name: this.client.user.tag,
-					iconURL: this.client.user.displayAvatarURL(),
-				})
-				.setFooter({
-					text: this.client.config.embed.footer,
-					iconURL: this.client.user.displayAvatarURL(),
-				})
-				.setColor(this.client.config.embed.color)
-				.setTimestamp();
+		if (data.cooldowns[this.name] && (43200000 - (Date.now() - data.cooldowns[this.name]) > 0)) {
+			const CooldownEmbed = this.getCooldownMessage(data.cooldowns[this.name]);
 
-			return await message.reply({
-				embeds: [DailyEmbed],
+			return message.reply({
+				embeds: [CooldownEmbed],
 			});
 		}
 
-		data.member.economy.wallet = parseInt(data.member.economy.wallet) + (15000 * data.member.economy.multiplier);
-		data.member.cooldowns.daily = Date.now();
+		data.user.economy.wallet = parseInt(data.user.economy.wallet) + (15000 * data.user.economy.multiplier);
+		// data.user.cooldowns[this.category] = Date.now();
 
-		data.member.markModified('economy.wallet');
-		data.member.markModified('cooldowns.daily');
+		data.user.markModified('economy.wallet');
+		// data.user.markModified('cooldowns.daily');
 
-		await data.member.save();
+		await data.user.save();
 
 		const DailyEmbed = new MessageEmbed()
 			.setTitle('Daily Reward')
 			.setDescription([
-				`Daily Reward: ⏣${this.client.utils.formatNumber(15000 * data.member.economy.multiplier)} coins${data.member.economy.multiplier > 1 ? ` (**${data.member.economy.multiplier}x** coin multiplier)!` : '!'}`,
-				`Wallet Balance: ⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}`,
+				`Daily Reward: ⏣${await this.client.utils.formatNumber(15000 * data.user.economy.multiplier)} coins${data.user.economy.multiplier > 1 ? ` (**${data.user.economy.multiplier}x** coin multiplier)!` : '!'}`,
+				`Wallet Balance: ⏣${await this.client.utils.formatNumber(data.user.economy.wallet)}`,
 			].join('\n'))
 			.setAuthor({
 				name: this.client.user.tag,
@@ -65,9 +53,20 @@ class DailyCommand extends Command {
 			.setColor(this.client.config.embed.color)
 			.setTimestamp();
 
-		return await message.reply({
+		return message.reply({
 			embeds: [DailyEmbed],
 		});
+	}
+
+	getCooldownMessage(time) {
+		const CooldownEmbed = new MessageEmbed()
+			.setTitle('Daily Reward')
+			.setDescription([
+				'You\'ve already claimed your daily reward today.',
+				`Check back <t:${~~((time / 1000) + 43200)}:R> at <t:${~~((time / 1000) + 43200)}:t>.`,
+			].join('\n'))
+			.setDefault(this.client);
+		return CooldownEmbed;
 	}
 }
 

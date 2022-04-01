@@ -5,19 +5,25 @@ async function AmongUsMessage() {
 	this.reply('Among Us!');
 }
 
-async function DefaultEmbedParams() {
+function DefaultEmbedParams(client) {
 	this
 		.setAuthor({
-			name: this.client.user.tag,
-			iconURL: this.client.user.displayAvatarURL(),
+			name: client.user.tag,
+			iconURL: client.user.displayAvatarURL(),
 		})
 		.setFooter({
-			text: this.client.config.embed.footer,
-			iconURL: this.client.user.displayAvatarURL(),
+			text: client.config.embed.footer,
+			iconURL: client.user.displayAvatarURL(),
 		})
-		.setColor(this.client.config.embed.color)
+		.setColor(client.config.embed.color)
 		.setTimestamp();
+	return this;
 }
 
+function NowUnixTime() {
+	return Math.round(Date.now() / 1000);
+}
+
+Date.prototype.nowUnix = NowUnixTime;
 Message.prototype.sus = AmongUsMessage;
 MessageEmbed.prototype.setDefault = DefaultEmbedParams;

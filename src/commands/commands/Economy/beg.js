@@ -29,11 +29,11 @@ class BegCommand extends Command {
 			data.member.economy.wallet = parseInt(data.member.economy.wallet) + randomAmount;
 
 			BegEmbed
-				.setDefault()
+				.setDefault(this.client)
 				.setTitle(`**${replyText}**`)
 				.setDescription([
 					`You recieved **⏣${await this.client.utils.formatNumber(randomAmount)}**`,
-					`You now have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`
+					`You now have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`,
 				].join('\n'))
 				.setColor('GREEN');
 
@@ -42,16 +42,16 @@ class BegCommand extends Command {
 			const replyText = replies[Math.floor(Math.random() * replies.length)];
 
 			BegEmbed
-				.setDefault()
+				.setDefault(this.client)
 				.setTitle(`**${replyText}**`)
 				.setDescription([
 					'You didn\'t recieve any money from begging.',
 					`You still have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`
-				])
+				].join('\n'))
 				.setColor('RED');
 		}
 
-		data.member.markModified('money.balance');
+		data.member.markModified('economy.wallet');
 		data.member.save();
 		return await message.channel.send({
 			embeds: [BegEmbed],
