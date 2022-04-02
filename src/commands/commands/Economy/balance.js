@@ -22,8 +22,8 @@ class BalanceCommand extends Command {
 	async run(message, args, data) {
 		const balance = new MessageEmbed()
 			.setTitle('**Your Stats:**')
-			.addField('**Wallet:**', `\`${data.member.economy.wallet}\``, true)
-			.addField('**Bank:**', `\`${data.member.economy.bank}\``, true)
+			.addField('**Wallet:**', `\`${this.client.utils.formatNumber(data.user.economy.wallet)}\``, true)
+			.addField('**Bank:**', `\`${this.client.utils.formatNumber(data.user.economy.bank)}\``, true)
 			.setAuthor({
 				name: this.client.user.tag,
 				iconURL: this.client.user.displayAvatarURL(),

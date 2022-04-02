@@ -50,6 +50,10 @@ class Handler {
 			});
 			if (!member) {
 				member = this.createMember(userID, guildID);
+				member = await Member.findOne({
+					userID: userID,
+					guildID: guildID,
+				});
 				return member;
 			}
 			return member;
@@ -106,13 +110,16 @@ class Handler {
 			student = await Student.findOne({
 				userID: userID,
 				guildID: guildID,
-			}).then(() => {
-				if (!student) {
-					student = this.createStudent(userID, guildID);
-					return student;
-				}
-				return student;
 			});
+			if (!student) {
+				student = this.createStudent(userID, guildID);
+				student = await Student.findOne({
+					userID: userID,
+					guildID: guildID,
+				});
+				return student;
+			}
+			return student;
 		} catch (error) {
 			this.client.logger.fail(error.message);
 			console.log(error);
@@ -168,6 +175,9 @@ class Handler {
 			});
 			if (!user) {
 				user = this.createUser(userID);
+				user = await User.findOne({
+					userID: userID,
+				});
 				return user;
 			}
 			return user;
@@ -223,6 +233,9 @@ class Handler {
 			});
 			if (!guild) {
 				guild = this.createGuild(guildID);
+				guild = await Guild.findOne({
+					guildID: guildID,
+				});
 				return guild;
 			}
 			return guild;

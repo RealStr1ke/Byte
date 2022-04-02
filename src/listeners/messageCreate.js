@@ -90,7 +90,6 @@ class messageCreate extends Event {
 		if (command.args && !args.length) return message.reply(`**You must use the command correctly: \`${command.usage}\`**`);
 		if (command.education && data.guild.education == false) return message.reply('**This guild doesn\'t have the education module enabled.**');
 		if (await command.isOnCooldown(message.author.id) && !command.customCool) {
-			console.log('Is on Cooldown');
 			const time = parseInt(await command.getCooldownTime(message.author.id));
 			const CooldownEmbed = command.getCooldownMessage(time);
 			return message.channel.send({
@@ -118,7 +117,6 @@ class messageCreate extends Event {
 			message.channel.sendTyping();
 
 			command.setInstance(message.author.id);
-			command.setCooldownTime(message.author.id);
 			command.setMessage(message);
 
 			if (command.requireData) {
@@ -126,6 +124,7 @@ class messageCreate extends Event {
 			} else {
 				command.run(message, args);
 			}
+			command.setCooldownTime(message.author.id);
 			command.done(message.author.id);
 		} catch (error) {
 			command.done(message.author.id);

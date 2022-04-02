@@ -7,6 +7,7 @@ Byte.start();
 process.on('rejectionHandled', (err) => console.log(err));
 process.on('unhandledRejection', (err) => console.log(err));
 process.on('uncaughtException', (err) => console.log(err));
+process.once('SIGHUP', () => gracefulShutdown(() => Byte.destroy()));
 
 // process.on('rejectionHandled', (err) => Byte.logger.fail(err.message));
 // process.on('unhandledRejection', (err) => Byte.logger.fail(err.message));

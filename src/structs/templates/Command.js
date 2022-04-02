@@ -4,6 +4,7 @@ const path = require('path');
 class Command {
 	constructor(client, options = {}) {
 		this.client = client;
+		this.options = options;
 
 		this.name = options.name || null;
 		this.directory = options.directory || false;
@@ -25,8 +26,8 @@ class Command {
 		this.requireData = options.requireData || false;
 
 		this.cooldown = (options.cooldown || 2) * 1000;
-		this.localCool = options.localCool || true;
 		this.customCool = options.customCool || false;
+		this.localCool = options.localCool ? true : false;
 		if (this.localCool) this.cooldowns = new Collection();
 
 		this.exclusive = options.exclusive;
@@ -47,11 +48,11 @@ class Command {
 			time = this.cooldowns.get(userID);
 		} else {
 			const data = await this.client.database.getUser(userID);
-			time = data.cooldowns[this.name];
+			time = data.cooldowns[`${this.name}`];
 		}
-		console.log(`Current Time: ${Date.now()}`);
-		console.log(`Last Time Used: ${time}`);
-		console.log(`Time Can Use: ${time + this.cooldown}`);
+		// console.log(`Current Time: ${Date.now()}`);
+		// console.log(`Last Time Used: ${time}`);
+		// console.log(`Time Can Use: ${time + this.cooldown}`);
 		return time;
 	}
 
@@ -61,7 +62,7 @@ class Command {
 			this.cooldowns.set(userID, Date.now());
 		} else {
 			const data = await this.client.database.getUser(userID);
-			data.cooldowns[this.name] = Date.now();
+			data.cooldowns[`${this.name}`] = Date.now();
 			data.markModified(`cooldowns.${this.name}`);
 			await data.save();
 		}
@@ -70,25 +71,26 @@ class Command {
 	async isOnCooldown(userID) {
 		if (!this.cooldown) return false;
 		let cooldown;
-		if (this.localCool) {
+		if (this.localCool === true) {
 			cooldown = this.cooldowns.get(userID);
 		} else {
 			const data = await this.client.database.getUser(userID);
-			cooldown = data.cooldowns[this.name];
+			cooldown = data.cooldowns[`${this.name}`];
 		}
 		if (!cooldown) {
 			if (this.localCool) {
 				this.cooldowns.set(userID, 0);
 			} else {
 				const data = await this.client.database.getUser(userID);
-				data.cooldowns[this.name] = 0;
+				data.cooldowns[`${this.name}`] = 0;
 				await data.save();
 			}
-			console.log('Returned False'); 
 			return false;
-		};
-		console.log('Time Left: %d', (cooldown + this.cooldown) - Date.now())
-		return ((cooldown + this.cooldown) - Date.now()) > 0;
+		}
+		const timeLeft = (cooldown + this.cooldown) - Date.now();
+		// console.log('Time Left: %d', timeLeft);
+		// console.log(timeLeft > 0);
+		return timeLeft > 0;
 	}
 
 	setInstance(userID) {
@@ -124,11 +126,11 @@ class Command {
 	}
 
 	getCooldownMessage(time) {
-		console.log('Time Can Use: %d', time + this.cooldown)
+		// console.log('Time Can Use: %d', time + this.cooldown)
 		const timeLeft = Math.round(((time + this.cooldown) - Date.now()) / 1000);
 		const CooldownEmbed = new MessageEmbed()
 			.setTitle('You are still on cooldown.')
-			.setDescription(`You may use this command again in ${timeLeft > 1 ? `${timeLeft} seconds` : `1 second`}.`)
+			.setDescription(`You may use this command again in ${timeLeft > 1 ? `${timeLeft} seconds` : '1 second'}.`)
 			.setDefault(this.client);
 		return CooldownEmbed;
 	}
