@@ -41,6 +41,21 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **redpanda** | Responds with a random red panda picture. | redpanda | 2 seconds |
 | **shibe**    | Responds with a random shibe picture.     | shibe    | 2 seconds |
 
+### Fun (10 commands)
+
+| Name            | Description                                                             | Usage            | Cooldown  |
+| --------------- | ----------------------------------------------------------------------- | ---------------- | --------- |
+| **8ball**       | Ask the Magic 8-Ball!                                                   | 8ball <question> | 2 seconds |
+| **advice**      | Responds with a random piece of advice.                                 | advice           | 2 seconds |
+| **ascii**       | Turns the given text to ASCII text.                                     | ascii <text>     | 2 seconds |
+| **coinflip**    | Flips a coin, obviously.                                                | coinflip         | 2 seconds |
+| **fml**         | Responds with a random FML (F*** my life) quote.                        | fml              | 2 seconds |
+| **joke**        | Responds with a random joke.                                            | joke             | 2 seconds |
+| **meme**        | Gets a random meme from r/memes, r/dankmemes, or r/me_irl subreddits.   | meme             | 2 seconds |
+| **minecraft**   | Gives information about the Minecraft server with the given IP address. | minecraft <IP>   | 2 seconds |
+| **reverse**     | Reverses the given text.                                                | reverse <text>   | 2 seconds |
+| **uselessfact** | Responds with a random useless fact.                                    | uselessfact      | 2 seconds |
+
 ### General (10 commands)
 
 | Name            | Description                                           | Usage              | Cooldown  |
@@ -55,20 +70,6 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **shorten**     | Shortens a given URL.                                 | shorten <URL>      | 2 seconds |
 | **someone**     | No information specified.                             | someone            | 2 seconds |
 | **zalgo**       | Changes the given text to zalgo text                  | zalgo <text>       | 2 seconds |
-
-### Fun (9 commands)
-
-| Name            | Description                                                           | Usage            | Cooldown  |
-| --------------- | --------------------------------------------------------------------- | ---------------- | --------- |
-| **8ball**       | Ask the Magic 8-Ball!                                                 | 8ball <question> | 2 seconds |
-| **advice**      | Responds with a random piece of advice.                               | advice           | 2 seconds |
-| **ascii**       | Turns the given text to ASCII text.                                   | ascii <text>     | 2 seconds |
-| **coinflip**    | Flips a coin, obviously.                                              | coinflip         | 2 seconds |
-| **fml**         | Responds with a random FML (F*** my life) quote.                      | fml              | 2 seconds |
-| **joke**        | Responds with a random joke.                                          | joke             | 2 seconds |
-| **meme**        | Gets a random meme from r/memes, r/dankmemes, or r/me_irl subreddits. | meme             | 2 seconds |
-| **reverse**     | Reverses the given text.                                              | reverse <text>   | 2 seconds |
-| **uselessfact** | Responds with a random useless fact.                                  | uselessfact      | 2 seconds |
 
 ### Owner (8 commands)
 
@@ -94,6 +95,15 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **schedule**  | Sets your schedule            | schedule <set/clear> <Period #> <Subject> | 2 seconds |
 | **subjects**  | Sets the server's subjects    | subjects <add/remove/clear> <Subject>     | 2 seconds |
 
+### Economy (4 commands)
+
+| Name          | Description                         | Usage                | Cooldown      |
+| ------------- | ----------------------------------- | -------------------- | ------------- |
+| **balance**   | Responds with the user's balance.   | balance <user>       | 2 seconds     |
+| **beg**       | Gives you a random number of coins. | beg                  | 2 seconds     |
+| **birthdate** | Sets your birthdate.                | birthdate DD/MM/YYYY | 2 seconds     |
+| **daily**     | Collect your daily reward!          | daily                | 86400 seconds |
+
 ### Moderation (4 commands)
 
 | Name         | Description                                | Usage                 | Cooldown  |
@@ -102,14 +112,6 @@ Here's the list of Byte's commands. This one contains more than **60 commands** 
 | **kick**     | Kicks a member from the current server.    | kick <member>         | 2 seconds |
 | **slowmode** | Sets the slowmode for the current channel. | slowmode <secs>       | 2 seconds |
 | **unban**    | Unbans a member from the current server.   | unban <User ID>       | 2 seconds |
-
-### Economy (3 commands)
-
-| Name          | Description                         | Usage                | Cooldown  |
-| ------------- | ----------------------------------- | -------------------- | --------- |
-| **balance**   | Responds with the user's balance.   | balance <user>       | 2 seconds |
-| **beg**       | Gives you a random number of coins. | beg                  | 2 seconds |
-| **birthdate** | Sets your birthdate.                | birthdate DD/MM/YYYY | 2 seconds |
 
 ### Management (2 commands)
 
