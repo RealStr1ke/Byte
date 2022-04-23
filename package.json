@@ -69,7 +69,7 @@
     "pm2": "^5.1.2",
     "prettier": "^2.5.1",
     "request": "^2.88.2",
-    "simple-git": "^3.3.0",
+    "simple-git": "^3.5.0",
     "statman-stopwatch": "^2.13.0",
     "string-width": "^5.1.0",
     "strip-ansi": "^7.0.1",
