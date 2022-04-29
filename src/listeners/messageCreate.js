@@ -22,7 +22,7 @@ class messageCreate extends Event {
 		}
 
 		// Leveling System
-		if (message.guild) {
+		if (message.guild && data.member) {
 			let gain = ~~(Math.random() * 10) + 5;
 			if (~~(Math.random() * 501) === 500) gain *= 5;
 			data.member.exp += gain;

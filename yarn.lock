@@ -820,6 +820,13 @@
   dependencies:
     "follow-redirects" "^1.14.0"
 
+"axios@^0.22.0":
+  "integrity" "sha512-Z0U3uhqQeg1oNcihswf4ZD57O3NrR1+ZXhxaROaWpDmsDTx7T2HNBV2ulBtie2hwJptu8UvgnJoK+BIqdzh/1w=="
+  "resolved" "https://registry.npmjs.org/axios/-/axios-0.22.0.tgz"
+  "version" "0.22.0"
+  dependencies:
+    "follow-redirects" "^1.14.4"
+
 "axios@^0.24.0":
   "integrity" "sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA=="
   "resolved" "https://registry.npmjs.org/axios/-/axios-0.24.0.tgz"
@@ -3252,6 +3259,13 @@
     "tar" "^6.1.2"
     "which" "^2.0.2"
 
+"nodeactyl@^3.2.2":
+  "integrity" "sha512-BIg4Mium2c/3scAX8Oqu87elSiu53brUiPtvA5ZQykfi7iBolL9hBC5BU9f3Nzf7qz+lFismbtlJw9Xa7Hw0Bw=="
+  "resolved" "https://registry.npmjs.org/nodeactyl/-/nodeactyl-3.2.2.tgz"
+  "version" "3.2.2"
+  dependencies:
+    "axios" "^0.22.0"
+
 "nopt@*", "nopt@^5.0.0":
   "integrity" "sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ=="
   "resolved" "https://registry.npmjs.org/nopt/-/nopt-5.0.0.tgz"
@@ -3664,6 +3678,11 @@
   "integrity" "sha512-Ofn/CTFzRGTTxwpNEs9PP93gXShHcTq255nzRYSKe8AkVpZY7e1fpmTfOyoIvjP5HG7Z2ZM7VS9PPhQGW2pOpw=="
   "resolved" "https://registry.npmjs.org/parse5/-/parse5-6.0.1.tgz"
   "version" "6.0.1"
+
+"password-generator@^2.3.2":
+  "integrity" "sha512-kJWUrdveSAqHCeWJWnv5vNc89hFHM5au+pvKja5+xCTxlRF3zQaecJlR6hSoOotAJtQ3otQq4/Q4iWc/TxsXhA=="
+  "resolved" "https://registry.npmjs.org/password-generator/-/password-generator-2.3.2.tgz"
+  "version" "2.3.2"
 
 "path-is-absolute@^1.0.0":
   "integrity" "sha1-F0uSaHNVNP+8es5r9TpanhtcX18="
