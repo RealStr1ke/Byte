@@ -25,3 +25,5 @@ giveaways.json
 ignore/*
 .cache/*
 Corebot/*
+
+*ignore*
