@@ -31,8 +31,8 @@ class ExecCommand extends Command {
                     ${lola}\`\`\``)
 					.addField('Error', `\`\`\`kt\n${error.message}\`\`\``)
 					.setTimestamp()
-					.setColor(this.client.config.embed.color)
-					.setFooter(this.client.config.embed.footer);
+					.setDefault(this.client)
+					.setColor('RED');
 				message.channel.send({
 					embeds: [err],
 				});
