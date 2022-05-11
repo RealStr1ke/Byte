@@ -42,9 +42,7 @@ class ExecCommand extends Command {
 					.setTitle('Terminal')
 					.addField('Input', `\`\`\`${lola}\`\`\``)
 					.addField('Output', `\`\`\`kt\n${response}\`\`\``)
-					.setTimestamp()
-					.setColor(this.client.config.embed.color)
-					.setFooter(this.client.config.embed.footer);
+					.setDefault(this.client);
 				message.channel.send({
 					embeds: [result],
 				});

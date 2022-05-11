@@ -46,7 +46,7 @@ class BegCommand extends Command {
 				.setTitle(`**${replyText}**`)
 				.setDescription([
 					'You didn\'t recieve any money from begging.',
-					`You still have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`
+					`You still have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`,
 				].join('\n'))
 				.setColor('RED');
 		}
