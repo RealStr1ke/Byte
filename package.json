@@ -63,7 +63,7 @@
     "node-fetch": "^2.6.7",
     "nodeactyl": "^3.2.2",
     "novelcovid": "^3.0.2",
-    "npm": "^8.3.1",
+    "npm": "^8.11.0",
     "os": "^0.1.2",
     "os-utils": "^0.0.14",
     "password-generator": "^2.3.2",
