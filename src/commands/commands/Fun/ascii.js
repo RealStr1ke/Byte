@@ -27,8 +27,8 @@ class ASCIICommand extends Command {
 		}
 
 		const rendered = await figletAsync(text);
-		message.channel.send('```' + rendered + '```');
-	}
+		await message.channel.send('```' + rendered + '```');
+	} 
 }
 
 module.exports = ASCIICommand;
