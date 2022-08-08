@@ -1,6 +1,6 @@
 const Command = require('../../../structs/templates/Command');
 const { MessageEmbed } = require('discord.js');
-const { default: axios } = require('axios');
+// const { default: axios } = require('axios');
 const path = require('path');
 
 class Base64Command extends Command {
@@ -19,14 +19,16 @@ class Base64Command extends Command {
 
 	async run(message, args) {
 		try {
-			const { data: response } = await axios.request({
-				method: 'GET',
-				url: `https://some-random-api.ml/base64?encode=${args.join(' ')}`,
-			});
+			// const { data: response } = await axios.request({
+			// 	method: 'GET',
+			// 	url: `https://some-random-api.ml/base64?encode=${args.join(' ')}`,
+			// });
 
+			const encoded = Buffer.from(args.join(' ')).toString('base64');
+			
 			const Base64Embed = new MessageEmbed()
 				.setTitle('__Base 64__')
-				.setDescription(`\`${response.base64}\``)
+				.setDescription(`\`${encoded}\``)
 				.setDefault(this.client);
 
 			await message.reply({
