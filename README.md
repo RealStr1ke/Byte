@@ -4,19 +4,18 @@
 
 **This is a multipurpose Discord bot that @RealStr1ke is currently working on.**
 
-**Notice: Everything before the commit named "Beginning of Interaction Rewrite" is a legacy version of the bot that mostly based on slash commands.**
+**Notice: Everything before the commit named "Beginning of Interaction Rewrite" is a legacy version of the bot that mostly based on slash commands. As of Aug 8, 2022, all slash commands so far are registered as application commands while I build a framework specifically for guild application commands.**
 
-#### **Documentation: [Click here](https://byte.str1ke.codes)**
-#### **Commands: [Click here](https://github.com/RealStr1ke/Byte/blob/docs/commands.md)**
+> **Documentation: [Click here](https://byte.str1ke.codes)**
+
+> **Commands: [Click here](hhttps://byte.str1ke.codes/commands)**
 
 ## Credits
 
-**This bot was made from the inspiration and was based off the following repositories.** <br>
-[BetterDiscordPanel (SanjaySunil/BetterDiscordPanel)](https://github.com/SanjaySunil/BetterDiscordPanel) <br>
-[GuideBot (AnIdiotsGuide/guidebot)](https://github.com/AnIdiotsGuide/guidebot) <br>
-[AtlantaBot (Androz2091/AtlantaBot)](https://github.com/Androz2091/AtlantaBot) <br>
-[Luna (Asgarrrr/Luna)](https://github.com/Asgarrrr/Luna) <br>
-[Rada (RadaBot/Rada)](https://github.com/RadaBot/Rada) <br>
-[Rada (br4dw/Rada)](https://github.com/br4dw/Rada) <br>
-[SparkV (Ch1ll-Studio/SparkV)](https://github.com/Ch1ll-Studio/SparkV) <br>
-[CalypsoBot (sabattle/CalypsoBot)](https://github.com/sabattle/CalypsoBot) <br>
+**This bot was made from the inspiration and was based off of many of the repositories in my starred repositories list for Discord. You can find it [here](https://github.com/stars/RealStr1ke/lists/discord).**
+
+
+### Random Stuff
+
+> **Star History**
+[![Star History Chart](https://api.star-history.com/svg?repos=RealStr1ke/Byte&type=Date)](https://star-history.com/#RealStr1ke/Byte&Date)
