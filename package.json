@@ -58,7 +58,7 @@
     "js-beautify": "^1.14.0",
     "keyv": "^4.0.4",
     "markdown-table": "^2.0.0",
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.34",
     "mongoose": "^6.1.2",
     "node-fetch": "^2.6.7",
