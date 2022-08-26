@@ -8,7 +8,7 @@
 
 > **Documentation: [Click here](https://byte.str1ke.codes)**
 
-> **Commands: [Click here](hhttps://byte.str1ke.codes/commands)**
+> **Commands: [Click here](https://byte.str1ke.codes/commands)**
 
 ## Credits
 
