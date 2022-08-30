@@ -1,7 +1,7 @@
-const { Intents, Permissions } = require('discord.js');
+const { PermissionsBitField, GatewayIntentBits, Partials } = require('discord.js');
 module.exports = {
 	/* The token of the Discord Bot */
-	token: '',
+	token: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX',
 
 	/* The prefix(s) of the Discord Bot */
 	prefix: 'b!',
@@ -30,74 +30,86 @@ module.exports = {
 		name: '',
 	},
 
+	// API Keys
 	apiKeys: { // The API keys that are used
 		// AlexFlipnote's API
 		flipnoteAPI: '',
+
 		// Hypixel API
 		hypixelAPI: '',
+
 		// Amethyste API (https://api.amethyste.moe)
 		amethyste: '',
 	},
+
+	// Discord Status
 	status: {
 		name: 'with Str1ke\'s mind', // The status text of the bot
 		type: 'PLAYING', // The status type of the bot
 	},
 
-	custom: {
-		/* Custom values go here*/
-	},
-
 	// Developer Zone
-	/* The debug status of the bot */
+	// The debug status of the bot
 	debug: false,
 
-	/* The Discord intents for the bot*/
+	// Custom configurations
+	custom: {	},
+
+	// Discord Gateway Intents for the bot
 	intents: [
-		Intents.FLAGS.GUILDS,
-		Intents.FLAGS.GUILD_MESSAGES,
-		Intents.FLAGS.GUILD_MEMBERS,
-		Intents.FLAGS.GUILD_BANS,
-		Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
-		Intents.FLAGS.GUILD_VOICE_STATES,
-		Intents.FLAGS.GUILD_EMOJIS_AND_STICKERS,
-		Intents.FLAGS.DIRECT_MESSAGES,
-		Intents.FLAGS.DIRECT_MESSAGE_REACTIONS,
-		Intents.FLAGS.DIRECT_MESSAGE_TYPING,
+		GatewayIntentBits.Guilds,
+		GatewayIntentBits.GuildMessages,
+		GatewayIntentBits.GuildMembers,
+		GatewayIntentBits.GuildBans,
+		GatewayIntentBits.GuildMessageReactions,
+		GatewayIntentBits.GuildVoiceStates,
+		GatewayIntentBits.GuildEmojisAndStickers,
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.DirectMessageReactions,
+		GatewayIntentBits.DirectMessageTyping,
 	], // or 32767 for All Intents
 
-	/* The Discord partials for the bot*/
-	partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
+	// Discord Partials for the bot
+	partials: [
+		Partials.Message,
+		Partials.Channel,
+		Partials.Reaction,
+		Partials.GuildMember,
+		Partials.User,
+	],
 
-	/* The Discord permissions and scopes for the bot */
+	// Discord Permissions for the bot
 	permissions: [
-		Permissions.FLAGS.CREATE_INSTANT_INVITE,
-		Permissions.FLAGS.SEND_MESSAGES,
-		Permissions.FLAGS.VIEW_CHANNEL,
-		Permissions.FLAGS.MANAGE_GUILD,
-		Permissions.FLAGS.MANAGE_CHANNELS,
-		Permissions.FLAGS.EMBED_LINKS,
-		Permissions.FLAGS.ATTACH_FILES,
-		Permissions.FLAGS.READ_MESSAGE_HISTORY,
-		Permissions.FLAGS.MENTION_EVERYONE,
-		Permissions.FLAGS.CONNECT,
-		Permissions.FLAGS.SPEAK,
-		Permissions.FLAGS.MUTE_MEMBERS,
-		Permissions.FLAGS.DEAFEN_MEMBERS,
-		Permissions.FLAGS.MOVE_MEMBERS,
-		Permissions.FLAGS.CHANGE_NICKNAME,
-		Permissions.FLAGS.MANANGE_NICKNAMES,
-		Permissions.FLAGS.MANAGE_ROLES,
-		Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS,
-		Permissions.FLAGS.USE_APPLICATION_COMMANDS,
-		Permissions.FLAGS.MANAGE_THREADS,
-		Permissions.FLAGS.CREATE_PUBLIC_THREADS,
-		Permissions.FLAGS.CREATE_PRIVATE_THREADS,
-		Permissions.FLAGS.USE_EXTERNAL_STICKERS,
-		Permissions.FLAGS.SEND_MESSAGES_IN_THREADS,
-		Permissions.FLAGS.KICK_MEMBERS,
-		Permissions.FLAGS.BAN_MEMBERS,
-		Permissions.FLAGS.ADD_REACTIONS,
-		Permissions.FLAGS.VIEW_AUDIT_LOG,
+		PermissionsBitField.Flags.CreateInstantInvite,
+		PermissionsBitField.Flags.SendMessages,
+		PermissionsBitField.Flags.ViewChannel,
+		PermissionsBitField.Flags.ManageGuild,
+		PermissionsBitField.Flags.ManageChannels,
+		PermissionsBitField.Flags.EmbedLinks,
+		PermissionsBitField.Flags.AttachFiles,
+		PermissionsBitField.Flags.ReadMessageHistory,
+		PermissionsBitField.Flags.MentionEveryone,
+		PermissionsBitField.Flags.Connect,
+		PermissionsBitField.Flags.Speak,
+		PermissionsBitField.Flags.MuteMembers,
+		PermissionsBitField.Flags.DeafenMembers,
+		PermissionsBitField.Flags.MoveMembers,
+		PermissionsBitField.Flags.ChangeNickname,
+		PermissionsBitField.Flags.ManageNicknames,
+		PermissionsBitField.Flags.ManageRoles,
+		PermissionsBitField.Flags.ManageWebhooks,
+		PermissionsBitField.Flags.ManageEmojisAndStickers,
+		PermissionsBitField.Flags.UseApplicationCommands,
+		PermissionsBitField.Flags.ManageThreads,
+		PermissionsBitField.Flags.CreatePublicThreads,
+		PermissionsBitField.Flags.CreatePrivateThreads,
+		PermissionsBitField.Flags.UseExternalEmojis,
+		PermissionsBitField.Flags.UseExternalStickers,
+		PermissionsBitField.Flags.SendMessagesInThreads,
+		PermissionsBitField.Flags.KickMembers,
+		PermissionsBitField.Flags.BanMembers,
+		PermissionsBitField.Flags.AddReactions,
+		PermissionsBitField.Flags.ViewAuditLog,
 	],
 	scopes: ['bot', 'applications.commands'],
 
