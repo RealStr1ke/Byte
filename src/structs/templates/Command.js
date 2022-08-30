@@ -1,4 +1,4 @@
-const { Permissions, Collection, EmbedBuilder } = require('discord.js');
+const { PermissionsBitField, Collection, EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class Command {
@@ -17,8 +17,8 @@ class Command {
 		this.example = options.example || [];
 		this.enabled = options.enabled || true;
 
-		this.userPerms = new Permissions(options.userPerms || 'SEND_MESSAGES').freeze();
-		this.botPerms = new Permissions(options.botPerms || 'SEND_MESSAGES').freeze();
+		this.userPerms = new PermissionsBitField(options.userPerms || 'SEND_MESSAGES').freeze();
+		this.botPerms = new PermissionsBitField(options.botPerms || 'SEND_MESSAGES').freeze();
 		this.guildOnly = options.guildOnly || false;
 		this.ownerOnly = options.ownerOnly || false;
 		this.nsfw = options.nsfw || false;
