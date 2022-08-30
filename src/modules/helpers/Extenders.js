@@ -23,7 +23,7 @@ function DefaultEmbedParams(client) {
 		.setColor(client.config.embed.color)
 		.setTimestamp();
 	return this;
-	}
+}
 Discord.EmbedBuilder.prototype.setDefault = DefaultEmbedParams;
 
 
