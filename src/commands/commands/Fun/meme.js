@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
+const { EmbedBuilder, MessageActionRow, MessageButton } = require('discord.js');
 const axios = require('axios');
 const path = require('path');
 
@@ -19,7 +19,7 @@ class MemeCommand extends Command {
 	async run(message) {
 		const Meme = async () => {
 			const response = await axios.get('https://meme-api.herokuapp.com/gimme');
-			const MemeEmbed = new MessageEmbed()
+			const MemeEmbed = new EmbedBuilder()
 				.setDescription(`[**${response.data.title}** (r/${response.data.subreddit})](${response.data.postLink})`)
 				.setImage(response.data.url)
 				.setFooter({

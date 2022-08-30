@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class HelpCommand extends Command {
@@ -17,7 +17,7 @@ class HelpCommand extends Command {
 	}
 
 	async run(message, args) {
-		const HelpEmbed = new MessageEmbed()
+		const HelpEmbed = new EmbedBuilder()
 			.setTitle(`**${this.client.user.tag}**`)
 			.setDescription(`Here are the commands for ${this.client.user.tag}`)
 			.setAuthor({

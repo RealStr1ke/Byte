@@ -1,5 +1,5 @@
 const Event = require('../structs/templates/Event');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class ready extends Event {
@@ -28,7 +28,7 @@ class ready extends Event {
 			status: 'idle',
 		});
 
-		const StartupEmbed = new MessageEmbed()
+		const StartupEmbed = new EmbedBuilder()
 			.setTitle('**Online**')
 			.setColor('GREEN')
 			.setTimestamp();

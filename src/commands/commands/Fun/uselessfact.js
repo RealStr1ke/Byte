@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios'),
 	path = require('path');
 
@@ -21,7 +21,7 @@ class UselessFactCommand extends Command {
 	async run(message) {
 		const response = await axios.get('https://uselessfacts.jsph.pl/random.json?language=en');
 
-		const UselessFactEmbed = new MessageEmbed()
+		const UselessFactEmbed = new EmbedBuilder()
 			.setTitle('Here\'s a useless fact')
 			.setDescription(response.data.text)
 			.setFooter({

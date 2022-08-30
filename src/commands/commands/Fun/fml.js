@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const path = require('path');
 
@@ -19,7 +19,7 @@ class FMLCommand extends Command {
 
 	async run(message) {
 		const response = await axios.get('https://blague.xyz/api/vdm/random?lang=EN');
-		const FMLEmbed = new MessageEmbed()
+		const FMLEmbed = new EmbedBuilder()
 			.setTitle('Here\'s an FML quote')
 			.setDescription(`${response.data.vdm.content} **FML**`)
 			.setFooter({

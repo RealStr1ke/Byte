@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class DocsCommand extends Command {
@@ -19,7 +19,7 @@ class DocsCommand extends Command {
 
 	async run(message) {
 		this.client.updateDocs();
-		const DocsEmbed = new MessageEmbed()
+		const DocsEmbed = new EmbedBuilder()
 			.setTitle('Command documentation has been updated!')
 			.setFooter({
 				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,

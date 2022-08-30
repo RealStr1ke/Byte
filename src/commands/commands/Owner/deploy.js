@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class DeployCommand extends Command {
@@ -18,7 +18,7 @@ class DeployCommand extends Command {
 	}
 
 	async run(message) {
-		const StatusEmbed = new MessageEmbed()
+		const StatusEmbed = new EmbedBuilder()
 			.setTitle('🟡 Application commands deploying.')
 			.setFooter({
 				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,

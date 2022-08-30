@@ -1,5 +1,5 @@
 const Event = require('../structs/templates/Event');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 class error extends Event {
 	constructor(client) {
@@ -9,7 +9,7 @@ class error extends Event {
 	async run(err) {
 		this.client.logger.fail(err.message);
 		if (this.client.config.logs.support.errors) {
-			const ErrorEmbed = new MessageEmbed()
+			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('Websocket Error')
 				.setDescription(`Error: **${err.message}\nContent: \n ${err}`)
 				.setColor('RED')

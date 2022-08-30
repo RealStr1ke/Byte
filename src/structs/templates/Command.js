@@ -1,4 +1,4 @@
-const { Permissions, Collection, MessageEmbed } = require('discord.js');
+const { Permissions, Collection, EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class Command {
@@ -115,7 +115,7 @@ class Command {
 	}
 
 	getHelpMessage() {
-		const HelpEmbed = new MessageEmbed()
+		const HelpEmbed = new EmbedBuilder()
 			.setTitle(`${this.name.charAt(0).toUpperCase() + this.name.substring(1)}`)
 			.setDescription(`${this.description}`)
 			.addField('Usage', `\`${this.client.config.prefix}${this.usage}\``)
@@ -128,7 +128,7 @@ class Command {
 	getCooldownMessage(time) {
 		// console.log('Time Can Use: %d', time + this.cooldown)
 		const timeLeft = Math.round(((time + this.cooldown) - Date.now()) / 1000);
-		const CooldownEmbed = new MessageEmbed()
+		const CooldownEmbed = new EmbedBuilder()
 			.setTitle('You are still on cooldown.')
 			.setDescription(`You may use this command again in ${timeLeft > 1 ? `${timeLeft} seconds` : '1 second'}.`)
 			.setDefault(this.client);

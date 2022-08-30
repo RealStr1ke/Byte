@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const { default: axios } = require('axios');
 
@@ -20,7 +20,7 @@ class CatCommand extends Command {
 
 	async run(message) {
 		const response = await axios.get('https://aws.random.cat/meow');
-		const CatEmbed = new MessageEmbed()
+		const CatEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.file)
 			.setFooter({

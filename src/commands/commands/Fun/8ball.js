@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 class EightBallCommand extends Command {
 
@@ -18,7 +18,7 @@ class EightBallCommand extends Command {
 		const question = args.join(' ');
 		const answers = this.client.constants;
 
-		const EightBall = new MessageEmbed()
+		const EightBall = new EmbedBuilder()
 			.setTitle('🎱 The Magic 8-Ball 🎱')
 			.addField('Question', question)
 			.addField('Answer', `${answers[Math.floor(Math.random() * answers.length)]}`)

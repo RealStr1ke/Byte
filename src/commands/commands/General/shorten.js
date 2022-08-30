@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const isurl = require('is-url');
 const axios = require('axios');
 const path = require('path');
@@ -28,7 +28,7 @@ class ShortenCommand extends Command {
 
 		console.log(response.data);
 
-		const ShortenEmbed = new MessageEmbed()
+		const ShortenEmbed = new EmbedBuilder()
 			.setTitle('**Here is your shortened URL.**')
 			.setDescription([
 				`**Original URL:** ${url}`,

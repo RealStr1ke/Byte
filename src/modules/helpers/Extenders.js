@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-// const { Message, MessageEmbed } = require('discord.js');
+// const { Message, EmbedBuilder } = require('discord.js');
 
 // Message Extenders
 async function AmongUsMessage() {
@@ -9,7 +9,7 @@ async function AmongUsMessage() {
 Discord.Message.prototype.sus = AmongUsMessage;
 
 
-// MessageEmbed Extenders
+// EmbedBuilder Extenders
 function DefaultEmbedParams(client) {
 	this
 		.setAuthor({
@@ -24,7 +24,7 @@ function DefaultEmbedParams(client) {
 		.setTimestamp();
 	return this;
 	}
-Discord.MessageEmbed.prototype.setDefault = DefaultEmbedParams;
+Discord.EmbedBuilder.prototype.setDefault = DefaultEmbedParams;
 
 
 // Date Extenders

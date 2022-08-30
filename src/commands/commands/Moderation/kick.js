@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 class KickCommand extends Command {
 
@@ -28,7 +28,7 @@ class KickCommand extends Command {
 
 		try {
 			const reason = args.slice(1);
-			const KickEmbed = new MessageEmbed()
+			const KickEmbed = new EmbedBuilder()
 				.setTitle('**Kick**')
 				.addField('**Server**', `${message.guild.name}`, true)
 				.addField('**Offender**', `<@${target.user.id}>`, true)

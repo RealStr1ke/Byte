@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageAttachment, MessageEmbed } = require('discord.js');
+const { MessageAttachment, EmbedBuilder } = require('discord.js');
 const Sentry = require('@sentry/node');
 const fetch = require('node-fetch');
 const gamedig = require('gamedig');
@@ -57,7 +57,7 @@ class MinecraftCommand extends Command {
 		}
 
 		if (!json) {
-			const ErrorEmbed = new MessageEmbed()
+			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('🔴 Unavailable')
 				.setDescription('This server either doesn\'t exist, is offline or blocking access!')
 				.setColor('RED')
@@ -70,7 +70,7 @@ class MinecraftCommand extends Command {
 		const ImageResponse = await fetch(`https://www.minecraftskinstealer.com/achievement/a.php?i=2&h=Success&t=${ip}`);
 		const ImageAttachment = new MessageAttachment(await ImageResponse.buffer(), 'success.png');
 
-		const MinecraftEmbed = new MessageEmbed()
+		const MinecraftEmbed = new EmbedBuilder()
 			.setTitle(`**Information about \`${ip}\`**`)
 			.addField('Version', `**\`${json.raw.vanilla.raw.version.name}\`**`)
 			.addField('Players Online', `**\`${(json.raw.players ? json.raw.players.online : json.players.length)}/${(json.raw.players ? json.raw.players.max : json.maxplayers)}\`**`)

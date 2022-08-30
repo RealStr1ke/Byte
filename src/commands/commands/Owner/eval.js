@@ -26,7 +26,7 @@ class EvalCommand extends Command {
 			const evaled = eval(txt);
 			let ff = inspect(evaled, { depth: 0 });
 			if (String(ff).length > 2000) ff = 'Output is too long';
-			const result = new Discord.MessageEmbed()
+			const result = new Discord.EmbedBuilder()
 				.setTitle('JavaScript')
 				.setTimestamp()
 				.addField('Input', `\`\`\`${txt}}\`\`\``)
@@ -40,7 +40,7 @@ class EvalCommand extends Command {
 				embeds: [result],
 			});
 		} catch (err) {
-			const error = new Discord.MessageEmbed()
+			const error = new Discord.EmbedBuilder()
 				.setTitle('Evaluation Error!')
 				.addField('❌| Error', `${err}`)
 				.setTimestamp()

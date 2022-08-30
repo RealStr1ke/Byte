@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios'),
 	path = require('path');
 
@@ -20,7 +20,7 @@ class FoxCommand extends Command {
 	async run(message) {
 		const response = await axios.get('https://randomfox.ca/floof/');
 
-		const FoxEmbed = new MessageEmbed()
+		const FoxEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.image)
 			.setFooter({

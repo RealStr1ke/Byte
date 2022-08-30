@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class PingCommand extends Command {
@@ -19,7 +19,7 @@ class PingCommand extends Command {
 	async run(message) {
 		const sent = await message.reply('Pinging...');
 		const timeDiff = (sent.editedAt || sent.createdAt) - (message.editedAt || message.createdAt);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setThumbnail(this.client.avatar)
 			.setTitle(`${this.client.user.username} Ping`)
 			.setDescription([

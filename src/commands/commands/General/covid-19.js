@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const covid = require('novelcovid');
 const moment = require('moment-timezone');
 const axios = require('axios');
@@ -28,7 +28,7 @@ class COVID19Command extends Command {
 				country: args[0],
 			});
 			if (covidStats.message === 'Country not found or doesn\'t have any cases') return message.reply(`\`\`\`${covidStats.message}.\`\`\``);
-			COVIDEmbed = new MessageEmbed()
+			COVIDEmbed = new EmbedBuilder()
 				.setTitle(`COVID-19 Stats (${args[0]})`)
 				.addField('Cases', covidStats.cases.toLocaleString(), true)
 				.addField('Deaths', covidStats.deaths.toLocaleString(), true)
@@ -48,7 +48,7 @@ class COVID19Command extends Command {
 
 		if (!args[0]) {
 			covidStats = await covid.all();
-			COVIDEmbed = new MessageEmbed()
+			COVIDEmbed = new EmbedBuilder()
 				.setTitle('Worldwide COVID-19 Stats')
 				.addField('Deaths', covidStats.deaths.toLocaleString(), true)
 				.addField('Recovered', covidStats.recovered.toLocaleString(), true)

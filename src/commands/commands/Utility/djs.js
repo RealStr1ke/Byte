@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const { default: axios } = require('axios');
 
@@ -29,7 +29,7 @@ class DJSCommand extends Command {
 				embeds: [data],
 			});
 		} else {
-			const ErrorEmbed = new MessageEmbed()
+			const ErrorEmbed = new EmbedBuilder()
 				.setTitle(':x: Could not find any documentation for that.')
 				.setDefault(this.client);
 			message.reply({

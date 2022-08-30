@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class BegCommand extends Command {
@@ -20,7 +20,7 @@ class BegCommand extends Command {
 
 	async run(message, args, data) {
 		const choice = Math.floor(Math.random() * 2);
-		const BegEmbed = new MessageEmbed();
+		const BegEmbed = new EmbedBuilder();
 		if (choice === 1) {
 			const replies = this.client.constants.responses.beg.yes;
 			const randomAmount = (Math.floor(Math.random() * 500) + 1) * data.member.economy.multiplier;

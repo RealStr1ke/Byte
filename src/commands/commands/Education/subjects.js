@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const { existsSync } = require('fs');
 
@@ -22,7 +22,7 @@ class SubjectsCommand extends Command {
 
 	async run(message, args, data) {
 		if (!args || args.length < 1) {
-			const ScheduleEmbed = new MessageEmbed()
+			const ScheduleEmbed = new EmbedBuilder()
 				.setTitle('**Here are the current subjects**')
 				.setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer)
@@ -75,7 +75,7 @@ class SubjectsCommand extends Command {
 			return message.channel.send(`The subject \`${subject}\` was successfully removed.`);
 		}
 
-		// const NameEmbed = new MessageEmbed()
+		// const NameEmbed = new EmbedBuilder()
 		// 	.setTitle(`**Your name is now set to ${firstName + ' ' + lastName}**`)
 		// 	.setColor(this.client.config.embed.color)
 		// 	.setFooter(this.client.config.embed.footer)

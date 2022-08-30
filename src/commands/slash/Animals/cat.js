@@ -1,5 +1,5 @@
 const Slash = require('../../structs/templates/Slash');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
 const path = require('path');
@@ -19,7 +19,7 @@ class CatCommand extends Slash {
 
 	async run(interaction) {
 		const response = await axios.get('https://aws.random.cat/meow');
-		const CatEmbed = new MessageEmbed()
+		const CatEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.file)
 			.setFooter({

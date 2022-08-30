@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios'),
 	path = require('path');
 
@@ -20,7 +20,7 @@ class AdviceCommand extends Command {
 	async run(message) {
 		const response = await axios.get('https://api.adviceslip.com/advice');
 
-		const AdviceEmbed = new MessageEmbed()
+		const AdviceEmbed = new EmbedBuilder()
 			.setTitle('Here\'s an piece of advice')
 			.setDescription(response.data.slip.advice)
 			.setFooter({

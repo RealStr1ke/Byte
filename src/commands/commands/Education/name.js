@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class NameCommand extends Command {
@@ -22,7 +22,7 @@ class NameCommand extends Command {
 	async run(message, args, data) {
 
 		if (!args || args.length < 1) {
-			const NameEmbed = new MessageEmbed()
+			const NameEmbed = new EmbedBuilder()
 				.setTitle(`**Your name is ${data.student.firstName + ' ' + data.student.lastName}**`)
 				.setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer)
@@ -47,7 +47,7 @@ class NameCommand extends Command {
 
 		data.student.save();
 
-		const NameEmbed = new MessageEmbed()
+		const NameEmbed = new EmbedBuilder()
 			.setTitle(`**Your name is now set to ${firstName + ' ' + lastName}**`)
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer)

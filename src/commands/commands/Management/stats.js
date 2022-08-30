@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command'),
-	{ MessageEmbed } = require('discord.js'),
+	{ EmbedBuilder } = require('discord.js'),
 	{ dependencies } = require('../../../../package.json'),
 	os = require('os'),
 	osu = require('os-utils'),
@@ -22,7 +22,7 @@ class BotStatsCommand extends Command {
 	}
 
 	async run(message) {
-		const botStats = new MessageEmbed()
+		const botStats = new EmbedBuilder()
 			.setTitle(`<@!${this.client.user.id}>'s Statistics`)
 			.setDescription(`Detailed information about <@!${this.client.user.id}>'s hardware and other statistics`)
 			.addFields([

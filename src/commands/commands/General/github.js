@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const axios = require('axios');
 
@@ -30,7 +30,7 @@ class GitHubCommand extends Command {
 			return message.channel.send('**The repository you specified doesn\'t exist.**');
 		}
 		try {
-			const GitHubEmbed = new MessageEmbed()
+			const GitHubEmbed = new EmbedBuilder()
 				.setAuthor(this.client.user.tag, this.client.user.displayAvatarURL({ size: 512, dynamic: true, format: 'png' }))
 				.setTitle(`${repo}`)
 				.setDescription(`[${repo}](https://github.com/${repo})`)

@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class GradeCommand extends Command {
@@ -33,7 +33,7 @@ class GradeCommand extends Command {
 		data.student.markModified('gradelevel');
 		data.student.save();
 
-		const GradeEmbed = new MessageEmbed()
+		const GradeEmbed = new EmbedBuilder()
 			.setTitle(`**Your grade level has been successfully changed to ${grade}**`)
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);

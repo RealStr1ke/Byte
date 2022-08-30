@@ -25,7 +25,7 @@ class ExecCommand extends Command {
 		exec(`${lola}`, (error, stdout) => {
 			const response = (error || stdout);
 			if (error) {
-				const err = new Discord.MessageEmbed()
+				const err = new Discord.EmbedBuilder()
 					.setTitle('Terminal')
 					.addField('Input', `\`\`\`
                     ${lola}\`\`\``)
@@ -38,7 +38,7 @@ class ExecCommand extends Command {
 				});
 				this.client.logger.fail(error.message);
 			} else {
-				const result = new Discord.MessageEmbed()
+				const result = new Discord.EmbedBuilder()
 					.setTitle('Terminal')
 					.addField('Input', `\`\`\`${lola}\`\`\``)
 					.addField('Output', `\`\`\`kt\n${response}\`\`\``)

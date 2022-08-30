@@ -1,5 +1,5 @@
 const Event = require('../structs/templates/Event');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 class debug extends Event {
 	constructor(client) {
 		super(client);
@@ -9,7 +9,7 @@ class debug extends Event {
 		if (!this.client.config.debug) return;
 		if (this.client.isReady() && this.client.status) {
 			if (this.client.config.support.logs.debug) {
-				const DebugEmbed = new MessageEmbed()
+				const DebugEmbed = new EmbedBuilder()
 					.setTitle(`**${info}**`)
 					.setColor('YELLOW')
 					.setTimestamp();

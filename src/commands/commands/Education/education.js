@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class EducationCommand extends Command {
@@ -31,7 +31,7 @@ class EducationCommand extends Command {
 		data.guild.save();
 
 		eduStatus = data.guild.plugins.education.enabled;
-		const status = new MessageEmbed()
+		const status = new EmbedBuilder()
 			.setTitle(`**The education module has been toggled to ${eduStatus}**`)
 			.setColor(this.client.config.embed.color)
 			.setFooter(this.client.config.embed.footer);

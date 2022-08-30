@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path'),
 	isurl = require('is-url');
 
@@ -25,7 +25,7 @@ class QRCodeCommand extends Command {
 
 		// const qrcode = new MessageAttachment(link, 'qrcode.png');
 
-		const QRCodeEmbed = new MessageEmbed()
+		const QRCodeEmbed = new EmbedBuilder()
 			.setTitle('QR Code')
 			.setDescription(`QR Code for \`${args[0]}\``)
 			.setImage(link)

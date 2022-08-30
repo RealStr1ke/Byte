@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const { default: axios } = require('axios');
 
@@ -19,7 +19,7 @@ class ShibeCommand extends Command {
 
 	async run(message) {
 		const response = await axios.get('http://shibe.online/api/shibes');
-		const ShibeEmbed = new MessageEmbed()
+		const ShibeEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data[0])
 			.setFooter({

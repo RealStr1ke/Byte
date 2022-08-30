@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class AvatarCommand extends Command {
@@ -25,7 +25,7 @@ class AvatarCommand extends Command {
 			webp: member.user.displayAvatarURL({ format: 'webp', size: 1024 }),
 		};
 
-		const AvatarEmbed = new MessageEmbed()
+		const AvatarEmbed = new EmbedBuilder()
 			.setTitle('**Avatar**')
 			.setImage(avatar.default)
 			.setDescription(`**Links: [PNG](${avatar.png}) | [JPG](${avatar.jpg}) | [GIF](${avatar.gif}) | [WEBP](${avatar.webp})**`)

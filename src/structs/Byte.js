@@ -337,7 +337,7 @@ class Byte extends Client {
 
 	async destroy() {
 		this.status = false;
-		const ShutDownEmbed = new MessageEmbed()
+		const ShutDownEmbed = new EmbedBuilder()
 			.setTitle('**Offline**')
 			.setColor('RED')
 			.setTimestamp();

@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const moment = require('moment');
 const { serverInfo } = require('../../../modules/constants/constants'),
@@ -26,7 +26,7 @@ class ChannelInfoCommand extends Command {
 		let channel = message.channel;
 		if (args[0]) channel = this.client.resolveChannel(args[0], message.guild) || message.channel;
 
-		const ChannelInfo = new MessageEmbed()
+		const ChannelInfo = new EmbedBuilder()
 			.setTitle(`**<#${channel.id}>'s Info**`)
 			.addField('Channel', `<#${channel.id}>`, true)
 			.addField('ID', `\`${channel.id}\``, true)

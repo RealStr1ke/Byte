@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const Slash = require('../../structs/templates/Slash');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class ShutdownCommand extends Slash {
@@ -17,7 +17,7 @@ class ShutdownCommand extends Slash {
 	}
 
 	async run(interaction) {
-		const ShutDownEmbed = new MessageEmbed()
+		const ShutDownEmbed = new EmbedBuilder()
 			.setTitle('🔴 **Bot is now shutting down.**')
 			.setColor(this.client.config.embed.color)
 			.setFooter({

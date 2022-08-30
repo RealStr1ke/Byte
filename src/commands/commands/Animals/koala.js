@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 const { default: axios } = require('axios');
 
@@ -19,7 +19,7 @@ class KoalaCommand extends Command {
 
 	async run(message) {
 		const response = await axios.get('https://some-random-api.ml/img/koala');
-		const KoalaEmbed = new MessageEmbed()
+		const KoalaEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.link)
 			.setFooter({

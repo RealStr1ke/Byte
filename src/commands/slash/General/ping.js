@@ -1,5 +1,5 @@
 const Slash = require('../../structs/templates/Slash');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const path = require('path');
 
@@ -20,7 +20,7 @@ class PingCommand extends Slash {
 		// const time = new Date().getTime() - interaction.createdTimestamp;
 		// const sent = await interaction.reply('Pinging...');
 		const timeDiff = new Date().getTime() - (interaction.createdTimestamp);
-		const embed = new MessageEmbed()
+		const embed = new EmbedBuilder()
 			.setThumbnail(this.client.avatar)
 			.setTitle(`${this.client.user.username} Ping`)
 			.setDescription([

@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 class UnbanCommand extends Command {
 
@@ -28,7 +28,7 @@ class UnbanCommand extends Command {
 		user = user.user;
 
 		try {
-			const UnbanEmbed = new MessageEmbed()
+			const UnbanEmbed = new EmbedBuilder()
 				.setTitle('**Unban**')
 				.addField('**Server**', `${message.guild.name}`, true)
 				.addField('**User**', user.tag, true)

@@ -1,5 +1,5 @@
 const Slash = require('../../structs/templates/Slash');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
 const path = require('path');
@@ -19,7 +19,7 @@ class BirdCommand extends Slash {
 
 	async run(interaction) {
 		const response = await axios.get('http://shibe.online/api/birds');
-		const BirdEmbed = new MessageEmbed()
+		const BirdEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data[0])
 			.setFooter({

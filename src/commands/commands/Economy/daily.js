@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class DailyCommand extends Command {
@@ -35,7 +35,7 @@ class DailyCommand extends Command {
 
 		await data.user.save();
 
-		const DailyEmbed = new MessageEmbed()
+		const DailyEmbed = new EmbedBuilder()
 			.setTitle('Daily Reward')
 			.setDescription([
 				`Daily Reward: ⏣${await this.client.utils.formatNumber(15000 * data.user.economy.multiplier)} coins${data.user.economy.multiplier > 1 ? ` (**${data.user.economy.multiplier}x** coin multiplier)!` : '!'}`,
@@ -50,7 +50,7 @@ class DailyCommand extends Command {
 
 	getCooldownMessage(time) {
 		const timeUse = Math.round(((time + this.cooldown) / 1000));
-		const CooldownEmbed = new MessageEmbed()
+		const CooldownEmbed = new EmbedBuilder()
 			.setTitle('Daily Reward')
 			.setDescription([
 				'You\'ve already claimed your daily reward today.',

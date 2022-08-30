@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class PrefixCommand extends Command {
@@ -19,7 +19,7 @@ class PrefixCommand extends Command {
 
 	async run(message, args, data) {
 		const prefix = data.guild.prefix;
-		const PrefixEmbed = new MessageEmbed()
+		const PrefixEmbed = new EmbedBuilder()
 			.setTitle(`${this.client.user.username}'s Prefix`)
 			.addField('**Prefix**', `\`${prefix}\``, true)
 			.addField('**Example**', `\`${prefix}help\``, true)

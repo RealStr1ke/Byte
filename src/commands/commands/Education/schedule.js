@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 class ScheduleCommand extends Command {
 
@@ -19,7 +19,7 @@ class ScheduleCommand extends Command {
 
 	async run(message, args, data) {
 		if (!args || args.length < 1) {
-			const ScheduleEmbed = new MessageEmbed()
+			const ScheduleEmbed = new EmbedBuilder()
 				.setTitle('**Here is your current schedule**')
 				.setColor(this.client.config.embed.color)
 				.setFooter(this.client.config.embed.footer)

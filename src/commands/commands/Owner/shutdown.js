@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class ShutdownCommand extends Command {
@@ -18,7 +18,7 @@ class ShutdownCommand extends Command {
 	}
 
 	async run(message) {
-		const ShutDownEmbed = new MessageEmbed()
+		const ShutDownEmbed = new EmbedBuilder()
 			.setTitle('🔴 **Bot is now shutting down.**')
 			.setFooter({
 				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,

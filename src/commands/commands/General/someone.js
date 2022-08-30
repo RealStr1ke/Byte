@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class SomeoneCommand extends Command {
@@ -20,7 +20,7 @@ class SomeoneCommand extends Command {
 		await message.guild.members.fetch();
 		const member = message.guild.members.cache.random(1)[0];
 
-		const SomeoneEmbed = new MessageEmbed()
+		const SomeoneEmbed = new EmbedBuilder()
 			.setTitle(`<@!${member.user.id}>`)
 			.addField('Username', member.user.username, true)
 			.addField('Discriminator', member.user.discriminator, true)

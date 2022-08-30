@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 // const { default: axios } = require('axios');
 const path = require('path');
 
@@ -26,7 +26,7 @@ class Base64Command extends Command {
 
 			const encoded = Buffer.from(args.join(' ')).toString('base64');
 			
-			const Base64Embed = new MessageEmbed()
+			const Base64Embed = new EmbedBuilder()
 				.setTitle('__Base 64__')
 				.setDescription(`\`${encoded}\``)
 				.setDefault(this.client);
@@ -35,7 +35,7 @@ class Base64Command extends Command {
 				embeds: [Base64Embed],
 			});
 		} catch (error) {
-			const ErrorEmbed = new MessageEmbed()
+			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('An error occured while coverting to Base64.')
 				.setDefault(this.client)
 				.setColor('RED');

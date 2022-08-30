@@ -1,5 +1,5 @@
 const Event = require('../structs/templates/Event');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 class guildCreate extends Event {
 	constructor(client) {
@@ -10,7 +10,7 @@ class guildCreate extends Event {
 		this.client.logger.guildJoin(guild.name, guild.memberCount, guild.channels.channelCountWithoutThreads);
 		await this.client.database.getGuild(guild.id);
 
-		const JoinEmbed = new MessageEmbed()
+		const JoinEmbed = new EmbedBuilder()
 			.setTitle(`**Hi! My name is ${this.client.user.username}.**`)
 			.setDescription(`**${[
 				'Thank you for adding me to this guild!',

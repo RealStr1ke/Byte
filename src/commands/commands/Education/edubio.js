@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class EduBioCommand extends Command {
@@ -27,7 +27,7 @@ class EduBioCommand extends Command {
 		data.student.markModified('bio');
 		data.student.save();
 
-		const BioEmbed = new MessageEmbed()
+		const BioEmbed = new EmbedBuilder()
 			.setTitle('**Your bio has been successfully changed.**')
 			.setDescription(`**${data.student.bio}**`)
 			.setColor(this.client.config.embed.color)

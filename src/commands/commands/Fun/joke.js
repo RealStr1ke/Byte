@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const path = require('path');
 
@@ -20,7 +20,7 @@ class JokeCommand extends Command {
 	async run(message) {
 		const response = await axios.get('https://blague.xyz/api/joke/random?lang=EN');
 
-		const JokeEmbed = new MessageEmbed()
+		const JokeEmbed = new EmbedBuilder()
 			.setTitle('Here\'s an bad joke')
 			.setDescription(`**${response.data.joke.question} ${response.data.joke.answer}**`)
 			.setFooter({

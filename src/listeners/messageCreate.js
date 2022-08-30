@@ -1,5 +1,5 @@
 const Event = require('../structs/templates/Event');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
 class messageCreate extends Event {
 	constructor(client) {
@@ -66,7 +66,7 @@ class messageCreate extends Event {
 		// Stops the command from executing if an instance is already running
 		const instanceExists = command.isInstanceRunning(message.author.id);
 		if (instanceExists) {
-			const inProgress = new MessageEmbed()
+			const inProgress = new EmbedBuilder()
 				.setDescription('Command already in progress, please wait for it.');
 			return message.reply({
 				embeds: [inProgress],
@@ -130,7 +130,7 @@ class messageCreate extends Event {
 			command.done(message.author.id);
 			message.channel.send('**This command was not able to execute properly. Please try again later.**');
 			this.client.logger.fail(error.message);
-			const ErrorEmbed = new MessageEmbed()
+			const ErrorEmbed = new EmbedBuilder()
 				.setColor(this.client.config.embed.color)
 				.setTitle('Error')
 				.setDescription(`Guild: **${message.guild ? message.guild.name : 'Direct Messages'}**\nUser: \`${message.author.tag} (${message.author.id})\`\nCommand: \`${message.content}\`\n\n\`\`\`properties\n${error.stack}\`\`\``)

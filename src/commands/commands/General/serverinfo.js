@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class ServerInfoCommand extends Command {
@@ -28,7 +28,7 @@ class ServerInfoCommand extends Command {
 		const voiceCount = guild.channels.cache.filter(c => c.type === 'voice').size;
 		const categoryCount = guild.channels.cache.filter(c => c.type === 'category').size;
 
-		const ServerInfo = new MessageEmbed()
+		const ServerInfo = new EmbedBuilder()
 			.setTitle(`**${guild.name}'s Info**`)
 			.setThumbnail(guild.iconURL({ dynamic: true }))
 			.addField('**ID**', `\`${message.guild.id}\``, true)

@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const axios = require('axios');
 const path = require('path');
 
@@ -20,7 +20,7 @@ class DogCommand extends Command {
 
 	async run(message) {
 		const response = await axios.get('https://dog.ceo/api/breeds/image/random');
-		const DogEmbed = new MessageEmbed()
+		const DogEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.message)
 			.setFooter({

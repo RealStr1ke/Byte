@@ -1,5 +1,5 @@
 const Command = require('../../../structs/templates/Command');
-const { MessageEmbed } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 
 class BalanceCommand extends Command {
@@ -20,7 +20,7 @@ class BalanceCommand extends Command {
 	}
 
 	async run(message, args, data) {
-		const balance = new MessageEmbed()
+		const balance = new EmbedBuilder()
 			.setTitle('**Your Stats:**')
 			.addField('**Wallet:**', `\`${this.client.utils.formatNumber(data.user.economy.wallet)}\``, true)
 			.addField('**Bank:**', `\`${this.client.utils.formatNumber(data.user.economy.bank)}\``, true)
