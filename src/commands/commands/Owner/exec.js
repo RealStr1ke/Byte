@@ -12,7 +12,7 @@ class ExecCommand extends Command {
 			args        : true,
 			directory   : __dirname,
 			aliases     : ['bash', 'cmd'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

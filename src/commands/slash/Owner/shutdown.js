@@ -11,7 +11,7 @@ class ShutdownCommand extends Slash {
 			description : 'Shuts the bot down.',
 			usage       : 'shutdown',
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

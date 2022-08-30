@@ -13,7 +13,7 @@ class EvalCommand extends Command {
 			args        : true,
 			aliases     : ['code'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 			requireData : true,
 		});

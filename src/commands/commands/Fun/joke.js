@@ -12,7 +12,7 @@ class JokeCommand extends Command {
 			usage       : 'joke',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

@@ -12,7 +12,7 @@ class DuckCommand extends Command {
 			usage       : 'duck',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

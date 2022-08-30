@@ -13,7 +13,7 @@ class QRCodeCommand extends Command {
 			args        : true,
 			aliases     : ['qr', 'qrc'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

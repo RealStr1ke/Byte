@@ -13,7 +13,7 @@ class CatCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['cat'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

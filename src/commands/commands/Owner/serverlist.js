@@ -13,7 +13,7 @@ class ServerListCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['sl'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

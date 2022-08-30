@@ -13,7 +13,7 @@ class DJSCommand extends Command {
 			args        : true,
 			directory   : __dirname,
 			aliases     : ['djsdocs'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

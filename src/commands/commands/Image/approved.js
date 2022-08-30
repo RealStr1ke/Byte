@@ -12,7 +12,7 @@ class ApprovedCommand extends Command {
 			usage       : 'approved <User>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

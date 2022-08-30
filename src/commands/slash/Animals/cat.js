@@ -12,7 +12,7 @@ class CatCommand extends Slash {
 			description : 'Responds with a random cat picture.',
 			usage       : 'cat',
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 		});
 	}

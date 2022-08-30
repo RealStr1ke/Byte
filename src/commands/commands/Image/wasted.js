@@ -11,7 +11,7 @@ class WastedCommand extends Command {
 			usage       : 'wasted <User>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

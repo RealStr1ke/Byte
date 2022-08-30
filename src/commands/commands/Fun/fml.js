@@ -12,7 +12,7 @@ class FMLCommand extends Command {
 			usage       : 'fml',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

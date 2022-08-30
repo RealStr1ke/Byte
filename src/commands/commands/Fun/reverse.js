@@ -11,7 +11,7 @@ class ReverseCommand extends Command {
 			args        : true,
 			aliases     : ['rv'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

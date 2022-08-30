@@ -15,7 +15,7 @@ class COVID19Command extends Command {
 			args        : false,
 			aliases     : ['covid', 'covid19', 'cov'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

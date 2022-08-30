@@ -13,7 +13,7 @@ class ChangeMyMindCommand extends Command {
 			aliases     : ['cmm'],
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

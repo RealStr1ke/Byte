@@ -12,7 +12,7 @@ class Base64Command extends Command {
 			usage       : 'base64 <text>',
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

@@ -12,7 +12,7 @@ class BalanceCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['bal'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 			requireData : true,
 			ownerOnly   : false,

@@ -15,7 +15,7 @@ class ChannelInfoCommand extends Command {
 			args        : false,
 			aliases     : ['ci', 'cinfo'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 		});
 	}

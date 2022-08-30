@@ -12,7 +12,7 @@ class PingCommand extends Command {
 			args        : false,
 			aliases     : ['ping'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

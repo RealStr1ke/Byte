@@ -13,7 +13,7 @@ class FacePalmCommand extends Command {
 			aliases     : ['fp'],
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

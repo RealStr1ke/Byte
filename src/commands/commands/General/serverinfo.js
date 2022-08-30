@@ -12,7 +12,7 @@ class ServerInfoCommand extends Command {
 			args        : false,
 			aliases     : ['si', 'sinfo'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 		});
 	}

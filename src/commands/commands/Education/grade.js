@@ -12,7 +12,7 @@ class GradeCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['grd'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 			requireData : true,
 		});

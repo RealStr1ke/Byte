@@ -17,8 +17,8 @@ class Command {
 		this.example = options.example || [];
 		this.enabled = options.enabled || true;
 
-		this.userPerms = new PermissionsBitField(options.userPerms || 'SEND_MESSAGES').freeze();
-		this.botPerms = new PermissionsBitField(options.botPerms || 'SEND_MESSAGES').freeze();
+		this.userPerms = new PermissionsBitField(options.userPerms || 'SendMessages').freeze();
+		this.botPerms = new PermissionsBitField(options.botPerms || 'SendMessages').freeze();
 		this.guildOnly = options.guildOnly || false;
 		this.ownerOnly = options.ownerOnly || false;
 		this.nsfw = options.nsfw || false;

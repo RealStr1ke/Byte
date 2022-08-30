@@ -12,7 +12,7 @@ class FoxCommand extends Command {
 			usage       : 'fox',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

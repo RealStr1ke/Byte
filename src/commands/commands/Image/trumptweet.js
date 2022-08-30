@@ -14,7 +14,7 @@ class TrumpTweetCommand extends Command {
 			args        : false,
 			aliases     : ['tt'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

@@ -12,7 +12,7 @@ class PrefixCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['prx'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			requireData : true,
 		});
 	}

@@ -11,7 +11,7 @@ class CoinFlipCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['cf'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

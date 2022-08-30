@@ -1,4 +1,4 @@
-const Slash = require('../../structs/templates/Slash');
+const Slash = require('../../../structs/templates/Slash');
 const { EmbedBuilder } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
@@ -12,7 +12,7 @@ class BirdCommand extends Slash {
 			description : 'Responds with a random bird picture.',
 			usage       : 'bird',
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : false,
 		});
 	}

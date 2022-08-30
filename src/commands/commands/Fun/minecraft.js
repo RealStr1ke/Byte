@@ -15,8 +15,8 @@ class MinecraftCommand extends Command {
 			args        : true,
 			aliases     : ['mc'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
-			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS'],
+			userPerms   : 'SendMessages',
+			botPerms    : ['SendMessages', 'EmbedLinks'],
 		});
 	}
 

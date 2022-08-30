@@ -12,7 +12,7 @@ class BirdCommand extends Command {
 			usage       : 'bird',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

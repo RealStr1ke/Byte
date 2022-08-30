@@ -10,7 +10,7 @@ class DailyCommand extends Command {
 			description : 'Collect your daily reward!',
 			usage       : 'daily',
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			requireData : true,
 			guildOnly   : true,
 			cooldown    : 86400,

@@ -10,7 +10,7 @@ class StaffListCommand extends Command {
 			usage       : 'stafflist',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

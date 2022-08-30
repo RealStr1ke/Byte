@@ -12,7 +12,7 @@ class ASCIICommand extends Command {
 			usage       : 'ascii <text>',
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

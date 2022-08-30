@@ -11,7 +11,7 @@ class Base64Command extends Slash {
 			description : 'Shows the bot\'s connection status to the Discord API.',
 			usage       : 'ping',
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 		});
 	}

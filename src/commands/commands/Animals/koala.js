@@ -12,7 +12,7 @@ class KoalaCommand extends Command {
 			usage       : 'koala',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

@@ -12,7 +12,7 @@ class SomeoneCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['somebody', 'randomuser'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

@@ -12,7 +12,7 @@ class AdviceCommand extends Command {
 			usage       : 'advice',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

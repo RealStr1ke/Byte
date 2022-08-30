@@ -12,7 +12,7 @@ class MemeCommand extends Command {
 			usage       : 'meme',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

@@ -12,7 +12,7 @@ class ZalgoCommand extends Command {
 			args        : true,
 			directory   : __dirname,
 			aliases     : ['zlg'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

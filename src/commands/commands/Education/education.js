@@ -12,7 +12,7 @@ class EducationCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['edu'],
-			userPerms   : ['SEND_MESSAGES', 'MANAGE_GUILD'],
+			userPerms   : ['SendMessages', 'ManageGuild'],
 			guildOnly   : true,
 			requireData : true,
 		});

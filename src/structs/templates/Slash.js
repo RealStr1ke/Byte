@@ -11,8 +11,8 @@ class Slash {
 		this.category = options.category || (options.directory ? options.directory.split(path.sep)[parseInt(options.directory.split(path.sep).length - 1, 10)] : 'Other');
 		this.enabled = options.enabled || true;
 
-		this.userPerms = new PermissionOverwrites(options.userPerms || 'SEND_MESSAGES').freeze();
-		this.botPerms = new PermissionOverwrites(options.botPerms || 'SEND_MESSAGES').freeze();
+		this.userPerms = new PermissionOverwrites(options.userPerms || 'SendMessages').freeze();
+		this.botPerms = new PermissionOverwrites(options.botPerms || 'SendMessages').freeze();
 		this.guildOnly = options.guildOnly || false;
 		this.ownerOnly = options.ownerOnly || false;
 		this.nsfw = options.nsfw || false;

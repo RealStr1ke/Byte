@@ -10,7 +10,7 @@ class EightBallCommand extends Command {
 			usage       : '8ball <question>',
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

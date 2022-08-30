@@ -12,7 +12,7 @@ class SubjectsCommand extends Command {
 			usage       : 'subjects <add/remove/clear> <Subject>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 			ownerOnly   : false,
 			education   : true,

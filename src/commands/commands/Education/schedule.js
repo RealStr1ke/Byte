@@ -10,7 +10,7 @@ class ScheduleCommand extends Command {
 			usage       : 'schedule <set/clear> <Period #> <Subject>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 			education   : true,
 			requireData : true,

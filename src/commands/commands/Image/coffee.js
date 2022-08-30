@@ -12,7 +12,7 @@ class CoffeeCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['espresso'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

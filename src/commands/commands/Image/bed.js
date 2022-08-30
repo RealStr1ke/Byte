@@ -12,7 +12,7 @@ class BedCommand extends Command {
 			usage       : 'bed <User>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

@@ -13,7 +13,7 @@ class SlapCommand extends Command {
 			aliases     : ['punch'],
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

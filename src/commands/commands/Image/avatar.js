@@ -11,7 +11,7 @@ class AvatarCommand extends Command {
 			usage       : 'advice <User>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

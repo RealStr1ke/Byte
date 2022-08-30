@@ -12,7 +12,7 @@ class InvertCommand extends Command {
 			usage       : 'invert <User>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

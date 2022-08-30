@@ -12,7 +12,7 @@ class PandaCommand extends Command {
 			usage       : 'panda',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

@@ -13,7 +13,7 @@ class YoutubeCommentCommand extends Command {
 			aliases     : ['ytc'],
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

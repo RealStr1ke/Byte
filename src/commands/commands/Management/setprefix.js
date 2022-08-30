@@ -10,7 +10,7 @@ class SetPrefixCommand extends Command {
 			usage       : 'setprefix <prefix>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : ['SEND_MESSAGES', 'MANAGE_GUILD'],
+			userPerms   : ['SendMessages', 'ManageGuild'],
 			guildOnly   : true,
 			requireData : true,
 		});

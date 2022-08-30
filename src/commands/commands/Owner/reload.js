@@ -10,7 +10,7 @@ class ReloadCommand extends Command {
 			usage       : 'reload <command/all>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

@@ -13,7 +13,7 @@ class DogCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['dogs'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

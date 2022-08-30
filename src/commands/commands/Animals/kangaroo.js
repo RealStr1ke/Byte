@@ -13,7 +13,7 @@ class KangarooCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['kgr'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

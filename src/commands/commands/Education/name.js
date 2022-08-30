@@ -11,7 +11,7 @@ class NameCommand extends Command {
 			usage       : 'name <First> <Last>',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			guildOnly   : true,
 			ownerOnly   : false,
 			education   : true,

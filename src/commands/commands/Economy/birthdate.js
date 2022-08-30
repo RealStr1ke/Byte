@@ -11,7 +11,7 @@ class BirthdateCommand extends Command {
 			usage       : 'birthdate DD/MM/YYYY',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			requireData : true,
 			guildOnly   : true,
 		});

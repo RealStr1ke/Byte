@@ -13,7 +13,7 @@ class OhNoCommand extends Command {
 			aliases     : ['stupid'],
 			args        : true,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

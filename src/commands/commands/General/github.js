@@ -13,7 +13,7 @@ class GitHubCommand extends Command {
 			args        : true,
 			aliases     : ['gh'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 		});
 	}
 

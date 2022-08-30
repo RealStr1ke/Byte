@@ -12,7 +12,7 @@ class DeployCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['dp'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

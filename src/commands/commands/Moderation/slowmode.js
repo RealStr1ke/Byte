@@ -10,8 +10,8 @@ class SlowModeCommand extends Command {
 			aliases     : ['sm'],
 			args        : true,
 			directory   : __dirname,
-			userPerms   : ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
-			botPerms    : ['SEND_MESSAGES', 'MANAGE_CHANNELS'],
+			userPerms   : ['SendMessages', 'ManageChannels'],
+			botPerms    : ['SendMessages', 'ManageChannels'],
 			guildOnly   : true,
 			ownerOnly   : true,
 		});

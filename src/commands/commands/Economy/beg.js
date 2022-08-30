@@ -11,7 +11,7 @@ class BegCommand extends Command {
 			usage       : 'beg',
 			args        : false,
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			requireData : true,
 			guildOnly   : true,
 			ownerOnly   : true,

@@ -10,8 +10,8 @@ class KickCommand extends Command {
 			usage       : 'kick <member>',
 			args        : true,
 			directory   : __dirname,
-			userPerms   : ['SEND_MESSAGES', 'KICK_MEMBERS'],
-			botPerms    : ['SEND_MESSAGES', 'EMBED_LINKS', 'KICK_MEMBERS'],
+			userPerms   : ['SendMessages', 'KickMembers'],
+			botPerms    : ['SendMessages', 'EmbedLinks', 'KickMembers'],
 			guildOnly   : true,
 			requireData : true,
 		});

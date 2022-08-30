@@ -12,7 +12,7 @@ class DocsCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['udc'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

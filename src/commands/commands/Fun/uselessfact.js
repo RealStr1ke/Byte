@@ -13,7 +13,7 @@ class UselessFactCommand extends Command {
 			args        : false,
 			aliases     : ['uf'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

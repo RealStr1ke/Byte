@@ -13,7 +13,7 @@ class RedPandaCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['redp', 'rpanda'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : false,
 		});
 	}

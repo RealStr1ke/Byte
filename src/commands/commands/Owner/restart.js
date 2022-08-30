@@ -12,7 +12,7 @@ class RestartCommand extends Command {
 			args        : false,
 			directory   : __dirname,
 			aliases     : ['reboot'],
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}

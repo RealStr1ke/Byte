@@ -16,7 +16,7 @@ class BotStatsCommand extends Command {
 			args        : false,
 			aliases     : ['bs'],
 			directory   : __dirname,
-			userPerms   : 'SEND_MESSAGES',
+			userPerms   : 'SendMessages',
 			ownerOnly   : true,
 		});
 	}
