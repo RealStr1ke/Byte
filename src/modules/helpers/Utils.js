@@ -220,7 +220,7 @@ class Utils {
 
 	generateInvite() {
 		return this.client.generateInvite({
-			permisions: this.config.permissions,
+			permissions: this.config.permissions,
 			scopes: this.config.scopes,
 		});
 	}

@@ -1,5 +1,5 @@
 // Submodules
-const { Client, Collection, Permissions, MessageEmbed } = require('discord.js');
+const { Client, Collection } = require('discord.js');
 const { GiveawaysManager } = require('discord-giveaways');
 const { Routes } = require('discord-api-types/v10');
 const { Player } = require('discord-player');
@@ -120,37 +120,8 @@ class Byte extends Client {
 
 	getInvite() {
 		return super.generateInvite({
-			permisions: [
-				Permissions.FLAGS.CREATE_INSTANT_INVITE,
-				Permissions.FLAGS.SEND_MESSAGES,
-				Permissions.FLAGS.VIEW_CHANNEL,
-				Permissions.FLAGS.MANAGE_GUILD,
-				Permissions.FLAGS.MANAGE_CHANNELS,
-				Permissions.FLAGS.EMBED_LINKS,
-				Permissions.FLAGS.ATTACH_FILES,
-				Permissions.FLAGS.READ_MESSAGE_HISTORY,
-				Permissions.FLAGS.MENTION_EVERYONE,
-				Permissions.FLAGS.CONNECT,
-				Permissions.FLAGS.SPEAK,
-				Permissions.FLAGS.MUTE_MEMBERS,
-				Permissions.FLAGS.DEAFEN_MEMBERS,
-				Permissions.FLAGS.MOVE_MEMBERS,
-				Permissions.FLAGS.CHANGE_NICKNAME,
-				Permissions.FLAGS.MANANGE_NICKNAMES,
-				Permissions.FLAGS.MANAGE_ROLES,
-				Permissions.FLAGS.MANAGE_EMOJIS_AND_STICKERS,
-				Permissions.FLAGS.USE_APPLICATION_COMMANDS,
-				Permissions.FLAGS.MANAGE_THREADS,
-				Permissions.FLAGS.CREATE_PUBLIC_THREADS,
-				Permissions.FLAGS.CREATE_PRIVATE_THREADS,
-				Permissions.FLAGS.USE_EXTERNAL_STICKERS,
-				Permissions.FLAGS.SEND_MESSAGES_IN_THREADS,
-				Permissions.FLAGS.KICK_MEMBERS,
-				Permissions.FLAGS.BAN_MEMBERS,
-				Permissions.FLAGS.ADD_REACTIONS,
-				Permissions.FLAGS.VIEW_AUDIT_LOG,
-			],
-			scopes: ['bot', 'applications.commands'],
+			permissions: this.config.permissions,
+			scopes: this.config.permissions,
 		});
 	}
 

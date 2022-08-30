@@ -69,7 +69,7 @@ module.exports = {
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'GUILD_MEMBER', 'USER'],
 
 	/* The Discord permissions and scopes for the bot */
-	permisions: [
+	permissions: [
 		Permissions.FLAGS.CREATE_INSTANT_INVITE,
 		Permissions.FLAGS.SEND_MESSAGES,
 		Permissions.FLAGS.VIEW_CHANNEL,
