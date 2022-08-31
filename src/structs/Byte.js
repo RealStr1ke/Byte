@@ -1,5 +1,5 @@
 // Submodules
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, EmbedBuilder } = require('discord.js');
 // const { GiveawaysManager } = require('discord-giveaways');
 const { Routes } = require('discord-api-types/v10');
 const { Player } = require('discord-player');
