@@ -1,7 +1,11 @@
 version: "3.9"
 
 services:
-  web:
+  Byte:
+    container_name: Byte
+    hostname: Byte
     build: .
-    ports:
-      - "80:80"
+
+    # Hopefully for a future web UI
+    # ports:
+    #   - "80:80" 
