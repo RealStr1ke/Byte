@@ -20,7 +20,7 @@ class ready extends Event {
 		this.client.logger.startup(`Loaded ${this.client.events.size} events`);
 		this.client.logger.startup('Connected to the Discord API');
 		this.client.logger.startup(`Logged into as ${this.client.user.tag} on ${this.client.guilds.cache.size} servers`);
-		this.client.user.setPresence({
+		await this.client.user.setPresence({
 			activities: [{
 				name: this.client.config.status.name,
 				type: this.client.config.status.type,
@@ -33,7 +33,7 @@ class ready extends Event {
 			.setColor('Green')
 			.setTimestamp();
 		const StatusLog = this.client.channels.cache.get(this.client.support.status);
-		StatusLog.send({
+		await StatusLog.send({
 			embeds: [StartupEmbed],
 		});
 
