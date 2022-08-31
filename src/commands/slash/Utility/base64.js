@@ -19,7 +19,7 @@ class Base64Command extends Slash {
 	async run(interaction) {
 		try {
 			const encoded = Buffer.from(args.join(' ')).toString('base64');
-			
+
 			const Base64Embed = new EmbedBuilder()
 				.setTitle('__Base 64__')
 				.setDescription([
