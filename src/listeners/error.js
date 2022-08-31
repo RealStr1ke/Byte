@@ -8,11 +8,11 @@ class error extends Event {
 
 	async run(err) {
 		this.client.logger.fail(err.message);
-		if (this.client.config.logs.support.errors) {
+		if (this.client.config.support.logs.errors) {
 			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('Websocket Error')
 				.setDescription(`Error: **${err.message}\nContent: \n ${err}`)
-				.setColor('RED')
+				.setColor('Red')
 				.setTimestamp();
 			const ErrorLog = this.client.channels.cache.get(this.client.support.errors);
 			ErrorLog.send({

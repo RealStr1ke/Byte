@@ -60,7 +60,7 @@ class MinecraftCommand extends Command {
 			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('🔴 Unavailable')
 				.setDescription('This server either doesn\'t exist, is offline or blocking access!')
-				.setColor('RED')
+				.setColor('Red')
 				.setTimestamp();
 			return message.reply({
 				embeds: [ErrorEmbed],

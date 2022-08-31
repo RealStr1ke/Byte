@@ -11,7 +11,7 @@ class debug extends Event {
 			if (this.client.config.support.logs.debug) {
 				const DebugEmbed = new EmbedBuilder()
 					.setTitle(`**${info}**`)
-					.setColor('YELLOW')
+					.setColor('Yellow')
 					.setTimestamp();
 				const DebugLog = this.client.channels.cache.get(this.client.support.debug);
 				DebugLog.send({

@@ -30,7 +30,7 @@ class ready extends Event {
 
 		const StartupEmbed = new EmbedBuilder()
 			.setTitle('**Online**')
-			.setColor('GREEN')
+			.setColor('Green')
 			.setTimestamp();
 		const StatusLog = this.client.channels.cache.get(this.client.support.status);
 		StatusLog.send({

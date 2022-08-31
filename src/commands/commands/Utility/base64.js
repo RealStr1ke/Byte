@@ -38,7 +38,7 @@ class Base64Command extends Command {
 			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('An error occured while coverting to Base64.')
 				.setDefault(this.client)
-				.setColor('RED');
+				.setColor('Red');
 			console.log(error);
 			await message.reply({
 				embeds: [ErrorEmbed],

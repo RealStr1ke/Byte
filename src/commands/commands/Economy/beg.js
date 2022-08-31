@@ -35,7 +35,7 @@ class BegCommand extends Command {
 					`You recieved **⏣${await this.client.utils.formatNumber(randomAmount)}**`,
 					`You now have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`,
 				].join('\n'))
-				.setColor('GREEN');
+				.setColor('Green');
 
 		} else {
 			const replies = this.client.constants.responses.beg.no;
@@ -48,7 +48,7 @@ class BegCommand extends Command {
 					'You didn\'t recieve any money from begging.',
 					`You still have **⏣${await this.client.utils.formatNumber(data.member.economy.wallet)}**`,
 				].join('\n'))
-				.setColor('RED');
+				.setColor('Red');
 		}
 
 		data.member.markModified('economy.wallet');
