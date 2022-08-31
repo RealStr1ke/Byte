@@ -1,6 +1,6 @@
 // Submodules
 const { Client, Collection } = require('discord.js');
-const { GiveawaysManager } = require('discord-giveaways');
+// const { GiveawaysManager } = require('discord-giveaways');
 const { Routes } = require('discord-api-types/v10');
 const { Player } = require('discord-player');
 const { REST } = require('@discordjs/rest');
@@ -11,7 +11,7 @@ const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
 const Amethyste = require('amethyste-api');
 const simpleGit = require('simple-git');
-const dlogs = require('discord-logs');
+// const dlogs = require('discord-logs');
 const path = require('path');
 const glob = require('glob');
 const util = require('util');
@@ -96,19 +96,19 @@ class Byte extends Client {
 			leaveOnEmpty: false,
 			enableLive: true,
 		});
-		this.dlogs = dlogs(this, {
-			debug: this.config.debug,
-		});
-		this.giveawaysManager = new GiveawaysManager(this, {
-			storage: './src/modules/data/giveaways.json',
-			updateCoundownEvery: 10000,
-			default: {
-				botsCanWin: false,
-				exemptPermissions: [ 'MANAGE_MESSAGES', 'ADMINISTRATOR' ],
-				embedColor: this.config.embed.color,
-				reaction: '🎉',
-			},
-		});
+		// this.dlogs = dlogs(this, {
+		// 	debug: this.config.debug,
+		// });
+		// this.giveawaysManager = new GiveawaysManager(this, {
+		// 	storage: './src/modules/data/giveaways.json',
+		// 	updateCoundownEvery: 10000,
+		// 	default: {
+		// 		botsCanWin: false,
+		// 		exemptPermissions: [ 'MANAGE_MESSAGES', 'ADMINISTRATOR' ],
+		// 		embedColor: this.config.embed.color,
+		// 		reaction: '🎉',
+		// 	},
+		// });
 	}
 
 	async init() {
@@ -339,7 +339,7 @@ class Byte extends Client {
 		this.status = false;
 		const ShutDownEmbed = new EmbedBuilder()
 			.setTitle('**Offline**')
-			.setColor('RED')
+			.setColor('Red')
 			.setTimestamp();
 		const StatusLog = this.channels.cache.get(this.support.status);
 		StatusLog.send({
