@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
-const Slash = require('../../structs/templates/Slash');
+const Slash = require('../../../structs/templates/Slash');
 const { EmbedBuilder } = require('discord.js');
 const path = require('path');
 

@@ -1,4 +1,4 @@
-const Slash = require('../../structs/templates/Slash');
+const Slash = require('../../../structs/templates/Slash');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
 const path = require('path');
@@ -7,9 +7,9 @@ class Base64Command extends Slash {
 
 	constructor(client) {
 		super(client, {
-			name        : 'ping',
-			description : 'Shows the bot\'s connection status to the Discord API.',
-			usage       : 'ping',
+			name        : 'base64',
+			description : 'Converts the given information to Base64.',
+			usage       : 'base64',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
 			guildOnly   : true,
@@ -35,7 +35,7 @@ class Base64Command extends Slash {
 			const ErrorEmbed = new EmbedBuilder()
 				.setTitle('An error occured while coverting to Base64.')
 				.setDefault(this.client)
-				.setColor('RED');
+				.setColor('Red');
 			// console.log(error);
 			await interaction.reply({
 				embeds: [ErrorEmbed],
