@@ -23,7 +23,7 @@ class BirdCommand extends Slash {
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data[0])
 			.setFooter({
-				text: `Requested by ${interaction.author.tag} • ${this.client.config.embed.footer}`,
+				text: `Requested by ${interaction.user.tag} • ${this.client.config.embed.footer}`,
 				iconURL: this.client.user.displayAvatarURL(),
 			});
 		return interaction.reply({
