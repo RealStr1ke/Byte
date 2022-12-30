@@ -1,13 +1,18 @@
-const Slash = require('../../../structs/templates/Slash');
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const Command = require('../../../structs/templates/Command');
 const path = require('path');
 
-class TemplateCommand extends Slash {
+class TemplateCommand extends Command {
 
 	constructor(client) {
 		super(client, {
 			name        : 'template',
 			description : 'Just a command template that I made.',
+			usage       : 'template',
+			args        : false,
+			argNum      : 0,
+			aliases     : ['template', 'tmpl'],
+			directory   : __dirname,
+			example	    : ['template arg1', 'tmpl arg1'],
 			enabled     : true,
 			userPerms   : 'SendMessages',
 			botPerms    : 'SendMessages',
@@ -19,16 +24,8 @@ class TemplateCommand extends Slash {
 		});
 	}
 
-	async run(interaction) {
-		return interaction.reply('This is a template command.');
-	}
-
-	command() {
-		const command = new SlashCommandBuilder()
-			.setName(this.name)
-			.setDescription(this.description)
-			.setDefaultPermission(true);
-		return command;
+	async run(message, data) {
+		return message.reply('This is a template command.');
 	}
 }
 

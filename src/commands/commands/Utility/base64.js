@@ -1,37 +1,34 @@
-const Command = require('../../../structs/templates/Command');
+const Slash = require('../../../structs/templates/Slash');
+const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
-// const { default: axios } = require('axios');
 const path = require('path');
 
-class Base64Command extends Command {
+class Base64Command extends Slash {
 
 	constructor(client) {
 		super(client, {
 			name        : 'base64',
 			description : 'Converts the given information to Base64.',
-			usage       : 'base64 <text>',
-			args        : true,
+			usage       : 'base64',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
-			ownerOnly   : false,
+			guildOnly   : true,
 		});
 	}
 
-	async run(message, args) {
+	async run(interaction) {
 		try {
-			// const { data: response } = await axios.request({
-			// 	method: 'GET',
-			// 	url: `https://some-random-api.ml/base64?encode=${args.join(' ')}`,
-			// });
-
 			const encoded = Buffer.from(args.join(' ')).toString('base64');
-			
+
 			const Base64Embed = new EmbedBuilder()
 				.setTitle('__Base 64__')
-				.setDescription(`\`${encoded}\``)
+				.setDescription([
+					`**Original:** ${args.join(' ')}`,
+					`**Encoded:** \`${encoded}\``
+				])
 				.setDefault(this.client);
 
-			await message.reply({
+			await interaction.reply({
 				embeds: [Base64Embed],
 			});
 		} catch (error) {
@@ -39,11 +36,20 @@ class Base64Command extends Command {
 				.setTitle('An error occured while coverting to Base64.')
 				.setDefault(this.client)
 				.setColor('Red');
-			console.log(error);
-			await message.reply({
+			// console.log(error);
+			await interaction.reply({
 				embeds: [ErrorEmbed],
 			});
 		}
+	}
+
+
+	command() {
+		const command = new SlashCommandBuilder()
+			.setName(this.name)
+			.setDescription(this.description)
+			.setDefaultPermission(true);
+		return command;
 	}
 }
 

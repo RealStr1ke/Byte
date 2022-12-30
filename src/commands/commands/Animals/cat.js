@@ -1,36 +1,42 @@
-const Command = require('../../../structs/templates/Command');
+const Slash = require('../../../structs/templates/Slash');
 const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('@discordjs/builders');
+const axios = require('axios');
 const path = require('path');
-const { default: axios } = require('axios');
 
-class CatCommand extends Command {
+class CatCommand extends Slash {
 
 	constructor(client) {
 		super(client, {
 			name        : 'cat',
 			description : 'Responds with a random cat picture.',
 			usage       : 'cat',
-			args        : false,
 			directory   : __dirname,
-			aliases     : ['cat'],
 			userPerms   : 'SendMessages',
-			ownerOnly   : false,
+			guildOnly   : true,
 		});
 	}
 
-	async run(message) {
+	async run(interaction) {
 		const response = await axios.get('https://aws.random.cat/meow');
 		const CatEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.file)
 			.setFooter({
-				text: `Requested by ${message.author.tag} • ${this.client.config.embed.footer}`,
+				text: `Requested by ${interaction.user.tag} • ${this.client.config.embed.footer}`,
 				iconURL: this.client.user.displayAvatarURL(),
-			})
-			.setTimestamp();
-		return message.channel.send({
+			});
+		return interaction.reply({
 			embeds: [CatEmbed],
 		});
+	}
+
+	command() {
+		const command = new SlashCommandBuilder()
+			.setName(this.name)
+			.setDescription(this.description)
+			.setDefaultPermission(true);
+		return command;
 	}
 }
 
