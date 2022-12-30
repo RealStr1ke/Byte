@@ -7,6 +7,9 @@ class messageCreate extends Event {
 	}
 
 	async run(message) {
+		// Ignore all messages for now as I am working on application commands
+		if (message) return;
+
 		const client = this.client;
 		if (message.author.bot || message.system) return;
 
