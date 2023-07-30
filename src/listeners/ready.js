@@ -16,7 +16,7 @@ class ready extends Event {
 		const time = (await this.client.stopwatch.stop()) / 100;
 
 		this.client.logger.startup(`Loaded ${this.client.commands.size} commands`);
-		this.client.logger.startup(`Loaded ${this.client.commands.slash.size} slash commands`);
+		// this.client.logger.startup(`Loaded ${this.client.commands.slash.size} slash commands`);
 		this.client.logger.startup(`Loaded ${this.client.events.size} events`);
 		this.client.logger.startup('Connected to the Discord API');
 		this.client.logger.startup(`Logged into as ${this.client.user.tag} on ${this.client.guilds.cache.size} servers`);

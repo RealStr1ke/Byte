@@ -1,9 +1,9 @@
 // Submodules
-const { Client, Collection, EmbedBuilder } = require('discord.js');
+const { Client, Collection, Routes, REST } = require('discord.js');
 // const { GiveawaysManager } = require('discord-giveaways');
-const { Routes } = require('discord-api-types/v10');
+// const { Routes } = require('discord-api-types/v10');
+// const { REST } = require('@discordjs/rest');
 const { Player } = require('discord-player');
-const { REST } = require('@discordjs/rest');
 
 // Modules
 const Stopwatch = require('statman-stopwatch');
@@ -11,6 +11,7 @@ const Hypixel = require('hypixel-api-reborn');
 const Flipnote = require('alexflipnote.js');
 const Amethyste = require('amethyste-api');
 const simpleGit = require('simple-git');
+const Discord = require('discord.js');
 // const dlogs = require('discord-logs');
 const path = require('path');
 const glob = require('glob');
@@ -49,8 +50,7 @@ class Byte extends Client {
 
 		this.commands = new Collection();
 		this.commands.aliases = new Collection();
-		this.commands.slash = new Collection();
-		this.commands.slash.data = new Collection();
+		this.commands.data = new Collection();
 		this.events = new Collection();
 		this.slash = new Collection();
 
@@ -190,34 +190,154 @@ class Byte extends Client {
 	async loadSlashCommands() {
 		const cmdFiles = await this.getFiles('src/commands', '.js');
 		let commands = [];
+		console.log(cmdFiles);
 		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
-			if (!(file instanceof Slash)) return;
-			this.commands.slash.set(file.name, file);
-			commands.push(file.command());
-			this.commands.slash.data.set(file.name, file.command().toJSON());
-			/*
-				const command = file.command().toJSON();
-				console.log(command);
-				await this.api.applications(this.user.id).commands.post({
-					data: command
-				});
-			*/
+
+			if (!(file instanceof Slash)) {
+				return;
+			} else {
+				let invalidCommand = false;
+				if (!file.name) {
+					this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: Missing command name.`);
+					invalidCommand = true;
+				}
+				if (!file.description) {
+					this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: Missing command description.`);
+					invalidCommand = true;
+				}
+				if (!file.run) {
+					this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: Missing command run function.`);
+					invalidCommand = true;
+				}
+
+				if (invalidCommand) return;
+			}
+
+			// Form the Slash Command using the data from the file and SlashCommandBuilder
+			const slash = new Discord.SlashCommandBuilder();
+			slash.setName(file.name);
+			slash.setDescription(file.description);
+			if (file.options) {
+				for (const currentOption of file.options) {
+					switch (currentOption.type) {
+						case 'STRING':
+							slash.addStringOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'INTEGER':
+							slash.addIntegerOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'BOOLEAN':
+							slash.addBooleanOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'USER':
+							slash.addUserOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'CHANNEL':
+							slash.addChannelOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'ROLE':
+							slash.addRoleOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'MENTIONABLE':
+							slash.addMentionableOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						case 'NUMBER':
+							slash.addNumberOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+							break;
+						default:
+							slash.addStringOption(option => {
+								option.setName(option.name);
+								option.setDescription(option.description);
+								option.setRequired(option.required);
+							});
+					}
+
+					// TO-DO: Add support for subcommands
+					// slash.addSubcommand(subcommand => {
+					// 	subcommand.setName(option.name);
+					// 	subcommand.setDescription(option.description);
+					// 	if (option.options) {
+					// 		for (const suboption of option.options) {
+					// 			subcommand.addStringOption(option => {
+					// 				option.setName(suboption.name);
+					// 				option.setDescription(suboption.description);
+					// 				option.setRequired(suboption.required);
+					// 			});
+					// 		}
+					// 	}
+					// });
+
+				}
+			}
+			
+			console.log(slash.toJSON());
+			if (file.guildOnly) slash.setDMPermission(false);
+			this.commands.set(file.name, file);
+			this.commands.data.set(file.name, slash.toJSON());
+
+			// const command = file.command().toJSON();
+			// console.log(command);
+			// await this.api.applications(this.user.id).commands.post({
+			// 	data: command
+			// });
 		}
+
 		commands = commands.map(command => command.toJSON());
 		// if (this.config.debug) console.log(`Slash Commands:\n${commands}`);
+
 		const rest = new REST({
 			version: '9',
 		}).setToken(this.config.token);
+
+		const client = await rest.get('/users/@me');
 		await rest.put(
-			Routes.applicationCommands(this.user.id), {
+			Routes.applicationCommands(client.id), {
 				body: commands,
 			},
 		);
+		console.log(commands);
+		const application = await rest.get(`/applications/${client.id}/commands`);
+		console.log(application);
+		// console.log(client.id);
+
 
 	}
 
+	// Deprecated due to slash commands
 	async loadCommand(commandName, commandPath) {
 		try {
 			// if (this.config.debug) {
@@ -337,7 +457,7 @@ class Byte extends Client {
 
 	async destroy() {
 		this.status = false;
-		const ShutDownEmbed = new EmbedBuilder()
+		const ShutDownEmbed = new Discord.EmbedBuilder()
 			.setTitle('**Offline**')
 			.setColor('Red')
 			.setTimestamp();
@@ -358,7 +478,7 @@ class Byte extends Client {
 	async start() {
 		this.stopwatch.start();
 		this.database.loadDatabase();
-		this.loadSlashCommands();
+		// this.loadSlashCommands();
 		// this.loadCommands();
 		this.loadEvents();
 		this.login();

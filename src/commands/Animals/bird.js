@@ -12,7 +12,7 @@ class BirdCommand extends Slash {
 			usage       : 'bird',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
-			guildOnly   : false,
+			guildOnly   : true,
 		});
 	}
 

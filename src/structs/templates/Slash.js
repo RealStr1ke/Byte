@@ -1,5 +1,4 @@
-const { PermissionsBitField } = require('discord.js');
-const Builders = require('@discordjs/builders');
+const Discord = require('discord.js');
 const path = require('path');
 
 class Slash {
@@ -13,15 +12,16 @@ class Slash {
 		this.category = options.category || (options.directory ? options.directory.split(path.sep)[parseInt(options.directory.split(path.sep).length - 1, 10)] : 'Other');
 		this.enabled = options.enabled || true;
 
-		this.userPerms = new PermissionsBitField(options.userPerms || 'SendMessages').freeze();
-		this.botPerms = new PermissionsBitField(options.botPerms || 'SendMessages').freeze();
+		this.userPerms = new Discord.PermissionsBitField(options.userPerms || 'SendMessages').freeze();
+		this.botPerms = new Discord.PermissionsBitField(options.botPerms || 'SendMessages').freeze();
+		this.defaultMemberPerms = options.defaultMemberPerms || true;
 		this.guildOnly = options.guildOnly || false;
 		this.ownerOnly = options.ownerOnly || false;
 		this.nsfw = options.nsfw || false;
 		this.education = options.education || false;
 		this.requireData = options.requireData || false;
 
-		this.builders = Builders;
+		this.Discord = Discord;
 	}
 
 	async run() {
