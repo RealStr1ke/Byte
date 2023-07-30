@@ -4,6 +4,7 @@ nodemon.json
 
 # Config Files
 config.js
+config.old.js
 .env
 
 # GitPod Files
