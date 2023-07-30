@@ -13,7 +13,7 @@ class CatCommand extends Slash {
 			usage       : 'cat',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
-			guildOnly   : true,
+			guildOnly   : false,
 		});
 	}
 

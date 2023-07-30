@@ -6,7 +6,7 @@ async function AmongUsMessage() {
 	this.reply('Among Us!');
 }
 
-Discord.Message.prototype.sus = AmongUsMessage;
+// Discord.Message.prototype.sus = AmongUsMessage;
 
 
 // EmbedBuilder Extenders
@@ -24,7 +24,7 @@ function DefaultEmbedParams(client) {
 		.setTimestamp();
 	return this;
 }
-Discord.EmbedBuilder.prototype.setDefault = DefaultEmbedParams;
+// Discord.EmbedBuilder.prototype.setDefault = DefaultEmbedParams;
 
 // Date Extenders
 function NowUnixTime() {

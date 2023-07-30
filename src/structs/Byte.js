@@ -188,8 +188,9 @@ class Byte extends Client {
 	}
 
 	async loadSlashCommands() {
-		const cmdFiles = await this.getFiles('src/commands/slash', '.js');
+		const cmdFiles = await this.getFiles('src/commands', '.js');
 		let commands = [];
+		console.log("LOADING SLASH COMMANDS")
 		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
@@ -358,7 +359,8 @@ class Byte extends Client {
 	async start() {
 		this.stopwatch.start();
 		this.database.loadDatabase();
-		this.loadCommands();
+		this.loadSlashCommands();
+		// this.loadCommands();
 		this.loadEvents();
 		this.login();
 	}

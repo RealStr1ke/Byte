@@ -12,7 +12,7 @@ class Base64Command extends Slash {
 			usage       : 'base64',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
-			guildOnly   : true,
+			guildOnly   : false,
 		});
 	}
 

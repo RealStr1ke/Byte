@@ -12,7 +12,7 @@ class PingCommand extends Slash {
 			usage       : 'ping',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
-			guildOnly   : true,
+			guildOnly   : false,
 		});
 	}
 
