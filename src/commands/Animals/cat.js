@@ -18,7 +18,7 @@ class CatCommand extends Slash {
 	}
 
 	async run(interaction) {
-		const response = await axios.get('https://aws.random.cat/meow');
+		const response = await axios.get('http://shibe.online/api/cats');
 		const CatEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
 			.setImage(response.data.file)
