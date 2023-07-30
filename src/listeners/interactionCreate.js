@@ -48,7 +48,7 @@ class interactionCreate extends Event {
 				this.client.logger.fail(error.message);
 			}
 			// Logs the command usage to the console
-			this.client.logger.command(interaction.user.tag, `/${interaction.commandName}`, interaction.guild.name);
+			this.client.logger.command(interaction.user.tag, `/${interaction.commandName}`, interaction.inGuild() ? interaction.guild.name : `${interaction.user.tag}'s DMs`);
 		}
 	}
 }
