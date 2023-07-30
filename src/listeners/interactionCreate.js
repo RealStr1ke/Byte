@@ -32,7 +32,7 @@ class interactionCreate extends Event {
 			// Returns if the following requirements weren't met
 			if (command.nsfw && !interaction.channel.nsfw) return interaction.reply('**You must run this command in an NSFW channel.**');
 			if (command.education && !interaction.guild) return interaction.reply('You can\'t use an education command in DMs.');
-			if (!command.guildOnly && !interaction.guild) return interaction.reply('**This command can only be used in guilds.**');
+			if (command.guildOnly && !interaction.guild) return interaction.reply('**This command can only be used in guilds.**');
 			if (command.ownerOnly && this.client.config.owner.id !== interaction.user.id) return interaction.reply('**This command can only be used by the owner of this bot.**');
 			if (command.education && !data.guild.education) return interaction.reply('This guild doesn\'t have the education module enabled.');
 

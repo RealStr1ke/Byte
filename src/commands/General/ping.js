@@ -1,4 +1,4 @@
-const Slash = require('../../../structs/templates/Slash');
+const Slash = require('../../structs/templates/Slash');
 const { EmbedBuilder } = require('discord.js');
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const path = require('path');
@@ -27,7 +27,7 @@ class PingCommand extends Slash {
 				`🔂 **RTT**: ${timeDiff} ms`,
 				`💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
 			].join('\n'))
-			.setColor(this.client.color)
+			.setColor(this.client.config.embed.color)
 			.setFooter({
 				text: `Requested by ${interaction.user.username}`,
 				iconURL: interaction.user.displayAvatarURL({ dynamic: true, size: 1024 }),

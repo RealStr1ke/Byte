@@ -190,7 +190,6 @@ class Byte extends Client {
 	async loadSlashCommands() {
 		const cmdFiles = await this.getFiles('src/commands', '.js');
 		let commands = [];
-		console.log("LOADING SLASH COMMANDS")
 		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);

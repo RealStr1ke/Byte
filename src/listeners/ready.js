@@ -27,6 +27,7 @@ class ready extends Event {
 			}],
 			status: 'idle',
 		});
+		this.client.logger.startup(`Successfully set presence to '${this.client.config.status.type} ${this.client.config.status.name}'`)
 
 		const StartupEmbed = new EmbedBuilder()
 			.setTitle('**Online**')
