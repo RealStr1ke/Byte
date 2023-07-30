@@ -1,4 +1,5 @@
 const { PermissionsBitField } = require('discord.js');
+const Builders = require('@discordjs/builders');
 const path = require('path');
 
 class Slash {
@@ -8,6 +9,7 @@ class Slash {
 		this.name = options.name || null;
 		this.directory = options.directory || false;
 		this.description = options.description || 'No information specified.';
+		this.args = options.args || null;
 		this.category = options.category || (options.directory ? options.directory.split(path.sep)[parseInt(options.directory.split(path.sep).length - 1, 10)] : 'Other');
 		this.enabled = options.enabled || true;
 
@@ -18,6 +20,8 @@ class Slash {
 		this.nsfw = options.nsfw || false;
 		this.education = options.education || false;
 		this.requireData = options.requireData || false;
+
+		this.builders = Builders;
 	}
 
 	async run() {

@@ -1,6 +1,5 @@
 const Slash = require('../../structs/templates/Slash');
 const { EmbedBuilder } = require('discord.js');
-const { SlashCommandBuilder } = require('@discordjs/builders');
 const axios = require('axios');
 const path = require('path');
 
@@ -32,7 +31,7 @@ class BirdCommand extends Slash {
 	}
 
 	command() {
-		const command = new SlashCommandBuilder()
+		const command = new Builders.SlashCommandBuilder()
 			.setName(this.name)
 			.setDescription(this.description)
 			.setDefaultPermission(true);
