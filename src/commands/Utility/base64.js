@@ -13,34 +13,33 @@ class Base64Command extends Slash {
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
 			guildOnly   : false,
+
+			options     : [
+				{
+					name        : 'string',
+					description : 'The string to convert.',
+					required    : true,
+					type        : 'STRING',
+				},
+			],
 		});
 	}
 
 	async run(interaction) {
-		try {
-			const encoded = Buffer.from(args.join(' ')).toString('base64');
+		const original = interaction.options.getString('string');
+		const encoded = Buffer.from(original).toString('base64');
 
-			const Base64Embed = new EmbedBuilder()
-				.setTitle('__Base 64__')
-				.setDescription([
-					`**Original:** ${args.join(' ')}`,
-					`**Encoded:** \`${encoded}\``
-				])
-				.setDefault(this.client);
+		const Base64Embed = new EmbedBuilder()
+			.setTitle('__Base 64__')
+			.setDescription([
+				`**Original:** \`${original}\``,
+				`**Encoded:** \`${encoded}\``,
+			].join('\n'))
+			.setDefault(this.client);
 
-			await interaction.reply({
-				embeds: [Base64Embed],
-			});
-		} catch (error) {
-			const ErrorEmbed = new EmbedBuilder()
-				.setTitle('An error occured while coverting to Base64.')
-				.setDefault(this.client)
-				.setColor('Red');
-			// console.log(error);
-			await interaction.reply({
-				embeds: [ErrorEmbed],
-			});
-		}
+		await interaction.reply({
+			embeds: [Base64Embed],
+		});
 	}
 
 

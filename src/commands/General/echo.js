@@ -10,11 +10,11 @@ class EchoCommand extends Slash {
 			usage       : 'echo',
 			directory   : __dirname,
 			userPerms   : 'SendMessages',
-			ownerOnly   : true,
+			guildOnly   : false,
 
 			options     : [
 				{
-					name        : 'Message',
+					name        : 'message',
 					description : 'The message to echo.',
 					required    : true,
 					type        : 'STRING',
@@ -25,14 +25,12 @@ class EchoCommand extends Slash {
 
 	async run(interaction) {
 		const EchoEmbed = new this.Discord.EmbedBuilder()
-			.setTitle(interaction.options.getString('Message'))
+			.setTitle(interaction.options.getString('message'))
 			.setColor(this.client.config.embed.color);
 
-		interaction.reply({
+		return await interaction.reply({
 			embeds: [EchoEmbed],
 		});
-
-		return await process.exit();
 	}
 
 	command() {

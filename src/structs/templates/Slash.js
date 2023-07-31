@@ -12,14 +12,14 @@ class Slash {
 		this.category = options.category || (options.directory ? options.directory.split(path.sep)[parseInt(options.directory.split(path.sep).length - 1, 10)] : 'Other');
 		this.enabled = options.enabled || true;
 
-		this.userPerms = new Discord.PermissionsBitField(options.userPerms || 'SendMessages').freeze();
+		// this.userPerms = new Discord.PermissionsBitField(options.userPerms || 'SendMessages').freeze();
 		this.botPerms = new Discord.PermissionsBitField(options.botPerms || 'SendMessages').freeze();
-		this.defaultMemberPerms = options.defaultMemberPerms || true;
 		this.guildOnly = options.guildOnly || false;
 		this.ownerOnly = options.ownerOnly || false;
 		this.nsfw = options.nsfw || false;
 		this.education = options.education || false;
 		this.requireData = options.requireData || false;
+		this.options = options.options || [];
 
 		this.Discord = Discord;
 	}

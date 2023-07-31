@@ -63,6 +63,7 @@ class Byte extends Client {
 		this.utils = new Utils(this);
 		this.constants = constants;
 		this.Cli = new Cli(this);
+		this.Discord = Discord;
 		this.status = false;
 
 		// Database
@@ -190,7 +191,7 @@ class Byte extends Client {
 	async loadSlashCommands() {
 		const cmdFiles = await this.getFiles('src/commands', '.js');
 		let commands = [];
-		console.log(cmdFiles);
+		// console.log(cmdFiles);
 		// if (this.config.debug) console.log(cmdFiles);
 		for (const commandPath of cmdFiles) {
 			const file = new (require(path.resolve(commandPath)))(this);
@@ -214,106 +215,131 @@ class Byte extends Client {
 
 				if (invalidCommand) return;
 			}
+			try {
+				// Form the Slash Command using the data from the file and SlashCommandBuilder
+				const slash = new Discord.SlashCommandBuilder();
+				slash.setName(file.name);
+				slash.setDescription(file.description);
+				if (file.options) {
+					for (const currentOption of file.options) {
+						const option = currentOption;
+						let SCOption; // SlashCommand____Option, where ____ is the type of option
 
-			// Form the Slash Command using the data from the file and SlashCommandBuilder
-			const slash = new Discord.SlashCommandBuilder();
-			slash.setName(file.name);
-			slash.setDescription(file.description);
-			if (file.options) {
-				for (const currentOption of file.options) {
-					switch (currentOption.type) {
-						case 'STRING':
-							slash.addStringOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'INTEGER':
-							slash.addIntegerOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'BOOLEAN':
-							slash.addBooleanOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'USER':
-							slash.addUserOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'CHANNEL':
-							slash.addChannelOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'ROLE':
-							slash.addRoleOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'MENTIONABLE':
-							slash.addMentionableOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						case 'NUMBER':
-							slash.addNumberOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
-							break;
-						default:
-							slash.addStringOption(option => {
-								option.setName(option.name);
-								option.setDescription(option.description);
-								option.setRequired(option.required);
-							});
+						switch (option.type) {
+							case 'STRING':
+								SCOption = new Discord.SlashCommandStringOption();
+								break;
+							case 'INTEGER':
+								SCOption = new Discord.SlashCommandIntegerOption();
+								break;
+							case 'BOOLEAN':
+								SCOption = new Discord.SlashCommandBooleanOption();
+								break;
+							case 'USER':
+								SCOption = new Discord.SlashCommandUserOption();
+								break;
+							case 'CHANNEL':
+								SCOption = new Discord.SlashCommandChannelOption();
+								break;
+							case 'ROLE':
+								SCOption = new Discord.SlashCommandRoleOption();
+								break;
+							case 'MENTIONABLE':
+								SCOption = new Discord.SlashCommandMentionableOption();
+								break;
+							case 'NUMBER':
+								SCOption = new Discord.SlashCommandNumberOption();
+								break;
+							default:
+								this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: Invalid option type.`);
+								return;
+						}
+
+						SCOption.setName(option.name);
+						SCOption.setDescription(option.description);
+						SCOption.setRequired(option.required);
+
+						if (option.choices && (option.type === 'STRING' || option.type === 'INTEGER' || option.type === 'NUMBER')) {
+							for (const choice of option.choices) {
+								SCOption.addChoice(choice.name, choice.value);
+							}
+						}
+						if (option.min && (option.type === 'INTEGER' || option.type === 'NUMBER')) SCOption.setMin(option.min);
+						if (option.max && (option.type === 'INTEGER' || option.type === 'NUMBER')) SCOption.setMax(option.max);
+						if (option.autocompletable) SCOption.setAutocomplete(true);
+
+						switch (option.type) {
+							case 'STRING':
+								slash.addStringOption(SCOption);
+								break;
+							case 'INTEGER':
+								slash.addIntegerOption(SCOption);
+								break;
+							case 'BOOLEAN':
+								slash.addBooleanOption(SCOption);
+								break;
+							case 'USER':
+								slash.addUserOption(SCOption);
+								break;
+							case 'CHANNEL':
+								slash.addChannelOption(SCOption);
+								break;
+							case 'ROLE':
+								slash.addRoleOption(SCOption);
+								break;
+							case 'MENTIONABLE':
+								slash.addMentionableOption(SCOption);
+								break;
+							case 'NUMBER':
+								slash.addNumberOption(SCOption);
+								break;
+							default:
+								this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: Invalid option type.`);
+								return;
+						}
+
+						// TO-DO: Add support for subcommands
+						// slash.addSubcommand(subcommand => {
+						// 	subcommand.setName(option.name);
+						// 	subcommand.setDescription(option.description);
+						// 	if (option.options) {
+						// 		for (const suboption of option.options) {
+						// 			subcommand.addStringOption(option => {
+						// 				option.setName(suboption.name);
+						// 				option.setDescription(suboption.description);
+						// 				option.setRequired(suboption.required);
+						// 			});
+						// 		}
+						// 	}
+						// });
+
 					}
-
-					// TO-DO: Add support for subcommands
-					// slash.addSubcommand(subcommand => {
-					// 	subcommand.setName(option.name);
-					// 	subcommand.setDescription(option.description);
-					// 	if (option.options) {
-					// 		for (const suboption of option.options) {
-					// 			subcommand.addStringOption(option => {
-					// 				option.setName(suboption.name);
-					// 				option.setDescription(suboption.description);
-					// 				option.setRequired(suboption.required);
-					// 			});
-					// 		}
-					// 	}
-					// });
-
 				}
-			}
-			
-			console.log(slash.toJSON());
-			if (file.guildOnly) slash.setDMPermission(false);
-			this.commands.set(file.name, file);
-			this.commands.data.set(file.name, slash.toJSON());
 
-			// const command = file.command().toJSON();
-			// console.log(command);
-			// await this.api.applications(this.user.id).commands.post({
-			// 	data: command
-			// });
+				// console.log(slash.toJSON());
+
+				if (file.guildOnly) {
+					slash.setDMPermission(false);
+				} else {
+					slash.setDMPermission(true);
+				}
+				// slash.setDefaultMemberPermissions(file.userPerms);
+
+				this.commands.set(file.name, file);
+				this.commands.data.set(file.name, slash);
+
+				commands.push(slash);
+
+
+
+				// const command = file.command().toJSON();
+				// console.log(command);
+				// await this.api.applications(this.user.id).commands.post({
+				// 	data: command
+				// });
+			} catch (error) {
+				this.logger.fail(`Failed to load command ${path.parse(commandPath).base}: ${error}`);
+			}
 		}
 
 		commands = commands.map(command => command.toJSON());
@@ -329,9 +355,9 @@ class Byte extends Client {
 				body: commands,
 			},
 		);
-		console.log(commands);
+		// console.log(commands);
 		const application = await rest.get(`/applications/${client.id}/commands`);
-		console.log(application);
+		// console.log(application);
 		// console.log(client.id);
 
 

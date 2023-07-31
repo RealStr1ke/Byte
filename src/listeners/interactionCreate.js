@@ -1,5 +1,6 @@
-const path = require('path');
 const Event = require('../structs/templates/Event');
+const { EmbedBuilder } = require('discord.js');
+const path = require('path');
 
 class interactionCreate extends Event {
 	constructor(client) {
@@ -26,7 +27,7 @@ class interactionCreate extends Event {
 			}
 
 
-			const command = this.client.commands.slash.get(interaction.commandName);
+			const command = this.client.commands.get(interaction.commandName);
 			if (!command) return; // Returns if the requested command wasn't found
 
 			// Returns if the following requirements weren't met
@@ -35,6 +36,12 @@ class interactionCreate extends Event {
 			if (command.guildOnly && !interaction.guild) return interaction.reply('**This command can only be used in guilds.**');
 			if (command.ownerOnly && this.client.config.owner.id !== interaction.user.id) return interaction.reply('**This command can only be used by the owner of this bot.**');
 			if (command.education && !data.guild.education) return interaction.reply('This guild doesn\'t have the education module enabled.');
+
+			// Logs the command usage to the console
+			this.client.logger.command(interaction.user.tag, `/${interaction.commandName}`, interaction.inGuild() ? interaction.guild.name : `${interaction.user.tag}'s DMs`);
+
+			// Log what type of interaction it is (instanceof)
+			// this.client.logger.log(`${interaction} was an instance of ${interaction.constructor.name}`);
 
 			// Runs the command
 			try {
@@ -45,10 +52,15 @@ class interactionCreate extends Event {
 					command.run(interaction);
 				}
 			} catch (error) {
+				// Logs the error to the console
 				this.client.logger.fail(error.message);
+
+				// Sends the error to the user
+				const ErrorEmbed = new EmbedBuilder().ErrorEmbed(this.client);
+				await interaction.reply({
+					embed: ErrorEmbed,
+				});
 			}
-			// Logs the command usage to the console
-			this.client.logger.command(interaction.user.tag, `/${interaction.commandName}`, interaction.inGuild() ? interaction.guild.name : `${interaction.user.tag}'s DMs`);
 		}
 	}
 }

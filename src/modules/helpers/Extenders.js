@@ -24,7 +24,23 @@ function DefaultEmbedParams(client) {
 		.setTimestamp();
 	return this;
 }
-// Discord.EmbedBuilder.prototype.setDefault = DefaultEmbedParams;
+Discord.EmbedBuilder.prototype.setDefault = DefaultEmbedParams;
+
+function ErrorEmbed(client) {
+	this
+		.setTitle('**An error occured. Please try again.**')
+		.setAuthor({
+			name: client.user.tag,
+			iconURL: client.user.displayAvatarURL(),
+		})
+		.setFooter({
+			text: client.config.embed.footer,
+			iconURL: client.user.displayAvatarURL(),
+		})
+		.setColor('RED')
+		.setTimestamp();
+	return this;
+}
 
 // Date Extenders
 function NowUnixTime() {

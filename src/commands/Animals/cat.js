@@ -21,7 +21,7 @@ class CatCommand extends Slash {
 		const response = await axios.get('http://shibe.online/api/cats');
 		const CatEmbed = new EmbedBuilder()
 			.setTitle('**😍 | Awwwww | 😍**')
-			.setImage(response.data.file)
+			.setImage(response.data[0])
 			.setFooter({
 				text: `Requested by ${interaction.user.tag} • ${this.client.config.embed.footer}`,
 				iconURL: this.client.user.displayAvatarURL(),
