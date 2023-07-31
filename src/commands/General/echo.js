@@ -32,14 +32,6 @@ class EchoCommand extends Slash {
 			embeds: [EchoEmbed],
 		});
 	}
-
-	command() {
-		const command = new this.Discord.SlashCommandBuilder()
-			.setName(this.name)
-			.setDescription(this.description)
-			.setDefaultPermission(true);
-		return command;
-	}
 }
 
 module.exports = EchoCommand;
