@@ -216,6 +216,9 @@ class Byte extends Client {
 				if (invalidCommand) return;
 			}
 			try {
+				// Log the loading of the command
+				// this.logger.log(`Loading Slash Command: ${file.name}`);
+
 				// Form the Slash Command using the data from the file and SlashCommandBuilder
 				const slash = new Discord.SlashCommandBuilder();
 				slash.setName(file.name);
@@ -356,7 +359,7 @@ class Byte extends Client {
 			},
 		);
 		// console.log(commands);
-		const application = await rest.get(`/applications/${client.id}/commands`);
+		// const application = await rest.get(`/applications/${client.id}/commands`);
 		// console.log(application);
 		// console.log(client.id);
 
